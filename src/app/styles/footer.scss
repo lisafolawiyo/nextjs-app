@@ -1,0 +1,180 @@
+@use './breakpoints' as u;
+@use './variables' as *;
+
+/* Footer Section */
+.footer-section {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background-color: $alabaster;
+    padding: 100px 30px 100px 30px;
+
+    .footer-section-wrap{
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+
+        @include u.breakpoint(md) {
+           width: 90%;
+        }
+
+        .footer-top {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+
+            
+            @include u.breakpoint(lg) {
+                flex-direction: row;
+            }
+
+            h3 {
+                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-size: 14px;
+                text-transform: capitalize;
+                font-weight: 600;
+                letter-spacing: 2px;
+                color: $codgray;
+                text-align: center;
+
+                @include u.breakpoint(lg) {
+                    text-align: left;
+                }
+            }
+
+            ul {
+                list-style-type: none;
+                padding: 0px;
+                margin-top: 20px;
+      
+                li {
+                  padding-bottom: 5px;
+                  text-align: center;
+
+                  @include u.breakpoint(lg) {
+                      text-align: left;
+                  }
+      
+                  a {
+                    font-family: 'Plus Jakarta Sans', sans-serif;
+                    text-transform: capitalize;
+                    font-size: 14px;
+                    font-weight: 300;
+                    cursor: pointer;
+                    color: $codgray;
+                    transition: all 0.3s ease-in-out;
+                  }
+                }
+            }
+
+            .footer-top-one {
+                width: 100%;
+                padding-right: 0px;
+                margin-bottom: 70px;
+
+                                    
+                @include u.breakpoint(lg) {
+                    width: 45%;
+                    padding-right: 60px;
+                    margin-bottom: 0px;
+                }
+
+                p {
+                    font-family: 'Plus Jakarta Sans', sans-serif;
+                    font-size: 21px;
+                    line-height: 29px;
+                    font-weight: 500;
+                    color: $codgray;
+                    // margin-top: 20px;
+                    text-align: center;
+                    @include u.breakpoint(lg) {
+                        text-align: left;
+                    }
+                }
+                .footer-newsletter-wrap {
+                    width: 100%;
+                    //border: 1px solid #000;
+                    margin-top: 30px;
+                    #mc_embed_signup {
+                        width: 100%px; /* or any desired default width */
+                        max-width: 100%; /* Makes the form responsive */
+                        // @include u.breakpoint(md) {
+                        //     width: 515px;
+                        // }
+                        background-color: transparent;
+                        padding: 0px;
+                        margin: 0px;
+                    }
+                }
+            }
+            .footer-top-two {
+                width: 100%;
+                margin-bottom: 50px;
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+
+                @include u.breakpoint(lg) {
+                    width: 26.5%;
+                    margin-bottom: 0px;
+                    align-items: flex-end;
+                }
+                .footer-top-inner-wrap {
+                    width: max-content;
+                }
+                
+            }
+            .footer-top-three {
+                width: 100%; 
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                  
+                @include u.breakpoint(lg) {
+                    width: 26.5%;
+                    align-items: flex-end;
+                }
+                .footer-top-inner-wrap {
+                    width: max-content;
+                }
+                
+            }
+            // .footer-top-four {
+            //     width: 100%; 
+            //     display: flex;
+            //     flex-direction: column;
+            //     align-items: center;
+                  
+            //     @include u.breakpoint(lg) {
+            //         width: 23%;
+            //         align-items: flex-end;
+            //     }
+            //     .footer-top-inner-wrap {
+            //         width: max-content;
+            //     }
+                
+            // }
+        }
+
+        
+    }
+}
+
+.footer-bottom {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px 0px;
+
+    p {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        text-transform: uppercase;
+        font-size: 14px;
+        font-weight: 300;
+        letter-spacing: 2px;
+        color: $codgray;
+        margin: 0px;
+    }
+}

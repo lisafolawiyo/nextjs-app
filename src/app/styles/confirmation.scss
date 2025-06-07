@@ -1,0 +1,238 @@
+@use './breakpoints' as u;
+@use './variables' as *;
+
+.confirmation-page-wrapper {
+    width: 100%;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .header {
+        width: 100%;
+        padding: 50px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        background-color: $alabaster;
+        @include u.breakpoint(md) {
+            padding: 50px 0px;
+        }
+        .header-icon {
+            font-size: 22px;
+        }
+        .title {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: $codgray;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .oreder-no {
+            font-family: "Plus Jakarta Sans", sans-serif;
+            font-size: 18px;
+            font-weight: 400;
+            color: $codgray;
+            text-align: center;
+        }
+    }
+    .billing {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        padding: 50px 0px;
+        // background-color: $white;
+        @include u.breakpoint(md) {
+            width: 600px;
+        }
+        .left {
+            .fullname {
+                font-family: "Plus Jakarta Sans", sans-serif;
+                font-size: 17px;
+                font-weight: 600;
+                color: $codgray;
+            }
+            .bill_p {
+                font-family: "Plus Jakarta Sans", sans-serif;
+                font-size: 17px;
+                font-weight: 400;
+                color: $codgray;
+                
+            }
+        }
+        .right {
+            .date {
+                font-family: "Plus Jakarta Sans", sans-serif;
+                font-size: 17px;
+                font-weight: 600;
+                color: $codgray;
+            }
+        }
+    }
+    .summary {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        padding: 0px 0px 0px 0px;
+        @include u.breakpoint(md) {
+            width: 600px;
+            // border: 1px solid #000;
+        }
+
+        .cart-items {
+            width: 100%;
+            .cart-item {
+                width: 100%;
+                display: flex;
+                border: 1px solid #1a1a1a20;
+                border-radius: 5px;
+                background-color: $white;
+                margin-bottom: 20px;
+                .image {
+                    width: 100px;
+                    height: 140px;
+                    background-color: #1a1a1a;
+                    background-size: cover;
+                    background-position: center;
+                    background-repeat: no-repeat;
+                    border-top-left-radius: 5px; 
+                    border-bottom-left-radius: 5px;
+                }
+                .detail-wrap {
+                    width: calc(100% - 100px);
+                    padding: 10px;
+                    display: flex;
+                    justify-content: space-between;
+                    .left {
+                        width: max-content;
+                            .name {
+                                font-family: "Plus Jakarta Sans", sans-serif;
+                                text-transform: uppercase;
+                                font-size: 12px;
+                                font-weight: 400;
+                                color: $codgray;
+                            }
+                            .desc {
+                                font-family: "Plus Jakarta Sans", sans-serif;
+                                text-transform: capitalize;
+                                font-size: 15px;
+                                font-weight: 600;
+                                color: $codgray;
+                            }
+                        .options {
+                            width: 100%;
+                            display: flex;
+                            flex-wrap: wrap;
+                            margin-top: 20px;
+                            .item {
+                                width: max-content;
+                                padding: 3px 5px;
+                                display: flex;
+                                justify-content: center;
+                                align-items: center;
+                                border: 1px solid #1a1a1a20;
+                                border-radius: 10px;
+                                margin-right: 5px;
+                                margin-bottom: 5px;
+                                span {
+                                    font-family: "Plus Jakarta Sans", sans-serif;
+                                    text-transform: capitalize;
+                                    font-size: 12px;
+                                    font-weight: 400;
+                                    color: $codgray;
+                                }
+                            }
+                        }
+                    }
+                    .right {
+                        width: max-content;
+                        margin-left: 10px;
+                        .price {
+                            font-family: "Plus Jakarta Sans", sans-serif;
+                            text-transform: capitalize;
+                            font-size: 14px;
+                            font-weight: 600;
+                            color: $codgray;
+                        }
+                    }
+                }
+            }
+        }
+        .total-items {
+            width: 100%;
+            margin-top: 30px;
+            .total-item {
+                display: flex;
+                justify-content: space-between;
+                margin-bottom: 10px;
+                h3 {
+                    font-family: "Plus Jakarta Sans", sans-serif;
+                    text-transform: capitalize;
+                    font-size: 16px;
+                    font-weight: 400;
+                    color: $codgray;  
+                }
+            }
+            .total {
+                border-top: 1px solid #1a1a1a20;
+                padding-top: 10px;
+                h3 {
+                    font-weight: 600;
+                }
+            }
+        }
+        .action-butttons {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            .btn {
+                width: 200px;
+                height: 40px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid #1a1a1a20;
+                border-radius: 5px;
+                span {
+                    font-family: "Plus Jakarta Sans", sans-serif;
+                    text-transform: uppercase;
+                    font-size: 12px;
+                    font-weight: 600;
+                    color: #1a1a1a50;  
+                }
+            }
+        }
+        .failed-action-butttons {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            .btn {
+                width: max-content;
+                height: 40px;
+                padding: 0px 10px;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+                border: 1px solid #1a1a1a20;
+                border-radius: 5px;
+                span {
+                    font-family: "Plus Jakarta Sans", sans-serif;
+                    text-transform: uppercase;
+                    font-size: 12px;
+                    font-weight: 600;
+                    color: #1a1a1a50;  
+                }
+            }
+            .btn2 {
+                background-color: $codgray;
+                span {
+                    color: $white;  
+                }
+            }
+        }
+    }
+}

@@ -1,9 +1,10 @@
 "use client";
 
+import { Productimage } from '@/types/product';
 import React from 'react';
 import { useState } from "react";
 
-const ProductImagesTwo = ({ items }: { items: any }) => {
+const ProductImagesTwo = ({ items }: { items: Productimage[] }) => {
     const [index, setIndex] = useState(0);
 
   return (
@@ -17,7 +18,7 @@ const ProductImagesTwo = ({ items }: { items: any }) => {
                   </div>
               </div>
               <div className="single-product-alt-img-wrap">
-                    {items.map((item:any, i:number) => (
+                    {items.map((item:Productimage, i:number) => (
                         <div 
                         key={item.id}
                         onClick={() => setIndex(i)}

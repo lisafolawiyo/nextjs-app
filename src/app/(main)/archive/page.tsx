@@ -12,7 +12,6 @@ export const metadata: Metadata = {
 export default async function Archive() {
   const post_data = await getPosts("", "", parseInt("1",10), 10,);
   const posts = post_data.posts;
-  const total_pages = post_data.total_pages;
   return (
     <div className='archive-container'>
       {posts.length > 0 && <EditorialList posts={posts}/>}

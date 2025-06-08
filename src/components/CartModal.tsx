@@ -1,11 +1,6 @@
 "use client";
 
 import useCartStore from "@/hooks/zustand/useCartStore";
-import Image from "next/image";
-import Link from "next/link";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
-
 
 const CartModal = () => {
   const {

@@ -1,23 +1,8 @@
 "use server";
 
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { generateOAuthSignature } from "./woocommerce";
 import { OrderData } from '@/types/checkout';
-
-interface ProductOptions {
-    name: string;
-    value: string;
-}
-  
-interface CartItem {
-    id: number;
-    name: string;
-    price: number;
-    stock_status: string;
-    image: string;
-    product_options: ProductOptions[];
-    quantity: number;
-}
 
 export type Errors = {
     firstname?: string;
@@ -62,17 +47,18 @@ export async function createOrder(orderData: OrderData | null) {
         })
         return response.data;
 
-    } catch (error: any) {
+    } catch (error) {
     // Axios-specific error info
-        if (error.response) {
-                console.error("WooCommerce API error:", {
-                status: error.response.status,
-                data: error.response.data,
+        const err = error as AxiosError;
+        if (err.response) {
+            console.error("WooCommerce API error:", {
+                status: err.response.status,
+                data: err.response.data,
             });
-        } else if (error.request) {
-            console.error("No response received from WooCommerce:", error.request);
+        } else if (err.request) {
+            console.error("No response received from WooCommerce:", err.request);
         } else {
-            console.error("Order creation failed:", error.message);
+            console.error("Order creation failed:", err.message);
         }
 
         throw new Error("Failed to create order. Please try again later.");

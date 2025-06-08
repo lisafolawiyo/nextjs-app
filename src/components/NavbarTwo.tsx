@@ -3,18 +3,16 @@
 import React, { useRef, useState } from 'react';
 import "../app/styles/navbar.scss";
 import Image from 'next/image';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faUser } from '@fortawesome/free-solid-svg-icons';
-// import QuickCart from './QuickCart';
 import CartModal from './CartModal';
 import useCartStore from '@/hooks/zustand/useCartStore';
+import Link from 'next/link';
 
 function NavbarTwo() {
     const [isOpen, setIsOpen] = useState(false);
     const sidebarRef = useRef<HTMLDivElement>(null);
     const overlayRef = useRef<HTMLDivElement>(null);
 
-    const { items:  cartItems, removeFromCart, updateQty } = useCartStore((state) => state);
+    const { items:  cartItems } = useCartStore((state) => state);
     const [isCartOpen, setIsCartOpen] = useState(false);
 
     const toggleMenu = () => {
@@ -91,34 +89,34 @@ function NavbarTwo() {
 
             <div className="nav-sidebar-main-menu">
                 <ul className="nav-top-items">
-                <li className="nav-top-item"><a href="/">home</a></li>
-                <li className="nav-top-item"><a href="/shop">shop</a></li>
-                <li className="nav-top-item"><a href="/about">about us</a></li>
-                <li className="nav-top-item"><a href="/archive">Inside LF</a></li>
-                <li className="nav-top-item"><a href="/contact">contact</a></li>
+                <li className="nav-top-item"><Link href="/">home</Link></li>
+                <li className="nav-top-item"><Link href="/shop">shop</Link></li>
+                <li className="nav-top-item"><Link href="/about">about us</Link></li>
+                <li className="nav-top-item"><Link href="/archive">Inside LF</Link></li>
+                <li className="nav-top-item"><Link href="/contact">contact</Link></li>
                 </ul>
             </div>
 
             <div className="nav-sidebar-category-wrap">
                 <ul className="nav-sidebar-categories">
-                <li className="nav-sidebar-category-item"><a href="/shop?category=41">COLL 1 2025</a></li>
-                <li className="nav-sidebar-category-item"><a href="/shop?category=16">COLL 1 2024</a></li>
+                <li className="nav-sidebar-category-item"><Link href="/shop?category=41">COLL 1 2025</Link></li>
+                <li className="nav-sidebar-category-item"><Link href="/shop?category=16">COLL 1 2024</Link></li>
                 </ul>
             </div>
 
             <div className="nav-tags">
-                <a href="/shop?tag=20" className='nav-tag-item'>women</a>
-                <a href="/shop?tag=25" className='nav-tag-item'>men</a>
-                <a href="/shop?tag=24" className='nav-tag-item'>dresses</a>
-                <a href="/shop?tag=22" className='nav-tag-item'>tops</a>
-                <a href="/shop?tag=26" className='nav-tag-item'>shirts</a>
-                <a href="/shop?tag=31" className='nav-tag-item'>t-shirts</a>
-                <a href="/shop?tag=21" className='nav-tag-item'>trousers</a>
-                <a href="/shop?tag=34" className='nav-tag-item'>shorts</a>
-                <a href="/shop?tag=29" className='nav-tag-item'>skirts</a>
-                <a href="/shop?tag=32" className='nav-tag-item'>leggins</a>
-                <a href="/shop?tag=43" className='nav-tag-item'>coats & jackets</a>
-                <a href="/shop?tag=35" className='nav-tag-item'>bags</a>
+                <Link href="/shop?tag=20" className='nav-tag-item'>women</Link>
+                <Link href="/shop?tag=25" className='nav-tag-item'>men</Link>
+                <Link href="/shop?tag=24" className='nav-tag-item'>dresses</Link>
+                <Link href="/shop?tag=22" className='nav-tag-item'>tops</Link>
+                <Link href="/shop?tag=26" className='nav-tag-item'>shirts</Link>
+                <Link href="/shop?tag=31" className='nav-tag-item'>t-shirts</Link>
+                <Link href="/shop?tag=21" className='nav-tag-item'>trousers</Link>
+                <Link href="/shop?tag=34" className='nav-tag-item'>shorts</Link>
+                <Link href="/shop?tag=29" className='nav-tag-item'>skirts</Link>
+                <Link href="/shop?tag=32" className='nav-tag-item'>leggins</Link>
+                <Link href="/shop?tag=43" className='nav-tag-item'>coats & jackets</Link>
+                <Link href="/shop?tag=35" className='nav-tag-item'>bags</Link>
             </div>
             </div>
         </div>

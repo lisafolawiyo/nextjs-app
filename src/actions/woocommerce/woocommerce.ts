@@ -1,7 +1,5 @@
 import crypto from 'crypto';
 
-const WP_USER_API_URL = `${process.env.PROJECT_URL}wp-json/wp/v2/users`;
-
 type OAuthParams = {
   oauth_consumer_key: string;
   oauth_nonce: string;

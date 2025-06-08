@@ -1,4 +1,3 @@
-import Image from "next/image";
 import Link from "next/link";
 import { Product } from "@/utils/models";
 import { getProducts } from "@/actions/woocommerce/products";

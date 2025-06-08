@@ -8,9 +8,9 @@ interface TransitionLinkProps extends LinkProps {
   href: string;
 }
 
-function sleep(ms: number): Promise<void> {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
+// function sleep(ms: number): Promise<void> {
+//   return new Promise((resolve) => setTimeout(resolve, ms));
+// }
 
 export const TransitionLink: React.FC<TransitionLinkProps> = ({
   children,

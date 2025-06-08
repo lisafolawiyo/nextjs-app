@@ -34,7 +34,7 @@ const Add = ({
     //WhatsApp
     const WhatsAppNumber = 2348033085416;
     let whatsAppMsg = "";
-    let productName =  name.replace(/ /g,"+");
+    const productName =  name.replace(/ /g,"+");
     whatsAppMsg = 'Hi%2C+I%27m+interested+in+your+' + productName;
  
   // // TEMPORARY

@@ -1,14 +1,14 @@
 "use client";
 
 import React from 'react'
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import CartModal from './CartModal';
 import useCartStore from '@/hooks/zustand/useCartStore';
 
 
 function QuickCart() {
-  const { items:  cartItems, removeFromCart, updateQty } = useCartStore((state) => state);
+  const { items:  cartItems } = useCartStore((state) => state);
   const [isCartOpen, setIsCartOpen] = useState(false);
   
   return (

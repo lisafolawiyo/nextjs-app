@@ -3,6 +3,7 @@
 import React from 'react';
 import { usePaystackPayment } from 'react-paystack';
 import toast from "react-hot-toast";
+import { PaystackError, PaystackSuccessResponse } from '@/types/checkout';
 
 type PaystackConfig = {
   reference: string;
@@ -24,7 +25,7 @@ const config: PaystackConfig = {
   publicKey,
 };
 
-const onSuccess = (reference: any) => {
+const onSuccess = (reference: PaystackSuccessResponse) => {
   console.log("Payment successful:", reference);
    toast.success('Payment successful');
 };
@@ -34,7 +35,7 @@ const onClose = () => {
   toast.error('Payment cancelled');
 };
 
-const onError = (error: any) => {
+const onError = (error: PaystackError) => {
   console.error("Payment failed to initialize:", error);
    toast.error('Payment failed');
 };
@@ -49,7 +50,7 @@ const PaystackHook: React.FC = () => {
         onClose,
       });
     } catch (error) {
-      onError(error);
+      onError(error as PaystackError);
     }
   };
 

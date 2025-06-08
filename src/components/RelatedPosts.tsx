@@ -1,8 +1,8 @@
 'use client';
 import { Post } from '@/types/post';
-import { stripOuterTags } from '@/utils/util';
+// import { stripOuterTags } from '@/utils/util';
 import React from 'react';
-import DOMPurify from "isomorphic-dompurify";
+// import DOMPurify from "isomorphic-dompurify";
 
 const RelatedPosts = ({
   relatedPosts,

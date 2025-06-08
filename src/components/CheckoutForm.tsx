@@ -9,13 +9,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm, Controller} from "react-hook-form";
 import toast from "react-hot-toast";
 import dynamic from 'next/dynamic';
-import { OrderData, ShippingRate } from '@/types/checkout';
+import { OrderData, PaystackError, PaystackSuccessResponse, ShippingRate } from '@/types/checkout';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { getShippingRates } from '@/actions/checkout';
 import { Countries } from '@/lib/country_data';
+import { AxiosError } from 'axios';
 
 
 
@@ -39,9 +40,9 @@ const checkoutSchema = z.object({
 });
 type FormFields = z.infer<typeof checkoutSchema>;
 
-let tempState: any = null; // 👈 In-memory state variable
+let tempState: OrderData; // 👈 In-memory state variable
 
-export function setTempState(data: any) {
+export function setTempState(data: OrderData) {
   tempState = data;
 }
 
@@ -87,10 +88,11 @@ export default function CheckoutForm() {
                 delivery_time: "",
                 fee: 0
             });
-            console.log("Selected country:", country);
+            // console.log("Selected country:", country);
             const rates = await getShippingRates(country);
             setShippingRates(rates); // <-- Assuming you have this state
         } catch (error) {
+            console.log("Error: ", error);
             setShippingRates([]);
         }
     };
@@ -170,7 +172,7 @@ export default function CheckoutForm() {
         setOrderData(_orderData);
 
         /// INITIATE PAYMENT
-        let reference = `ref_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
+        const reference = `ref_${Date.now()}_${Math.floor(Math.random() * 1000)}`;
 
         setPaystackConfig({
             reference,
@@ -181,7 +183,7 @@ export default function CheckoutForm() {
         });
         
     };
-    const onSuccess = (ref: any) => {
+    const onSuccess = (ref: PaystackSuccessResponse) => {
         toast.success("Payment successful");
         setPaystackConfig(null);
         // TODO: Call WooCommerce order API here
@@ -208,11 +210,14 @@ export default function CheckoutForm() {
         setPaystackConfig(null);
     };
     
-    const onError = (error: any) => {
+    const onError = (error: PaystackError) => {
+        // const err = error as AxiosError;
         console.error("Payment failed to initialize:", error);
         toast.error('Payment failed');
-        setTempState(orderData);
-        router.push('/payment_failed');
+        if (orderData !== null) {
+            setTempState(orderData);
+            router.push('/payment_failed');
+        }
 
     };
 

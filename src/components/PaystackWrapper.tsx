@@ -1,5 +1,6 @@
 "use client";
 
+import { PaystackError, PaystackSuccessResponse } from "@/types/checkout";
 import { useEffect, useRef } from "react";
 import { usePaystackPayment } from "react-paystack";
 
@@ -11,9 +12,9 @@ type PaystackProps = {
     currency: string;
     publicKey: string;
   };
-  onSuccess: (ref: any) => void;
+  onSuccess: (ref: PaystackSuccessResponse) => void;
   onClose: () => void;
-  onError: (error: any) => void
+  onError: (error: PaystackError) => void
 };
 
 export default function PaystackWrapper({
@@ -22,7 +23,7 @@ export default function PaystackWrapper({
   onClose,
   onError,
 }: PaystackProps) {
-  let initializePayment = usePaystackPayment(config);
+  const initializePayment = usePaystackPayment(config);
 
   const hasInitialized = useRef(false); // 🔒 Guard against double init
 
@@ -31,7 +32,7 @@ export default function PaystackWrapper({
       try {
         initializePayment({ onSuccess, onClose });
       } catch (error) {
-        onError(error);
+       onError(error as PaystackError);
       }
       hasInitialized.current = true;
     }

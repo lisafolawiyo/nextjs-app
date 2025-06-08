@@ -22,7 +22,7 @@ function Shipping() {
                     Some pieces are made to order and can take up to 4-6 weeks to complete, while other items are in stock and ready to ship within 48 hours.
                   </p>
                   <p>
-                    We've partnered with DHL Express to ensure seamless global delivery covering 220 countries worldwide, within 3-5 business days of ship date. 
+                    We&apos;ve partnered with DHL Express to ensure seamless global delivery covering 220 countries worldwide, within 3-5 business days of ship date. 
                     Orders are processed and fulfilled Monday to Friday between 10AM and 6PM West African Time.
                   </p>
                   <h1>Prices</h1>

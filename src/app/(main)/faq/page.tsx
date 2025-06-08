@@ -43,18 +43,21 @@ function Faq() {
                         <AccordionTrigger>WHY DO I SOMETIMES HAVE TO WAIT FOR AN EMBELLISHED ITEM?</AccordionTrigger>
                         <AccordionContent className="flex flex-col gap-4 text-balance">
                           <p>
-                            All our products are hand-made by our artisans, according to our very stringent quality criteria. We work mainly with natural materials and resources limited by very strict selection criteria. 
+                            All our products are hand-made by our artisans, according to our very stringent quality criteria. 
+                            We work mainly with natural materials and resources limited by very strict selection criteria. 
                             For all these reasons, it can take several weeks to create an item.
                           </p>
                         </AccordionContent>
                       </AccordionItem>
                       <AccordionItem value="item-3">
-                        <AccordionTrigger>I CAN’T FIND THE ITEM I AM LOOKING FOR ON YOUR WEBSITE, WHAT CAN I DO?</AccordionTrigger>
+                        <AccordionTrigger>I CAN&apos;T FIND THE ITEM I AM LOOKING FOR ON YOUR WEBSITE, WHAT CAN I DO?</AccordionTrigger>
                         <AccordionContent className="flex flex-col gap-4 text-balance">
                           <p>
-                            The website offers a selection of items which are all available for sale. As the range is constantly updated, please visit regularly. 
-                            You can conduct a search on our website, by typing your request directly into the “Search” field at the top left of your screen. 
-                            Customer Services are available to help you with your searches, via the form in our “Contact us” link.
+                            The website offers a selection of items which are all available for sale. 
+                            As the range is constantly updated, please visit regularly. 
+                            You can conduct a search on our website, by typing your request directly into the &apos;Search&apos; field 
+                            at the top left of your screen. 
+                            Customer Services are available to help you with your searches, via the form in our &apos;Contact us&apos; link.
                           </p>
                         </AccordionContent>
                       </AccordionItem>
@@ -72,15 +75,16 @@ function Faq() {
                         <AccordionTrigger>HOW CAN I GET HELP IN MAKING MY ORDER?</AccordionTrigger>
                         <AccordionContent className="flex flex-col gap-4 text-balance">
                           <p>
-                            You can contact Customer Services by telephone or by email or by filling out the form in our ‘Contact Us’ link.
+                            You can contact Customer Services by telephone or by email or by filling out the form in our &apos;Contact Us&apos; link.
                           </p>
                         </AccordionContent>
                       </AccordionItem>
                       <AccordionItem value="item-2">
-                        <AccordionTrigger>HOW CAN I AMEND THE ORDER I'VE JUST MADE?</AccordionTrigger>
+                        <AccordionTrigger>HOW CAN I AMEND THE ORDER I&apos;VE JUST MADE?</AccordionTrigger>
                         <AccordionContent className="flex flex-col gap-4 text-balance">
                           <p>
-                            To make any amendments to your order please contact Customer Services by telephone or by email or by filling out the form in our ‘Contact Us’ link as soon as possible.
+                            To make any amendments to your order please contact Customer Services by telephone or by email or 
+                            by filling out the form in our &apos;Contact Us&apos; link as soon as possible.
                           </p>
                         </AccordionContent>
                       </AccordionItem>
@@ -88,7 +92,8 @@ function Faq() {
                         <AccordionTrigger>CAN I ADD A PERSONAL MESSAGE TO MY GIFT ORDER?</AccordionTrigger>
                         <AccordionContent className="flex flex-col gap-4 text-balance">
                           <p>
-                            It is possible to include a personal message to your order by selecting the “Add message” option at the delivery stage.
+                            It is possible to include a personal message to your order by selecting the &apos;Add message&apos; 
+                            option at the delivery stage.
                           </p>
                         </AccordionContent>
                       </AccordionItem>
@@ -96,7 +101,9 @@ function Faq() {
                         <AccordionTrigger>CAN I INCLUDE A GIFT RECEIPT WITH MY ORDER?</AccordionTrigger>
                         <AccordionContent className="flex flex-col gap-4 text-balance">
                           <p>
-                            When ordering, simply tick the “Include gift receipt” box at the delivery stage. A gift receipt that does not show the price will then be automatically inserted into your parcel. A duplicate of the original invoice with price can also be downloaded directly from your customer account.
+                            When ordering, simply tick the &apos;Include gift receipt&apos; box at the delivery stage. 
+                            A gift receipt that does not show the price will then be automatically inserted into your parcel. 
+                            A duplicate of the original invoice with price can also be downloaded directly from your customer account.
                           </p>
                         </AccordionContent>
                       </AccordionItem>
@@ -104,10 +111,14 @@ function Faq() {
                         <AccordionTrigger>IS MY PAYMENT SECURE?</AccordionTrigger>
                         <AccordionContent className="flex flex-col gap-4 text-balance">
                           <p>
-                            All transactions made on the website Lisafolawiyo.com are secure. The presence of a padlock next to the page address beginning with “https” indicates to you that you are in a secure environment.
+                            All transactions made on the website Lisafolawiyo.com are secure. The presence of a padlock next 
+                            to the page address beginning with “https” indicates to you that you are in a secure environment.
                           </p>
                           <p>
-                            Furthermore, Lisa Folawiyo Studio has put security measures in place to protect the personal information you communicate against unauthorised access and use. Please however be aware that the transmission of data via the internet is never 100% safe and that any information communicated online could potentially be collected and used by people other than its intended recipients.
+                            Furthermore, Lisa Folawiyo Studio has put security measures in place to protect the personal 
+                            information you communicate against unauthorised access and use. Please however be aware that the 
+                            transmission of data via the internet is never 100% safe and that any information communicated 
+                            online could potentially be collected and used by people other than its intended recipients.
                           </p>
                         </AccordionContent>
                       </AccordionItem>
@@ -115,7 +126,8 @@ function Faq() {
                         <AccordionTrigger>DO YOU ACCEPT INTERNATIONAL PAYMENT CARDS?</AccordionTrigger>
                         <AccordionContent className="flex flex-col gap-4 text-balance">
                           <p>
-                            We accept international payment cards. However, when you submit your order, you must enter your international billing address which is linked to your credit card.
+                            We accept international payment cards. However, when you submit your order, you must 
+                            enter your international billing address which is linked to your credit card.
                           </p>
                         </AccordionContent>
                       </AccordionItem>
@@ -123,15 +135,21 @@ function Faq() {
                         <AccordionTrigger>HOW TO SEND A RETURN?</AccordionTrigger>
                         <AccordionContent className="flex flex-col gap-4 text-balance">
                           <p>
-                            We gladly accept returns that meet our policy. Please email us at info@lisafolawiyo.com with your order number in the subject line to submit your return request. You are responsible for repackaging and shipping the item on time. Lisa Folawiyo is not responsible for any packages that are lost in transit.
+                            We gladly accept returns that meet our policy. Please email us at info@lisafolawiyo.com with your 
+                            order number in the subject line to submit your return request. You are responsible for repackaging 
+                            and shipping the item on time. Lisa Folawiyo is not responsible for any packages that are lost in transit.
                           </p>
                         </AccordionContent>
                       </AccordionItem>
                       <AccordionItem value="item-8">
-                        <AccordionTrigger>CAN I RETURN OR EXCHANGE A GIFT PURCHASED ON THE WEBSITE? CAN THE PERSON RECEIVING A GIFT REQUEST AN EXCHANGE?</AccordionTrigger>
+                        <AccordionTrigger>CAN I RETURN OR EXCHANGE A GIFT PURCHASED ON THE WEBSITE? CAN THE PERSON RECEIVING A 
+                          GIFT REQUEST AN EXCHANGE?</AccordionTrigger>
                         <AccordionContent className="flex flex-col gap-4 text-balance">
                           <p>
-                            We gladly accept returns that meet our policy, including gifts. Please email us at info@lisafolawiyo.com with your order number in the subject line to submit your return request. You are responsible for repackaging and shipping the item on time. Lisa Folawiyo is not responsible for any packages that are lost in transit.
+                            We gladly accept returns that meet our policy, including gifts. Please email us at 
+                            info@lisafolawiyo.com with your order number in the subject line to submit your return request. 
+                            You are responsible for repackaging and shipping the item on time. Lisa Folawiyo is not responsible 
+                            for any packages that are lost in transit.
                           </p>
                         </AccordionContent>
                       </AccordionItem>
@@ -139,7 +157,8 @@ function Faq() {
                         <AccordionTrigger>WHAT ARE YOUR DELIVERY TIMES?</AccordionTrigger>
                         <AccordionContent className="flex flex-col gap-4 text-balance">
                           <p>
-                            Delivery is within 4-6 weeks. Please contact Customer Services by telephone or by email or by filling out the form in our ‘Contact Us’ link with any questions.
+                            Delivery is within 4-6 weeks. Please contact Customer Services by telephone or by email or by 
+                            filling out the form in our 'Contact Us' link with any questions.
                           </p>
                         </AccordionContent>
                       </AccordionItem>
@@ -147,7 +166,9 @@ function Faq() {
                         <AccordionTrigger>DO YOU SHIP WORLDWIDE?</AccordionTrigger>
                         <AccordionContent className="flex flex-col gap-4 text-balance">
                           <p>
-                            We've partnered with DHL Express to ensure seamless global delivery covering 220 countries worldwide, within 3-5 business days of ship date. Orders are processed and fulfilled Monday to Friday between 10AM and 6PM West African Time.
+                            We've partnered with DHL Express to ensure seamless global delivery covering 220 countries worldwide, 
+                            within 3-5 business days of ship date. Orders are processed and fulfilled Monday to Friday between 
+                            10AM and 6PM West African Time.
                           </p>
                         </AccordionContent>
                       </AccordionItem>
@@ -181,7 +202,8 @@ function Faq() {
                         <AccordionTrigger>HOW CAN I PLACE AN ORDER FOR A CUSTOM ITEM?</AccordionTrigger>
                         <AccordionContent className="flex flex-col gap-4 text-balance">
                           <p>
-                            If you wish to place an order for a custom item, please fill out the ‘Contact Us’ form or contact Customer Services by telephone or email and we will get back to you soon.
+                            If you wish to place an order for a custom item, please fill out the &apos;Contact Us&apos; form or contact 
+                            Customer Services by telephone or email and we will get back to you soon.
                           </p>
                         </AccordionContent>
                       </AccordionItem>

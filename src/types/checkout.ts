@@ -72,3 +72,16 @@ export type OrderData = {
   shipping_lines: ShippingLine[];
   meta_data: MetaData[];
 };
+
+export type PaystackSuccessResponse = {
+  reference: string;
+  transaction: string;
+  status: string;
+  message?: string;
+};
+
+export type PaystackError = {
+  message: string;
+  code?: string;
+  [key: string]: unknown;
+};

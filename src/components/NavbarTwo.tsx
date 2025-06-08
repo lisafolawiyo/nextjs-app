@@ -89,34 +89,34 @@ function NavbarTwo() {
 
             <div className="nav-sidebar-main-menu">
                 <ul className="nav-top-items">
-                <li className="nav-top-item"><Link href="/">home</Link></li>
-                <li className="nav-top-item"><Link href="/shop">shop</Link></li>
-                <li className="nav-top-item"><Link href="/about">about us</Link></li>
-                <li className="nav-top-item"><Link href="/archive">Inside LF</Link></li>
-                <li className="nav-top-item"><Link href="/contact">contact</Link></li>
+                <li className="nav-top-item"><Link href="/" onClick={toggleMenu}>home</Link></li>
+                <li className="nav-top-item"><Link href="/shop" onClick={toggleMenu}>shop</Link></li>
+                <li className="nav-top-item"><Link href="/about" onClick={toggleMenu}>about us</Link></li>
+                <li className="nav-top-item"><Link href="/archive" onClick={toggleMenu}>Inside LF</Link></li>
+                <li className="nav-top-item"><Link href="/contact" onClick={toggleMenu}>contact</Link></li>
                 </ul>
             </div>
 
             <div className="nav-sidebar-category-wrap">
                 <ul className="nav-sidebar-categories">
-                <li className="nav-sidebar-category-item"><Link href="/shop?category=41">COLL 1 2025</Link></li>
-                <li className="nav-sidebar-category-item"><Link href="/shop?category=16">COLL 1 2024</Link></li>
+                <li className="nav-sidebar-category-item"><Link href="/shop?category=41" onClick={toggleMenu}>COLL 1 2025</Link></li>
+                <li className="nav-sidebar-category-item"><Link href="/shop?category=16" onClick={toggleMenu}>COLL 1 2024</Link></li>
                 </ul>
             </div>
 
             <div className="nav-tags">
-                <Link href="/shop?tag=20" className='nav-tag-item'>women</Link>
-                <Link href="/shop?tag=25" className='nav-tag-item'>men</Link>
-                <Link href="/shop?tag=24" className='nav-tag-item'>dresses</Link>
-                <Link href="/shop?tag=22" className='nav-tag-item'>tops</Link>
-                <Link href="/shop?tag=26" className='nav-tag-item'>shirts</Link>
-                <Link href="/shop?tag=31" className='nav-tag-item'>t-shirts</Link>
-                <Link href="/shop?tag=21" className='nav-tag-item'>trousers</Link>
-                <Link href="/shop?tag=34" className='nav-tag-item'>shorts</Link>
-                <Link href="/shop?tag=29" className='nav-tag-item'>skirts</Link>
-                <Link href="/shop?tag=32" className='nav-tag-item'>leggins</Link>
-                <Link href="/shop?tag=43" className='nav-tag-item'>coats & jackets</Link>
-                <Link href="/shop?tag=35" className='nav-tag-item'>bags</Link>
+                <Link href="/shop?tag=20" className='nav-tag-item' onClick={toggleMenu}>women</Link>
+                <Link href="/shop?tag=25" className='nav-tag-item' onClick={toggleMenu}>men</Link>
+                <Link href="/shop?tag=24" className='nav-tag-item' onClick={toggleMenu}>dresses</Link>
+                <Link href="/shop?tag=22" className='nav-tag-item' onClick={toggleMenu}>tops</Link>
+                <Link href="/shop?tag=26" className='nav-tag-item' onClick={toggleMenu}>shirts</Link>
+                <Link href="/shop?tag=31" className='nav-tag-item' onClick={toggleMenu}>t-shirts</Link>
+                <Link href="/shop?tag=21" className='nav-tag-item' onClick={toggleMenu}>trousers</Link>
+                <Link href="/shop?tag=34" className='nav-tag-item' onClick={toggleMenu}>shorts</Link>
+                <Link href="/shop?tag=29" className='nav-tag-item' onClick={toggleMenu}>skirts</Link>
+                <Link href="/shop?tag=32" className='nav-tag-item' onClick={toggleMenu}>leggins</Link>
+                <Link href="/shop?tag=43" className='nav-tag-item' onClick={toggleMenu}>coats & jackets</Link>
+                <Link href="/shop?tag=35" className='nav-tag-item' onClick={toggleMenu}>bags</Link>
             </div>
             </div>
         </div>

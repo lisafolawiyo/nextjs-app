@@ -9,8 +9,8 @@ import {
 } from "@/components/ui/accordion"
 
 export const metadata: Metadata = {
-  title: "Lisafolawiyo",
-  description: "Refund And Exchange Policy | Lisafolawiyo",
+  title: "Lisa Folawiyo FAQs | Your Questions Answered",
+  description: "Find answers to common questions about Lisa Folawiyo’s collections, shipping, and more.",
 };
 
 function Faq() {

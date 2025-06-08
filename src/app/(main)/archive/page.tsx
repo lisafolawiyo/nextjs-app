@@ -4,9 +4,10 @@ import EditorialList from '@/components/EditorialList';
 import { getPosts } from '@/actions/wordpress/posts';
 
 export const metadata: Metadata = {
-  title: "Editorials | Lisafolawiyo",
-  description: "Editorials | Lisafolawiyo",
+  title: "Lisa Folawiyo Editorials | Fashion Stories & Inspiration",
+  description: "Explore Lisa Folawiyo’s editorial stories, showcasing craftsmanship, creativity, and the art of fashion.",
 };
+
 
 
 export default async function Archive() {

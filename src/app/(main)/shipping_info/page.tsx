@@ -3,8 +3,8 @@ import { Metadata } from 'next';
 import HereToHelp from '@/components/HereToHelp';
 
 export const metadata: Metadata = {
-  title: "Lisafolawiyo",
-  description: "Shipping Information | Lisafolawiyo",
+  title: "Lisa Folawiyo Shipping Information | Worldwide Delivery",
+  description: "Learn about Lisa Folawiyo's shipping policies, delivery times, and worldwide shipping options.",
 };
 
 

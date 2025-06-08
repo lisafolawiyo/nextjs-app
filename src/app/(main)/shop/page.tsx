@@ -1,6 +1,13 @@
 import ProductList from "@/components/ProductList";
 import Skeleton from "@/components/Skeleton";
+import { Metadata } from "next";
 import { Suspense } from "react";
+
+export const metadata: Metadata = {
+  title: "Lisa Folawiyo Online Store | Shop Luxury Fashion",
+  description: "Shop Lisa Folawiyo's online store for luxury fashion pieces, from dresses to accessories.",
+};
+
 
 export default async function ListPage({ searchParams }: {searchParams: Promise<{
   page?: string,

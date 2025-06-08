@@ -2,6 +2,12 @@ import React from "react";
 import "./styles/home.scss";
 import Image from "next/image";
 import HomeLinks from "@/components/HomeLinks";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Lisa Folawiyo | Luxury African Fashion with Hand Embellishment",
+  description: "Discover Lisa Folawiyo's luxury African fashion, where hand embellishment meets contemporary elegance. Shop our latest collections today.",
+};
 
 export default function Home() {
   return (

@@ -8,12 +8,12 @@ export default function HomeLinks() {
             <h3>Shop</h3>
             </div>
         </a>
-        <a href="/about">
+        <a href="/archive">
             <div className="list-items item2">
             <h3>Inside LF</h3>
             </div>
         </a>
-        <a href="/contact.html">
+        <a href="/contact">
             <div className="list-items item3">
             <h3>Contact</h3>
             </div>

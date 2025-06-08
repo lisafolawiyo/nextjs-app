@@ -8,8 +8,8 @@ import { notFound } from 'next/navigation';
 
 
 export const metadata: Metadata = {
-  title: "Editorial | Lisafolawiyo",
-  description: "Editorial| Lisafolawiyo",
+  title: "Lisa Folawiyo Editorials | Fashion Stories & Inspiration",
+  description: "Explore Lisa Folawiyo’s editorial stories, showcasing craftsmanship, creativity, and the art of fashion.",
 };
 
 

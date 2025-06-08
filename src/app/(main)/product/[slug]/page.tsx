@@ -9,6 +9,12 @@ import SizeGuideButton from "@/components/SizeGuideButton";
 import RelatedProducts from "@/components/RelatedProducts";
 import { stripOuterTags } from "@/utils/util";
 import Skeleton from "@/components/Skeleton";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "Lisa Folawiyo Online Store | Shop Luxury Fashion",
+  description: "Shop Lisa Folawiyo’s online store for luxury fashion pieces, from dresses to accessories.",
+};
 
 
 

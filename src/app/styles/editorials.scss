@@ -218,6 +218,7 @@
                 color: #bdbdbd;
                 margin-top: 0px;
                 margin-bottom: 10px;
+                text-align: center;
             }
             h1 {
                 font-family: 'Century Gothic';
@@ -227,12 +228,17 @@
                 color: $codgray;
                 margin-top: 0px;
                 margin-bottom: 20px;
+                text-align: center;
             }
         }
         .single-post-content {
             width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
             p, h1, h2, h3, h4, span {
                 font-family: 'Century Gothic';
+                text-align: center;
             }
             p {
                 color: $codgray;

@@ -28,8 +28,8 @@ config.autoAddCss = false;
 
 
 export const metadata: Metadata = {
-  title: "Lisafolawiyo",
-  description: " go-to online store for high-quality men’s fashion and accessories in Nigeria, offering premium products that combine style, durability, and uniqueness",
+  title: "Lisa Folawiyo | Luxury African Fashion with Hand Embellishment",
+  description: "Discover Lisa Folawiyo's luxury African fashion, where hand embellishment meets contemporary elegance. Shop our latest collections today.",
 };
 
 export default function MainLayout({

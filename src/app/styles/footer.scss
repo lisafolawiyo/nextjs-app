@@ -72,7 +72,6 @@
                 width: 100%;
                 padding-right: 0px;
                 margin-bottom: 70px;
-
                                     
                 @include u.breakpoint(lg) {
                     width: 45%;
@@ -86,7 +85,6 @@
                     line-height: 29px;
                     font-weight: 500;
                     color: $codgray;
-                    // margin-top: 20px;
                     text-align: center;
                     @include u.breakpoint(lg) {
                         text-align: left;
@@ -94,18 +92,6 @@
                 }
                 .footer-newsletter-wrap {
                     width: 100%;
-                    //border: 1px solid #000;
-                    margin-top: 30px;
-                    #mc_embed_signup {
-                        width: 100%px; /* or any desired default width */
-                        max-width: 100%; /* Makes the form responsive */
-                        // @include u.breakpoint(md) {
-                        //     width: 515px;
-                        // }
-                        background-color: transparent;
-                        padding: 0px;
-                        margin: 0px;
-                    }
                 }
             }
             .footer-top-two {
@@ -177,4 +163,48 @@
         color: $codgray;
         margin: 0px;
     }
+}
+
+/* Mailchimp Form */
+.mailchimp-form-container {
+  max-width: 300px;
+  padding-top: 10px;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        gap: 1rem;
+
+        .mailchimp-btn {
+            background-color: #1a1a1a;
+            border-radius: 5px;
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-weight: 400;
+            color: $white;
+            cursor: pointer;
+        }
+    }
+    .mailchimp-success {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: $codgray;
+        margin-top: 10px;
+    }
+    .mailchimp-error {
+        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        color: #fd7d7d;
+        margin-top: 10px;
+    }
+}
+
+
+.mailchimp-form-container input,
+.mailchimp-form-container button {
+  padding: 0.5rem;
+  font-size: 1rem;
 }

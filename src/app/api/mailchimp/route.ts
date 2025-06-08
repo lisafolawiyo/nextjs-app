@@ -25,7 +25,10 @@ export async function POST(req: Request) {
     const text = await response.text();
 
     return NextResponse.json({ message: 'Submitted', data: text });
-  } catch (error) {
-    return NextResponse.json({ error: 'Submission failed' }, { status: 500 });
+  } catch  {
+        return NextResponse.json(
+      { error: 'Submission failed' },
+      { status: 500 }
+    );
   }
 }

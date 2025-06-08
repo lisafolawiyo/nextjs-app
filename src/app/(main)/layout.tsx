@@ -7,7 +7,7 @@ import '../styles/confirmation.scss';
 import '../styles/page.scss';
 import '../styles/editorials.scss';
 import { Toaster } from "react-hot-toast";
-import { Geist, Geist_Mono } from "next/font/google";
+// import { Geist, Geist_Mono } from "next/font/google";
 import NavbarTwo from "@/components/NavbarTwo";
 // Only needed if you want to prevent auto-injecting CSS
 import { config } from '@fortawesome/fontawesome-svg-core';

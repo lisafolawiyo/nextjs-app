@@ -9,14 +9,14 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { SubmitHandler, useForm, Controller} from "react-hook-form";
 import toast from "react-hot-toast";
 import dynamic from 'next/dynamic';
-import { OrderData, PaystackError, PaystackSuccessResponse, ShippingRate } from '@/types/checkout';
+import { OrderData, PaysStackConfig, PaystackError, PaystackSuccessResponse, ShippingRate } from '@/types/checkout';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { getShippingRates } from '@/actions/checkout';
 import { Countries } from '@/lib/country_data';
-import { AxiosError } from 'axios';
+// import { AxiosError } from 'axios';
 
 
 
@@ -99,7 +99,7 @@ export default function CheckoutForm() {
 
 
     const [orderData, setOrderData] = useState<OrderData | null>(null);
-    const [paystackConfig, setPaystackConfig] = useState<any | null>(null);
+    const [paystackConfig, setPaystackConfig] = useState<PaysStackConfig | null>(null);
     const { items: cartItems, cartTotal } = useCartStore((state) => state);
     const {
         register,

@@ -158,7 +158,7 @@ function Faq() {
                         <AccordionContent className="flex flex-col gap-4 text-balance">
                           <p>
                             Delivery is within 4-6 weeks. Please contact Customer Services by telephone or by email or by 
-                            filling out the form in our 'Contact Us' link with any questions.
+                            filling out the form in our &apos;Contact Us&apos; link with any questions.
                           </p>
                         </AccordionContent>
                       </AccordionItem>
@@ -166,7 +166,7 @@ function Faq() {
                         <AccordionTrigger>DO YOU SHIP WORLDWIDE?</AccordionTrigger>
                         <AccordionContent className="flex flex-col gap-4 text-balance">
                           <p>
-                            We've partnered with DHL Express to ensure seamless global delivery covering 220 countries worldwide, 
+                            We&apos;ve partnered with DHL Express to ensure seamless global delivery covering 220 countries worldwide, 
                             within 3-5 business days of ship date. Orders are processed and fulfilled Monday to Friday between 
                             10AM and 6PM West African Time.
                           </p>

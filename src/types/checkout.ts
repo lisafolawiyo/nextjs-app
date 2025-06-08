@@ -85,3 +85,11 @@ export type PaystackError = {
   code?: string;
   [key: string]: unknown;
 };
+
+export type PaysStackConfig = {
+  reference: string;
+  email: string;
+  amount: number;
+  currency: string;
+  publicKey: string;
+}

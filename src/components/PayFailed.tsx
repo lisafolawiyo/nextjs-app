@@ -44,7 +44,7 @@ function PayFailed() {
         <div className='left'>
           <p className='fullname capitalize'>{order.billing.first_name} {order.billing.last_name}</p>
           <p className='email bill_p'>{order.billing.email}</p>
-          <p className='address bill_p capitalize'>{order.billing.address}</p>
+          <p className='address bill_p capitalize'>{order.billing.address_1}</p>
           <p className='state bill_p capitalize'>{order.billing.city}, {order.billing.state} {order.billing.postcode}</p>
           <p className='country bill_p capitalize'>{order.billing.country}</p>
         </div>

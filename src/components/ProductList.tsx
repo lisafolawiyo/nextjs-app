@@ -3,6 +3,7 @@ import Link from "next/link";
 import { Product } from "@/utils/models";
 import Pagination from "./Pagination";
 import { stripOuterTags } from "@/utils/util";
+import { usePathname, useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 
 const ProductList = ({
@@ -15,9 +16,12 @@ const ProductList = ({
   totalPages: number;
 }) => {
 
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+
   useEffect(() => {
     window.scrollTo(0, 0);
-  }, []);
+  }, [pathname, searchParams]);
 
   return (
     <div className="product-list">

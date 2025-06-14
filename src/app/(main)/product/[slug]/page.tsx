@@ -10,13 +10,12 @@ import RelatedProducts from "@/components/RelatedProducts";
 import { stripOuterTags } from "@/utils/util";
 import Skeleton from "@/components/Skeleton";
 import { Metadata } from "next";
+import Product from "@/components/Product";
 
 export const metadata: Metadata = {
   title: "Lisa Folawiyo Online Store | Shop Luxury Fashion",
   description: "Shop Lisa Folawiyo’s online store for luxury fashion pieces, from dresses to accessories.",
 };
-
-
 
 
 const SinglePage = async ({ params, }: {params: Promise<{slug: string}>;}) => {
@@ -30,6 +29,7 @@ const SinglePage = async ({ params, }: {params: Promise<{slug: string}>;}) => {
 
   return (
     <div className="master-single-product">
+      <Product />
       <section className="single-product-section">
         <div className="section-wrapper single-product-wrapper">
           <Suspense fallback={"...Loading"}>

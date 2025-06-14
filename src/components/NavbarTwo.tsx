@@ -19,6 +19,11 @@ function NavbarTwo() {
         setIsOpen(prev => !prev);
     };
 
+    const closeModals = () => {
+        setIsOpen(false);
+        setIsCartOpen(false);
+    };
+
   return (
     <nav>
         <section className="nav" id="nav-id">
@@ -48,7 +53,8 @@ function NavbarTwo() {
         <div 
             ref={overlayRef}
             id="nav-gray-overlay-id"
-            className={`nav-gray-overlay ${isOpen ? 'block' : 'hidden'}`}
+            onClick={closeModals}
+            className={`nav-gray-overlay ${isOpen || isCartOpen ? 'block' : 'hidden'}`}
         >
         </div>
 
@@ -69,7 +75,7 @@ function NavbarTwo() {
             </div>
             {/* <QuickCart /> */}
         </div>
-        {isCartOpen && <CartModal />}
+        {isCartOpen && <CartModal setIsCartOpen={setIsCartOpen} />}
 
         <div 
             ref={sidebarRef} 

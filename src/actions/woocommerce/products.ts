@@ -23,7 +23,8 @@ export const getProducts = async (
         category: category,
         tag: tag,
         page: page,
-        per_page: per_page
+        per_page: per_page,
+        status: "publish",
       })
   
       const response = await api.get('/products', {
@@ -33,7 +34,8 @@ export const getProducts = async (
           category: category,
           tag: tag,
           page: page,
-          per_page: per_page
+          per_page: per_page,
+          status: "publish",
         }
       });
       return {
@@ -81,7 +83,8 @@ export const getRelatedProducts = async (
       const oauthParams = generateOAuthSignature(url, "GET", {
         include: includeParam,
         page: page,
-        per_page: per_page
+        per_page: per_page,
+        status: "publish"
       })
   
       const response = await api.get('/products', {
@@ -89,7 +92,8 @@ export const getRelatedProducts = async (
           ...oauthParams,
           include: includeParam,
           page: page,
-          per_page: per_page
+          per_page: per_page,
+          status: "publish"
         }
       });
       console.log("Returned Related Products: ", response.data);

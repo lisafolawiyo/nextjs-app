@@ -116,7 +116,7 @@
             }
             .home-text-one {
                 text-transform: capitalize;
-                font-family: "Plus Jakarta Sans", sans-serif;
+                font-family: var(--font-century-gothic), sans-serif;
                 font-size: 27px;
                 font-weight: 600;
                 color: $white;
@@ -132,9 +132,9 @@
                 }
             }
             .home-text-two  {
-                font-family: "Plus Jakarta Sans", sans-serif;
+                font-family: var(--font-century-gothic), sans-serif;
                 font-size: 21px;
-                font-weight: 300;
+                font-weight: 400;
                 color: $white;
                 text-align: center;
                 margin-bottom: 20px;
@@ -184,9 +184,9 @@
                             padding: 0px;
                             width: 100%;
                             text-transform: uppercase;
-                            font-family: "Plus Jakarta Sans", sans-serif;
+                            font-family: var(--font-century-gothic), sans-serif;
                             font-size: 15px;
-                            font-weight: 500;
+                            font-weight: 400;
                             color: $white;
                             letter-spacing: 2px;
                             text-align: center;

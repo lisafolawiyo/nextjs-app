@@ -1,16 +1,28 @@
 "use client";
-
+import React from 'react';
 import useCartStore from "@/hooks/zustand/useCartStore";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faXmark } from '@fortawesome/free-solid-svg-icons';
 
-const CartModal = () => {
+interface CartModalProps {
+  setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const CartModal: React.FC<CartModalProps> = ({ setIsCartOpen }) => {
   const {
     items: cartItems,
     removeFromCart: removeFromCart,
     cartTotal,
   } = useCartStore((state) => state);
 
+  console.log("setIsCartOpen type:", typeof setIsCartOpen);
+
   return (
     <div className="cart-modal">
+      <div className="size-guide-close-btn-wrap"
+      onClick={() => setIsCartOpen(false)}>
+          <FontAwesomeIcon icon={faXmark} className="size-guide-close-icon" />
+      </div>
       {cartItems.length === 0 ? (
           <p className="text-gray-500 text-sm text-center mt-2 mb-4">Cart is Empty</p>
         ) : (
@@ -60,7 +72,6 @@ const CartModal = () => {
                       </div>
                   </div>
               ))}
-          </div>
             <div className='total-wrap'>
               <div className='total-item'>
                   <h3>Subtotal</h3>
@@ -74,13 +85,28 @@ const CartModal = () => {
                   <h3>Total</h3>
                   <h3>${cartTotal()}</h3>
               </div>
+            </div>
           </div>
+          {/* <div className='total-wrap'>
+            <div className='total-item'>
+                <h3>Subtotal</h3>
+                <h3>${cartTotal()}</h3>
+            </div>
+            <div className='total-item'>
+                <h3>Shipping</h3>
+                <h3>${0}</h3>
+            </div>
+            <div className='total-item total'>
+                <h3>Total</h3>
+                <h3>${cartTotal()}</h3>
+            </div>
+          </div> */}
           <div className='action-btn-wrap'>
             <a href='/checkout' className='btn-link'>
               <div className='btn'><span>Checkout</span></div>
             </a>
           </div>
-          <p className="text-gray-500 text-sm text-center mt-2 mb-4">
+          <p className="text-gray-500 text-sm text-center mt-1 mb-1">
             Shipping is calculated at checkout.
           </p>
 

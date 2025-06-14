@@ -22,6 +22,12 @@ const ProductList = async ({
   const products = product_data.products;
   const total_pages = product_data.total_pages;
 
+  // useEffect(() => {
+  //   window.scrollTo(0, 0);
+  // }, []);
+
+  // console.log("Page: " +  page + JSON.stringify(products));
+
 
   return (
     <div className="product-list">
@@ -32,18 +38,20 @@ const ProductList = async ({
           className="product-item"
         >
           <div className="item-images">
-            <div
+            {product.images && (
+              <div
               className="item-image-top"
               style={{
-                backgroundImage: `url('${product.images[0].src || "/product.png"}')`
+                backgroundImage: `url('${product.images[0]?.src || '/media/images/placeholder.png'}')`
               }}
-            />
+              />
+             )}
             {product.images[1] && (
               <div
                 // src={product.images[1].src || "/product.png"}
                 className="item-image-bottom"
                 style={{
-                    backgroundImage: `url('${product.images[1].src || "/product.png"}')`
+                    backgroundImage: `url('${product.images[1]?.src || product.images[0]?.src}')`
                   }}
               />
             )}
@@ -55,7 +63,7 @@ const ProductList = async ({
           <div className="shop-product-detail-wrap">
               <h3 className="look">{product.name}</h3>
               <p className="shop-product-name">{stripOuterTags(product.short_description)}</p>
-              <h3 className="collection-name">{product.categories[0].name}</h3>
+              <h3 className="collection-name">{product.categories[0]?.name}</h3>
               <p className="shop-product-price">${product.price}</p>
           </div>
         </Link>

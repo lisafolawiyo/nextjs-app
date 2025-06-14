@@ -22,7 +22,7 @@ function QuickCart() {
           {cartItems.length}
         </div>
       </div>
-        {isCartOpen && <CartModal />}
+        {isCartOpen && <CartModal setIsCartOpen={setIsCartOpen} />}
     </div>
   )
 }

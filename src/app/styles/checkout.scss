@@ -12,7 +12,7 @@
         // border-bottom: 1px solid $codgray;
         h1 {
             text-transform: capitalize;
-            font-family: "Plus Jakarta Sans", sans-serif;
+            font-family: var(--font-century-gothic), sans-serif;
             font-size: 27px;
             font-weight: 600;
             color: $codgray;
@@ -41,7 +41,7 @@
                 margin-bottom: 30px;
                 h2 {
                     text-transform: capitalize;
-                    font-family: "Plus Jakarta Sans", sans-serif;
+                    font-family: var(--font-century-gothic), sans-serif;
                     font-size: 18px;
                     font-weight: 600;
                     color: $codgray;
@@ -70,21 +70,21 @@
                     }
                 }
                 .form-label {
-                    font-family: "Plus Jakarta Sans", sans-serif;
+                    font-family: var(--font-century-gothic), sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     color: $codgray;
                     margin-bottom: 7px;
                 }
                 .error-msg {
-                    font-family: "Plus Jakarta Sans", sans-serif;
+                    font-family: var(--font-century-gothic), sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     color: red;
                     margin-top: 7px;
                 }
                 .form-subtitle-text {
-                    font-family: "Plus Jakarta Sans", sans-serif;
+                    font-family: var(--font-century-gothic), sans-serif;
                     font-size: 18px;
                     font-weight: 600;
                     color: $codgray;
@@ -109,7 +109,7 @@
                                 align-items: center;
                             }
                             p {
-                                font-family: "Plus Jakarta Sans", sans-serif;
+                                font-family: var(--font-century-gothic), sans-serif;
                                 font-size: 14px;
                                 font-weight: 400;
                                 color: $codgray;
@@ -118,7 +118,7 @@
                         .right {
                             width: max-content;
                             h3 {
-                                font-family: "Plus Jakarta Sans", sans-serif;
+                                font-family: var(--font-century-gothic), sans-serif;
                                 font-size: 16px;
                                 font-weight: 600;
                                 color: $codgray;
@@ -166,14 +166,14 @@
                         .left {
                             width: max-content;
                         .name {
-                            font-family: "Plus Jakarta Sans", sans-serif;
+                            font-family: var(--font-century-gothic), sans-serif;
                             text-transform: uppercase;
                             font-size: 12px;
                             font-weight: 400;
                             color: $codgray;
                         }
                         .desc {
-                            font-family: "Plus Jakarta Sans", sans-serif;
+                            font-family: var(--font-century-gothic), sans-serif;
                             text-transform: capitalize;
                             font-size: 15px;
                             font-weight: 600;
@@ -195,7 +195,7 @@
                                     margin-right: 5px;
                                     margin-bottom: 5px;
                                     span {
-                                        font-family: "Plus Jakarta Sans", sans-serif;
+                                        font-family: var(--font-century-gothic), sans-serif;
                                         text-transform: capitalize;
                                         font-size: 12px;
                                         font-weight: 400;
@@ -208,7 +208,7 @@
                             width: max-content;
                             margin-left: 10px;
                             .price {
-                                font-family: "Plus Jakarta Sans", sans-serif;
+                                font-family: var(--font-century-gothic), sans-serif;
                                 text-transform: capitalize;
                                 font-size: 14px;
                                 font-weight: 600;
@@ -225,7 +225,7 @@
                     justify-content: space-between;
                     margin-bottom: 10px;
                     h3 {
-                        font-family: "Plus Jakarta Sans", sans-serif;
+                        font-family: var(--font-century-gothic), sans-serif;
                         text-transform: capitalize;
                         font-size: 14px;
                         font-weight: 400;
@@ -248,15 +248,15 @@
                     height: 40px;
                     background-color: #1a1a1a;
                     color: $white;
-                    font-family: "Plus Jakarta Sans", sans-serif;
+                    font-family: var(--font-century-gothic), sans-serif;
                     font-size: 14px;
-                    font-weight: 500;
+                    font-weight: 400;
                     border-radius: 5px;
                     cursor: pointer;
                 }
             }
             .pay-btn-text {
-                font-family: "Plus Jakarta Sans", sans-serif;
+                font-family: var(--font-century-gothic), sans-serif;
                 font-size: 14px;
                 font-weight: 400;
                 color: $codgray; 
@@ -268,4 +268,8 @@
             }
         }
     }
+}
+.payment-overlay {
+    background-color: #1a1a1a;
+    opacity: 0.5;
 }

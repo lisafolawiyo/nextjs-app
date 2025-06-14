@@ -26,7 +26,7 @@ const RelatedProducts = ({related_products}: {related_products: Product[]}) => {
             <div
               className="item-image-top"
               style={{
-                backgroundImage: `url('${product.images[0].src || "/product.png"}')`
+                backgroundImage: `url('${product.images[0]?.src || "/media/images/placeholder.png"}')`
               }}
             />
             {product.images[1] && (

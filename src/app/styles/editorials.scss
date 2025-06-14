@@ -60,8 +60,8 @@
             }
 
             .editorial-date {
-                font-family: 'Century Gothic';
-                font-weight: bold;
+                font-family: var(--font-century-gothic), sans-serif;
+                font-weight: 600;
                 text-transform: capitalize;
                 font-size: 14px;
                 color: #bdbdbd;
@@ -70,8 +70,8 @@
             }
             
             h1 {
-                font-family: 'Century Gothic';
-                font-weight: bold;
+                font-family: var(--font-century-gothic), sans-serif;
+                font-weight: 600;
                 text-transform: capitalize;
                 font-size: 28px;
                 color: $codgray;
@@ -79,8 +79,8 @@
                 margin-bottom: 20px;
             }
             .editorial-desc {
-                font-family: 'Century Gothic';
-                font-weight: normal;
+                font-family: var(--font-century-gothic), sans-serif;
+                font-weight: 400;
                 font-size: 16px;
                 line-height: 1.5;
                 color: #686868;
@@ -139,8 +139,8 @@
                     background-color: #f1f1f150;
 
                     p {
-                        font-family: 'Century Gothic';
-                        font-weight: normal;
+                        font-family: var(--font-century-gothic), sans-serif;
+                        font-weight: 400;
                         text-transform: capitalize;
                         font-size: 14px;
                         color: #999999;
@@ -149,8 +149,8 @@
                         transition: all 0.3s ease;
                     }
                     h3 {
-                        font-family: 'Century Gothic';
-                        font-weight: normal;
+                        font-family: var(--font-century-gothic), sans-serif;
+                        font-weight: 400;
                         text-transform: capitalize;
                         font-size: 16px;
                         line-height: 1.4;
@@ -211,8 +211,8 @@
             //max-width: 800px;
 
             p {
-                font-family: 'Century Gothic';
-                font-weight: normal;
+                font-family: var(--font-century-gothic), sans-serif;
+                font-weight: 400;
                 text-transform: capitalize;
                 font-size: 16px;
                 color: #bdbdbd;
@@ -221,8 +221,8 @@
                 text-align: center;
             }
             h1 {
-                font-family: 'Century Gothic';
-                font-weight: bold;
+                font-family: var(--font-century-gothic), sans-serif;
+                font-weight: 600;
                 text-transform: capitalize;
                 font-size: 28px;
                 color: $codgray;
@@ -237,7 +237,7 @@
             flex-direction: column;
             align-items: center;
             p, h1, h2, h3, h4, span {
-                font-family: 'Century Gothic';
+                font-family: var(--font-century-gothic), sans-serif;
                 text-align: center;
             }
             p {

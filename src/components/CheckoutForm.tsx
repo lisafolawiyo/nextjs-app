@@ -16,6 +16,7 @@ import { Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrig
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { getShippingRates } from '@/actions/checkout';
 import { Countries } from '@/lib/country_data';
+import PaymentProcessingOverlay from './PaymentProcessingOverlay';
 // import { AxiosError } from 'axios';
 
 
@@ -54,6 +55,7 @@ export function getTempState() {
 
 export default function CheckoutForm() {
     const router = useRouter();
+    const [isOverlayOpen, setIsOverlayOpen] = useState(false);
     const [totalCart, setTotalCart] = useState<number | null>(null);
     useEffect(() => {
         const value = cartTotal(); // safe to call on client
@@ -203,11 +205,13 @@ export default function CheckoutForm() {
             setTempState(updatedOrderData); // Save in memory
             router.push('/payment_successful');
         }
+        setIsOverlayOpen(false);
     };
 
     const onClose = () => {
         toast.error("Payment cancelled");
         setPaystackConfig(null);
+        setIsOverlayOpen(false);
     };
     
     const onError = (error: PaystackError) => {
@@ -218,17 +222,25 @@ export default function CheckoutForm() {
             setTempState(orderData);
             router.push('/payment_failed');
         }
+        setIsOverlayOpen(false);
 
     };
 
     return (
         <div className='checkout-page'>
+            <PaymentProcessingOverlay isOverlayOpen={isOverlayOpen}/>
             <div className='header'>
                 <h1>Checkout</h1>
             </div>
             <form 
             className='body-section'
-            onSubmit={handleSubmit(onSubmit)}>
+            // onSubmit={handleSubmit(onSubmit)}
+            onSubmit={(e) => {
+                setIsOverlayOpen(true);
+                handleSubmit(onSubmit)(e);
+            }}
+        
+            >
                 <div className='form-card'>
                     <div className='card-header'>
                         <h2>Shipping</h2>

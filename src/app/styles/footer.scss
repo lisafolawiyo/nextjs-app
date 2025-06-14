@@ -30,10 +30,10 @@
             }
 
             h3 {
-                font-family: 'Plus Jakarta Sans', sans-serif;
+                font-family: var(--font-century-gothic), sans-serif;
+                font-weight: 600;
                 font-size: 14px;
                 text-transform: capitalize;
-                font-weight: 600;
                 letter-spacing: 2px;
                 color: $codgray;
                 text-align: center;
@@ -57,10 +57,10 @@
                   }
       
                   a {
-                    font-family: 'Plus Jakarta Sans', sans-serif;
+                    font-family: var(--font-century-gothic), sans-serif;
+                    font-weight: 400;
                     text-transform: capitalize;
-                    font-size: 14px;
-                    font-weight: 300;
+                    font-size: 16px;
                     cursor: pointer;
                     color: $codgray;
                     transition: all 0.3s ease-in-out;
@@ -80,10 +80,10 @@
                 }
 
                 p {
-                    font-family: 'Plus Jakarta Sans', sans-serif;
+                    font-family: var(--font-century-gothic), sans-serif;
+                    font-weight: 400;
                     font-size: 21px;
                     line-height: 29px;
-                    font-weight: 500;
                     color: $codgray;
                     text-align: center;
                     @include u.breakpoint(lg) {
@@ -155,10 +155,10 @@
     padding: 20px 0px;
 
     p {
-        font-family: 'Plus Jakarta Sans', sans-serif;
+        font-family: var(--font-century-gothic), sans-serif;
+        font-weight: 400;
         text-transform: uppercase;
         font-size: 14px;
-        font-weight: 300;
         letter-spacing: 2px;
         color: $codgray;
         margin: 0px;
@@ -178,25 +178,25 @@
         .mailchimp-btn {
             background-color: #1a1a1a;
             border-radius: 5px;
-            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-family: var(--font-century-gothic), sans-serif;
+            font-weight: 400;
             text-transform: uppercase;
             font-size: 14px;
-            font-weight: 400;
             color: $white;
             cursor: pointer;
         }
     }
     .mailchimp-success {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 14px;
+        font-family: var(--font-century-gothic), sans-serif;
         font-weight: 400;
+        font-size: 14px;
         color: $codgray;
         margin-top: 10px;
     }
     .mailchimp-error {
-        font-family: 'Plus Jakarta Sans', sans-serif;
-        font-size: 14px;
+        font-family: var(--font-century-gothic), sans-serif;
         font-weight: 400;
+        font-size: 14px;
         color: #fd7d7d;
         margin-top: 10px;
     }

@@ -1,3 +1,4 @@
+import { getProducts } from "@/actions/woocommerce/products";
 import ProductList from "@/components/ProductList";
 import Skeleton from "@/components/Skeleton";
 import { Metadata } from "next";
@@ -22,15 +23,17 @@ export default async function ListPage({ searchParams }: {searchParams: Promise<
   const { category = ""} = await searchParams;
   const { tag = "" } = await searchParams;
 
+  const product_data = await getProducts(search, category, tag, parseInt(page,10), per_page,);
+  const products = product_data.products;
+  const totalPages = product_data.total_pages;
+
   return (
     <div className="relative list-page">
       <Suspense fallback={<Skeleton/>}>
         <ProductList 
+          products = {products}
+          totalPages = {totalPages}
           page = {page}
-          per_page = {per_page}
-          search = {search}
-          category = {category}
-          tag = {tag}
         />
       </Suspense>
     </div>

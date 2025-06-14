@@ -1,33 +1,23 @@
+'use client';
 import Link from "next/link";
 import { Product } from "@/utils/models";
-import { getProducts } from "@/actions/woocommerce/products";
 import Pagination from "./Pagination";
 import { stripOuterTags } from "@/utils/util";
+import { useEffect } from "react";
 
-const ProductList = async ({
+const ProductList = ({
+  products,
   page,
-  per_page,
-  search,
-  category,
-  tag
+  totalPages
 }: {
+  products: Product[];
   page: string;
-  per_page: number;
-  search: string;
-  category: string;
-  tag: string
+  totalPages: number;
 }) => {
 
-  const product_data = await getProducts(search, category, tag, parseInt(page,10), per_page,);
-  const products = product_data.products;
-  const total_pages = product_data.total_pages;
-
-  // useEffect(() => {
-  //   window.scrollTo(0, 0);
-  // }, []);
-
-  // console.log("Page: " +  page + JSON.stringify(products));
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className="product-list">
@@ -48,7 +38,6 @@ const ProductList = async ({
              )}
             {product.images[1] && (
               <div
-                // src={product.images[1].src || "/product.png"}
                 className="item-image-bottom"
                 style={{
                     backgroundImage: `url('${product.images[1]?.src || product.images[0]?.src}')`
@@ -69,7 +58,7 @@ const ProductList = async ({
         </Link>
       ))}
 
-      <Pagination currentPage={parseInt(page,10)} totalPages={total_pages} />
+      <Pagination currentPage={parseInt(page,10)} totalPages={totalPages} />
     </div>
   );
 };

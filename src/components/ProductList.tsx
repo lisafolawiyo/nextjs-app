@@ -1,4 +1,5 @@
 'use client';
+
 import Link from "next/link";
 import { Product } from "@/utils/models";
 import Pagination from "./Pagination";

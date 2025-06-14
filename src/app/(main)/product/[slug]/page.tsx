@@ -17,7 +17,6 @@ export const metadata: Metadata = {
   description: "Shop Lisa Folawiyo’s online store for luxury fashion pieces, from dresses to accessories.",
 };
 
-
 const SinglePage = async ({ params, }: {params: Promise<{slug: string}>;}) => {
   const slug = (await params).slug;
   const product = await getSingleProductData(slug)
@@ -25,7 +24,6 @@ const SinglePage = async ({ params, }: {params: Promise<{slug: string}>;}) => {
   if (!product) {
     return notFound();
   }
-
 
   return (
     <div className="master-single-product">

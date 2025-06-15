@@ -26,84 +26,86 @@ const SinglePage = async ({ params, }: {params: Promise<{slug: string}>;}) => {
   }
 
   return (
-    <div className="master-single-product">
-      <Product />
-      <section className="single-product-section">
-        <div className="section-wrapper single-product-wrapper">
-          <Suspense fallback={"...Loading"}>
-            <ProductImagesTwo items={product.images} />
-          </Suspense>
-          <div className="single-product-right">
-            <div className="w-full flex flex-col gap-6">
+    <div className="page-container product-container">
+      <div className="product-inner-div">
+          <Product />
+          <section className="single-product-section">
+            <div className="single-product-wrapper">
               <Suspense fallback={"...Loading"}>
-                <h1 className="text-4xl font-medium uppercase">{product.name}</h1>
-                <div
-                  className="text-base text-gray-500"
-                  dangerouslySetInnerHTML={{
-                    __html: DOMPurify.sanitize(
-                      product.description
-                    ),
-                  }}
-                ></div>
-                <SizeGuideButton />
-                <div className="h-[2px] bg-gray-100" />
-                {product.on_sale === false ? (
-                  <h2 className="font-medium text-2xl">${product.price}</h2>
-                ) : (
-                  <div className="flex items-center gap-4">
-                    <h3 className="text-xl text-gray-500 line-through">
-                      ${product.regular_price}
-                    </h3>
-                    <h2 className="font-medium text-2xl">
-                      ${product.price}
-                    </h2>
-                  </div>
-                )}
-                {/* <div className="h-[2px] bg-gray-100" />
-                <SizeGuideButton /> */}
-                <div className="h-[2px] bg-gray-100" />
-                {product.attributes.length > 0 ? (
-                  <CustomizeProducts
-                    product_id = {product.id}
-                    name = {product.name}
-                    desc = {stripOuterTags(product.short_description)}
-                    price = {product.price}
-                    stock_status = {product.stock_status}
-                    image_src = {product.images[0].src}
-                    attributes={product.attributes}
-                  />
-                ) : (
-                  <Add
-                    product_id = {product.id}
-                    name = {product.name}
-                    desc = {stripOuterTags(product.short_description)}
-                    price = {product.price}
-                    stock_status = {product.stock_status}
-                    image_src = {product.images[0].src}
-                    product_options = {[]}
-                  />
-                )}
+                <ProductImagesTwo items={product.images} />
               </Suspense>
+              <div className="single-product-right">
+                <div className="w-full flex flex-col gap-6">
+                  <Suspense fallback={"...Loading"}>
+                    <h1 className="text-4xl font-medium uppercase">{product.name}</h1>
+                    <div
+                      className="text-base text-gray-500"
+                      dangerouslySetInnerHTML={{
+                        __html: DOMPurify.sanitize(
+                          product.description
+                        ),
+                      }}
+                    ></div>
+                    <SizeGuideButton />
+                    <div className="h-[2px] bg-gray-100" />
+                    {product.on_sale === false ? (
+                      <h2 className="font-medium text-2xl">${product.price}</h2>
+                    ) : (
+                      <div className="flex items-center gap-4">
+                        <h3 className="text-xl text-gray-500 line-through">
+                          ${product.regular_price}
+                        </h3>
+                        <h2 className="font-medium text-2xl">
+                          ${product.price}
+                        </h2>
+                      </div>
+                    )}
+                    {/* <div className="h-[2px] bg-gray-100" />
+                    <SizeGuideButton /> */}
+                    <div className="h-[2px] bg-gray-100" />
+                    {product.attributes.length > 0 ? (
+                      <CustomizeProducts
+                        product_id = {product.id}
+                        name = {product.name}
+                        desc = {stripOuterTags(product.short_description)}
+                        price = {product.price}
+                        stock_status = {product.stock_status}
+                        image_src = {product.images[0].src}
+                        attributes={product.attributes}
+                      />
+                    ) : (
+                      <Add
+                        product_id = {product.id}
+                        name = {product.name}
+                        desc = {stripOuterTags(product.short_description)}
+                        price = {product.price}
+                        stock_status = {product.stock_status}
+                        image_src = {product.images[0].src}
+                        product_options = {[]}
+                      />
+                    )}
+                  </Suspense>
+                </div>
+
+              </div>
             </div>
+          </section>
 
-          </div>
-        </div>
-      </section>
-
-      <section className="more-options-section">
-        <div className="section-wrapper more-options-wrapper">
-              <div className="more-options-title-wrap">
-                  <h3>You may also like</h3>
+          <section className="more-options-section">
+            <div className="section-wrapper more-options-wrapper">
+                  <div className="more-options-title-wrap">
+                      <h3>You may also like</h3>
+                  </div>
+                  <div className="shop-products-inner-wrap">
+                    <Suspense fallback={<Skeleton/>}>
+                      <RelatedProducts 
+                        related_products={relatedProduct.products}
+                      />
+                    </Suspense>    
+                  </div>
               </div>
-              <div className="shop-products-inner-wrap">
-                <Suspense fallback={<Skeleton/>}>
-                  <RelatedProducts 
-                    related_products={relatedProduct.products}
-                  />
-                </Suspense>    
-              </div>
-          </div>
-      </section>
+          </section>
+      </div>
     </div>
   );
 };

@@ -14,8 +14,13 @@ export default async function Archive() {
   const post_data = await getPosts("", "", parseInt("1",10), 10,);
   const posts = post_data.posts;
   return (
-    <div className='archive-container'>
-      {posts.length > 0 && <EditorialList posts={posts}/>}
+    <div className='page-container'>
+      <div className='page-inner-div '>
+        <div className='archive-container'>
+          {posts.length > 0 && <EditorialList posts={posts}/>}
+        </div>
+      </div>
     </div>
+
   )
 }

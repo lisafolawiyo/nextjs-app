@@ -13,9 +13,11 @@ export const metadata: Metadata = {
 function Successful() {
   
   return (
-    <>
-      <PaySuccess />
-    </>
+    <div className="page-container confirmation-container">
+      <div className="page-inner-div confirmation-inner-div">
+        <PaySuccess />
+      </div>
+    </div>
   )
 }
 

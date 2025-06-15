@@ -41,7 +41,7 @@ export default function MainLayout({
       <>
         <Toaster position="top-right" reverseOrder={false} /> 
           <NavbarTwo />
-            <div className="w-full bg-white px-4 md:px-8 lg:px-16 xl:px-32 2xl:px-64">
+            <div className="w-full bg-white">
               {children}
             </div>
           <FooterTwo />

@@ -11,6 +11,7 @@ export const metadata: Metadata = {
 function Refund () {
   return (
     <div className='shipping-info page-container'>
+      <div className="page-inner-div">
         <section className="page-section">
             <div className="page-section-inner">
                 <div className="page-title-wrap">
@@ -67,6 +68,7 @@ function Refund () {
             </div>
         </section>
         <HereToHelp />
+        </div>
     </div>
   )
 }

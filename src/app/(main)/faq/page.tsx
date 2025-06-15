@@ -16,6 +16,7 @@ export const metadata: Metadata = {
 function Faq() {
   return (
     <div className='shipping-info page-container'>
+      <div className="page-inner-div">
         <section className="page-section">
             <div className="page-section-inner">
                 <div className="page-title-wrap">
@@ -213,6 +214,7 @@ function Faq() {
             </div>
         </section>
         <HereToHelp />
+        </div>
     </div>
   )
 }

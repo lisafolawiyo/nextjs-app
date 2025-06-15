@@ -3,14 +3,25 @@
 
 .page-container {
     width: 100%;
-    padding-top: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    .page-inner-div {
+        max-width: 1600px;
+        @include u.breakpoint(md) {
+            width: 90%;
+        }
+        @include u.breakpoint(lg) {
+            width: 80%;
+        }
+    }
 }
 
 .page-section {
     width: 100%;
     display: flex;
     justify-content: center;
-    padding-bottom: 50px;
+    padding: 80px 15px 50px 15px;
     
     .page-section-inner {
         width: 100%;

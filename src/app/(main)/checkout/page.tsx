@@ -11,8 +11,10 @@ export const metadata: Metadata = {
 export default function Checkout() {
 
     return (
-        <>
+      <div className="page-container checkout-container">
+        <div className="page-inner-div checkout-inner-div">
             <CheckoutForm />
-        </>
+        </div>
+      </div>
     )
 }

@@ -28,14 +28,16 @@ export default async function ListPage({ searchParams }: {searchParams: Promise<
   const totalPages = product_data.total_pages;
 
   return (
-    <div className="relative list-page">
-      <Suspense fallback={<Skeleton/>}>
-        <ProductList 
-          products = {products}
-          totalPages = {totalPages}
-          page = {page}
-        />
-      </Suspense>
+    <div className="page-container shop-container">
+      <div className="page-inner-div shop-inner-div">
+        <Suspense fallback={<Skeleton/>}>
+          <ProductList 
+            products = {products}
+            totalPages = {totalPages}
+            page = {page}
+          />
+        </Suspense>
+      </div>
     </div>
   );
 };

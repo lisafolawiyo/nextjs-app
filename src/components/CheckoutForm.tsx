@@ -28,10 +28,10 @@ const publicKey = process.env.NEXT_PUBLIC_PAYSTACK_PUBLIC_KEY || "";
 
 
 const checkoutSchema = z.object({
-  firstname: z.string().min(3, 'First name is required'),
-  lastname: z.string().min(3, 'Last name is required'),
+  firstname: z.string().min(1, 'First name is required'),
+  lastname: z.string().min(1, 'Last name is required'),
   email: z.string().email('Invalid email'),
-  phone: z.string().min(10, 'Phone number is required'),
+  phone: z.string().min(10, 'Phone number is required and should be 10 digits'),
   address: z.string().min(3, 'Address is required'),
   city: z.string().min(3, 'City is required'),
   state: z.string().min(3, 'State is required'),

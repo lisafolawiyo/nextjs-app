@@ -11,9 +11,11 @@ export const metadata: Metadata = {
 function PaymentFailed() {
 
   return (
-    <>
-    <PayFailed />
-    </>
+    <div className="page-container confirmation-container">
+      <div className="page-inner-div confirmation-inner-div">
+        <PayFailed />
+      </div>
+    </div>
   )
 }
 

@@ -4,7 +4,7 @@ import HereToHelp from '@/components/HereToHelp';
 
 export const metadata: Metadata = {
   title: "About Lisa Folawiyo | Our Story & Vision",
-  description: "Learn about Lisa Folawiyo’s journey in luxury fashion, her craftsmanship, and dedication to detail.",
+  description: "Learn about Lisa Folawiyo's journey in luxury fashion, her craftsmanship, and dedication to detail.",
 };
 
 
@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 function AboutUs() {
   return (
     <div className='about-us page-container'>
+      <div className="page-inner-div">
       <section className="about-section page-section">
           <div className="page-section-inner about-section-inner">
               <div className="page-title-wrap">
@@ -37,6 +38,7 @@ function AboutUs() {
           </div>
       </section>
       <HereToHelp />
+      </div>
     </div>
   )
 }

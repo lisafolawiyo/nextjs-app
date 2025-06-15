@@ -2,9 +2,15 @@
 @use './variables' as *;
 
 
-.list-page {
-    width: 100%;
-    margin-top: 100px;
+.shop-container {
+    position: relative;
+    padding-top: 100px;
+    .shop-inner-div {
+        padding: 0px 5px;
+        @include u.breakpoint(md) {
+            padding: 0px 0px;
+        }
+    }
 }
 .product-list {
     width: 100%;
@@ -15,9 +21,9 @@
         width: calc((100% / 2) - 10px);
         margin: 0px 5px 30px 5px;
 
-        @include u.breakpoint(lg) {
-            width: calc((100% / 3) - 20px);
-            margin: 0px 10px 50px 10px;
+        @include u.breakpoint(md) {
+            width: calc((100% / 3) - 60px);
+            margin: 0px 30px 50px 30px;
         }
 
         .item-images {

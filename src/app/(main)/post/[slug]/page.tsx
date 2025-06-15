@@ -24,13 +24,17 @@ const Post = async ({ params, }: {params: Promise<{slug: string}>;}) => {
   const filteredRelatedPosts = relatedPosts.posts.filter((p: { id: number; }) => p.id !== post.id);
 
   return (
-    <div className='single-post-container'>
-      <Editorial post={post}/>
-      <Suspense fallback={<Skeleton/>}>
-          <RelatedPosts 
-          relatedPosts = {filteredRelatedPosts}
-        />
-      </Suspense>  
+    <div className='page-container'>
+      <div className='page-inner-div'>
+        <div className='single-post-container'>
+          <Editorial post={post}/>
+          <Suspense fallback={<Skeleton/>}>
+              <RelatedPosts 
+              relatedPosts = {filteredRelatedPosts}
+            />
+          </Suspense>  
+        </div>
+      </div>
     </div>
   )
 }

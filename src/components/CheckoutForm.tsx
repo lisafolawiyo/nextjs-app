@@ -178,7 +178,7 @@ export default function CheckoutForm() {
             reference,
             email: data.email,
             amount: (cartTotal() + selectedShippingRate.fee) * 100, // Paystack uses kobo
-            currency: "NGN",
+            currency: "USD",
             publicKey,
         });
         

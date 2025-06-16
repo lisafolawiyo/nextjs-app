@@ -120,7 +120,7 @@ function NavbarTwo() {
                 <Link href="/shop?tag=21" className='nav-tag-item' onClick={toggleMenu}>trousers</Link>
                 <Link href="/shop?tag=34" className='nav-tag-item' onClick={toggleMenu}>shorts</Link>
                 <Link href="/shop?tag=29" className='nav-tag-item' onClick={toggleMenu}>skirts</Link>
-                <Link href="/shop?tag=32" className='nav-tag-item' onClick={toggleMenu}>leggins</Link>
+                <Link href="/shop?tag=32" className='nav-tag-item' onClick={toggleMenu}>leggings</Link>
                 <Link href="/shop?tag=43" className='nav-tag-item' onClick={toggleMenu}>coats & jackets</Link>
                 <Link href="/shop?tag=35" className='nav-tag-item' onClick={toggleMenu}>bags</Link>
             </div>

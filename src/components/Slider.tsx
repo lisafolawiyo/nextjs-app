@@ -8,7 +8,7 @@ const slides = [
   {
     id: 1,
     title: "Summer Sale Collections",
-    description: "Sale! Up to 50% off!",
+    description: "Sale! Up too 50% off!",
     img: "/images/home-bg-mobile.jpg",
     url: "/",
     bg: "bg-gradient-to-r from-yellow-50 to-pink-50",

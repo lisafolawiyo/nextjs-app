@@ -13,9 +13,13 @@ const nextConfig: NextConfig = {
         protocol: "http",
         hostname: "localhost",
       },
-            {
+        {
         protocol: "https",
         hostname: "lisafolawiyo.com",
+      },
+        {
+        protocol: "https",
+        hostname: "tan-lyrebird-945101.hostingersite.com",
       },
     ],
   },

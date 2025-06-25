@@ -123,6 +123,7 @@ function NavbarTwo() {
                 <Link href="/shop?tag=32" className='nav-tag-item' onClick={toggleMenu}>leggings</Link>
                 <Link href="/shop?tag=43" className='nav-tag-item' onClick={toggleMenu}>coats & jackets</Link>
                 <Link href="/shop?tag=35" className='nav-tag-item' onClick={toggleMenu}>bags</Link>
+                <Link href="/shop?tag=49" className='nav-tag-item' onClick={toggleMenu}>accessories</Link>
             </div>
             </div>
         </div>

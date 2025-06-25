@@ -25,11 +25,6 @@ function AboutUs() {
                       creating pieces that seamlessly blend opulence with contemporary flair. 
                   </p>
                   <p>
-                      Welcome to Lisa Folawiyo, where we elevate fashion to an art form through our meticulous craftsmanship 
-                      and dedication to detail. Specializing in hand embellishment and beadwork, we pride ourselves on 
-                      creating pieces that seamlessly blend opulence with contemporary flair. 
-                  </p>
-                  <p>
                       At Lisa Folawiyo, we invite you to indulge in the richness of our creations, where our designs become 
                       the language of self expression, allowing you to adorn yourself in a tapestry of elegance and 
                       sophistication.

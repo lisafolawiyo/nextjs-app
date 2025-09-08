@@ -107,3 +107,36 @@ export const getRelatedProducts = async (
     }
   };
   
+export const getProductVariations = async (
+  product_id: string,
+  page = 1,
+  per_page = 100
+) => {
+  try {
+    const endpoint = `/products/${product_id}/variations`;
+    const url = `${API_URL}${endpoint}`;
+
+    // Generate OAuth signature for the *variations* endpoint
+    const oauthParams = generateOAuthSignature(url, "GET", {
+      page,
+      per_page,
+    });
+
+    // Call the API correctly
+    const response = await api.get(endpoint, {
+      params: {
+        ...oauthParams,
+        page,
+        per_page,
+      },
+    });
+
+    return {
+      variations: response.data,
+      total_pages: parseInt(response.headers["x-wp-totalpages"], 10) || 1,
+    };
+  } catch (error) {
+    console.error("Failed to fetch variations:", error);
+    throw error;
+  }
+};

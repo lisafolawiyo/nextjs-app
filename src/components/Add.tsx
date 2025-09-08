@@ -94,16 +94,16 @@ const Add = ({
         </button>
       </div>
 
-        <a 
-        href={`https://wa.me/${WhatsAppNumber}?text=${whatsAppMsg}`}
-        target="_blank"
-        className="whatsapp-button"
-        >
-          <div>
-              <FontAwesomeIcon icon={faWhatsapp} className="whatsapp-icon" />
-              <p>Order on WhatsApp</p>
-          </div>
-        </a>
+      <a 
+      href={`https://wa.me/${WhatsAppNumber}?text=${whatsAppMsg}`}
+      target="_blank"
+      className="whatsapp-button"
+      >
+        <div>
+            <FontAwesomeIcon icon={faWhatsapp} className="whatsapp-icon" />
+            <p>Order on WhatsApp</p>
+        </div>
+      </a>
     </div>
   );
 };

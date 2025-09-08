@@ -1,16 +1,12 @@
-import Add from "@/components/Add";
-import CustomizeProducts from "@/components/CustomizeProducts";
 import { notFound } from "next/navigation";
 import { Suspense } from "react";
-import DOMPurify from "isomorphic-dompurify";
-import { getRelatedProducts, getSingleProductData } from "@/actions/woocommerce/products";
-import ProductImagesTwo from "@/components/ProductImagesTwo";
-import SizeGuideButton from "@/components/SizeGuideButton";
+import { getProductVariations, getRelatedProducts, getSingleProductData } from "@/actions/woocommerce/products";
 import RelatedProducts from "@/components/RelatedProducts";
-import { stripOuterTags } from "@/utils/util";
 import Skeleton from "@/components/Skeleton";
 import { Metadata } from "next";
-import Product from "@/components/Product";
+import VariableProduct from "@/components/VariableProduct";
+import SingleProduct from "@/components/SingleProduct";
+import { ProductVariation } from "@/types/product";
 
 export const metadata: Metadata = {
   title: "Lisa Folawiyo Online Store | Shop Luxury Fashion",
@@ -18,81 +14,54 @@ export const metadata: Metadata = {
 };
 
 const SinglePage = async ({ params, }: {params: Promise<{slug: string}>;}) => {
+  // const [price, setPrice] = useState("0");
   const slug = (await params).slug;
-  const product = await getSingleProductData(slug)
-  const relatedProduct = await getRelatedProducts(product.upsell_ids,1,10);
-  if (!product) {
+  const product_data = await getSingleProductData(slug)
+  const relatedProduct = await getRelatedProducts(product_data.upsell_ids,1,10);
+  let productVariations: ProductVariation[] = [];
+  if (!product_data) {
     return notFound();
   }
+  if (product_data.attributes.length > 0) {
+    const _productVariations = await getProductVariations(product_data.id,1,100);
+    productVariations = _productVariations.variations;
+    console.log("VARIATIONS :", _productVariations.variations);
+  }
 
+  const product = {
+    id: product_data.id,
+    name: product_data.name,
+    slug: product_data.slug,
+    type: product_data.type,
+    status: product_data.status,
+    description: product_data.description,
+    short_description: product_data.short_description,
+    sku: product_data.sku,
+    price: product_data.price,
+    regular_price: product_data.regular_price,
+    sale_price: product_data.sale_price,
+    on_sale: product_data.on_sale,
+    upsell_ids: product_data.upsell_ids,
+    categories: product_data.categories,
+    tags: product_data.tags,
+    images: product_data.images,
+    attributes: product_data.attributes,
+    variations: product_data.variations,
+    related_ids: product_data.related_ids,
+    meta_data: product_data.meta_data,
+    stock_status: product_data.stock_status
+  };
   return (
     <div className="page-container product-container">
       <div className="product-inner-div">
-          <Product />
-          <section className="single-product-section">
-            <div className="single-product-wrapper">
-              <Suspense fallback={"...Loading"}>
-                <ProductImagesTwo items={product.images} />
-              </Suspense>
-              <div className="single-product-right">
-                <div className="w-full flex flex-col gap-6">
-                  <Suspense fallback={"...Loading"}>
-                    <h1 className="text-4xl font-medium uppercase">{product.name}</h1>
-                    <div
-                      className="text-base text-gray-500"
-                      dangerouslySetInnerHTML={{
-                        __html: DOMPurify.sanitize(
-                          product.description
-                        ),
-                      }}
-                    ></div>
-                    <SizeGuideButton />
-                    <div className="h-[2px] bg-gray-100" />
-                    {product.on_sale === false ? (
-                      <h2 className="font-medium text-2xl">${product.price}</h2>
-                    ) : (
-                      <div className="flex items-center gap-4">
-                        <h3 className="text-xl text-gray-500 line-through">
-                          ${product.regular_price}
-                        </h3>
-                        <h2 className="font-medium text-2xl">
-                          ${product.price}
-                        </h2>
-                      </div>
-                    )}
-                    {/* <div className="h-[2px] bg-gray-100" />
-                    <SizeGuideButton /> */}
-                    <div className="h-[2px] bg-gray-100" />
-                    {product.attributes.length > 0 ? (
-                      <CustomizeProducts
-                        product_id = {product.id}
-                        name = {product.name}
-                        desc = {stripOuterTags(product.short_description)}
-                        price = {product.price}
-                        stock_status = {product.stock_status}
-                        image_src = {product.images[0].src}
-                        attributes={product.attributes}
-                      />
-                    ) : (
-                      <Add
-                        product_id = {product.id}
-                        name = {product.name}
-                        desc = {stripOuterTags(product.short_description)}
-                        price = {product.price}
-                        stock_status = {product.stock_status}
-                        image_src = {product.images[0].src}
-                        product_options = {[]}
-                      />
-                    )}
-                  </Suspense>
-                </div>
-
-              </div>
-            </div>
-          </section>
+        {product_data.attributes.length > 0 && productVariations.length > 0 ? (
+          <VariableProduct product={product} productVariations={productVariations} />
+        ) : (
+          <SingleProduct product={product} />
+        )}
 
           <section className="more-options-section">
-            <div className="section-wrapper more-options-wrapper">
+            <div className="more-options-wrapper">
                   <div className="more-options-title-wrap">
                       <h3>You may also like</h3>
                   </div>

@@ -2,13 +2,14 @@
 @use './variables' as *;
 
 .product-container {
+    width: 100%;
     padding: 50px 10px 50px 10px;
     @include u.breakpoint(md) {
         padding: 70px 30px 100px 30px;
     }
 }
 .product-inner-div {
-    max-width: 1600px;
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -21,7 +22,7 @@
 }
 .single-product-section {
     width: 100%;
-    max-width: 800px;
+    // max-width: 800px;
     display: flex;
     justify-content: center;
     background-color: $white;
@@ -84,7 +85,6 @@
         .single-product-alt-img-wrap {
             width: 100%;
             padding: 0px 0px 0px 0px;
-            // border: 1px solid blue;
             display: flex;
             flex-direction: row;
             justify-content: space-between;
@@ -225,7 +225,8 @@
     display: flex;
     justify-content: center;
     background-color: $white;
-    padding: 50px 15px;
+    // padding: 50px 15px;
+    margin-top: 50px;
 
     @include u.breakpoint(md) {
         
@@ -237,7 +238,6 @@
         
         .more-options-title-wrap {
             margin-bottom: 20px;
-            padding-left: 10px;
             h3 {
                 font-family: var(--font-century-gothic), sans-serif;
                 text-transform: uppercase;

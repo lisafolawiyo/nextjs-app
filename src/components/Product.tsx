@@ -1,11 +1,9 @@
 'use client';
 
-
-import { usePathname, useSearchParams } from "next/navigation";
-import { useEffect } from "react";
+import { usePathname, useSearchParams } from 'next/navigation';
+import { useEffect } from 'react';
 
 const Product = () => {
-
   const pathname = usePathname();
   const searchParams = useSearchParams();
 
@@ -13,10 +11,7 @@ const Product = () => {
     window.scrollTo(0, 0);
   }, [pathname, searchParams]);
 
-  return (
-    <>
-    </>
-  );
+  return <></>;
 };
 
 export default Product;

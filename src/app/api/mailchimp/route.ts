@@ -19,16 +19,13 @@ export async function POST(req: Request) {
           'Content-Type': 'application/x-www-form-urlencoded',
         },
         body: data.toString(),
-      }
+      },
     );
 
     const text = await response.text();
 
     return NextResponse.json({ message: 'Submitted', data: text });
-  } catch  {
-        return NextResponse.json(
-      { error: 'Submission failed' },
-      { status: 500 }
-    );
+  } catch {
+    return NextResponse.json({ error: 'Submission failed' }, { status: 500 });
   }
 }

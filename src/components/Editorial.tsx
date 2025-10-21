@@ -24,9 +24,7 @@ const Editorial = ({ post }: { post: Post }) => {
           <p>{formattedDate}</p>
           <h1>{stripOuterTags(post.title.rendered)}</h1>
         </div>
-        <div className="single-post-content">
-          {parse(sanitizedHtml)}
-        </div>
+        <div className="single-post-content">{parse(sanitizedHtml)}</div>
       </div>
     </section>
   );

@@ -48,10 +48,16 @@ const MailchimpForm = () => {
           value={fname}
           onChange={(e) => setFname(e.target.value)}
         />
-        <button className="mailchimp-btn" type="submit">Subscribe</button>
+        <button className="mailchimp-btn" type="submit">
+          Subscribe
+        </button>
       </form>
-      {status === 'success' && <p className="mailchimp-success">Thank you for subscribing!</p>}
-      {status === 'error' && <p className="mailchimp-error">Something went wrong. Try again.</p>}
+      {status === 'success' && (
+        <p className="mailchimp-success">Thank you for subscribing!</p>
+      )}
+      {status === 'error' && (
+        <p className="mailchimp-error">Something went wrong. Try again.</p>
+      )}
     </div>
   );
 };

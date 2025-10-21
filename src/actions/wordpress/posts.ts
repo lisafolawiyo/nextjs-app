@@ -1,7 +1,7 @@
-import axios from "axios";
-import { generateOAuthSignature } from "../woocommerce/woocommerce";
+import axios from 'axios';
+import { generateOAuthSignature } from '../woocommerce/woocommerce';
 
-const API_URL = process.env.PROJECT_URL + "wp-json/wp/v2";
+const API_URL = process.env.PROJECT_URL + 'wp-json/wp/v2';
 
 const api = axios.create({
   baseURL: API_URL,
@@ -12,18 +12,18 @@ export const getPosts = async (
   search: string,
   tag: string,
   page = 1,
-  per_page = 10
+  per_page = 10,
 ) => {
   try {
     const url = `${API_URL}/posts`;
-    const oauthParams = generateOAuthSignature(url, "GET", {
+    const oauthParams = generateOAuthSignature(url, 'GET', {
       search: search,
       tag: tag,
       page: page,
       per_page: per_page,
     });
 
-    const response = await api.get("/posts", {
+    const response = await api.get('/posts', {
       params: {
         ...oauthParams,
         search: search,
@@ -35,10 +35,10 @@ export const getPosts = async (
     });
     return {
       posts: response.data,
-      total_pages: parseInt(response.headers["x-wp-totalpages"], 10) || 1,
+      total_pages: parseInt(response.headers['x-wp-totalpages'], 10) || 1,
     };
   } catch (error) {
-    console.error("Failed to fetch posts:", error);
+    console.error('Failed to fetch posts:', error);
     throw error;
   }
 };
@@ -47,11 +47,11 @@ export const getSinglePost = async (slug: string) => {
   try {
     const url = `${API_URL}/posts?slug=${slug}`;
 
-    const oauthParams = generateOAuthSignature(url, "GET", {
+    const oauthParams = generateOAuthSignature(url, 'GET', {
       slug: slug,
     });
 
-    const response = await api.get("/posts", {
+    const response = await api.get('/posts', {
       params: {
         ...oauthParams,
         slug: slug,
@@ -66,18 +66,18 @@ export const getSinglePost = async (slug: string) => {
 export const getPostsByCategories = async (
   categories: number[],
   page = 1,
-  per_page = 10
+  per_page = 10,
 ) => {
   try {
-    const includeParam = categories.join(","); // Convert array to comma-separated string
+    const includeParam = categories.join(','); // Convert array to comma-separated string
     const url = `${API_URL}/posts?categories=${includeParam}`;
-    const oauthParams = generateOAuthSignature(url, "GET", {
+    const oauthParams = generateOAuthSignature(url, 'GET', {
       categories: includeParam,
       page: page,
       per_page: per_page,
     });
 
-    const response = await api.get("/posts", {
+    const response = await api.get('/posts', {
       params: {
         ...oauthParams,
         categories: includeParam,
@@ -88,10 +88,10 @@ export const getPostsByCategories = async (
     });
     return {
       posts: response.data,
-      total_pages: parseInt(response.headers["x-wp-totalpages"], 10) || 1,
+      total_pages: parseInt(response.headers['x-wp-totalpages'], 10) || 1,
     };
   } catch (error) {
-    console.error("Failed to fetch posts:", error);
+    console.error('Failed to fetch posts:', error);
     throw error;
   }
 };

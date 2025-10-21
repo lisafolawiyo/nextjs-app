@@ -7,7 +7,10 @@ interface PaginationProps {
   totalPages: number;
 }
 
-export default function Pagination({ currentPage, totalPages }: PaginationProps) {
+export default function Pagination({
+  currentPage,
+  totalPages,
+}: PaginationProps) {
   const searchParams = useSearchParams();
   const pathname = usePathname();
   const { replace } = useRouter();
@@ -21,7 +24,7 @@ export default function Pagination({ currentPage, totalPages }: PaginationProps)
   if (totalPages <= 1) return null;
 
   return (
-    <div className='pagination-container'>
+    <div className="pagination-container">
       <div className="shop-pagination">
         <button
           onClick={() => createPageUrl(currentPage - 1)}
@@ -35,9 +38,7 @@ export default function Pagination({ currentPage, totalPages }: PaginationProps)
           <button
             key={page}
             onClick={() => createPageUrl(page)}
-            className={`pagination-button ${
-              page === currentPage && 'current'
-            }`}
+            className={`pagination-button ${page === currentPage && 'current'}`}
           >
             {page}
           </button>

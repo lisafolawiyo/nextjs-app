@@ -8,7 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "format": "pretty-quick --staged",
-    "format-repo": "prettier --write \"**/*.{ts,tsx,md,css}\"",
+    "format-repo": "prettier --write \"**/*.{ts,tsx,md,css,scss}\"",
     "postbuild": "next-sitemap",
     "postinstall": "husky install",
     "lint:fix": "npm run lint --fix",

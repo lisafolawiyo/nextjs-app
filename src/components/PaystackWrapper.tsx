@@ -1,8 +1,8 @@
-"use client";
+'use client';
 
-import { PaystackError, PaystackSuccessResponse } from "@/types/checkout";
-import { useEffect, useRef } from "react";
-import { usePaystackPayment } from "react-paystack";
+import { PaystackError, PaystackSuccessResponse } from '@/types/checkout';
+import { useEffect, useRef } from 'react';
+import { usePaystackPayment } from 'react-paystack';
 
 type PaystackProps = {
   config: {
@@ -14,7 +14,7 @@ type PaystackProps = {
   };
   onSuccess: (ref: PaystackSuccessResponse) => void;
   onClose: () => void;
-  onError: (error: PaystackError) => void
+  onError: (error: PaystackError) => void;
 };
 
 export default function PaystackWrapper({
@@ -32,7 +32,7 @@ export default function PaystackWrapper({
       try {
         initializePayment({ onSuccess, onClose });
       } catch (error) {
-       onError(error as PaystackError);
+        onError(error as PaystackError);
       }
       hasInitialized.current = true;
     }

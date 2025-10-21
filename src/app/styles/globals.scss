@@ -1,7 +1,7 @@
 @use './breakpoints' as u;
 @use './variables' as *;
 
-@import "tailwindcss";
+@import 'tailwindcss';
 
 // @import "tw-animate-css";
 
@@ -58,7 +58,6 @@
 } */
 
 body {
-
   transition-property: opacity, transform, filter, background;
   transition-timing-function: ease-in-out;
   transition-duration: 500ms;
@@ -72,21 +71,21 @@ body {
 }
 
 .section-wrapper {
-    width: 100%;
+  width: 100%;
 
-    @include u.breakpoint(md) {
-        width: 90%;
-    }
+  @include u.breakpoint(md) {
+    width: 90%;
+  }
 }
 
-  .translate-x--101 {
-      transform: translateX(-101%);
-  }
-  .translate-x--0 {
-      transform: translateX(0%);
-  }
+.translate-x--101 {
+  transform: translateX(-101%);
+}
+.translate-x--0 {
+  transform: translateX(0%);
+}
 
-  :root {
+:root {
   --radius: 0.625rem;
   --background: oklch(1 0 0);
   --foreground: oklch(0.145 0 0);
@@ -121,7 +120,7 @@ body {
   --sidebar-ring: oklch(0.708 0 0);
 }
 
-  .dark {
+.dark {
   --background: oklch(0.145 0 0);
   --foreground: oklch(0.985 0 0);
   --card: oklch(0.205 0 0);
@@ -155,7 +154,7 @@ body {
   --sidebar-ring: oklch(0.556 0 0);
 }
 
-  @layer base {
+@layer base {
   * {
     @apply border-border outline-ring/50;
   }

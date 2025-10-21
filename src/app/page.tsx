@@ -6,7 +6,8 @@ import { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Lisa Folawiyo | Luxury African Fashion with Hand Embellishment",
-  description: "Discover Lisa Folawiyo's luxury African fashion, where hand embellishment meets contemporary elegance. Shop our latest collections today.",
+  description:
+    "Discover Lisa Folawiyo's luxury African fashion, where hand embellishment meets contemporary elegance. Shop our latest collections today.",
 };
 
 export default function Home() {
@@ -19,12 +20,12 @@ export default function Home() {
         <div className="home-slider-item home-slider-item4"></div>
       </div>
       <div className="home-text-wrapper">
-        <Image 
+        <Image
           src="/media/images/logo-white-md.png"
           alt="Lisafolawiyo Logo"
           width={230}
           height={80}
-          className="w-[170px] absolute top-10 left-1/2 -translate-x-1/2 md:w-[230px] md:block" 
+          className="w-[170px] absolute top-10 left-1/2 -translate-x-1/2 md:w-[230px] md:block"
         />
         <div className="home-links-wrapper">
           <HomeLinks />

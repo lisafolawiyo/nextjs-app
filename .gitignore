@@ -40,6 +40,12 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-node_modules
 .next
 *.log
+
+.idea
+
+sitemap*.xml
+.swc
+
+yarn.lock

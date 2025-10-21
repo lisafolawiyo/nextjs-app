@@ -15,8 +15,6 @@ const CartModal: React.FC<CartModalProps> = ({ setIsCartOpen }) => {
     cartTotal,
   } = useCartStore((state) => state);
 
-  console.log('setIsCartOpen type:', typeof setIsCartOpen);
-
   return (
     <div className="cart-modal">
       <div

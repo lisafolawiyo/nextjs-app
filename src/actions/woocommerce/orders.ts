@@ -26,8 +26,6 @@ export async function createOrder(orderData: OrderData | null) {
     throw new Error('Order data is required to create an order.');
   }
 
-  console.log('Creating WooCommerce order with data:', orderData);
-
   // log order details in CMS
   const url = `${API_URL}/orders`;
 

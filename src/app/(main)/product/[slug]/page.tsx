@@ -42,7 +42,6 @@ const SinglePage = async ({
       100,
     );
     productVariations = _productVariations.variations;
-    console.log('VARIATIONS :', _productVariations.variations);
   }
 
   const product = {

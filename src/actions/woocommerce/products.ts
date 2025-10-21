@@ -65,7 +65,7 @@ export const getSingleProductData = async (slug: string) => {
 
     return response.data[0];
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 
@@ -94,7 +94,6 @@ export const getRelatedProducts = async (
         status: 'publish',
       },
     });
-    console.log('Returned Related Products: ', response.data);
     return {
       products: response.data,
       total_pages: parseInt(response.headers['x-wp-totalpages'], 10) || 1,

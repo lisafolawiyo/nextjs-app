@@ -33,7 +33,6 @@ const onSuccess = (reference: PaystackSuccessResponse) => {
 };
 
 const onClose = () => {
-  console.log('Payment popup closed');
   toast.error('Payment cancelled');
 };
 

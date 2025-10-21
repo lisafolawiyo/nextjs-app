@@ -59,7 +59,7 @@ export const getSinglePost = async (slug: string) => {
     });
     return response.data[0];
   } catch (error) {
-    console.log(error);
+    console.error(error);
   }
 };
 

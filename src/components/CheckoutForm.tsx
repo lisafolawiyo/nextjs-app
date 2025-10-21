@@ -96,11 +96,10 @@ export default function CheckoutForm() {
         delivery_time: '',
         fee: 0,
       });
-      // console.log("Selected country:", country);
       const rates = await getShippingRates(country);
       setShippingRates(rates); // <-- Assuming you have this state
     } catch (error) {
-      console.log('Error: ', error);
+      console.error('Error: ', error);
       setShippingRates([]);
     }
   };

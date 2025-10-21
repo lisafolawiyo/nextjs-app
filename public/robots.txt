@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://www.lisafolawiyo.com/
+
+# Sitemaps
+Sitemap: https://www.lisafolawiyo.com/sitemap.xml

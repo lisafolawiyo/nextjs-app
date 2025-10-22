@@ -12,7 +12,7 @@
     "postbuild": "next-sitemap",
     "postinstall": "husky install",
     "lint:fix": "npm run lint --fix",
-    "ts-error": "./node_modules/.bin/tsc"
+    "ts-error": "npx tsc"
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.7.2",

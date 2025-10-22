@@ -8,7 +8,7 @@ type ProductOptions = {
 };
 
 interface CartItem {
-  cart_id: string; // Unique per cart entry
+  cart_id: string;
   id: number;
   name: string;
   desc: string;

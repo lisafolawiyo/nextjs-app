@@ -17,6 +17,11 @@ const nextConfig: NextConfig = {
       },
       {
         protocol: 'https',
+        hostname: 'images.pexels.com',
+      },
+
+      {
+        protocol: 'https',
         hostname: 'tan-lyrebird-945101.hostingersite.com',
       },
     ],

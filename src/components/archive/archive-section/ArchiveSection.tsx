@@ -1,0 +1,56 @@
+'use client';
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { ChevronLeft } from 'lucide-react';
+
+import { useGsapFadeInChildren } from '@/hooks/useGsapFadeIn';
+import { ProductCard, ArchiveFilter, SearchBar } from '@/components/archive';
+
+interface Product {
+  id: number;
+  image: string;
+  title: string;
+  subtitle: string;
+  collection: string;
+  price: number;
+  year: number;
+}
+
+interface ArchiveSectionProps {
+  products: Product[];
+}
+
+export const ArchiveSection = ({ products }: ArchiveSectionProps) => {
+  const [searchQuery, setSearchQuery] = useState('');
+  const contentRef = useGsapFadeInChildren({ delay: 0.2, stagger: 0.15 });
+  const router = useRouter();
+
+  return (
+    <div
+      ref={contentRef as React.RefObject<HTMLDivElement>}
+      className="py-12 md:px-8"
+    >
+      <button
+        onClick={() => router.back()}
+        className="mb-6 flex cursor-pointer items-center gap-2 text-sm text-[#212529] transition-colors hover:text-gray-600 md:text-[24px]"
+      >
+        <ChevronLeft className="h-4 w-4" />
+        Back
+      </button>
+
+      <div className="mx-auto max-w-7xl">
+        <SearchBar searchQuery={searchQuery} onSearchChange={setSearchQuery} />
+        <ArchiveFilter />
+      </div>
+
+      <div className="sm:border-t-1 sm:*:border-b-1 sm:*:border-[#212529] sm:*:border-r-1 [&>:first-child:border-l-1 mx-auto grid  grid-cols-1 border-black sm:border-l-[1px] lg:grid-cols-3">
+        {products.map((product, index) => (
+          <div key={product.id} className="group">
+            <ProductCard product={product} index={index} />
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};

@@ -1,0 +1,52 @@
+'use client';
+
+import { ChevronLeft } from 'lucide-react';
+import React from 'react';
+import { useRouter } from 'next/navigation';
+
+import {
+  OrderList,
+  CHECKOUT_SCHEMA_TYPE,
+  CheckoutForm,
+} from '@/components/archive';
+import { useGsapFadeInChildren } from '@/hooks/useGsapFadeIn';
+
+export function Checkout() {
+  const contentRef = useGsapFadeInChildren({ delay: 0.2, stagger: 0.2 });
+  const router = useRouter();
+
+  const handleCheckout = (data: CHECKOUT_SCHEMA_TYPE) => {
+    console.log('Checkout data:', data);
+  };
+  return (
+    <div>
+      <div className="min-h-screen bg-white pt-28">
+        <div className="px-4 py-8 md:px-8">
+          <button
+            onClick={() => router.back()}
+            className="mb-8 flex items-center gap-1 text-base text-gray-600 hover:text-gray-900 md:text-[20px]"
+          >
+            <ChevronLeft size={16} />
+            Back
+          </button>
+          <div className="max-lg:flex max-lg:items-center max-lg:justify-center">
+            <h1 className="mb-8 text-[30px] font-normal  md:text-[48px]">
+              YOUR ORDER
+            </h1>
+          </div>
+
+          <div
+            ref={contentRef as React.RefObject<HTMLDivElement>}
+            className="grid gap-8 lg:grid-cols-2 lg:gap-12"
+          >
+            <OrderList />
+
+            <div className="max-h-max lg:border-[1px] lg:border-[#212529] lg:py-20 2xl:px-20">
+              <CheckoutForm onSubmit={handleCheckout} />
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}

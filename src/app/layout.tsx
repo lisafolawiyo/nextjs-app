@@ -43,7 +43,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${centuryGothic.variable}  antialiased`}>
+      <body className={`${centuryGothic.className}  antialiased`}>
         {children}
       </body>
       <GoogleAnalytics gaId="G-M03YSEG0D9" />

@@ -64,6 +64,7 @@ export function getTempState() {
 export default function CheckoutForm() {
   const router = useRouter();
   const [totalCart, setTotalCart] = useState<number | null>(null);
+
   useEffect(() => {
     const value = cartTotal(); // safe to call on client
     setTotalCart(value);

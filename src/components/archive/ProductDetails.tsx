@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 import { ProductCard } from '@/components/archive';
-import { products } from '@/app/dev/archive/page';
 import { useGsapFadeInChildren } from '@/hooks/useGsapFadeIn';
+import { products } from '@/utils/productsData';
 
 function FashionItemCard() {
   return (

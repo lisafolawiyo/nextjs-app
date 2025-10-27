@@ -3,9 +3,9 @@
 import React from 'react';
 import Link from 'next/link';
 
-import { products } from '@/app/dev/archive/page';
 import { ProductCard } from '@/components/archive';
 import { useGsapFadeIn } from '@/hooks/useGsapFadeIn';
+import { products } from '@/utils/productsData';
 
 export function SampleProducts() {
   const sectionRef = useGsapFadeIn({ delay: 0.2, y: 30 });

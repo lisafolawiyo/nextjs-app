@@ -21,26 +21,26 @@ export function AboutPage() {
           <div className="grid grid-cols-1  gap-0 pt-2 lg:grid-cols-[25%_1fr]">
             <div className="flex py-10 md:items-center md:py-16 lg:justify-center lg:bg-[#2B3135]">
               <div className="lg:rotate-180 lg:[writing-mode:vertical-lr]">
-                <span className="text-[48px] font-light uppercase text-black max-lg:px-6 lg:text-[96px] lg:text-white">
+                <span className="text-[36px] font-light uppercase text-black max-lg:px-6 sm:text-[48px] md:text-[64px] lg:text-[80px] lg:text-white xl:text-[96px]">
                   ABOUT US
                 </span>
               </div>
             </div>
 
             <div className="grid grid-cols-1 gap-3 max-md:px-4  lg:grid-cols-2">
-              <div className="relative flex flex-col items-center border-[4px] bg-[#ECECEC]  px-4 py-16 max-lg:mt-10 lg:h-[900px] lg:border-[#212529] lg:px-14 ">
-                <div className="flex h-full w-full flex-col justify-between space-y-8 text-center">
+              <div className="relative flex flex-col items-center border-[4px] bg-[#ECECEC] px-4 py-12 max-lg:mt-10 sm:px-6 sm:py-16 lg:h-[900px] lg:border-[#212529] lg:px-10 2xl:px-14">
+                <div className="flex h-full w-full flex-col justify-between space-y-6 text-center sm:space-y-8">
                   <h1 className="space-y-0">
-                    <div className="text-[40px] font-light uppercase text-[#212529]  sm:text-[56px] xl:text-[96px]">
+                    <div className="text-[32px] font-light uppercase leading-tight text-[#212529] sm:text-[48px] md:text-[54px]  2xl:text-[96px]">
                       LISA
                     </div>
-                    <div className="text-[40px] font-light uppercase text-[#212529]  sm:text-[56px] xl:text-[96px]">
+                    <div className="text-[32px] font-light uppercase leading-tight text-[#212529] sm:text-[48px] md:text-[54px]  2xl:text-[96px]">
                       FOLAWIYO
                     </div>
                   </h1>
 
-                  <div className="">
-                    <p className="text-center text-base tracking-[0.01em]  text-[#212529] sm:text-[20px] lg:text-[26px]">
+                  <div className="px-2 sm:px-4">
+                    <p className="text-center text-sm leading-relaxed tracking-[0.01em] text-[#212529] sm:text-base md:text-xl lg:text-[22px] 2xl:text-[26px]">
                       Lisa Folawiyo is a boundary-pushing fashion brand
                       redefining what it means to be designed in Africa. With a
                       visionary approach to craftsmanship and creativity, we are
@@ -66,8 +66,8 @@ export function AboutPage() {
         </div>
       </div>
       <div className="flex md:justify-end">
-        <div className="mt-8 px-4 text-base md:w-1/2  md:text-[24px]">
-          <p className="mb-3">
+        <div className="mt-6 px-4 text-sm leading-relaxed sm:mt-8 sm:text-base md:w-1/2 md:text-lg lg:text-xl xl:text-[24px]">
+          <p className="mb-3 sm:mb-4">
             We harness the rich heritage of local textiles such as Adire,
             Ankara, reimagining them through meticulous craftsmanship and
             refined tailoring. Each piece is a testament to elegantly offering
@@ -102,9 +102,9 @@ export function AboutPage() {
             </div>
           ))}
         </div>
-        <div className="mt-10 flex w-full items-center justify-center py-10">
+        <div className="mt-8 flex w-full items-center justify-center py-8 sm:mt-10 sm:py-10">
           <Link href="/dev/archive/search">
-            <button className="whitespace-nowrap border border-black px-6 py-2 text-sm  transition-all duration-300 hover:bg-black hover:text-white md:w-[219px] md:text-base">
+            <button className="whitespace-nowrap border border-black px-4 py-2 text-xs transition-all duration-300 hover:bg-black hover:text-white sm:px-6 sm:text-sm md:w-[219px] md:text-base">
               DISCOVER MORE
             </button>
           </Link>

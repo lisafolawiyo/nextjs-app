@@ -1,6 +1,6 @@
 import { ArchiveSection } from '@/components/archive/archive-section/ArchiveSection';
 import React from 'react';
-import { products } from '../page';
+import { products } from '@/utils/productsData';
 
 export default function page() {
   return (

@@ -4,9 +4,9 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 
-import { products } from '@/app/dev/archive/page';
 import { ProductCard } from '@/components/archive';
 import { useGsapFadeInChildren } from '@/hooks/useGsapFadeIn';
+import { products } from '@/utils/productsData';
 
 export function AboutPage() {
   const contentRef = useGsapFadeInChildren({ delay: 0.2, stagger: 0.2 });

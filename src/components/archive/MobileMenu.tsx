@@ -12,6 +12,7 @@ import {
 import { ArrowRight } from '@/components/Icons';
 import useCartStore from '@/hooks/zustand/useCartStore';
 import { ROUTES } from '@/utils/routes';
+import { cn } from '@/lib/utils';
 
 const useMenuAnimation = (isOpen: boolean) => {
   const menuRef = useRef<HTMLDivElement>(null);
@@ -79,7 +80,7 @@ const useMenuAnimation = (isOpen: boolean) => {
 
   return { menuRef, overlayRef, menuItemsRef };
 };
-export function MobileMenu() {
+export function MobileMenu({ shouldDark }: { shouldDark?: boolean }) {
   const [isOpen, setIsOpen] = useState(false);
   const { menuRef, overlayRef, menuItemsRef } = useMenuAnimation(isOpen);
   const openMenu = useCallback(() => setIsOpen(true), []);
@@ -119,14 +120,29 @@ export function MobileMenu() {
     <>
       <button
         onClick={openMenu}
-        className="group fixed right-6 top-5 z-30 2xl:hidden"
+        className="group z-30 lg:hidden"
         aria-label="Open menu"
         aria-expanded={isOpen}
       >
         <div className="flex h-10 w-10 cursor-pointer flex-col items-center justify-center gap-1.5">
-          <span className="h-0.5 w-6 bg-white transition-all duration-300 group-hover:w-7"></span>
-          <span className="h-0.5 w-6 bg-white transition-all duration-300 group-hover:w-5"></span>
-          <span className="h-0.5 w-6 bg-white transition-all duration-300 group-hover:w-7"></span>
+          <span
+            className={cn(
+              'h-0.5 w-6 bg-white transition-all duration-300 group-hover:w-7',
+              shouldDark && 'bg-black',
+            )}
+          ></span>
+          <span
+            className={cn(
+              'h-0.5 w-6 bg-white transition-all duration-300 group-hover:w-5',
+              shouldDark && 'bg-black',
+            )}
+          ></span>
+          <span
+            className={cn(
+              'h-0.5 w-6 bg-white transition-all duration-300 group-hover:w-7',
+              shouldDark && 'bg-black',
+            )}
+          ></span>
         </div>
       </button>
 

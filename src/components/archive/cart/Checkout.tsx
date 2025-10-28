@@ -37,7 +37,7 @@ export function Checkout() {
 
           <div
             ref={contentRef as React.RefObject<HTMLDivElement>}
-            className="grid gap-8 lg:grid-cols-2 lg:gap-12"
+            className="grid gap-20  md:gap-10 lg:grid-cols-2"
           >
             <OrderList />
 

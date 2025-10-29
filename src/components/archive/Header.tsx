@@ -22,7 +22,7 @@ export function Header() {
     const updateHeader = () => {
       const currentScrollY = window.scrollY;
 
-      if (currentScrollY > 1200) {
+      if (currentScrollY > 700) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -65,7 +65,7 @@ export function Header() {
             </h1>
           </Link>
 
-          <nav className="hidden items-center gap-8 text-[24px] 2xl:flex">
+          <nav className="hidden items-center gap-8 text-[24px] lg:flex">
             <Link
               href={ROUTES.LISA_ARCHIVE_SEARCH}
               className={`text-[24px] font-light transition-opacity hover:opacity-70 ${
@@ -107,7 +107,7 @@ export function Header() {
             </Link>
           </nav>
 
-          <MobileMenu />
+          <MobileMenu shouldDark={shouldBeDark} />
         </div>
       </div>
     </header>

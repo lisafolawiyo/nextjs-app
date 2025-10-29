@@ -57,10 +57,10 @@ export function CheckoutForm({ onSubmit }: CheckoutFormProps) {
     <Form {...form}>
       <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
         <div>
-          <h2 className="mb-3 text-[20px] font-normal tracking-wide text-gray-800 md:text-[40px]">
+          <h2 className="mb-3 text-[30px] font-normal tracking-wide text-gray-800 md:text-[40px]">
             CONTACT
           </h2>
-          <div className="space-y-3">
+          <div className="space-y-6">
             <FormField
               control={form.control}
               name="email"
@@ -103,7 +103,7 @@ export function CheckoutForm({ onSubmit }: CheckoutFormProps) {
         </div>
 
         <div>
-          <h2 className="mb-3 text-[20px] font-normal tracking-wide text-gray-800 md:text-[40px]">
+          <h2 className="mb-3 text-[30px] font-normal tracking-wide text-gray-800 md:text-[40px]">
             DELIVERY
           </h2>
           <div className="space-y-4 md:space-y-8">

@@ -32,7 +32,7 @@ const RelatedProducts = ({
                 className="item-image-top"
                 style={{
                   backgroundImage: `url('${
-                    product.images[0]?.src || '/media/images/placeholder.png'
+                    product.images?.[0]?.src || '/media/images/placeholder.png'
                   }')`,
                 }}
               />

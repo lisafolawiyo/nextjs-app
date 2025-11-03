@@ -38,7 +38,8 @@ const ProductList = ({
                   className="item-image-top"
                   style={{
                     backgroundImage: `url('${
-                      product.images[0]?.src || '/media/images/placeholder.png'
+                      product.images?.[0]?.src ||
+                      '/media/images/placeholder.png'
                     }')`,
                   }}
                 />
@@ -48,7 +49,7 @@ const ProductList = ({
                   className="item-image-bottom"
                   style={{
                     backgroundImage: `url('${
-                      product.images[1]?.src || product.images[0]?.src
+                      product.images[1]?.src || product.images?.[0]?.src
                     }')`,
                   }}
                 />

@@ -42,9 +42,9 @@ function NavbarTwo() {
           <Image
             src="/media/images/logo-black-md.png"
             alt="brand logo"
-            width={170} // You can adjust this based on your design
-            height={40} // Or auto-scale with layout="intrinsic" or "responsive"
-            className="nav-logo-black"
+            width={170}
+            height={40}
+            priority
           />
         </div>
         <div
@@ -236,10 +236,10 @@ function NavbarTwo() {
           </div>
         </div>
       </section>
-      <section className="search-section" id="search-section-id">
-        {/* <div className="search-close-wrap" onclick="closeSearch()">
-            <i className="fa-solid fa-xmark search-close-icon"></i>
-        </div> */}
+      {/* <section className="search-section" id="search-section-id">
+        <div className="search-close-wrap" onClick="closeSearch()">
+          <i className="fa-solid fa-xmark search-close-icon"></i>
+        </div>
         <div className="search-inner-wrapper">
           <h1>What are you looking for?</h1>
           <form action="/search-result.html">
@@ -255,7 +255,7 @@ function NavbarTwo() {
             </div>
           </form>
         </div>
-      </section>
+      </section> */}
     </nav>
   );
 }

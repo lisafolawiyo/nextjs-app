@@ -3,9 +3,9 @@
 import { useState } from 'react';
 import { useRouter } from 'next/navigation';
 import { ChevronLeft } from 'lucide-react';
-
 import { useGsapFadeInChildren } from '@/hooks/useGsapFadeIn';
 import { ProductCard, ArchiveFilter, SearchBar } from '@/components/archive';
+import Pagination from '@/components/Pagination';
 
 interface Product {
   id: number;
@@ -19,9 +19,15 @@ interface Product {
 
 interface ArchiveSectionProps {
   products: Product[];
+  totalPages: number;
+  page: string;
 }
 
-export const ArchiveSection = ({ products }: ArchiveSectionProps) => {
+export const ArchiveSection = ({
+  products,
+  totalPages,
+  page,
+}: ArchiveSectionProps) => {
   const [searchQuery, setSearchQuery] = useState('');
   const contentRef = useGsapFadeInChildren({ delay: 0.2, stagger: 0.15 });
   const router = useRouter();
@@ -46,11 +52,13 @@ export const ArchiveSection = ({ products }: ArchiveSectionProps) => {
 
       <div className="sm:border-t-1 sm:*:border-b-1 sm:*:border-[#212529] sm:*:border-r-1 [&>:first-child:border-l-1 mx-auto grid  grid-cols-1 border-black sm:border-l-[1px] lg:grid-cols-3">
         {products.map((product, index) => (
-          <div key={product.id} className="group">
+          <div key={product?.id} className="group">
             <ProductCard product={product} index={index} />
           </div>
         ))}
       </div>
+
+      <Pagination currentPage={parseInt(page, 10)} totalPages={totalPages} />
     </div>
   );
 };

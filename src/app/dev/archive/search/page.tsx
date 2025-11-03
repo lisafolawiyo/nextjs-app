@@ -1,5 +1,5 @@
-import { ArchiveSection } from '@/components/archive/archive-section/ArchiveSection';
 import React from 'react';
+import { ArchiveSection } from '@/components/archive/archive-section/ArchiveSection';
 import { getProducts } from '@/actions/woocommerce/products';
 
 export default async function SearchShop({

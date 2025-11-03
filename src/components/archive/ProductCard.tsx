@@ -76,7 +76,7 @@ export const ProductCard = ({ product, index }: ProductCardProps) => {
     >
       <div className="relative cursor-pointer overflow-hidden bg-white transition-all duration-500 hover:scale-[1] hover:shadow-2xl">
         <Image
-          src={product.images[0]?.src ?? '/media/images/placeholder.png'}
+          src={product.images?.[0]?.src ?? '/media/images/placeholder.png'}
           alt={product.name}
           width={521}
           height={521}

@@ -1,28 +1,29 @@
 import Link from 'next/link';
 
 import { ArrowRight } from '@/components/Icons';
+import { ROUTES } from '@/utils/routes';
 
 export function Footer() {
   const footerLinks = [
     {
       title: 'Shop',
-      href: '#',
+      href: ROUTES.SHOP,
     },
     {
       title: 'Contact us',
-      href: '#',
+      href: ROUTES.CONTACT_US,
     },
     {
       title: 'Refund Policy',
-      href: '#',
+      href: ROUTES.REFUND_POLICY,
     },
     {
       title: 'Shipping Info',
-      href: '#',
+      href: ROUTES.SHIPPING_INFO,
     },
     {
       title: 'FAQ',
-      href: '#',
+      href: ROUTES.FAQ,
     },
   ];
 

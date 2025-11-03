@@ -22,8 +22,6 @@ export async function generateMetadata({
   if (!product) {
     return {};
   }
-  // const publishedAt = new Date(post?.date).toISOString();
-
   return {
     title: product.name,
     description: stripOuterTags(product.short_description),
@@ -32,7 +30,7 @@ export async function generateMetadata({
       description: stripOuterTags(product.short_description),
       images: [
         {
-          url: product.images[0]?.src,
+          url: product.images?.[0]?.src,
           width: 1200,
           height: 630,
           alt: product?.title,
@@ -40,7 +38,7 @@ export async function generateMetadata({
       ],
       // url: siteConfig.url,
       // siteName: siteConfig.name,
-      // publishedTime: publishedAt,
+      // publishedTime: new Date(post?.date).toISOString();
     },
   };
 }

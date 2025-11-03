@@ -42,9 +42,9 @@ function NavbarTwo() {
           <Image
             src="/media/images/logo-black-md.png"
             alt="brand logo"
-            width={170} // You can adjust this based on your design
-            height={40} // Or auto-scale with layout="intrinsic" or "responsive"
-            className="nav-logo-black"
+            width={170}
+            height={40}
+            priority
           />
         </div>
         <div

@@ -1,30 +1,13 @@
 import { Hero, CollectionCarousel, SampleProducts } from '@/components/archive';
-import { products } from '@/utils/productsData';
+import { getProducts } from '@/actions/woocommerce/products';
 
-// const archiveProducts = [
-//   {
-//     id: 5,
-//     image: '/images/home-bg-mobile3.jpg',
-//     title: 'The Soccer Suit (Shorts)',
-//     subtitle: 'Look 3 (Short)',
-//     collection: 'COLL 1 2025',
-//     price: 575,
-//   },
-//   {
-//     id: 6,
-//     image: '/images/home-bg-mobile4.jpg',
-//     title: 'The Soccer Suit (Shorts)',
-//     subtitle: 'Look 3 (Short)',
-//     collection: 'COLL 1 2025',
-//     price: 575,
-//   },
-// ];
-
-export default function page() {
+export default async function page() {
+  const product_data = await getProducts('', '', '', 1, 6);
+  const products = product_data.products;
   return (
     <>
       <Hero />
-      <SampleProducts />
+      <SampleProducts products={products} />
       <CollectionCarousel products={products} />
     </>
   );

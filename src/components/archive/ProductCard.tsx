@@ -4,6 +4,8 @@ import { useFadeIn } from '@/hooks/useFadeIn';
 import useCartStore from '@/hooks/zustand/useCartStore';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import { stripOuterTags } from '@/utils/util';
+import { formatCurrency } from '@/utils/formatCurrency';
 
 export interface Product {
   id: number;
@@ -16,7 +18,7 @@ export interface Product {
 }
 
 interface ProductCardProps {
-  product: Product;
+  product: UnknownObject;
   index?: number;
 }
 
@@ -63,7 +65,7 @@ export const ProductCard = ({ product, index }: ProductCardProps) => {
   };
 
   const handleCardClick = () => {
-    router.push(`/dev/archive/${product.id}`);
+    router.push(`/dev/archive/${product?.slug}`);
   };
 
   return (
@@ -74,8 +76,8 @@ export const ProductCard = ({ product, index }: ProductCardProps) => {
     >
       <div className="relative cursor-pointer overflow-hidden bg-white transition-all duration-500 hover:scale-[1] hover:shadow-2xl">
         <Image
-          src={product.image}
-          alt={product.title}
+          src={product.images[0]?.src ?? '/media/images/placeholder.png'}
+          alt={product.name}
           width={521}
           height={521}
           className="h-[530px] w-full object-cover object-top brightness-75 transition-transform duration-700 group-hover:scale-[1.05]"
@@ -99,18 +101,18 @@ export const ProductCard = ({ product, index }: ProductCardProps) => {
       <div className="py-4 transition-colors duration-500 max-md:px-2">
         <div className="flex items-start justify-between">
           <div>
-            <p className="text-sm font-bold text-[#000000] transition-colors duration-500 group-hover:text-gray-300 md:text-[20px]">
-              {product.subtitle}
+            <p className="text-sm font-bold uppercase text-[#000000] transition-colors duration-500 group-hover:text-gray-300 md:text-[20px]">
+              {product.name}
             </p>
             <p className="text-sm font-bold text-[#000000] transition-colors duration-500 group-hover:text-white md:text-[20px]">
-              {product.title}
+              {stripOuterTags(product.short_description)}
             </p>
             <p className="text-sm text-gray-500 transition-colors duration-500 group-hover:text-white md:text-base">
-              {product.collection} {product.year}
+              {product.categories[0]?.name}
             </p>
           </div>
           <p className="text-base text-gray-900 transition-colors duration-500 group-hover:text-white md:text-[24px]">
-            ${product.price}
+            {formatCurrency(product.price)}
           </p>
         </div>
       </div>

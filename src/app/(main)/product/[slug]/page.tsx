@@ -67,6 +67,7 @@ const SinglePage = async ({
     meta_data: product_data.meta_data,
     stock_status: product_data.stock_status,
   };
+
   return (
     <div className="page-container product-container">
       <div className="product-inner-div">

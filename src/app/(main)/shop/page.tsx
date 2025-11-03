@@ -33,6 +33,7 @@ export default async function ListPage({
     parseInt(page, 10),
     per_page,
   );
+  console.log('product_data: ', product_data);
   const products = product_data.products;
   const totalPages = product_data.total_pages;
 

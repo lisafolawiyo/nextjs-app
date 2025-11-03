@@ -23,7 +23,6 @@ const SinglePage = async ({
 }: {
   params: Promise<{ slug: string }>;
 }) => {
-  // const [price, setPrice] = useState("0");
   const slug = (await params).slug;
   const product_data = await getSingleProductData(slug);
   const relatedProduct = await getRelatedProducts(

@@ -24,9 +24,7 @@ export function SampleProducts({ products }: { products: UnknownObject }) {
                 : ''
             }`}
           >
-            <div>
-              <ProductCard product={product} index={index} />
-            </div>
+            <ProductCard product={product} index={index} />
           </div>
         ))}
       </div>

@@ -17,7 +17,7 @@ export function AboutPage({ products }: { products: UnknownObject }) {
         className="mt-16 flex items-center justify-center pb-4 md:mt-32 lg:bg-[#2B3135]"
       >
         <div className="pt-2 md:px-8">
-          <div className="grid grid-cols-1  gap-0 pt-2 lg:grid-cols-[25%_1fr]">
+          <div className="grid grid-cols-1 gap-0 pt-2 lg:grid-cols-[25%_1fr]">
             <div className="flex py-10 md:items-center md:py-16 lg:justify-center lg:bg-[#2B3135]">
               <div className="lg:rotate-180 lg:[writing-mode:vertical-lr]">
                 <span className="text-[36px] font-light uppercase text-black max-lg:px-6 sm:text-[48px] md:text-[64px] lg:text-[80px] lg:text-white xl:text-[96px]">
@@ -26,7 +26,7 @@ export function AboutPage({ products }: { products: UnknownObject }) {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-3 max-md:px-4  lg:grid-cols-2">
+            <div className="grid grid-cols-1 gap-3 max-md:px-4 lg:grid-cols-2">
               <div className="relative flex flex-col items-center border-[4px] bg-[#ECECEC] px-4 py-12 max-lg:mt-10 sm:px-6 sm:py-16 lg:h-[900px] lg:border-[#212529] lg:px-10 2xl:px-14">
                 <div className="flex h-full w-full flex-col justify-between space-y-6 text-center sm:space-y-8">
                   <h1 className="space-y-0">

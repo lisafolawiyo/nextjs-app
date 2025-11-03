@@ -236,10 +236,10 @@ function NavbarTwo() {
           </div>
         </div>
       </section>
-      <section className="search-section" id="search-section-id">
-        {/* <div className="search-close-wrap" onclick="closeSearch()">
-            <i className="fa-solid fa-xmark search-close-icon"></i>
-        </div> */}
+      {/* <section className="search-section" id="search-section-id">
+        <div className="search-close-wrap" onClick="closeSearch()">
+          <i className="fa-solid fa-xmark search-close-icon"></i>
+        </div>
         <div className="search-inner-wrapper">
           <h1>What are you looking for?</h1>
           <form action="/search-result.html">
@@ -255,7 +255,7 @@ function NavbarTwo() {
             </div>
           </form>
         </div>
-      </section>
+      </section> */}
     </nav>
   );
 }

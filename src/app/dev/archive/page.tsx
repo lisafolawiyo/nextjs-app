@@ -9,7 +9,8 @@ export default async function page() {
     <>
       <Hero />
       <SampleProducts products={products} />
-      <CollectionCarousel products={products} />
+      {/* <CollectionCarousel products={products} /> */}
+      <CollectionCarousel />
     </>
   );
 }

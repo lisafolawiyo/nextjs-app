@@ -28,16 +28,18 @@ function HeroMobile() {
             <h2 className="mb-2 text-[48px] font-bold leading-[48px] text-white sm:text-[60px] sm:leading-[60px]">
               THE LISA FOLAWIYO
             </h2>
-            <h3 className="mb-6 text-[48px] font-bold leading-[48px] text-white sm:text-[60px] sm:leading-[60px]">
-              ARCHIVE
-            </h3>
-            <p className="mb-8 max-w-xl text-sm leading-relaxed text-white/90 sm:text-base">
-              From one season to another, this archive captures the evolution of
-              a movement that changed the face of African fashion. With print,
-              embellishment, and craftsmanship as her signature, Lisa Folawiyo
-              propelled African design into the global conversation leaving an
-              indelible mark on the world of fashion.
-            </p>
+            <div className="flex flex-col items-start gap-4 lg:flex-row">
+              <h3 className="mb-6 text-[48px] font-bold leading-[48px] text-white sm:text-[60px] sm:leading-[60px]">
+                ARCHIVE
+              </h3>
+              <p className="mb-8 max-w-2xl text-sm leading-relaxed text-white/90 sm:text-base">
+                From one season to another, this archive captures the evolution
+                of a movement that changed the face of African fashion. With
+                print, embellishment, and craftsmanship as her signature, Lisa
+                Folawiyo propelled African design into the global conversation
+                leaving an indelible mark on the world of fashion.
+              </p>
+            </div>
             <button
               onClick={() => setIsPlayerOpen(true)}
               className="group flex items-center justify-center gap-3 border border-white/60 px-6 py-3 text-xs tracking-widest text-white transition-all duration-300 hover:bg-white hover:text-black sm:text-sm"
@@ -259,10 +261,10 @@ function HeroDesktop() {
         >
           <div className="w-full px-8">
             <div ref={contentRef} className="text-left">
-              <h2 className="mb-4 text-[72px]  font-bold leading-[60px] text-white lg:text-[96px] lg:leading-[80px]">
+              <h2 className="mb-4 text-[72px]  font-bold leading-[60px] text-white lg:text-[96px] lg:leading-[82px]">
                 THE LISA FOLAWIYO
               </h2>
-              <div className="flex  items-start gap-4 md:gap-16 ">
+              <div className="flex flex-col items-start gap-4 md:flex-row lg:gap-16">
                 <h3 className="text-[72px] font-bold leading-[70px] text-white lg:text-[96px] lg:leading-[80px] xl:mt-4">
                   ARCHIVE
                 </h3>

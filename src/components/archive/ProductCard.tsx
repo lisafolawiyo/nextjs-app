@@ -20,9 +20,14 @@ export interface Product {
 interface ProductCardProps {
   product: UnknownObject;
   index?: number;
+  onImageClick?: () => void;
 }
 
-export const ProductCard = ({ product, index }: ProductCardProps) => {
+export const ProductCard = ({
+  product,
+  index,
+  onImageClick,
+}: ProductCardProps) => {
   const fadeInProps = useFadeIn(index ?? 0, 0.2);
   const addToCart = useCartStore((state) => state.addToCart);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
@@ -65,25 +70,39 @@ export const ProductCard = ({ product, index }: ProductCardProps) => {
   };
 
   const handleCardClick = () => {
-    router.push(`/dev/archive/${product?.slug}`);
+    if (product?.slug) {
+      router.push(`/dev/archive/${product.slug}`);
+    }
+  };
+
+  const handleImageClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    if (onImageClick) {
+      onImageClick();
+    }
   };
 
   return (
     <div
       {...fadeInProps}
-      onClick={handleCardClick}
+      onClick={onImageClick ? undefined : handleCardClick}
       className="w-full cursor-pointer  transition-colors duration-500 group-hover:bg-black/90 md:p-10 "
     >
       <div className="relative cursor-pointer overflow-hidden bg-white transition-all duration-500 hover:scale-[1] hover:shadow-2xl">
-        <Image
-          src={product.images?.[0]?.src ?? '/media/images/placeholder.png'}
-          alt={product.name}
-          width={521}
-          height={521}
-          className="h-[530px] w-full object-cover object-top brightness-75 transition-transform duration-700 group-hover:scale-[1.05]"
-        />
+        <div
+          onClick={onImageClick ? handleImageClick : undefined}
+          className="relative z-10 cursor-pointer"
+        >
+          <Image
+            src={product.images?.[0]?.src ?? '/media/images/placeholder.png'}
+            alt={product.name}
+            width={521}
+            height={521}
+            className="h-[530px] w-full object-cover object-top brightness-75 transition-transform duration-700 group-hover:scale-[1.05]"
+          />
+        </div>
 
-        <div className="absolute inset-0 w-full justify-center bg-black/0 transition-all duration-500 group-hover:bg-black/40" />
+        <div className="pointer-events-none absolute inset-0 w-full justify-center bg-black/0 transition-all duration-500 group-hover:bg-black/40" />
         <div className="absolute bottom-4 flex w-full items-center justify-center">
           <button
             onClick={handleToggleCart}

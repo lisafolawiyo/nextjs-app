@@ -41,7 +41,7 @@ export function Checkout() {
           >
             <OrderList />
 
-            <div className="max-h-max lg:border-[1px] lg:border-[#212529] lg:py-20 2xl:px-20">
+            <div className="max-h-max sm:px-10 lg:border-[1px] lg:border-[#212529] lg:py-20 2xl:px-20">
               <CheckoutForm onSubmit={handleCheckout} />
             </div>
           </div>

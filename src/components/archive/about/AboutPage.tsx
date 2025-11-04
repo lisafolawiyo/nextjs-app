@@ -19,7 +19,7 @@ export function AboutPage() {
       >
         <div className="pt-2 md:px-8">
           <div className="grid grid-cols-1  gap-0 pt-2 lg:grid-cols-[25%_1fr]">
-            <div className="flex py-10 md:items-center md:py-16 lg:justify-center lg:bg-[#2B3135]">
+            <div className="flex max-md:pt-10 md:items-center md:py-16 lg:justify-center lg:bg-[#2B3135] lg:py-10">
               <div className="lg:rotate-180 lg:[writing-mode:vertical-lr]">
                 <span className="text-[36px] font-light uppercase text-black max-lg:px-6 sm:text-[48px] md:text-[64px] lg:text-[80px] lg:text-white xl:text-[96px]">
                   ABOUT US
@@ -40,7 +40,7 @@ export function AboutPage() {
                   </h1>
 
                   <div className="px-2 sm:px-4">
-                    <p className="text-center text-sm leading-relaxed tracking-[0.01em] text-[#212529] sm:text-base md:text-xl lg:text-[22px] 2xl:text-[26px]">
+                    <p className="text-center text-sm leading-relaxed tracking-[0.01em] text-[#212529] sm:text-base md:text-xl lg:text-[20px] 2xl:text-[22px]">
                       Lisa Folawiyo is a boundary-pushing fashion brand
                       redefining what it means to be designed in Africa. With a
                       visionary approach to craftsmanship and creativity, we are
@@ -66,7 +66,7 @@ export function AboutPage() {
         </div>
       </div>
       <div className="flex md:justify-end">
-        <div className="mt-6 px-4 text-sm leading-relaxed sm:mt-8 sm:text-base md:w-1/2 md:text-lg lg:text-xl xl:text-[24px]">
+        <div className="mt-6 px-4 text-sm leading-relaxed sm:mt-8 sm:text-base md:w-1/2 md:text-lg lg:text-xl xl:text-[22px]">
           <p className="mb-3 sm:mb-4">
             We harness the rich heritage of local textiles such as Adire,
             Ankara, reimagining them through meticulous craftsmanship and

@@ -262,7 +262,7 @@ function HeroDesktop() {
               <h2 className="mb-4 text-[72px]  font-bold leading-[60px] text-white lg:text-[96px] lg:leading-[80px]">
                 THE LISA FOLAWIYO
               </h2>
-              <div className="flex flex-col items-start gap-4 md:gap-16 xl:flex-row">
+              <div className="flex  items-start gap-4 md:gap-16 ">
                 <h3 className="text-[72px] font-bold leading-[70px] text-white lg:text-[96px] lg:leading-[80px] xl:mt-4">
                   ARCHIVE
                 </h3>

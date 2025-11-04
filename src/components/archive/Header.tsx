@@ -53,8 +53,8 @@ export function Header() {
           : 'bg-transparent text-white'
       }`}
     >
-      <div className="mx-auto w-[98%] ">
-        <div className="mx-auto flex items-center justify-between px-4 py-3 md:px-10">
+      <div className="mx-auto">
+        <div className="mx-auto flex items-center justify-between py-3 sm:px-4 md:px-10">
           <Link href={ROUTES.LISA_ARCHIVE_HOME} aria-label="Home">
             <h1
               className={`text-2xl font-light md:text-[40px] ${

@@ -1,11 +1,10 @@
 'use client';
 
 import { useFadeIn } from '@/hooks/useFadeIn';
-import useCartStore from '@/hooks/zustand/useCartStore';
+import { formatCurrency } from '@/utils/formatCurrency';
+import { stripOuterTags } from '@/utils/util';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
-import { stripOuterTags } from '@/utils/util';
-import { formatCurrency } from '@/utils/formatCurrency';
 
 export interface Product {
   id: number;
@@ -29,45 +28,45 @@ export const ProductCard = ({
   onImageClick,
 }: ProductCardProps) => {
   const fadeInProps = useFadeIn(index ?? 0, 0.2);
-  const addToCart = useCartStore((state) => state.addToCart);
-  const removeFromCart = useCartStore((state) => state.removeFromCart);
-  const items = useCartStore((state) => state.items);
+  // const addToCart = useCartStore((state) => state.addToCart);
+  // const removeFromCart = useCartStore((state) => state.removeFromCart);
+  // const items = useCartStore((state) => state.items);
   const router = useRouter();
 
-  const cartItem = items.find(
-    (item) =>
-      item.id === product.id &&
-      item.product_options.some(
-        (opt) => opt.name === 'Collection' && opt.value === product.collection,
-      ) &&
-      item.product_options.some(
-        (opt) => opt.name === 'Year' && opt.value === product.year.toString(),
-      ),
-  );
+  // const cartItem = items.find(
+  //   (item) =>
+  //     item.id === product.id &&
+  //     item.product_options.some(
+  //       (opt) => opt.name === 'Collection' && opt.value === product.collection,
+  //     ) &&
+  //     item.product_options.some(
+  //       (opt) => opt.name === 'Year' && opt.value === product.year.toString(),
+  //     ),
+  // );
 
-  const isInCart = !!cartItem;
+  // const isInCart = !!cartItem;
 
-  const handleToggleCart = (e: React.MouseEvent) => {
-    e.stopPropagation();
+  // const handleToggleCart = (e: React.MouseEvent) => {
+  //   e.stopPropagation();
 
-    if (isInCart && cartItem) {
-      removeFromCart(cartItem.cart_id);
-    } else {
-      addToCart({
-        id: product.id,
-        name: product.title,
-        desc: product.subtitle,
-        price: product.price,
-        stock_status: 'instock',
-        image: product.image,
-        product_options: [
-          { name: 'Collection', value: product.collection },
-          { name: 'Year', value: product.year.toString() },
-        ],
-        quantity: 1,
-      });
-    }
-  };
+  //   if (isInCart && cartItem) {
+  //     removeFromCart(cartItem.cart_id);
+  //   } else {
+  //     addToCart({
+  //       id: product.id,
+  //       name: product.title,
+  //       desc: product.subtitle,
+  //       price: product.price,
+  //       stock_status: 'instock',
+  //       image: product.image,
+  //       product_options: [
+  //         { name: 'Collection', value: product.collection },
+  //         { name: 'Year', value: product.year.toString() },
+  //       ],
+  //       quantity: 1,
+  //     });
+  //   }
+  // };
 
   const handleCardClick = () => {
     if (product?.slug) {
@@ -103,7 +102,7 @@ export const ProductCard = ({
         </div>
 
         <div className="pointer-events-none absolute inset-0 w-full justify-center bg-black/0 transition-all duration-500 group-hover:bg-black/40" />
-        <div className="absolute bottom-4 flex w-full items-center justify-center">
+        {/* <div className="absolute bottom-4 flex w-full items-center justify-center">
           <button
             onClick={handleToggleCart}
             className={`transform border px-4 py-1.5 text-sm tracking-wider transition-all duration-500 group-hover:translate-y-0 md:min-w-[219px] md:text-base ${
@@ -114,7 +113,7 @@ export const ProductCard = ({
           >
             {isInCart ? 'REMOVE FROM CART' : 'ADD TO CART'}
           </button>
-        </div>
+        </div> */}
       </div>
 
       <div className="py-4 transition-colors duration-500 max-md:px-2">

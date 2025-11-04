@@ -44,6 +44,7 @@ function ProductOptions({ product }: { product: UnknownObject }) {
       quantity: quantity,
     });
 
+    toast.success('Added to cart successfully!');
     setSelectedSize('');
     setSelectedItem('');
     setQuantity(1);

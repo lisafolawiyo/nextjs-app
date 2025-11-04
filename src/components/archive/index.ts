@@ -10,6 +10,8 @@ export * from './CollectionCarousel';
 export * from './VideoPlayer';
 export * from './LenisScroll';
 export * from './MobileMenu';
+export * from './ImageGalleryModal';
+export * from './SizeGuideModal';
 
 export * from './about/AboutPage';
 

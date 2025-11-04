@@ -5,42 +5,39 @@ import { ChevronDown, ChevronUp, X } from 'lucide-react';
 import { gsap } from 'gsap';
 
 interface FilterState {
-  typology: string[];
-  gender: string[];
-  season: string[];
+  collection: string[];
   year: string[];
-  line: string[];
-  themes: string[];
+  gender: string[];
+  accessories: string[];
 }
 
-const typologyData = [
-  { label: 'COLLECTIONS', count: 43 },
-  { label: 'LOOKS', count: 57 },
-];
-
-const genderData = [
-  { label: 'MAN', count: 23 },
-  { label: 'WOMAN', count: 77 },
-];
-
-const seasonData = [
-  { label: 'FALL-WINTER', count: 45 },
-  { label: 'SPRING-SUMMER', count: 54 },
+const collectionData = [
+  { label: 'SS22', count: 12 },
+  { label: 'FW22', count: 15 },
+  { label: 'SS23', count: 18 },
+  { label: 'FW23', count: 14 },
+  { label: 'SS24', count: 20 },
+  { label: 'FW24', count: 16 },
 ];
 
 const yearData = [
-  { label: '1980', count: 3 },
-  { label: '1981', count: 2 },
-  { label: '1984', count: 3 },
-  { label: '1986', count: 4 },
-  { label: '1988', count: 2 },
-  { label: '1989', count: 6 },
-  { label: '1990', count: 8 },
-  { label: '1991', count: 2 },
-  { label: '1992', count: 3 },
-  { label: '1993', count: 7 },
-  { label: '1994', count: 7 },
-  { label: '1996', count: 2 },
+  { label: '2022', count: 27 },
+  { label: '2023', count: 32 },
+  { label: '2024', count: 36 },
+  { label: '2025', count: 5 },
+];
+
+const genderData = [
+  { label: 'Women', count: 85 },
+  { label: 'Men', count: 15 },
+];
+
+const accessoriesData = [
+  { label: 'Bags', count: 12 },
+  { label: 'Jewelry', count: 18 },
+  { label: 'Scarves', count: 8 },
+  { label: 'Belts', count: 6 },
+  { label: 'Hats', count: 4 },
 ];
 
 interface FilterSectionProps {
@@ -134,12 +131,10 @@ export function ArchiveFilter() {
   const [showFilters, setShowFilters] = useState(false);
   const filterContainerRef = useRef<HTMLDivElement>(null);
   const [expandedSections, setExpandedSections] = useState({
-    typology: true,
-    gender: true,
-    season: true,
+    collection: true,
     year: true,
-    line: false,
-    themes: false,
+    gender: true,
+    accessories: true,
   });
 
   useEffect(() => {
@@ -173,12 +168,10 @@ export function ArchiveFilter() {
   }, [showFilters]);
 
   const [filters, setFilters] = useState<FilterState>({
-    typology: [],
-    gender: [],
-    season: [],
+    collection: [],
     year: [],
-    line: [],
-    themes: [],
+    gender: [],
+    accessories: [],
   });
 
   const toggleSection = (section: keyof typeof expandedSections) => {
@@ -207,12 +200,10 @@ export function ArchiveFilter() {
 
   const clearAllFilters = () => {
     setFilters({
-      typology: [],
-      gender: [],
-      season: [],
+      collection: [],
       year: [],
-      line: [],
-      themes: [],
+      gender: [],
+      accessories: [],
     });
   };
 
@@ -263,19 +254,35 @@ export function ArchiveFilter() {
 
       <div ref={filterContainerRef} className="overflow-hidden">
         <div className="mt-8  bg-[#212529] p-8">
-          <div className="grid grid-cols-1 gap-x-12 gap-y-8 md:grid-cols-2 lg:grid-cols-3">
+          <div className="grid grid-cols-1 gap-x-12 gap-y-8 md:grid-cols-2 lg:grid-cols-4">
             <FilterSection
-              title="Typology"
-              isExpanded={expandedSections.typology}
-              onToggle={() => toggleSection('typology')}
+              title="Collection"
+              isExpanded={expandedSections.collection}
+              onToggle={() => toggleSection('collection')}
             >
-              {typologyData.map(({ label, count }) => (
+              {collectionData.map(({ label, count }) => (
                 <FilterItem
                   key={label}
                   label={label}
                   count={count}
-                  isActive={filters.typology.includes(label)}
-                  onClick={() => toggleFilter('typology', label)}
+                  isActive={filters.collection.includes(label)}
+                  onClick={() => toggleFilter('collection', label)}
+                />
+              ))}
+            </FilterSection>
+
+            <FilterSection
+              title="Year"
+              isExpanded={expandedSections.year}
+              onToggle={() => toggleSection('year')}
+            >
+              {yearData.map(({ label, count }) => (
+                <FilterItem
+                  key={label}
+                  label={label}
+                  count={count}
+                  isActive={filters.year.includes(label)}
+                  onClick={() => toggleFilter('year', label)}
                 />
               ))}
             </FilterSection>
@@ -297,53 +304,19 @@ export function ArchiveFilter() {
             </FilterSection>
 
             <FilterSection
-              title="Season"
-              isExpanded={expandedSections.season}
-              onToggle={() => toggleSection('season')}
+              title="Accessories"
+              isExpanded={expandedSections.accessories}
+              onToggle={() => toggleSection('accessories')}
             >
-              {seasonData.map(({ label, count }) => (
+              {accessoriesData.map(({ label, count }) => (
                 <FilterItem
                   key={label}
                   label={label}
                   count={count}
-                  isActive={filters.season.includes(label)}
-                  onClick={() => toggleFilter('season', label)}
+                  isActive={filters.accessories.includes(label)}
+                  onClick={() => toggleFilter('accessories', label)}
                 />
               ))}
-            </FilterSection>
-
-            <FilterSection
-              title="Year"
-              isExpanded={expandedSections.year}
-              onToggle={() => toggleSection('year')}
-            >
-              <div className="max-h-64 overflow-y-auto pr-2 [&::-webkit-scrollbar-thumb]:rounded-full [&::-webkit-scrollbar-thumb]:bg-white/30 hover:[&::-webkit-scrollbar-thumb]:bg-white/50 [&::-webkit-scrollbar-track]:rounded-full [&::-webkit-scrollbar-track]:bg-white/10 [&::-webkit-scrollbar]:w-2">
-                {yearData.map(({ label, count }) => (
-                  <FilterItem
-                    key={label}
-                    label={label}
-                    count={count}
-                    isActive={filters.year.includes(label)}
-                    onClick={() => toggleFilter('year', label)}
-                  />
-                ))}
-              </div>
-            </FilterSection>
-
-            <FilterSection
-              title="Line"
-              isExpanded={expandedSections.line}
-              onToggle={() => toggleSection('line')}
-            >
-              <div className="py-2 text-sm text-white/40">No items</div>
-            </FilterSection>
-
-            <FilterSection
-              title="Themes"
-              isExpanded={expandedSections.themes}
-              onToggle={() => toggleSection('themes')}
-            >
-              <div className="py-2 text-sm text-white/40">No items</div>
             </FilterSection>
           </div>
         </div>

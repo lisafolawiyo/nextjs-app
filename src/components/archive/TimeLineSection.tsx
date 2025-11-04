@@ -42,78 +42,78 @@ const timelineData = [
     date: '2024-2025',
     title: 'Continued global visibility',
     description:
-      "Ongoing international press and features; brand collections featured in global trade shows and platforms. Lisa Folawiyo's work continues to shape the evolving aesthetic conversation at the core of contemporary African fashion etc. Inc etc.",
-    link: 'https://www.lisafolawiyo.com/',
+      'Ongoing international press and features; brand communications emphasize craftsmanship, Lagos roots, and evolving silhouettes; additional cultural/embassy tie-ins via Woven Threads × Embassy of Sweden showcase.',
+    link: 'https://www.instagram.com/lisafolawiyo/',
   },
   {
     date: 'Nov 8, 2024',
-    title: 'Collection 1:2025* runway presentation (Lagos)',
+    title: '"Collection 1/2025" runway presentation (Lagos)',
     description:
-      "A quilt-inflected, hand-crafted collection; Lagunan palettes at Àsìkò Towani pre-viewing the brand's 2025 direction.",
-    link: 'https://www.lisafolawiyo.com/',
+      "A sport-inflected, hand-crafted collection is shown poolside at Azuri Towers, previewing the brand's 2025 direction.",
+    link: 'https://www.instagram.com/lisafolawiyo/',
   },
   {
-    date: '2025',
+    date: '2023',
     title: 'London retail pop-up & major capsule collaboration',
     description:
-      'Lagos fashion Wks x Selfridges "Women Treasure" pop-up space; New Lisa Folawiyo x John Lewis Collection; the evolution of Siya-Badun further expands with more collaborations on bespoke capsule co-designed with Lisa Folawiyo.',
+      'Lagos Fashion Week x Selfridges "Woven Threads" pop-up features Lisa Folawiyo pieces in London (May–June). There Was One (Farfetch/New Guards Group) releases an 8-piece capsule co-designed with Lisa Folawiyo (June 7).',
+    link: 'https://www.facebook.com/lisafolawiyo/',
+  },
+  {
+    date: '2020',
+    title: 'Digital spotlights & global platforms',
+    description:
+      "Lagos Fashion Week's Woven Threads (digital) elevates craft narratives across African brands with Lisa Folawiyo frequently included in this ecosystem.",
+    link: 'https://www.youtube.com/@LagosFashionWeek',
+  },
+  {
+    date: '2016-2019',
+    title: 'Global retail & showcases',
+    description:
+      'Expands international stockists (including Selfridges UK); maintains showrooms in Lagos and New York; hosts trunk shows (e.g., Moda Operandi).',
     link: 'https://www.lisafolawiyo.com/',
   },
   {
-    date: 'Q2 2025',
-    title: 'Paris Fashion Week debut',
+    date: '2015',
+    title: 'Rebrand to eponymous "Lisa Folawiyo"',
     description:
-      'First official presentation at Paris Fashion Week, showcasing the "Harmattan Gold" collection featuring innovative textile techniques and sustainable materials.',
+      'The house transitions from "Jewel by Lisa" to Lisa Folawiyo; Folawiyo is also listed in the BoF 500.',
+    link: 'https://www.businessoffashion.com/community/people/lisa-folawiyo',
+  },
+  {
+    date: '2013-2014',
+    title: 'Momentum on and off runway',
+    description:
+      'Lagos Fashion & Design Week collections gain wider press. Named one of WWD\'s "8 Emerging Talents" (2014).',
     link: 'https://www.lisafolawiyo.com/',
   },
   {
-    date: 'Sep 2025',
-    title: 'New York flagship store opening',
+    date: '2012',
+    title: 'International recognition & beauty collab',
     description:
-      'Opening of first US flagship location in SoHo, featuring exclusive retail designs and an immersive brand experience space.',
-    link: 'https://www.lisafolawiyo.com/',
+      "Featured by Vogue Italia (Vogue Talents). Wins the African Fashion Award. Collaborates with L'Oréal Italy on limited lipstick & nail polish tied to SS13.",
+    link: 'https://en.wikipedia.org/wiki/Lisa_Folawiyo',
   },
   {
-    date: 'Jan 2026',
-    title: 'Sustainable textiles initiative launch',
+    date: 'June 17, 2011',
+    title: 'Diffusion line "The J Label" launches',
     description:
-      'Partnership with African textile artisans to develop eco-friendly fabric innovations and establish ethical production standards across the supply chain.',
-    link: 'https://www.lisafolawiyo.com/',
+      'A younger, more accessibly priced sister to Jewel by Lisa debuts.',
+    link: 'https://www.bellanaija.com/',
   },
   {
-    date: 'Mar 2026',
-    title: 'Digital fashion collection drop',
+    date: '2008-2011',
+    title: 'Early growth & runway presence',
     description:
-      'Launch of first NFT fashion collection alongside physical garments, bridging traditional craftsmanship with digital innovation.',
-    link: 'https://www.lisafolawiyo.com/',
+      'Builds a signature around beading and Swarovski-level embellishment on wax prints; begins consistent fashion-week showings (Lagos).',
+    link: 'https://www.okayafrica.com/',
   },
   {
-    date: 'Jun 2026',
-    title: 'Museum exhibition retrospective',
+    date: '2005',
+    title: 'Brand founded (as "Jewel by Lisa")',
     description:
-      'Major retrospective at the Victoria and Albert Museum showcasing 15 years of design evolution and cultural impact.',
-    link: 'https://www.lisafolawiyo.com/',
-  },
-  {
-    date: 'Oct 2026',
-    title: 'Milan design collaboration',
-    description:
-      'Limited edition furniture and home goods collection in partnership with leading Italian design house, expanding into lifestyle categories.',
-    link: 'https://www.lisafolawiyo.com/',
-  },
-  {
-    date: '2027',
-    title: 'Global retail expansion',
-    description:
-      'Opening of flagship stores in Tokyo, Dubai, and Seoul, establishing permanent international retail presence across three continents.',
-    link: 'https://www.lisafolawiyo.com/',
-  },
-  {
-    date: '2028',
-    title: 'Design education foundation launch',
-    description:
-      'Establishment of the Folawiyo Creative Foundation to support emerging African designers through mentorship programs and educational initiatives.',
-    link: 'https://www.lisafolawiyo.com/',
+      'Lisa Folawiyo launches her label in Lagos, pioneering intricately hand-embellished Ankara as luxury ready-to-wear.',
+    link: 'https://www.businessoffashion.com/community/people/lisa-folawiyo',
   },
 ];
 

@@ -1,5 +1,6 @@
 import { Cancel } from '@/components/Icons';
 import { Minus, Plus, X } from 'lucide-react';
+import Image from 'next/image';
 
 interface OrderItemProps {
   item: {
@@ -42,10 +43,12 @@ export function OrderItem({
 
       <div className="flex flex-col gap-3 pb-4 xl:flex-row">
         <div className="relative">
-          <img
+          <Image
             src={item.image}
             alt={item.name}
             className="h-[614px] w-full object-cover lg:h-[333px] 2xl:w-[327px]"
+            height={600}
+            width={600}
           />
         </div>
 

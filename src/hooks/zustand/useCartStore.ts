@@ -55,16 +55,12 @@ const useCartStore = create<CartState>()(
           const currentItems = [...get().items];
           const existingItem = currentItems[existingIndex];
 
-          if (existingItem.quantity !== product.quantity) {
-            currentItems[existingIndex] = {
-              ...existingItem,
-              quantity: product.quantity,
-            };
-            set({ items: currentItems });
-            toast.success('Product quantity updated');
-          } else {
-            toast.error('Product already exists in the same quantity');
-          }
+          currentItems[existingIndex] = {
+            ...existingItem,
+            quantity: existingItem.quantity + product.quantity,
+          };
+          set({ items: currentItems });
+          toast.success('Product quantity updated');
         } else {
           set({
             items: [

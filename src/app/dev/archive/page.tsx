@@ -8,13 +8,14 @@ export default async function page() {
   const product_data = await getProducts('', '', '', 1, 6);
   const products = product_data.products;
 
-  const cateogries = await getProductCategories();
-  console.log('cateogries: ', cateogries);
+  const categories_data = await getProductCategories();
+  const categories = categories_data.categories;
+
   return (
     <>
       <Hero />
       <SampleProducts products={products} />
-      <CollectionCarousel products={products} />
+      <CollectionCarousel initialProducts={products} categories={categories} />
     </>
   );
 }

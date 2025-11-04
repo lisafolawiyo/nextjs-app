@@ -1,32 +1,75 @@
 'use client';
 
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
 
 import { Product, ProductCard } from '@/components/archive';
 import { useGsapFadeIn } from '@/hooks/useGsapFadeIn';
+import { getProducts } from '@/actions/woocommerce/products';
 
-interface CollectionCarouselProps {
-  products: Product[];
+interface Category {
+  id: number;
+  name: string;
+  slug: string;
 }
 
-export const CollectionCarousel = ({ products }: CollectionCarouselProps) => {
+interface CollectionCarouselProps {
+  initialProducts: Product[];
+  categories: Category[];
+}
+
+export const CollectionCarousel = ({
+  initialProducts,
+  categories,
+}: CollectionCarouselProps) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useGsapFadeIn({ delay: 0.3, y: 30 });
 
-  const scroll = (direction: 'left' | 'right') => {
-    if (scrollContainerRef.current) {
-      const scrollAmount = scrollContainerRef.current.offsetWidth / 2;
-      const newScrollLeft =
-        direction === 'left'
-          ? scrollContainerRef.current.scrollLeft - scrollAmount
-          : scrollContainerRef.current.scrollLeft + scrollAmount;
+  const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
+  const [products, setProducts] = useState<Product[]>(initialProducts);
+  const [isLoading, setIsLoading] = useState(false);
 
-      scrollContainerRef.current.scrollTo({
-        left: newScrollLeft,
-        behavior: 'smooth',
-      });
+  const fetchProductsByCategory = async (categoryId: number) => {
+    setIsLoading(true);
+    try {
+      const product_data = await getProducts(
+        '',
+        categoryId.toString(),
+        '',
+        1,
+        6,
+      );
+      setProducts(product_data.products);
+
+      // Reset scroll position
+      if (scrollContainerRef.current) {
+        scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+      }
+    } catch (error) {
+      console.error('Failed to fetch products for category:', error);
+    } finally {
+      setIsLoading(false);
     }
+  };
+
+  const navigateCategory = (direction: 'left' | 'right') => {
+    if (categories.length === 0) return;
+
+    let newIndex = currentCategoryIndex;
+    if (direction === 'left') {
+      newIndex =
+        currentCategoryIndex === 0
+          ? categories.length - 1
+          : currentCategoryIndex - 1;
+    } else {
+      newIndex =
+        currentCategoryIndex === categories.length - 1
+          ? 0
+          : currentCategoryIndex + 1;
+    }
+
+    setCurrentCategoryIndex(newIndex);
+    fetchProductsByCategory(categories[newIndex].id);
   };
 
   return (
@@ -48,18 +91,22 @@ export const CollectionCarousel = ({ products }: CollectionCarouselProps) => {
 
             <div className="mt-5 flex items-center justify-between gap-3 border-[#000000] max-lg:border-b-[1px] max-md:mb-3 max-md:pb-3 md:mt-32">
               <p className="text-4xl font-light text-[#000000] md:text-[96px]">
-                SS22
+                {categories.length > 0
+                  ? categories[currentCategoryIndex].name
+                  : 'All'}
               </p>
               <div className="flex  gap-6">
                 <button
-                  onClick={() => scroll('left')}
-                  className="flex h-6 w-6 items-center justify-center border border-gray-400 transition-colors hover:bg-gray-50"
+                  onClick={() => navigateCategory('left')}
+                  disabled={isLoading || categories.length === 0}
+                  className="flex h-6 w-6 items-center justify-center border border-gray-400 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   <ArrowLeft className="h-4 w-4 text-gray-600" />
                 </button>
                 <button
-                  onClick={() => scroll('right')}
-                  className="flex h-6 w-6 items-center justify-center border border-gray-400 transition-colors hover:bg-gray-50"
+                  onClick={() => navigateCategory('right')}
+                  disabled={isLoading || categories.length === 0}
+                  className="flex h-6 w-6 items-center justify-center border border-gray-400 transition-colors hover:bg-gray-50 disabled:cursor-not-allowed disabled:opacity-50"
                 >
                   <ArrowRight className="h-4 w-4 text-gray-600" />
                 </button>
@@ -72,18 +119,30 @@ export const CollectionCarousel = ({ products }: CollectionCarouselProps) => {
             className="scrollbar-hide flex overflow-x-auto max-md:mx-4"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
-            {products.map((product, index) => (
-              <div
-                key={product.id}
-                className={`group w-full flex-shrink-0 md:w-1/2  ${
-                  index < products.length - 1
-                    ? 'xl:border-r xl:border-[#212529]'
-                    : ''
-                }`}
-              >
-                <ProductCard product={product} index={index} />
+            {isLoading ? (
+              <div className="flex w-full items-center justify-center p-20">
+                <p className="text-lg text-gray-500">Loading products...</p>
               </div>
-            ))}
+            ) : products.length > 0 ? (
+              products.map((product, index) => (
+                <div
+                  key={product.id}
+                  className={`group w-full flex-shrink-0 md:w-1/2  ${
+                    index < products.length - 1
+                      ? 'xl:border-r xl:border-[#212529]'
+                      : ''
+                  }`}
+                >
+                  <ProductCard product={product} index={index} />
+                </div>
+              ))
+            ) : (
+              <div className="flex w-full items-center justify-center p-20">
+                <p className="text-lg text-gray-500">
+                  No products found in this category
+                </p>
+              </div>
+            )}
           </div>
         </div>
       </div>

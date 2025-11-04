@@ -6,6 +6,7 @@ import { useRouter } from 'next/navigation';
 import { ProductCard } from '@/components/archive';
 import { useGsapFadeInChildren } from '@/hooks/useGsapFadeIn';
 import DOMPurify from 'isomorphic-dompurify';
+import { ROUTES } from '@/utils/routes';
 import { useState } from 'react';
 import useCartStore from '@/hooks/zustand/useCartStore';
 import { formatCurrency } from '@/utils/formatCurrency';
@@ -282,14 +283,12 @@ export function ProductDetails({
                   : ''
               }`}
             >
-              <div>
-                <ProductCard product={relatedProduct} index={index} />
-              </div>
+              <ProductCard product={relatedProduct} index={index} />
             </div>
           ))}
         </div>
         <div className="mt-10 flex w-full items-center justify-center py-10">
-          <Link href="/dev/archive/search">
+          <Link href={ROUTES.LISA_ARCHIVE_SEARCH}>
             <button className="whitespace-nowrap border border-black px-6 py-2 text-sm  transition-all duration-300 hover:bg-black hover:text-white md:w-[219px] md:text-base">
               DISCOVER MORE
             </button>

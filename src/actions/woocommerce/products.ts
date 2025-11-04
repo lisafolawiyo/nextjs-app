@@ -4,11 +4,9 @@ import { generateOAuthSignature } from './woocommerce';
 
 const API_URL = process.env.PROJECT_URL + 'wp-json/wc/v3';
 
-const api = axios.create({
-  baseURL: API_URL,
-});
+const api = axios.create({ baseURL: API_URL });
 
-// ✅ Get all Products from WooCommerce Store
+// Get all Products from WooCommerce Store
 export const getProducts = async (
   search: string,
   category: string,
@@ -70,7 +68,7 @@ export const getSingleProductData = async (slug: string) => {
   }
 };
 
-// ✅ Get Related Products from WooCommerce Store
+// Get Related Products from WooCommerce Store
 export const getRelatedProducts = async (
   include: number[],
   page = 1,
@@ -135,6 +133,35 @@ export const getProductVariations = async (
     };
   } catch (error) {
     console.error('Failed to fetch variations:', error);
+    throw error;
+  }
+};
+
+// Get all Product Categories from WooCommerce Store
+export const getProductCategories = async (page = 1, per_page = 100) => {
+  try {
+    const endpoint = '/products/categories';
+    const url = `${API_URL}${endpoint}`;
+
+    const oauthParams = generateOAuthSignature(url, 'GET', {
+      page,
+      per_page,
+    });
+
+    const response = await api.get(endpoint, {
+      params: {
+        ...oauthParams,
+        page,
+        per_page,
+      },
+    });
+
+    return {
+      categories: response.data,
+      total_pages: parseInt(response.headers['x-wp-totalpages'], 10) || 1,
+    };
+  } catch (error) {
+    console.error('Failed to fetch product categories:', error);
     throw error;
   }
 };

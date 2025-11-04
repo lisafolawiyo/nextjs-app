@@ -1,9 +1,15 @@
 import { Hero, CollectionCarousel, SampleProducts } from '@/components/archive';
-import { getProducts } from '@/actions/woocommerce/products';
+import {
+  getProducts,
+  getProductCategories,
+} from '@/actions/woocommerce/products';
 
 export default async function page() {
   const product_data = await getProducts('', '', '', 1, 6);
   const products = product_data.products;
+
+  const cateogries = await getProductCategories();
+  console.log('cateogries: ', cateogries);
 
   return (
     <>

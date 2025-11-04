@@ -1,14 +1,13 @@
 'use client';
 
+import React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
-import React from 'react';
-
 import { ProductCard } from '@/components/archive';
 import { useGsapFadeInChildren } from '@/hooks/useGsapFadeIn';
-import { products } from '@/utils/productsData';
+import { ROUTES } from '@/utils/routes';
 
-export function AboutPage() {
+export function AboutPage({ products }: { products: UnknownObject }) {
   const contentRef = useGsapFadeInChildren({ delay: 0.2, stagger: 0.2 });
 
   return (
@@ -18,7 +17,7 @@ export function AboutPage() {
         className="mt-16 flex items-center justify-center pb-4 md:mt-32 lg:bg-[#2B3135]"
       >
         <div className="pt-2 md:px-8">
-          <div className="grid grid-cols-1  gap-0 pt-2 lg:grid-cols-[25%_1fr]">
+          <div className="grid grid-cols-1 gap-0 pt-2 lg:grid-cols-[25%_1fr]">
             <div className="flex max-md:pt-10 md:items-center md:py-16 lg:justify-center lg:bg-[#2B3135] lg:py-10">
               <div className="lg:rotate-180 lg:[writing-mode:vertical-lr]">
                 <span className="text-[36px] font-light uppercase text-black max-lg:px-6 sm:text-[48px] md:text-[64px] lg:text-[80px] lg:text-white xl:text-[96px]">
@@ -27,7 +26,7 @@ export function AboutPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 gap-3 max-md:px-4  lg:grid-cols-2">
+            <div className="grid grid-cols-1 gap-3 max-md:px-4 lg:grid-cols-2">
               <div className="relative flex flex-col items-center border-[4px] bg-[#ECECEC] px-4 py-12 max-lg:mt-10 sm:px-6 sm:py-16 lg:h-[900px] lg:border-[#212529] lg:px-10 2xl:px-14">
                 <div className="flex h-full w-full flex-col justify-between space-y-6 text-center sm:space-y-8">
                   <h1 className="space-y-0">
@@ -87,7 +86,7 @@ export function AboutPage() {
       </div>
       <div className="mt-10 px-4">
         <div className="md:border-t-1 md:*:border-b-1 md:*:border-[#212529] lg:*:border-r-1 [&>:first-child:border-l-1 mx-auto mt-10 mt-10 grid  grid-cols-1 gap-0 border-black md:border-l-[1px] lg:grid-cols-3 lg:gap-0">
-          {products.slice(0, 3).map((product, index) => (
+          {products.map((product: UnknownObject, index: number) => (
             <div
               key={product.id}
               className={`group  ${
@@ -96,14 +95,12 @@ export function AboutPage() {
                   : ''
               }`}
             >
-              <div className=" ">
-                <ProductCard product={product} index={index} />
-              </div>
+              <ProductCard product={product} index={index} />
             </div>
           ))}
         </div>
         <div className="mt-8 flex w-full items-center justify-center py-8 sm:mt-10 sm:py-10">
-          <Link href="/dev/archive/search">
+          <Link href={ROUTES.LISA_ARCHIVE_SEARCH}>
             <button className="whitespace-nowrap border border-black px-4 py-2 text-xs transition-all duration-300 hover:bg-black hover:text-white sm:px-6 sm:text-sm md:w-[219px] md:text-base">
               DISCOVER MORE
             </button>

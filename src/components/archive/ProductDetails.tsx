@@ -171,7 +171,7 @@ function FashionItemCard({
       <div className="mx-auto border-blue-500">
         <button
           onClick={onSizeGuideClick}
-          className="  cursor-pointer underline transition-colors hover:text-gray-600 lg:hidden"
+          className="mb-8 cursor-pointer underline transition-colors hover:text-gray-600 lg:hidden"
         >
           Click here to see size guide
         </button>
@@ -181,7 +181,7 @@ function FashionItemCard({
           </h1>
           <button
             onClick={onSizeGuideClick}
-            className="hidden  cursor-pointer underline transition-colors hover:text-gray-600 lg:block"
+            className="hidden cursor-pointer underline transition-colors hover:text-gray-600 lg:block"
           >
             Click here to see size guide
           </button>

@@ -1,6 +1,11 @@
 import Link from 'next/link';
 
-import { ArrowRight } from '@/components/Icons';
+import {
+  ArrowRight,
+  Instagram,
+  InstagramBlack,
+  Youtube,
+} from '@/components/Icons';
 import { ROUTES } from '@/utils/routes';
 
 export function Footer() {
@@ -46,9 +51,27 @@ export function Footer() {
               </li>
             ))}
           </ul>
+
+          <div className="flex items-center justify-center gap-3 border-t-[0.5px] border-[#21252949] pt-6">
+            <a
+              href="https://www.instagram.com/lisafolawiyo_studio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-opacity hover:opacity-70"
+            >
+              <Instagram className="invert" />
+            </a>
+            <a
+              href="https://youtube.com/@lisafolawiyostudio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-opacity hover:opacity-70"
+            >
+              <Youtube className="size-10 invert" />
+            </a>
+          </div>
         </div>
 
-        {/* Desktop view - horizontal links */}
         <div className="mb-4 hidden w-full items-start justify-between md:flex">
           <div className="flex w-full justify-between text-base text-[#212529] md:text-[24px]">
             {footerLinks.map((link) => (
@@ -63,15 +86,26 @@ export function Footer() {
           </div>
         </div>
 
-        {/* Bottom section with brand and privacy */}
         <div className="items-center justify-between border-t border-[#000000] pt-4 text-base max-sm:hidden md:text-[24px] lg:flex">
           <p className="text-muted-foreground">@LISAFOLAWIYO</p>
-          <a
-            href="#"
-            className="text-muted-foreground hover:text-foreground transition-colors"
-          >
-            Privacy Policy
-          </a>
+          <div className="flex items-center gap-3">
+            <a
+              href="https://www.instagram.com/lisafolawiyo_studio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-opacity hover:opacity-70"
+            >
+              <InstagramBlack className="h-10 w-10" />
+            </a>
+            <a
+              href="https://youtube.com/@lisafolawiyostudio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-opacity hover:opacity-70"
+            >
+              <Youtube className="h-10 w-10" />
+            </a>
+          </div>
         </div>
       </div>
     </footer>

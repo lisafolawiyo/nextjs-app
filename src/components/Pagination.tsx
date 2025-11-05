@@ -24,12 +24,12 @@ export default function Pagination({
   if (totalPages <= 1) return null;
 
   return (
-    <div className="pagination-container">
-      <div className="shop-pagination">
+    <div className="mt-12 flex justify-center">
+      <div className="flex items-center gap-3">
         <button
           onClick={() => createPageUrl(currentPage - 1)}
           disabled={currentPage <= 1}
-          className="prev-btn"
+          className="border border-[#212529] bg-white px-6 py-2 text-sm text-[#212529] transition-all hover:bg-[#212529] hover:text-white disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-white disabled:hover:text-[#212529] md:text-base"
         >
           Prev
         </button>
@@ -38,7 +38,11 @@ export default function Pagination({
           <button
             key={page}
             onClick={() => createPageUrl(page)}
-            className={`pagination-button ${page === currentPage && 'current'}`}
+            className={`border px-4 py-2 text-sm transition-all md:text-base ${
+              page === currentPage
+                ? 'border-[#212529] bg-[#212529] text-white'
+                : 'border-[#212529] bg-white text-[#212529] hover:bg-[#212529] hover:text-white'
+            }`}
           >
             {page}
           </button>
@@ -47,7 +51,7 @@ export default function Pagination({
         <button
           onClick={() => createPageUrl(currentPage + 1)}
           disabled={currentPage >= totalPages}
-          className="next-btn"
+          className="border border-[#212529] bg-white px-6 py-2 text-sm text-[#212529] transition-all hover:bg-[#212529] hover:text-white disabled:cursor-not-allowed disabled:opacity-40 disabled:hover:bg-white disabled:hover:text-[#212529] md:text-base"
         >
           Next
         </button>

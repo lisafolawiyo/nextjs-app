@@ -2,11 +2,9 @@ import Link from 'next/link';
 
 import {
   ArrowRight,
-  Facebook,
-  FacebookWhite,
   Instagram,
-  Tiktok,
-  TwitterX,
+  InstagramBlack,
+  Youtube,
 } from '@/components/Icons';
 import { ROUTES } from '@/utils/routes';
 
@@ -55,17 +53,21 @@ export function Footer() {
           </ul>
 
           <div className="flex items-center justify-center gap-3 border-t-[0.5px] border-[#21252949] pt-6">
-            <a href="#" className="transition-opacity hover:opacity-70">
-              <Facebook className="invert" />
-            </a>
-            <a href="#" className="transition-opacity hover:opacity-70">
-              <TwitterX className="invert" />
-            </a>
-            <a href="#" className="transition-opacity hover:opacity-70">
-              <Tiktok className="invert" />
-            </a>
-            <a href="#" className="transition-opacity hover:opacity-70">
+            <a
+              href="https://www.instagram.com/lisafolawiyo_studio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-opacity hover:opacity-70"
+            >
               <Instagram className="invert" />
+            </a>
+            <a
+              href="https://youtube.com/@lisafolawiyostudio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-opacity hover:opacity-70"
+            >
+              <Youtube className="size-10 invert" />
             </a>
           </div>
         </div>
@@ -86,18 +88,22 @@ export function Footer() {
 
         <div className="items-center justify-between border-t border-[#000000] pt-4 text-base max-sm:hidden md:text-[24px] lg:flex">
           <p className="text-muted-foreground">@LISAFOLAWIYO</p>
-          <div className="relative z-[20000] flex items-center gap-3 bg-yellow-100">
-            <a href="#" className="transition-opacity hover:opacity-70">
-              <FacebookWhite className="text-black " />
+          <div className="flex items-center gap-3">
+            <a
+              href="https://www.instagram.com/lisafolawiyo_studio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-opacity hover:opacity-70"
+            >
+              <InstagramBlack className="h-10 w-10" />
             </a>
-            <a href="#">
-              <TwitterX className="h-10 w-10" />
-            </a>
-            <a href="#" className="transition-opacity hover:opacity-70">
-              <Tiktok className="h-10 w-10" />
-            </a>
-            <a href="#" className="transition-opacity hover:opacity-70">
-              <Instagram className="h-10 w-10" />
+            <a
+              href="https://youtube.com/@lisafolawiyostudio"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="transition-opacity hover:opacity-70"
+            >
+              <Youtube className="h-10 w-10" />
             </a>
           </div>
         </div>

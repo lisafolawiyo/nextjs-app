@@ -159,33 +159,91 @@ export const TwitterX = (props: SVGProps<SVGSVGElement>) => (
   </svg>
 );
 
-export const FacebookWhite = (props: SVGProps<SVGSVGElement>) => (
-  <svg
-    width={40}
-    height={40}
-    viewBox="0 0 40 40"
-    fill="currentColor"
-    xmlns="http://www.w3.org/2000/svg"
-    xmlnsXlink="http://www.w3.org/1999/xlink"
-    {...props}
-  >
-    <rect width={40} height={40} fill="url(#pattern0_668_820)" />
-    <defs>
-      <pattern
-        id="pattern0_668_820"
-        patternContentUnits="objectBoundingBox"
-        width={1}
-        height={1}
-      >
-        <use xlinkHref="#image0_668_820" transform="scale(0.0111111)" />
-      </pattern>
-      <image
-        id="image0_668_820"
-        width={90}
-        height={90}
-        preserveAspectRatio="none"
-        xlinkHref="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFoAAABaCAYAAAA4qEECAAAACXBIWXMAAAsTAAALEwEAmpwYAAACX0lEQVR4nO3cvWoWURCH8amMBES0jZWNgYCInXdgZ+EtWBqtxEuwttZKEG/BTrHwo1Ir0d5WkQS08gkrC28CB/asZ3dmyPn/+jAzDy+bD8iaiYiIiIiIiIiIAWeB+8AH4JDT6xB4D9wDtrwjXwI+059Pw+2en+QeIx+Pvf4ne3xc9G7fI/TwTO7dO4/QB9FXJnDgEVoAhXai0E4U2olCO1FoJwq98QN4BtwBrgE7wPZ4wwXgInAZ2ANuAi+YQaH5F/gBcG7mXcPXVFuv8GahzL4Cu/95l0JX+gacb7hLoSv8Aa433qXQFR4vcJdCT/gLXFngLoWe8GahuxR6wqOF7lLoCbcq974BvBx/zm7WY+i9ip2H3wx/Lzm0x9A7FTs/X3poj6G3K3b+svTQ7kJb3c4/I+b2GHpxCl0QNbcJyVjQzgpdEDW3yRpLhx1z8q6nqXbDkTkCXqfabb2sAcecvOs7M3gs5MacDL/0jH9uzbPbelkDjtncdJWZPJZyY06A2+l2Wydp0DGbmx4yk8dSbswJ8CTdbuskDTpmc9MrZvJYKhUL2lmhC6LmNiEZC9pZoQui5jYhGQvaWaELouY2IRkL2lmhC6LmNiEZC9pZoQui5jYhGQvaWaELouY2IRkL2lmhC6LmNiEZC9pZoQui5jYhGQvaWaELouY2IRkL2lmhC6LmNiEZO8WhU72OzWJC/+ruBYMWE9rlBYPDW2d7D33XI/TW+CLUXkN/BM6sHvrYa41TxLa6fZeMPPkPpGt8sveH51XkN0ir27XFcNvb4XHh9kkWEREREREREbHcjgD5oeFMZ1mogQAAAABJRU5ErkJggg=="
-      />
-    </defs>
-  </svg>
-);
+export function FacebookBlack(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={20}
+      height={20}
+      viewBox="0 0 20 20"
+      {...props}
+    >
+      <path
+        fill="#000"
+        d="M17 1H3c-1.1 0-2 .9-2 2v14c0 1.101.9 2 2 2h7v-7H8V9.525h2v-2.05c0-2.164 1.212-3.684 3.766-3.684l1.803.002v2.605h-1.197c-.994 0-1.372.746-1.372 1.438v1.69h2.568L15 12h-2v7h4c1.1 0 2-.899 2-2V3c0-1.1-.9-2-2-2"
+      ></path>
+    </svg>
+  );
+}
+
+export function InstagramBlack(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <path
+        fill="#000"
+        d="M13.028 2c1.125.003 1.696.009 2.189.023l.194.007c.224.008.445.018.712.03c1.064.05 1.79.218 2.427.465c.66.254 1.216.598 1.772 1.153a4.9 4.9 0 0 1 1.153 1.772c.247.637.415 1.363.465 2.428c.012.266.022.487.03.712l.006.194c.015.492.021 1.063.023 2.188l.001.746v1.31a79 79 0 0 1-.023 2.188l-.006.194c-.008.225-.018.446-.03.712c-.05 1.065-.22 1.79-.466 2.428a4.9 4.9 0 0 1-1.153 1.772a4.9 4.9 0 0 1-1.772 1.153c-.637.247-1.363.415-2.427.465l-.712.03l-.194.006c-.493.014-1.064.021-2.189.023l-.746.001h-1.309a78 78 0 0 1-2.189-.023l-.194-.006a63 63 0 0 1-.712-.031c-1.064-.05-1.79-.218-2.428-.465a4.9 4.9 0 0 1-1.771-1.153a4.9 4.9 0 0 1-1.154-1.772c-.247-.637-.415-1.363-.465-2.428l-.03-.712l-.005-.194A79 79 0 0 1 2 13.028v-2.056a79 79 0 0 1 .022-2.188l.007-.194c.008-.225.018-.446.03-.712c.05-1.065.218-1.79.465-2.428A4.9 4.9 0 0 1 3.68 3.678a4.9 4.9 0 0 1 1.77-1.153c.638-.247 1.363-.415 2.428-.465c.266-.012.488-.022.712-.03l.194-.006a79 79 0 0 1 2.188-.023zM12 7a5 5 0 1 0 0 10a5 5 0 0 0 0-10m0 2a3 3 0 1 1 .001 6a3 3 0 0 1 0-6m5.25-3.5a1.25 1.25 0 0 0 0 2.5a1.25 1.25 0 0 0 0-2.5"
+      ></path>
+    </svg>
+  );
+}
+
+export function TwitterXBlack(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <path
+        fill="#000"
+        fillRule="evenodd"
+        d="M5 1a4 4 0 0 0-4 4v14a4 4 0 0 0 4 4h14a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4zm-.334 3.5a.75.75 0 0 0-.338 1.154l5.614 7.45l-5.915 6.345l-.044.051H6.03l4.83-5.179l3.712 4.928a.75.75 0 0 0 .337.251h4.422a.75.75 0 0 0 .336-1.154l-5.614-7.45L20.017 4.5h-2.05l-4.83 5.18l-3.714-4.928a.75.75 0 0 0-.337-.252zm10.88 13.548L6.431 5.952H8.45l9.114 12.095z"
+        clipRule="evenodd"
+      ></path>
+    </svg>
+  );
+}
+
+export function TiktokBlack(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={14}
+      height={14}
+      viewBox="0 0 14 14"
+      {...props}
+    >
+      <path
+        fill="#000"
+        fillRule="evenodd"
+        d="M3.657.475C4.731.355 5.852.25 7 .25s2.269.105 3.343.225a3.63 3.63 0 0 1 3.194 3.203c.115 1.069.213 2.182.213 3.322s-.098 2.253-.213 3.322a3.63 3.63 0 0 1-3.194 3.203c-1.074.12-2.195.225-3.343.225s-2.269-.105-3.343-.225a3.63 3.63 0 0 1-3.194-3.203C.348 9.253.25 8.14.25 7s.098-2.253.213-3.322A3.63 3.63 0 0 1 3.657.475m4.675 2.407a.625.625 0 0 0-1.234.141V8.8a1.552 1.552 0 1 1-1.552-1.552a.625.625 0 1 0 0-1.25A2.802 2.802 0 1 0 8.348 8.8V5.31c.6.51 1.374.79 2.282.79a.625.625 0 1 0 0-1.25c-.66 0-1.15-.204-1.511-.525c-.368-.328-.641-.816-.787-1.443"
+        clipRule="evenodd"
+      ></path>
+    </svg>
+  );
+}
+
+export function Youtube(props: SVGProps<SVGSVGElement>) {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width={24}
+      height={24}
+      viewBox="0 0 24 24"
+      {...props}
+    >
+      <path
+        fill="#000"
+        d="M15.073 2.5c1.824 0 3.293 0 4.45.155c1.2.162 2.21.507 3.012 1.31c.803.802 1.148 1.813 1.31 3.013C24 8.134 24 9.603 24 11.427v1.146c0 1.824 0 3.293-.155 4.45c-.162 1.2-.507 2.21-1.31 3.012c-.802.803-1.812 1.148-3.013 1.31c-1.156.155-2.625.155-4.449.155H8.927c-1.824 0-3.293 0-4.45-.155c-1.2-.162-2.21-.507-3.013-1.31c-.802-.802-1.147-1.812-1.309-3.013C0 15.866 0 14.397 0 12.573v-1.146c0-1.824 0-3.293.155-4.45c.162-1.2.507-2.21 1.31-3.013c.802-.802 1.813-1.147 3.013-1.309C5.634 2.5 7.103 2.5 8.927 2.5zm1.426 9.501L9.3 7.832v8.338z"
+      ></path>
+    </svg>
+  );
+}

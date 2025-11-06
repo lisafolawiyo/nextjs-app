@@ -2,3 +2,8 @@
 type UnknownObject = Record<string, any>;
 type VoidFunction = () => void;
 type EmptyObject = Record<PropertyKey, never>;
+
+type ProductOption = {
+  name: string;
+  value: string;
+};

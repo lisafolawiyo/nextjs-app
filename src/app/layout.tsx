@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import './styles/globals.scss';
 import { GoogleAnalytics } from '@next/third-parties/google';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
+import { Toaster } from 'react-hot-toast';
 
 const centuryGothic = localFont({
   src: [
@@ -44,7 +45,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${centuryGothic.className}  antialiased`}>
+      <Toaster position="top-right" reverseOrder={false} />
+
+      <body className={`${centuryGothic.className} antialiased`}>
         <NuqsAdapter>{children}</NuqsAdapter>
       </body>
       <GoogleAnalytics gaId="G-M03YSEG0D9" />

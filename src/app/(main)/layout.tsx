@@ -6,7 +6,6 @@ import '../styles/checkout.scss';
 import '../styles/confirmation.scss';
 import '../styles/page.scss';
 import '../styles/editorials.scss';
-import { Toaster } from 'react-hot-toast';
 import NavbarTwo from '@/components/NavbarTwo';
 // Only needed if you want to prevent auto-injecting CSS
 import { config } from '@fortawesome/fontawesome-svg-core';
@@ -28,7 +27,6 @@ export default function MainLayout({
 }) {
   return (
     <>
-      <Toaster position="top-right" reverseOrder={false} />
       <NavbarTwo />
       <div className="w-full bg-white">{children}</div>
       <FooterTwo />

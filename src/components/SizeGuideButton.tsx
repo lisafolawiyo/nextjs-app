@@ -12,15 +12,6 @@ function SizeGuideButton() {
     setIsOpen((prev) => !prev);
   };
 
-  //       function closeSizeGuide() {
-  //     const sizeGuide = document.getElementById("close-size-id");
-  //     sizeGuide.style.transform = 'translateY(-101%)';
-  //   }
-  //   function openSizeGuide() {
-  //     const sizeGuide = document.getElementById("close-size-id");
-  //     sizeGuide.style.transform = 'translateY(0%)';
-  //   }
-
   return (
     <>
       <section

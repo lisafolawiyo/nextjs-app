@@ -7,138 +7,218 @@ import { ProductCard } from '@/components/archive';
 import { useGsapFadeInChildren } from '@/hooks/useGsapFadeIn';
 import DOMPurify from 'isomorphic-dompurify';
 import { ROUTES } from '@/utils/routes';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import useCartStore from '@/hooks/zustand/useCartStore';
 import { formatCurrency } from '@/utils/formatCurrency';
 import { ImageGalleryModal } from './ImageGalleryModal';
 import { SizeGuideModal } from './SizeGuideModal';
-import toast from 'react-hot-toast';
 import { stripOuterTags } from '@/utils/util';
+import { cn } from '@/lib/utils';
 
-function ProductOptions({ product }: { product: UnknownObject }) {
-  const [selectedSize, setSelectedSize] = useState('');
-  const [selectedItem, setSelectedItem] = useState('');
+function ProductOptions({
+  product,
+  productVariations,
+}: {
+  product: UnknownObject;
+  productVariations: UnknownObject[];
+}) {
+  const stockNumber = 4;
+
+  const [selectedOptions, setSelectedOptions] = useState<UnknownObject[]>([]);
+
+  const [price, setPrice] = useState<string>('0');
+
   const [quantity, setQuantity] = useState(1);
   const addToCart = useCartStore((state) => state.addToCart);
 
-  const sizes = ['S', 'M', 'L', 'XL'];
-  const items = ['Full set', 'Jersey Non Embellished', 'Embellished', 'Short'];
+  // Set default selections on first load
+  useEffect(() => {
+    const defaultSelections = product?.attributes
+      .filter((attr: UnknownObject) => attr.options.length > 0)
+      .map((attr: UnknownObject) => ({
+        name: attr.name,
+        value: attr.options[0],
+      }));
+    setSelectedOptions(defaultSelections);
+  }, [product?.attributes]);
 
-  const handleAddToCart = () => {
-    if (!selectedSize || !selectedItem) {
-      toast.error('Please select size and item');
-      return;
-    }
+  // Whenever selectedOptions change → check for matching variation
+  useEffect(() => {
+    if (selectedOptions.length === 0) return;
 
-    addToCart({
-      id: product.id,
-      name: product.name,
-      desc: stripOuterTags(product.short_description || ''),
-      price: product.price,
-      stock_status: 'instock',
-      image: product.images?.[0]?.src,
-      product_options: [
-        { name: 'Size', value: selectedSize },
-        { name: 'Item', value: selectedItem },
-      ],
-      quantity: quantity,
+    const matchedVariation = productVariations.find((variation) => {
+      if (!variation.attributes) return false;
+
+      return variation.attributes.every((attr: UnknownObject) => {
+        const selected = selectedOptions.find(
+          (opt) =>
+            opt.name.toLowerCase() === attr.name.toLowerCase() &&
+            opt.value.toLowerCase() === attr.option.toLowerCase(),
+        );
+        return !!selected;
+      });
     });
 
-    toast.success('Added to cart successfully!');
-    setSelectedSize('');
-    setSelectedItem('');
+    if (matchedVariation) {
+      setPrice(matchedVariation.price);
+    }
+  }, [selectedOptions, productVariations, setPrice]);
+
+  const handleVariations = (productOption: UnknownObject) => {
+    setSelectedOptions((prevOptions) => {
+      const filtered = prevOptions.filter(
+        (option: UnknownObject) => option.name !== productOption.name,
+      );
+      return [...filtered, productOption];
+    });
+  };
+
+  const handleAddToCart = () => {
+    addToCart({
+      id: product?.id,
+      name: product?.name,
+      desc: stripOuterTags(product?.short_description || ''),
+      price: product?.attributes?.length
+        ? Number(price)
+        : Number(product?.price),
+      stock_status: product?.stock_status,
+      image: product?.images?.[0]?.src,
+      product_options: selectedOptions as ProductOption[],
+      quantity,
+    });
+
     setQuantity(1);
   };
 
   const handleWhatsAppOrder = () => {
-    const message = `Hi, I'd like to order:\n${product.name}\nSize: ${selectedSize}\nItem: ${selectedItem}\nQuantity: ${quantity}`;
-    const whatsappUrl = `https://wa.me/?text=${encodeURIComponent(message)}`;
+    const message = `Hi, I'd like to order:\n${product?.name}\n${
+      product?.attributes?.length > 0
+        ? selectedOptions?.map((option) => {
+            return `\n${option?.name}: ${option?.value}`;
+          })
+        : ''
+    }\nQuantity: ${quantity}`;
+
+    const whatsappUrl = `https://wa.me/2348033085416?text=${encodeURIComponent(
+      message,
+    )}`;
+
     window.open(whatsappUrl, '_blank');
   };
 
   return (
     <div className="space-y-6 border-t border-[#212529] p-4">
       <div className="border-b border-[#212529] pb-4">
-        <p className="text-2xl font-light text-black md:text-[40px]">
-          {formatCurrency(product.price)}
-        </p>
+        {product?.on_sale === false ? (
+          <p className="text-2xl font-light text-black md:text-[40px]">
+            {product?.attributes?.length
+              ? formatCurrency(Number(price))
+              : formatCurrency(Number(product?.price))}
+          </p>
+        ) : (
+          <div className="flex items-center gap-4">
+            <p className="text-xl font-light text-gray-500 line-through md:text-[35px]">
+              {formatCurrency(product?.regular_price)}
+            </p>
+            <p className="text-2xl font-light text-black md:text-[40px]">
+              {formatCurrency(product?.price)}
+            </p>
+          </div>
+        )}
       </div>
 
-      <div>
-        <h3 className="mb-3 text-base font-light text-[#6c757d] md:text-[20px]">
-          Choose a size
-        </h3>
-        <div className="flex flex-wrap gap-2">
-          {sizes.map((size) => (
-            <button
-              key={size}
-              onClick={() => setSelectedSize(size)}
-              className={`min-w-[60px] border-[1px] px-6 py-2 text-sm transition-all md:text-base ${
-                selectedSize === size
-                  ? 'border-[#212529] bg-[#212529] text-white'
-                  : 'border-[#6c757d] bg-white text-[#6c757d] hover:border-[#212529]'
-              }`}
-            >
-              {size}
-            </button>
-          ))}
-        </div>
-      </div>
+      {product?.attributes?.length > 0 && (
+        <>
+          {product?.attributes.map((attribute: UnknownObject) => (
+            <div key={attribute.slug}>
+              <h3 className="mb-3 text-base font-light text-[#6c757d] md:text-[20px]">
+                Choose a {attribute.name}
+              </h3>
+              <div className="flex flex-wrap gap-2">
+                {attribute.options.map((option: string) => {
+                  const isOptionSelected = selectedOptions.some(
+                    (selected) =>
+                      selected.name === attribute.name &&
+                      selected.value === option,
+                  );
 
-      <div>
-        <h3 className="mb-3 text-base font-light text-[#6c757d] md:text-[20px]">
-          Choose an item
-        </h3>
-        <div className="flex flex-wrap gap-2">
-          {items.map((item) => (
-            <button
-              key={item}
-              onClick={() => setSelectedItem(item)}
-              className={`border px-4 py-2 text-sm transition-all md:text-base ${
-                selectedItem === item
-                  ? 'border-[#212529] bg-[#212529] text-white'
-                  : 'border-[#6c757d] bg-white text-[#6c757d] hover:border-[#212529]'
-              }`}
-            >
-              {item}
-            </button>
+                  return (
+                    <button
+                      key={option}
+                      onClick={() =>
+                        handleVariations({
+                          name: attribute.name,
+                          value: option,
+                        })
+                      }
+                      className={`min-w-[60px] border-[1px] px-6 py-2 text-sm transition-all md:text-base ${
+                        isOptionSelected
+                          ? 'border-[#212529] bg-[#212529] text-white'
+                          : 'border-[#6c757d] bg-white text-[#6c757d] hover:border-[#212529]'
+                      }`}
+                    >
+                      {option}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
           ))}
-        </div>
-      </div>
+        </>
+      )}
 
       <div>
         <h3 className="mb-3 text-base font-light text-[#6c757d] md:text-[20px]">
           Choose a Quantity
         </h3>
-        <div className="flex items-center gap-4">
-          <div className="flex items-center bg-gray-100">
+        <div className="space-y-2">
+          <div className="flex items-center gap-4">
+            <div className="flex items-center bg-gray-100">
+              <button
+                disabled={quantity === 1}
+                onClick={() => setQuantity(Math.max(1, quantity - 1))}
+                className={cn(
+                  'px-4 py-2 transition-colors',
+                  quantity === 1
+                    ? 'cursor-not-allowed text-gray-300'
+                    : 'text-[#6c757d] hover:text-black',
+                )}
+              >
+                <Minus className="h-4 w-4" />
+              </button>
+              <span className="min-w-[40px] text-center text-base text-[#6c757d] md:text-[20px]">
+                {quantity}
+              </span>
+              <button
+                disabled={quantity >= stockNumber}
+                onClick={() => setQuantity(quantity + 1)}
+                className={cn(
+                  'px-4 py-2 transition-colors',
+                  quantity >= stockNumber
+                    ? 'cursor-not-allowed text-gray-300'
+                    : 'text-black hover:text-[#6c757d]',
+                )}
+              >
+                <Plus className="h-4 w-4" />
+              </button>
+            </div>
+
             <button
-              onClick={() => setQuantity(Math.max(1, quantity - 1))}
-              className="px-4 py-2 text-[#6c757d] transition-colors hover:text-black"
+              onClick={handleAddToCart}
+              className="border border-[#212529] bg-white px-8 py-2 text-sm text-[#6c757d] transition-all hover:bg-black hover:text-white md:text-base"
             >
-              <Minus className="h-4 w-4" />
-            </button>
-            <span className="min-w-[40px] text-center text-base text-[#6c757d] md:text-[20px]">
-              {quantity}
-            </span>
-            <button
-              onClick={() => setQuantity(quantity + 1)}
-              className="px-4 py-2 text-[#6c757d] transition-colors hover:text-black"
-            >
-              <Plus className="h-4 w-4" />
+              Add To Cart
             </button>
           </div>
-
-          <button
-            onClick={handleAddToCart}
-            className="border border-[#212529] bg-white px-8 py-2 text-sm text-[#6c757d] transition-all hover:bg-black hover:text-white md:text-base"
-          >
-            Add To Cart
-          </button>
+          {quantity >= stockNumber && (
+            <p className="text-sm italic text-[#6c757d]">
+              Only {stockNumber} item{stockNumber > 1 ? 's' : ''} available in
+              stock
+            </p>
+          )}
         </div>
       </div>
 
-      {/* WhatsApp Order Button */}
       <div>
         <button
           onClick={handleWhatsAppOrder}
@@ -159,12 +239,14 @@ function ProductOptions({ product }: { product: UnknownObject }) {
   );
 }
 
-function FashionItemCard({
+function ProductDetailsCard({
   product,
   onSizeGuideClick,
+  productVariations,
 }: {
   product: UnknownObject;
   onSizeGuideClick: () => void;
+  productVariations: UnknownObject[];
 }) {
   return (
     <div className="bg-white ">
@@ -177,7 +259,7 @@ function FashionItemCard({
         </button>
         <div className="flex items-center justify-between border-b-2 border-t-2 border-[#212529] p-4">
           <h1 className="text-[20px] font-normal uppercase text-black md:text-[40px]">
-            {product.name}
+            {product?.name}
           </h1>
           <button
             onClick={onSizeGuideClick}
@@ -194,14 +276,17 @@ function FashionItemCard({
           <div
             className="space-y-3 text-base text-[#212529] md:text-[20px]"
             dangerouslySetInnerHTML={{
-              __html: DOMPurify.sanitize(product.description),
+              __html: DOMPurify.sanitize(product?.description),
             }}
           ></div>
         </div>
 
-        <ProductOptions product={product} />
-        {/* 
-        <div className="flex p-4">
+        <ProductOptions
+          product={product}
+          productVariations={productVariations}
+        />
+
+        {/* <div className="flex p-4">
           <div className="flex-1">
             <div className="mb-1 text-xs font-bold text-black">YEAR</div>
             <div className="text-base text-black md:text-[24px]">2022</div>
@@ -227,9 +312,11 @@ function FashionItemCard({
 export function ProductDetails({
   product,
   relatedProducts,
+  productVariations,
 }: {
   product: UnknownObject;
   relatedProducts: UnknownObject[];
+  productVariations: UnknownObject[];
 }) {
   const contentRef = useGsapFadeInChildren({ delay: 0.2, stagger: 0.2 });
   const router = useRouter();
@@ -254,15 +341,16 @@ export function ProductDetails({
               onImageClick={() => setIsGalleryOpen(true)}
             />
           </div>
-          <FashionItemCard
+          <ProductDetailsCard
             product={product}
+            productVariations={productVariations}
             onSizeGuideClick={() => setIsSizeGuideOpen(true)}
           />
         </div>
       </div>
 
       <ImageGalleryModal
-        images={product.images || []}
+        images={product?.images || []}
         isOpen={isGalleryOpen}
         onClose={() => setIsGalleryOpen(false)}
         initialIndex={0}
@@ -272,30 +360,27 @@ export function ProductDetails({
         isOpen={isSizeGuideOpen}
         onClose={() => setIsSizeGuideOpen(false)}
       />
-
-      <>
-        <div className="md:border-t-1 md:*:border-b-1 md:*:border-[#212529] lg:*:border-r-1 [&>:first-child:border-l-1 mx-auto mt-10 grid  grid-cols-1 gap-0 border-black md:border-l-[1px] lg:grid-cols-3 lg:gap-0">
-          {relatedProducts.map((relatedProduct, index) => (
-            <div
-              key={relatedProduct.id}
-              className={`group  ${
-                index < relatedProduct.length - 1
-                  ? 'border-r md:border-[#212529]'
-                  : ''
-              }`}
-            >
-              <ProductCard product={relatedProduct} index={index} />
-            </div>
-          ))}
-        </div>
-        <div className="mt-10 flex w-full items-center justify-center py-10">
-          <Link href={ROUTES.LISA_ARCHIVE_SEARCH}>
-            <button className="whitespace-nowrap border border-black px-6 py-2 text-sm  transition-all duration-300 hover:bg-black hover:text-white md:w-[219px] md:text-base">
-              DISCOVER MORE
-            </button>
-          </Link>
-        </div>
-      </>
+      <div className="md:border-t-1 md:*:border-b-1 md:*:border-[#212529] lg:*:border-r-1 [&>:first-child:border-l-1 mx-auto mt-10 grid  grid-cols-1 gap-0 border-black md:border-l-[1px] lg:grid-cols-3 lg:gap-0">
+        {relatedProducts.map((relatedProduct, index) => (
+          <div
+            key={relatedProduct?.id}
+            className={`group  ${
+              index < relatedProduct?.length - 1
+                ? 'border-r md:border-[#212529]'
+                : ''
+            }`}
+          >
+            <ProductCard product={relatedProduct} index={index} />
+          </div>
+        ))}
+      </div>
+      <div className="mt-10 flex w-full items-center justify-center py-10">
+        <Link href={ROUTES.LISA_ARCHIVE_SEARCH}>
+          <button className="whitespace-nowrap border border-black px-6 py-2 text-sm  transition-all duration-300 hover:bg-black hover:text-white md:w-[219px] md:text-base">
+            DISCOVER MORE
+          </button>
+        </Link>
+      </div>
     </section>
   );
 }

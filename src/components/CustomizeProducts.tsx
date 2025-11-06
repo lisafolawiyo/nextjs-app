@@ -5,11 +5,6 @@ import Add from './Add';
 import { stripOuterTags } from '@/utils/util';
 import { ProductType, ProductVariation } from '@/types/product';
 
-type ProductOption = {
-  name: string;
-  value: string;
-};
-
 // type Attribute = {
 //   id: number;
 //   name: string;

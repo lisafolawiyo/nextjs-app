@@ -70,11 +70,11 @@ export default async function page({
     productVariations = _productVariations.variations;
   }
 
-  console.log('productVariations: ', productVariations);
   return (
     <ProductDetails
       product={product_data}
       relatedProducts={relatedProducts?.products}
+      productVariations={productVariations}
     />
   );
 }

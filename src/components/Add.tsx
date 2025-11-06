@@ -36,7 +36,7 @@ const Add = ({
   const productName = name.replace(/ /g, '+');
   whatsAppMsg = 'Hi%2C+I%27m+interested+in+your+' + productName;
 
-  // // TEMPORARY
+  // TEMPORARY
   const stockNumber = 4;
 
   const handleQuantity = (type: 'i' | 'd') => {

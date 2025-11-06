@@ -63,15 +63,32 @@ export const ArchiveSection = ({
         <ArchiveFilter />
       </div>
 
-      <div className="sm:border-t-1 sm:*:border-b-1 sm:*:border-[#212529] sm:*:border-r-1 [&>:first-child:border-l-1 mx-auto grid  grid-cols-1 border-black sm:border-l-[1px] lg:grid-cols-3">
-        {products.map((product, index) => (
-          <div key={product?.id} className="group">
-            <ProductCard product={product} index={index} />
+      {products.length > 0 ? (
+        <>
+          <div className="sm:border-t-1 sm:*:border-b-1 sm:*:border-[#212529] sm:*:border-r-1 [&>:first-child:border-l-1 mx-auto grid  grid-cols-1 border-black sm:border-l-[1px] lg:grid-cols-3">
+            {products.map((product, index) => (
+              <div key={product?.id} className="group">
+                <ProductCard product={product} index={index} />
+              </div>
+            ))}
           </div>
-        ))}
-      </div>
 
-      <Pagination currentPage={parseInt(page, 10)} totalPages={totalPages} />
+          <Pagination
+            currentPage={parseInt(page, 10)}
+            totalPages={totalPages}
+          />
+        </>
+      ) : (
+        <div className="mx-auto flex min-h-[400px] w-full flex-col items-center justify-center border border-[#212529] p-12 md:p-20">
+          <p className="mb-2 text-xl font-light text-[#1a1a1a] md:text-2xl">
+            No Results Found
+          </p>
+          <p className="text-center text-sm text-gray-500 md:text-base">
+            We couldn&apos;t find any products matching your search. Try
+            adjusting your filters or search terms.
+          </p>
+        </div>
+      )}
     </div>
   );
 };

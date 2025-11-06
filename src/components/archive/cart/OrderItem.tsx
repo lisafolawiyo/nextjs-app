@@ -51,7 +51,7 @@ export function OrderItem({
           <div className="space-y-4 md:space-y-6">
             <div className="flex items-start justify-between ">
               <div>
-                <h3 className="text-base font-bold text-[#000000] transition-colors duration-500 group-hover:text-gray-300 md:text-[20px]">
+                <h3 className="text-base font-bold capitalize text-[#000000] transition-colors duration-500 group-hover:text-gray-300 md:text-[20px]">
                   {item?.name}
                 </h3>
 

@@ -1,11 +1,13 @@
 'use client';
 
-import { useState } from 'react';
-import { useRouter } from 'next/navigation';
+import { useEffect } from 'react';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { ChevronLeft } from 'lucide-react';
 import { useGsapFadeInChildren } from '@/hooks/useGsapFadeIn';
 import { ProductCard, ArchiveFilter, SearchBar } from '@/components/archive';
 import Pagination from '@/components/Pagination';
+import { useDebounce } from '@/utils/useDebounce';
+import { useQueryState, parseAsString } from 'nuqs';
 
 interface Product {
   id: number;
@@ -28,9 +30,20 @@ export const ArchiveSection = ({
   totalPages,
   page,
 }: ArchiveSectionProps) => {
-  const [searchQuery, setSearchQuery] = useState('');
-  const contentRef = useGsapFadeInChildren({ delay: 0.2, stagger: 0.15 });
   const router = useRouter();
+  const searchParams = useSearchParams();
+
+  const [searchQuery, setSearchQuery] = useQueryState(
+    'search',
+    parseAsString.withDefault(searchParams.get('search') || ''),
+  );
+  const search = useDebounce(searchQuery);
+
+  useEffect(() => {
+    router.refresh();
+  }, [search]);
+
+  const contentRef = useGsapFadeInChildren({ delay: 0.2, stagger: 0.15 });
 
   return (
     <div

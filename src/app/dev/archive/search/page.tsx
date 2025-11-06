@@ -1,28 +1,34 @@
 import React from 'react';
 import { ArchiveSection } from '@/components/archive/archive-section/ArchiveSection';
 import { getProducts } from '@/actions/woocommerce/products';
+import { createSearchParamsCache, parseAsString } from 'nuqs/server';
+import type { SearchParams } from 'nuqs/server';
+
+const searchParamsCache = createSearchParamsCache({
+  page: parseAsString,
+  search: parseAsString,
+  category: parseAsString,
+  tag: parseAsString,
+});
+
+export const dynamic = 'force-dynamic';
 
 export default async function SearchShop({
   searchParams,
 }: {
-  searchParams: Promise<{
-    page?: string;
-    search?: string;
-    category?: string;
-    tag?: string;
-  }>;
+  searchParams: Promise<SearchParams>;
 }) {
   const per_page = 12;
-  const { page = '1' } = await searchParams;
-  const { search = '' } = await searchParams;
-  const { category = '' } = await searchParams;
-  const { tag = '' } = await searchParams;
+
+  const { page, search, category, tag } = await searchParamsCache.parse(
+    searchParams,
+  );
 
   const product_data = await getProducts(
-    search,
-    category,
-    tag,
-    parseInt(page, 10),
+    search ?? '',
+    category ?? '',
+    tag ?? '',
+    parseInt(page ?? '1', 10),
     per_page,
   );
   const products = product_data.products;
@@ -30,7 +36,11 @@ export default async function SearchShop({
 
   return (
     <section className="pt-24 max-md:px-4">
-      <ArchiveSection products={products} totalPages={totalPages} page={page} />
+      <ArchiveSection
+        products={products}
+        totalPages={totalPages}
+        page={page ?? '1'}
+      />
     </section>
   );
 }

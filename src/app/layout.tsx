@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './styles/globals.scss';
 import { GoogleAnalytics } from '@next/third-parties/google';
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
 
 const centuryGothic = localFont({
   src: [
@@ -44,7 +45,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={`${centuryGothic.className}  antialiased`}>
-        {children}
+        <NuqsAdapter>{children}</NuqsAdapter>
       </body>
       <GoogleAnalytics gaId="G-M03YSEG0D9" />
     </html>

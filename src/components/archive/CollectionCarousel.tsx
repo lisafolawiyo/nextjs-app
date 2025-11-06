@@ -165,7 +165,6 @@ export const CollectionCarousel = ({
               ))
             ) : (
               <div className="flex w-full flex-col items-center justify-center p-12 md:p-20">
-                <div className="mb-4 text-6xl opacity-20 md:text-8xl">🛍️</div>
                 <p className="mb-2 text-xl font-light text-[#1a1a1a] md:text-2xl">
                   No Products Available
                 </p>

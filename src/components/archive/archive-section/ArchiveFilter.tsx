@@ -199,15 +199,20 @@ export function ArchiveFilter({
       })),
   );
 
+  const [, setPage] = useQueryState('page');
   const [, setCategory] = useQueryState(
     'category',
     parseAsString.withDefault(searchParams.get('category') || ''),
   );
-
-  console.log('filters: ', filters);
+  const [, setTag] = useQueryState(
+    'tag',
+    parseAsString.withDefault(searchParams.get('tag') || ''),
+  );
 
   useEffect(() => {
     startTransition(async () => {
+      await setPage('1');
+
       if (filters.collection?.length) {
         await setCategory(JSON.parse(filters.collection[0])?.id);
         router.refresh();
@@ -216,8 +221,13 @@ export function ArchiveFilter({
         router.refresh();
       }
 
-      // await setPage(value.toString());
-      // router.refresh();
+      if (filters.tag?.length) {
+        await setTag(JSON.parse(filters.tag[0])?.id);
+        router.refresh();
+      } else {
+        await setTag('');
+        router.refresh();
+      }
     });
   }, [filters]);
 
@@ -233,9 +243,7 @@ export function ArchiveFilter({
 
       {allActiveFilters.length > 0 && (
         <div className="mt-6 flex flex-wrap items-center gap-2">
-          <span className="mr-2 text-sm text-[#212529]/60">
-            Active filters:
-          </span>
+          <span className="mr-2 text-sm text-[#212529]/60">Active Filter:</span>
           {allActiveFilters.map(({ category, value }) => (
             <button
               key={`${category}-${value}`}
@@ -291,9 +299,7 @@ export function ArchiveFilter({
                   key={id}
                   label={name}
                   count={count}
-                  isActive={filters.collection.includes(
-                    JSON.stringify({ id, name }),
-                  )}
+                  isActive={filters.tag.includes(JSON.stringify({ id, name }))}
                   onClick={() =>
                     toggleFilter('tag', JSON.stringify({ id, name }))
                   }

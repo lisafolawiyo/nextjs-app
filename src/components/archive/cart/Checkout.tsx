@@ -18,6 +18,7 @@ export function Checkout() {
   const handleCheckout = (data: CHECKOUT_SCHEMA_TYPE) => {
     console.log('Checkout data:', data);
   };
+
   return (
     <div>
       <div className="min-h-screen bg-white pt-28">

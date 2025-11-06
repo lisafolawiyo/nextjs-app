@@ -1,9 +1,10 @@
 'use client';
-import React from 'react';
 
+import React from 'react';
 import useCartStore from '@/hooks/zustand/useCartStore';
 import { OrderItem } from '@/components/archive';
 import { useGsapFadeInChildren } from '@/hooks/useGsapFadeIn';
+import { formatCurrency } from '@/utils/formatCurrency';
 
 export function OrderList() {
   const items = useCartStore((state) => state.items);
@@ -53,7 +54,7 @@ export function OrderList() {
             Total
           </span>
           <span className="font-[#212529] text-[20px] lg:text-[24px] ">
-            ${cartTotal().toFixed(2)}
+            {formatCurrency(cartTotal())}
           </span>
         </div>
       </div>

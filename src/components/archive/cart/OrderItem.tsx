@@ -1,6 +1,7 @@
 import { Cancel } from '@/components/Icons';
 import { Minus, Plus, X } from 'lucide-react';
 import Image from 'next/image';
+import { formatCurrency } from '@/utils/formatCurrency';
 
 interface OrderItemProps {
   item: {
@@ -22,12 +23,6 @@ export function OrderItem({
   onUpdateQuantity,
   onRemove,
 }: OrderItemProps) {
-  const collection =
-    item.product_options.find((opt) => opt.name === 'Collection')?.value || '';
-  const year =
-    item.product_options.find((opt) => opt.name === 'Year')?.value || '';
-  const gender =
-    item.product_options.find((opt) => opt.name === 'Gender')?.value || '';
   const lineTotal = item.price * item.quantity;
 
   return (
@@ -55,13 +50,20 @@ export function OrderItem({
         <div className="flex flex-1 flex-col justify-center px-4  py-1">
           <div className="space-y-4 md:space-y-6">
             <div className="flex items-start justify-between ">
-              <div className="text-base font-bold text-[#000000] transition-colors duration-500 group-hover:text-gray-300 md:text-[20px]">
-                <h3>{item.desc}</h3>
-                <h3>{item.name}</h3>
+              <div>
+                <h3 className="text-base font-bold text-[#000000] transition-colors duration-500 group-hover:text-gray-300 md:text-[20px]">
+                  {item?.name}
+                </h3>
+
+                {item?.product_options?.map((option) => (
+                  <p key={option?.name} className="capitalize">
+                    {option?.name}: {option?.value}
+                  </p>
+                ))}
               </div>
 
               <p className=" text-[20px] text-gray-500 transition-colors duration-500 group-hover:text-white lg:hidden ">
-                ${lineTotal.toFixed(2)}
+                {formatCurrency(lineTotal)}
               </p>
               <button
                 onClick={() => onRemove(item.cart_id)}
@@ -70,23 +72,6 @@ export function OrderItem({
                 <X size={20} />
               </button>
             </div>
-
-            {collection && (
-              <p className="text-sm text-[#212529] transition-colors duration-500 group-hover:text-white md:text-base">
-                {collection}
-              </p>
-            )}
-            {gender && (
-              <p className="text-sm text-[#212529] transition-colors duration-500 group-hover:text-white md:text-base">
-                <span className="text-[#212529]">Item size:</span> {gender}
-              </p>
-            )}
-
-            {year && (
-              <p className="text-sm text-[#212529] transition-colors duration-500 group-hover:text-white md:text-base">
-                <span>Year:</span> {year}
-              </p>
-            )}
 
             <div className="mt-2 flex items-center justify-between">
               <div className="flex items-center rounded ">
@@ -108,7 +93,7 @@ export function OrderItem({
               </div>
 
               <p className=" text-[20px] text-gray-500 transition-colors duration-500 group-hover:text-white max-lg:hidden ">
-                ${lineTotal.toFixed(2)}
+                {formatCurrency(lineTotal)}
               </p>
             </div>
           </div>

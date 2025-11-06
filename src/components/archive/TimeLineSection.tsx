@@ -43,35 +43,35 @@ const timelineData = [
     title: 'Continued global visibility',
     description:
       'Ongoing international press and features; brand communications emphasize craftsmanship, Lagos roots, and evolving silhouettes; additional cultural/embassy tie-ins via Woven Threads × Embassy of Sweden showcase.',
-    link: 'https://www.instagram.com/lisafolawiyo/',
+    link: 'https://www.instagram.com/p/DIy24IxqHom/?utm_source=chatgpt.com',
   },
   {
     date: 'Nov 8, 2024',
     title: '"Collection 1/2025" runway presentation (Lagos)',
     description:
       "A sport-inflected, hand-crafted collection is shown poolside at Azuri Towers, previewing the brand's 2025 direction.",
-    link: 'https://www.instagram.com/lisafolawiyo/',
+    link: 'https://debonairafrik.com/login/?redirect_to=https%3A%2F%2Fdebonairafrik.com%2Flisa-folawiyo-studio-coll-1-2025%2F%3Futm_source%3Dchatgpt.com',
   },
   {
     date: '2023',
     title: 'London retail pop-up & major capsule collaboration',
     description:
       'Lagos Fashion Week x Selfridges "Woven Threads" pop-up features Lisa Folawiyo pieces in London (May–June). There Was One (Farfetch/New Guards Group) releases an 8-piece capsule co-designed with Lisa Folawiyo (June 7).',
-    link: 'https://www.facebook.com/lisafolawiyo/',
+    link: 'https://web.facebook.com/selfridges/photos/explore-the-woven-threads-pop-up-lagos-fashion-week-is-excited-to-announce-a-col/10159735310145678/?utm_source=chatgpt.com&_rdc=1&_rdr#',
   },
   {
     date: '2020',
     title: 'Digital spotlights & global platforms',
     description:
       "Lagos Fashion Week's Woven Threads (digital) elevates craft narratives across African brands with Lisa Folawiyo frequently included in this ecosystem.",
-    link: 'https://www.youtube.com/@LagosFashionWeek',
+    link: 'youtube.com/shorts/3iM4jqpn55g?utm_source=chatgpt.com',
   },
   {
     date: '2016-2019',
     title: 'Global retail & showcases',
     description:
       'Expands international stockists (including Selfridges UK); maintains showrooms in Lagos and New York; hosts trunk shows (e.g., Moda Operandi).',
-    link: 'https://www.lisafolawiyo.com/',
+    link: 'https://www.cntraveler.com/story/women-who-travel-podcast-designer-lisa-folawiyos-playful-odes-to-nigerian-fashion?utm_source=chatgpt.com',
   },
   {
     date: '2015',
@@ -85,35 +85,35 @@ const timelineData = [
     title: 'Momentum on and off runway',
     description:
       'Lagos Fashion & Design Week collections gain wider press. Named one of WWD\'s "8 Emerging Talents" (2014).',
-    link: 'https://www.lisafolawiyo.com/',
+    link: 'https://en.wikipedia.org/wiki/Lisa_Folawiyo?utm_source=chatgpt.com',
   },
   {
     date: '2012',
     title: 'International recognition & beauty collab',
     description:
       "Featured by Vogue Italia (Vogue Talents). Wins the African Fashion Award. Collaborates with L'Oréal Italy on limited lipstick & nail polish tied to SS13.",
-    link: 'https://en.wikipedia.org/wiki/Lisa_Folawiyo',
+    link: 'https://fashionsfinestafrica.com/5-outstanding-nigerian-fashion-designers-with-global-recognition/?utm_source=chatgpt.com',
   },
   {
     date: 'June 17, 2011',
     title: 'Diffusion line "The J Label" launches',
     description:
       'A younger, more accessibly priced sister to Jewel by Lisa debuts.',
-    link: 'https://www.bellanaija.com/',
+    link: 'https://ynaija.com/luxe-diffused-the-j-label-look-book/?utm_source=chatgpt.com',
   },
   {
     date: '2008-2011',
     title: 'Early growth & runway presence',
     description:
       'Builds a signature around beading and Swarovski-level embellishment on wax prints; begins consistent fashion-week showings (Lagos).',
-    link: 'https://www.okayafrica.com/',
+    link: 'https://jewelbylisa.com.ng/page_not_found',
   },
   {
     date: '2005',
     title: 'Brand founded (as "Jewel by Lisa")',
     description:
       'Lisa Folawiyo launches her label in Lagos, pioneering intricately hand-embellished Ankara as luxury ready-to-wear.',
-    link: 'https://www.businessoffashion.com/community/people/lisa-folawiyo',
+    link: 'https://jewelbylisa.com.ng/page_not_found',
   },
 ];
 

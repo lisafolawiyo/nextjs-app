@@ -1,44 +1,17 @@
 'use client';
 
-import { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect, useTransition } from 'react';
 import { ChevronDown, ChevronUp, X } from 'lucide-react';
 import { gsap } from 'gsap';
+import { useQueryState, parseAsString } from 'nuqs';
+import { useSearchParams, useRouter } from 'next/navigation';
 
 interface FilterState {
   collection: string[];
   year: string[];
   gender: string[];
-  accessories: string[];
+  tag: string[];
 }
-
-const collectionData = [
-  { label: 'SS22', count: 12 },
-  { label: 'FW22', count: 15 },
-  { label: 'SS23', count: 18 },
-  { label: 'FW23', count: 14 },
-  { label: 'SS24', count: 20 },
-  { label: 'FW24', count: 16 },
-];
-
-const yearData = [
-  { label: '2022', count: 27 },
-  { label: '2023', count: 32 },
-  { label: '2024', count: 36 },
-  { label: '2025', count: 5 },
-];
-
-const genderData = [
-  { label: 'Women', count: 85 },
-  { label: 'Men', count: 15 },
-];
-
-const accessoriesData = [
-  { label: 'Bags', count: 12 },
-  { label: 'Jewelry', count: 18 },
-  { label: 'Scarves', count: 8 },
-  { label: 'Belts', count: 6 },
-  { label: 'Hats', count: 4 },
-];
 
 interface FilterSectionProps {
   title: string;
@@ -115,7 +88,9 @@ function FilterItem({ label, count, isActive, onClick }: FilterItemProps) {
         isActive ? 'text-white' : 'text-white/60 hover:text-white'
       }`}
     >
-      <span className={isActive ? 'font-medium' : ''}>{label}</span>
+      <span className={isActive ? 'font-medium capitalize' : 'capitalize'}>
+        {label}
+      </span>
       <span
         className={`text-xs ${
           isActive ? 'text-white' : 'text-white/40 group-hover:text-white/60'
@@ -127,14 +102,24 @@ function FilterItem({ label, count, isActive, onClick }: FilterItemProps) {
   );
 }
 
-export function ArchiveFilter() {
+export function ArchiveFilter({
+  categories,
+  tags,
+}: {
+  categories: UnknownObject[];
+  tags: UnknownObject[];
+}) {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const [, startTransition] = useTransition();
+
   const [showFilters, setShowFilters] = useState(false);
   const filterContainerRef = useRef<HTMLDivElement>(null);
   const [expandedSections, setExpandedSections] = useState({
     collection: true,
     year: true,
     gender: true,
-    accessories: true,
+    tag: true,
   });
 
   useEffect(() => {
@@ -171,7 +156,7 @@ export function ArchiveFilter() {
     collection: [],
     year: [],
     gender: [],
-    accessories: [],
+    tag: [],
   });
 
   const toggleSection = (section: keyof typeof expandedSections) => {
@@ -186,7 +171,6 @@ export function ArchiveFilter() {
           ? prev[category].filter((v) => v !== value)
           : [value],
       };
-      console.log('Active Filters:', newFilters);
       return newFilters;
     });
   };
@@ -203,7 +187,7 @@ export function ArchiveFilter() {
       collection: [],
       year: [],
       gender: [],
-      accessories: [],
+      tag: [],
     });
   };
 
@@ -214,6 +198,28 @@ export function ArchiveFilter() {
         value,
       })),
   );
+
+  const [, setCategory] = useQueryState(
+    'category',
+    parseAsString.withDefault(searchParams.get('category') || ''),
+  );
+
+  console.log('filters: ', filters);
+
+  useEffect(() => {
+    startTransition(async () => {
+      if (filters.collection?.length) {
+        await setCategory(JSON.parse(filters.collection[0])?.id);
+        router.refresh();
+      } else {
+        await setCategory('');
+        router.refresh();
+      }
+
+      // await setPage(value.toString());
+      // router.refresh();
+    });
+  }, [filters]);
 
   return (
     <div className="mb-8">
@@ -234,9 +240,9 @@ export function ArchiveFilter() {
             <button
               key={`${category}-${value}`}
               onClick={() => removeFilter(category, value)}
-              className="group inline-flex items-center gap-2 bg-[#212529] px-3 py-1.5 text-sm text-white transition-colors hover:bg-[#212529]/90"
+              className="group inline-flex items-center gap-2 bg-[#212529] px-3 py-1.5 text-sm capitalize text-white transition-colors hover:bg-[#212529]/90"
             >
-              {value}
+              {JSON.parse(value)?.name}
               <X
                 size={14}
                 className="transition-transform group-hover:scale-110"
@@ -260,61 +266,37 @@ export function ArchiveFilter() {
               isExpanded={expandedSections.collection}
               onToggle={() => toggleSection('collection')}
             >
-              {collectionData.map(({ label, count }) => (
+              {categories?.map(({ id, name, count }) => (
                 <FilterItem
-                  key={label}
-                  label={label}
+                  key={id}
+                  label={name}
                   count={count}
-                  isActive={filters.collection.includes(label)}
-                  onClick={() => toggleFilter('collection', label)}
+                  isActive={filters.collection.includes(
+                    JSON.stringify({ id, name }),
+                  )}
+                  onClick={() =>
+                    toggleFilter('collection', JSON.stringify({ id, name }))
+                  }
                 />
               ))}
             </FilterSection>
 
             <FilterSection
-              title="Year"
-              isExpanded={expandedSections.year}
-              onToggle={() => toggleSection('year')}
+              title="Tags"
+              isExpanded={expandedSections.tag}
+              onToggle={() => toggleSection('tag')}
             >
-              {yearData.map(({ label, count }) => (
+              {tags?.map(({ id, name, count }) => (
                 <FilterItem
-                  key={label}
-                  label={label}
+                  key={id}
+                  label={name}
                   count={count}
-                  isActive={filters.year.includes(label)}
-                  onClick={() => toggleFilter('year', label)}
-                />
-              ))}
-            </FilterSection>
-
-            <FilterSection
-              title="Gender"
-              isExpanded={expandedSections.gender}
-              onToggle={() => toggleSection('gender')}
-            >
-              {genderData.map(({ label, count }) => (
-                <FilterItem
-                  key={label}
-                  label={label}
-                  count={count}
-                  isActive={filters.gender.includes(label)}
-                  onClick={() => toggleFilter('gender', label)}
-                />
-              ))}
-            </FilterSection>
-
-            <FilterSection
-              title="Accessories"
-              isExpanded={expandedSections.accessories}
-              onToggle={() => toggleSection('accessories')}
-            >
-              {accessoriesData.map(({ label, count }) => (
-                <FilterItem
-                  key={label}
-                  label={label}
-                  count={count}
-                  isActive={filters.accessories.includes(label)}
-                  onClick={() => toggleFilter('accessories', label)}
+                  isActive={filters.collection.includes(
+                    JSON.stringify({ id, name }),
+                  )}
+                  onClick={() =>
+                    toggleFilter('tag', JSON.stringify({ id, name }))
+                  }
                 />
               ))}
             </FilterSection>

@@ -23,12 +23,16 @@ interface ArchiveSectionProps {
   products: Product[];
   totalPages: number;
   page: string;
+  categories: UnknownObject[];
+  tags: UnknownObject[];
 }
 
 export const ArchiveSection = ({
   products,
   totalPages,
   page,
+  categories,
+  tags,
 }: ArchiveSectionProps) => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -60,7 +64,7 @@ export const ArchiveSection = ({
 
       <div className="mx-auto max-w-7xl">
         <SearchBar searchQuery={searchQuery} onSearchChange={setSearchQuery} />
-        <ArchiveFilter />
+        <ArchiveFilter categories={categories} tags={tags} />
       </div>
 
       <div className="sm:border-t-1 sm:*:border-b-1 sm:*:border-[#212529] sm:*:border-r-1 [&>:first-child:border-l-1 mx-auto grid  grid-cols-1 border-black sm:border-l-[1px] lg:grid-cols-3">

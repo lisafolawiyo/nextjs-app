@@ -166,3 +166,32 @@ export const getProductCategories = async (page = 1, per_page = 100) => {
     throw error;
   }
 };
+
+// Get all Product Tags from WooCommerce Store
+export const getProductTags = async (page = 1, per_page = 100) => {
+  try {
+    const endpoint = '/products/tags';
+    const url = `${API_URL}${endpoint}`;
+
+    const oauthParams = generateOAuthSignature(url, 'GET', {
+      page,
+      per_page,
+    });
+
+    const response = await api.get(endpoint, {
+      params: {
+        ...oauthParams,
+        page,
+        per_page,
+      },
+    });
+
+    return {
+      tags: response.data,
+      total_pages: parseInt(response.headers['x-wp-totalpages'], 10) || 1,
+    };
+  } catch (error) {
+    console.error('Failed to fetch product tags:', error);
+    throw error;
+  }
+};

@@ -6,7 +6,11 @@ import { OrderItem } from '@/components/archive';
 import { useGsapFadeInChildren } from '@/hooks/useGsapFadeIn';
 import { formatCurrency } from '@/utils/formatCurrency';
 
-export function OrderList() {
+interface OrderListProps {
+  shippingFee?: number;
+}
+
+export function OrderList({ shippingFee = 0 }: OrderListProps) {
   const items = useCartStore((state) => state.items);
   const updateQty = useCartStore((state) => state.updateQty);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
@@ -34,6 +38,10 @@ export function OrderList() {
     );
   }
 
+  const subtotal = cartTotal();
+  const shipping = shippingFee;
+  const total = subtotal + shipping;
+
   return (
     <div className="md:px-3 lg:border-[1px] lg:border-[#212529] lg:py-10 2xl:px-10">
       <div
@@ -49,13 +57,27 @@ export function OrderList() {
           />
         ))}
 
-        <div className="flex items-center justify-between border-b border-t border-[#212529]  py-4 ">
-          <span className="text-[20px] text-[#212529] lg:text-[24px]">
-            Total
-          </span>
-          <span className="font-[#212529] text-[20px] lg:text-[24px] ">
-            {formatCurrency(cartTotal())}
-          </span>
+        <div className="space-y-4 border-t border-[#212529] pt-6">
+          <div className="flex items-center justify-between text-[#212529]">
+            <span className="text-[16px] lg:text-[18px]">Subtotal</span>
+            <span className="text-[16px] font-medium lg:text-[18px]">
+              {formatCurrency(subtotal)}
+            </span>
+          </div>
+          <div className="flex items-center justify-between text-[#212529]">
+            <span className="text-[16px] lg:text-[18px]">Shipping</span>
+            <span className="text-[16px] font-medium lg:text-[18px]">
+              {formatCurrency(shipping)}
+            </span>
+          </div>
+          <div className="flex items-center justify-between border-t border-[#212529] pt-4 text-[#212529]">
+            <span className="text-[20px] font-medium lg:text-[24px]">
+              Total
+            </span>
+            <span className="text-[20px] font-medium lg:text-[24px]">
+              {formatCurrency(total)}
+            </span>
+          </div>
         </div>
       </div>
     </div>

@@ -67,6 +67,9 @@ function SelectContent({
           className,
         )}
         position={position}
+        onWheel={(e) => {
+          e.stopPropagation();
+        }}
         {...props}
       >
         <SelectScrollUpButton />

@@ -120,7 +120,6 @@ export function CheckoutForm({
   };
 
   const handleShippingRateToggle = (id: string) => {
-    // If clicking the same rate, deselect it
     if (selectedShippingRate.id === id) {
       setSelectedShippingRate({
         id: '',
@@ -133,7 +132,6 @@ export function CheckoutForm({
         onShippingChange(0);
       }
     } else {
-      // Select the new rate
       const rate = shippingRates.find((rate) => rate.id === id);
       if (rate) {
         setSelectedShippingRate(rate);

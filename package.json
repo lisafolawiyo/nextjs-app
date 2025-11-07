@@ -33,6 +33,7 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "dompurify": "^3.2.6",
+    "google-libphonenumber": "^3.2.43",
     "gsap": "^3.13.0",
     "html-react-parser": "^5.2.5",
     "isomorphic-dompurify": "^2.24.0",
@@ -47,6 +48,7 @@
     "react-hook-form": "^7.65.0",
     "react-hot-toast": "^2.5.2",
     "react-paystack": "github:Akpan20/react-paystack",
+    "react-phone-number-input": "^3.4.13",
     "tailwind-merge": "^3.3.0",
     "zod": "^4.1.12",
     "zustand": "^5.0.4"
@@ -56,6 +58,7 @@
     "@commitlint/config-conventional": "^17.3.0",
     "@eslint/eslintrc": "^3",
     "@tailwindcss/postcss": "^4",
+    "@types/google-libphonenumber": "^7.4.30",
     "@types/node": "^20",
     "@types/react": "^19",
     "@types/react-dom": "^19",

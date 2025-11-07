@@ -22,12 +22,13 @@ import {
 import { Countries } from '@/lib/country_data';
 import { ROUTES } from '@/utils/routes';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { PhoneNumberUtil } from 'google-libphonenumber';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
+import PhoneInput from 'react-phone-number-input';
+import en from 'react-phone-number-input/locale/en';
+import 'react-phone-number-input/style.css';
 import { z } from 'zod';
-import PhoneInput from 'react-phone-number-input/input';
-import type { Country } from 'react-phone-number-input';
-import { PhoneNumberUtil } from 'google-libphonenumber';
 
 const phoneUtil = PhoneNumberUtil.getInstance();
 
@@ -73,7 +74,6 @@ export function CheckoutForm({
   onSubmit,
   onShippingChange,
 }: CheckoutFormProps) {
-  const [phoneCountry, setPhoneCountry] = useState<Country>('US');
   const [shippingRates, setShippingRates] = useState<ShippingRate[]>([]);
   const [selectedShippingRate, setSelectedShippingRate] =
     useState<ShippingRate>({
@@ -119,25 +119,12 @@ export function CheckoutForm({
     }
   };
 
-  const handleShippingRateToggle = (id: string) => {
-    if (selectedShippingRate.id === id) {
-      setSelectedShippingRate({
-        id: '',
-        title: '',
-        desc: '',
-        delivery_time: '',
-        fee: 0,
-      });
+  const handleShippingRateSelect = (id: string) => {
+    const rate = shippingRates.find((rate) => rate.id === id);
+    if (rate) {
+      setSelectedShippingRate(rate);
       if (onShippingChange) {
-        onShippingChange(0);
-      }
-    } else {
-      const rate = shippingRates.find((rate) => rate.id === id);
-      if (rate) {
-        setSelectedShippingRate(rate);
-        if (onShippingChange) {
-          onShippingChange(rate.fee);
-        }
+        onShippingChange(rate.fee);
       }
     }
   };
@@ -168,47 +155,55 @@ export function CheckoutForm({
               )}
             />
 
-            <div className="grid grid-cols-1 gap-4 md:grid-cols-[130px_1fr] md:gap-3">
-              <div>
-                <Select
-                  value={phoneCountry}
-                  onValueChange={(value) => setPhoneCountry(value as Country)}
-                >
-                  <SelectTrigger className="!h-[53px] w-full rounded-none border border-[#212529] px-3 py-2.5 text-[13px] focus:border-gray-400 focus:outline-none">
-                    <SelectValue placeholder="US" />
-                  </SelectTrigger>
-                  <SelectContent>
-                    <SelectGroup>
-                      <SelectLabel>Country</SelectLabel>
-                      {Countries.map((item) => (
-                        <SelectItem key={item.code} value={item.code}>
-                          {item.code} (+{item.phone})
-                        </SelectItem>
-                      ))}
-                    </SelectGroup>
-                  </SelectContent>
-                </Select>
-              </div>
-              <FormField
-                control={form.control}
-                name="phone"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormControl>
+            <FormField
+              control={form.control}
+              name="phone"
+              render={({ field }) => (
+                <FormItem>
+                  <FormControl>
+                    <div className="flex h-[53px] w-full items-center rounded-none border border-[#212529] pl-3 focus-within:border-gray-400">
                       <PhoneInput
                         international
-                        country={phoneCountry}
+                        defaultCountry="US"
                         value={field.value}
                         onChange={field.onChange}
                         placeholder="Mobile Phone Number"
-                        className="h-[53px] w-full rounded-none border border-[#212529] px-3 py-2.5 text-[13px] placeholder:text-gray-400 focus:border-gray-400 focus:outline-none"
+                        className="flex h-full w-full items-center"
+                        labels={en}
+                        countryCallingCodeEditable={false}
+                        flagComponent={() => null}
+                        countrySelectComponent={({
+                          value,
+                          onChange,
+                          options,
+                          ...rest
+                        }) => (
+                          <select
+                            {...rest}
+                            value={value}
+                            onChange={(e) => onChange(e.target.value)}
+                            className="mr-2 h-full max-w-[100px] cursor-pointer rounded-none border-0 border-none border-[#212529] bg-transparent pr-3 text-[13px] focus:outline-none"
+                          >
+                            {options.map(
+                              (option: { value: string; label: string }) => (
+                                <option key={option.value} value={option.value}>
+                                  {option.label}
+                                </option>
+                              ),
+                            )}
+                          </select>
+                        )}
+                        numberInputProps={{
+                          className:
+                            'h-full flex-1 rounded-none border-0 px-3 py-2.5 text-[13px] placeholder:text-gray-400 focus:outline-none bg-transparent',
+                        }}
                       />
-                    </FormControl>
-                    <FormMessage className="text-[11px]" />
-                  </FormItem>
-                )}
-              />
-            </div>
+                    </div>
+                  </FormControl>
+                  <FormMessage className="text-[11px]" />
+                </FormItem>
+              )}
+            />
           </div>
         </div>
 
@@ -378,7 +373,7 @@ export function CheckoutForm({
               {shippingRates.map((item) => (
                 <div
                   key={item.id}
-                  onClick={() => handleShippingRateToggle(item.id)}
+                  onClick={() => handleShippingRateSelect(item.id)}
                   className="flex cursor-pointer items-center justify-between border border-[#212529] p-4 transition-colors hover:bg-gray-50"
                 >
                   <div className="flex items-start gap-3">

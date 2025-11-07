@@ -10,7 +10,6 @@ import {
   FormMessage,
 } from '@/components/ui/form';
 import { Input } from '@/components/ui/input';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import {
   Select,
   SelectContent,
@@ -21,10 +20,16 @@ import {
   SelectValue,
 } from '@/components/ui/select';
 import { Countries } from '@/lib/country_data';
+import { ROUTES } from '@/utils/routes';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import { z } from 'zod';
+import PhoneInput from 'react-phone-number-input/input';
+import type { Country } from 'react-phone-number-input';
+import { PhoneNumberUtil } from 'google-libphonenumber';
+
+const phoneUtil = PhoneNumberUtil.getInstance();
 
 type ShippingRate = {
   id: string;
@@ -37,8 +42,19 @@ type ShippingRate = {
 export const CHECKOUT_SCHEMA = z.object({
   firstname: z.string().min(1, 'First name is required'),
   lastname: z.string().min(1, 'Last name is required'),
-  email: z.string().email('Invalid email'),
-  phone: z.string().min(10, 'Phone number is required and should be 10 digits'),
+  email: z.email('Invalid email'),
+  phone: z.string().refine(
+    (val) => {
+      if (!val) return false;
+      try {
+        const parsed = phoneUtil.parse(val);
+        return phoneUtil.isValidNumber(parsed);
+      } catch {
+        return false;
+      }
+    },
+    { message: 'Please enter a valid phone number' },
+  ),
   address: z.string().min(3, 'Address is required'),
   city: z.string().min(3, 'City is required'),
   state: z.string().min(3, 'State is required'),
@@ -57,6 +73,7 @@ export function CheckoutForm({
   onSubmit,
   onShippingChange,
 }: CheckoutFormProps) {
+  const [phoneCountry, setPhoneCountry] = useState<Country>('US');
   const [shippingRates, setShippingRates] = useState<ShippingRate[]>([]);
   const [selectedShippingRate, setSelectedShippingRate] =
     useState<ShippingRate>({
@@ -102,12 +119,25 @@ export function CheckoutForm({
     }
   };
 
-  const handleShippingRateChange = (id: string) => {
-    const rate = shippingRates.find((rate) => rate.id === id);
-    if (rate) {
-      setSelectedShippingRate(rate);
+  const handleShippingRateToggle = (id: string) => {
+    if (selectedShippingRate.id === id) {
+      setSelectedShippingRate({
+        id: '',
+        title: '',
+        desc: '',
+        delivery_time: '',
+        fee: 0,
+      });
       if (onShippingChange) {
-        onShippingChange(rate.fee);
+        onShippingChange(0);
+      }
+    } else {
+      const rate = shippingRates.find((rate) => rate.id === id);
+      if (rate) {
+        setSelectedShippingRate(rate);
+        if (onShippingChange) {
+          onShippingChange(rate.fee);
+        }
       }
     }
   };
@@ -119,7 +149,7 @@ export function CheckoutForm({
           <h2 className="mb-3 text-[30px] font-normal tracking-wide text-gray-800 md:text-[40px]">
             CONTACT
           </h2>
-          <div className="space-y-4 md:space-y-6">
+          <div className="space-y-4 md:space-y-10">
             <FormField
               control={form.control}
               name="email"
@@ -138,23 +168,47 @@ export function CheckoutForm({
               )}
             />
 
-            <FormField
-              control={form.control}
-              name="phone"
-              render={({ field }) => (
-                <FormItem>
-                  <FormControl>
-                    <Input
-                      type="tel"
-                      placeholder="Mobile Phone Number"
-                      className="h-[53px] w-full rounded-none border border-[#212529] px-3 py-2.5 text-[13px] placeholder:text-gray-400 focus:border-gray-400 focus:outline-none"
-                      {...field}
-                    />
-                  </FormControl>
-                  <FormMessage className="text-[11px]" />
-                </FormItem>
-              )}
-            />
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-[130px_1fr] md:gap-3">
+              <div>
+                <Select
+                  value={phoneCountry}
+                  onValueChange={(value) => setPhoneCountry(value as Country)}
+                >
+                  <SelectTrigger className="!h-[53px] w-full rounded-none border border-[#212529] px-3 py-2.5 text-[13px] focus:border-gray-400 focus:outline-none">
+                    <SelectValue placeholder="US" />
+                  </SelectTrigger>
+                  <SelectContent>
+                    <SelectGroup>
+                      <SelectLabel>Country</SelectLabel>
+                      {Countries.map((item) => (
+                        <SelectItem key={item.code} value={item.code}>
+                          {item.code} (+{item.phone})
+                        </SelectItem>
+                      ))}
+                    </SelectGroup>
+                  </SelectContent>
+                </Select>
+              </div>
+              <FormField
+                control={form.control}
+                name="phone"
+                render={({ field }) => (
+                  <FormItem>
+                    <FormControl>
+                      <PhoneInput
+                        international
+                        country={phoneCountry}
+                        value={field.value}
+                        onChange={field.onChange}
+                        placeholder="Mobile Phone Number"
+                        className="h-[53px] w-full rounded-none border border-[#212529] px-3 py-2.5 text-[13px] placeholder:text-gray-400 focus:border-gray-400 focus:outline-none"
+                      />
+                    </FormControl>
+                    <FormMessage className="text-[11px]" />
+                  </FormItem>
+                )}
+              />
+            </div>
           </div>
         </div>
 
@@ -162,7 +216,7 @@ export function CheckoutForm({
           <h2 className="mb-3 text-[30px] font-normal tracking-wide text-gray-800 md:text-[40px]">
             SHIPPING
           </h2>
-          <div className="space-y-4 md:space-y-6">
+          <div className="space-y-4 md:space-y-10">
             <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-6">
               <FormField
                 control={form.control}
@@ -311,46 +365,42 @@ export function CheckoutForm({
         </div>
 
         {shippingRates.length > 0 && (
-          <div>
+          <div className="relative">
             <h2 className="mb-3 text-[30px] font-normal tracking-wide text-gray-800 md:text-[40px]">
               SHIPPING METHOD
             </h2>
             {selectedShippingRate.id === '' && (
-              <p className="mb-3 text-[11px] text-red-500">
+              <p className="absolute left-0 top-full mt-1 text-[11px] text-red-500">
                 Please select a shipping option
               </p>
             )}
             <div className="space-y-3">
-              <RadioGroup onValueChange={handleShippingRateChange}>
-                {shippingRates.map((item) => (
-                  <div
-                    key={item.id}
-                    className="flex items-center justify-between border border-[#212529] p-4"
-                  >
-                    <div className="flex items-start gap-3">
-                      <RadioGroupItem
-                        value={item.id}
-                        id={item.id}
-                        className="mt-1"
-                      />
-                      <div>
-                        <label
-                          htmlFor={item.id}
-                          className="cursor-pointer text-[13px] font-medium text-[#212529] md:text-[15px]"
-                        >
-                          {item.title}
-                        </label>
-                        <p className="mt-1 text-[11px] text-gray-600 md:text-[13px]">
-                          {item.desc}
-                        </p>
-                      </div>
+              {shippingRates.map((item) => (
+                <div
+                  key={item.id}
+                  onClick={() => handleShippingRateToggle(item.id)}
+                  className="flex cursor-pointer items-center justify-between border border-[#212529] p-4 transition-colors hover:bg-gray-50"
+                >
+                  <div className="flex items-start gap-3">
+                    <div className="mt-1 flex h-4 w-4 items-center justify-center rounded-full border-2 border-[#212529]">
+                      {selectedShippingRate.id === item.id && (
+                        <div className="h-2 w-2 rounded-full bg-[#212529]" />
+                      )}
                     </div>
-                    <div className="text-[13px] font-medium text-[#212529] md:text-[15px]">
-                      ${parseFloat(String(item.fee)).toFixed(2)}
+                    <div>
+                      <div className="text-[13px] font-medium text-[#212529] md:text-[15px]">
+                        {item.title}
+                      </div>
+                      <p className="mt-1 text-[11px] text-gray-600 md:text-[13px]">
+                        {item.desc}
+                      </p>
                     </div>
                   </div>
-                ))}
-              </RadioGroup>
+                  <div className="text-[13px] font-medium text-[#212529] md:text-[15px]">
+                    ${parseFloat(String(item.fee)).toFixed(2)}
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         )}
@@ -358,15 +408,27 @@ export function CheckoutForm({
         <Button
           type="submit"
           disabled={shippingRates.length > 0 && selectedShippingRate.id === ''}
-          className="h-[53px] w-full rounded-none bg-black py-3.5 font-normal text-white transition-colors hover:bg-gray-900 disabled:cursor-not-allowed disabled:opacity-50"
+          className="mt-5 h-[53px] w-full rounded-none bg-black py-3.5 font-normal text-white transition-colors hover:bg-gray-900 disabled:cursor-not-allowed disabled:opacity-50"
         >
           CHECK OUT
         </Button>
 
         <p className="text-center text-sm text-[#212529] md:text-[18px]">
-          {shippingRates.length === 0
-            ? 'Select a country to see shipping options'
-            : 'By continuing, I confirm that I have read and accept the Terms and Conditions'}
+          {shippingRates.length === 0 ? (
+            'Select a country to see shipping options'
+          ) : (
+            <>
+              By continuing, I confirm that I have read and understood the{' '}
+              <a
+                href={ROUTES.REFUND_POLICY}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="underline hover:text-gray-700"
+              >
+                Refund Policy
+              </a>
+            </>
+          )}
         </p>
       </form>
     </Form>

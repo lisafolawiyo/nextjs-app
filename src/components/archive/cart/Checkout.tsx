@@ -14,6 +14,7 @@ import { useGsapFadeInChildren } from '@/hooks/useGsapFadeIn';
 export function Checkout() {
   const contentRef = useGsapFadeInChildren({ delay: 0.2, stagger: 0.2 });
   const router = useRouter();
+  const [shippingFee, setShippingFee] = React.useState(0);
 
   const handleCheckout = (data: CHECKOUT_SCHEMA_TYPE) => {
     console.log('Checkout data:', data);
@@ -40,10 +41,13 @@ export function Checkout() {
             ref={contentRef as React.RefObject<HTMLDivElement>}
             className="grid gap-20  md:gap-10 lg:grid-cols-2"
           >
-            <OrderList />
+            <OrderList shippingFee={shippingFee} />
 
             <div className="max-h-max sm:px-10 lg:border-[1px] lg:border-[#212529] lg:py-20 2xl:px-20">
-              <CheckoutForm onSubmit={handleCheckout} />
+              <CheckoutForm
+                onSubmit={handleCheckout}
+                onShippingChange={setShippingFee}
+              />
             </div>
           </div>
         </div>

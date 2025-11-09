@@ -70,7 +70,7 @@ export const ProductCard = ({
 
   const handleCardClick = () => {
     if (product?.slug) {
-      router.push(`/dev/archive/${product.slug}`);
+      router.push(`/product/${product.slug}`);
     }
   };
 

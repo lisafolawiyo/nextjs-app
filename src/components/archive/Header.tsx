@@ -10,7 +10,7 @@ import useCartStore from '@/hooks/zustand/useCartStore';
 
 export function Header() {
   const pathname = usePathname();
-  const isArchivePage = pathname === '/dev/archive';
+  const isArchivePage = pathname === '/archive';
   const items = useCartStore((state) => state.items);
   const cartItemCount = items.reduce((total, item) => total + item.quantity, 0);
 

@@ -1,9 +1,11 @@
 'use client';
 
 import { useState } from 'react';
-import useCartStore from '@/hooks/zustand/useCartStore';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { faWhatsapp } from '@fortawesome/free-brands-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import useCartStore from '@/hooks/zustand/useCartStore';
 
 type ProductOption = {
   name: string;

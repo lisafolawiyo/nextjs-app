@@ -1,13 +1,15 @@
 'use client';
 
 import { useEffect } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
+
 import { ChevronLeft } from 'lucide-react';
-import { useGsapFadeInChildren } from '@/hooks/useGsapFadeIn';
-import { ProductCard, ArchiveFilter, SearchBar } from '@/components/archive';
+import { parseAsString, useQueryState } from 'nuqs';
+import { useRouter, useSearchParams } from 'next/navigation';
+
 import Pagination from '@/components/Pagination';
 import { useDebounce } from '@/utils/useDebounce';
-import { useQueryState, parseAsString } from 'nuqs';
+import { useGsapFadeInChildren } from '@/hooks/useGsapFadeIn';
+import { ArchiveFilter, ProductCard, SearchBar } from '@/components/archive';
 
 interface Product {
   id: number;

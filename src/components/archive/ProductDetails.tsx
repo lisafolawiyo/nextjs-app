@@ -1,19 +1,22 @@
 'use client';
 
-import { ChevronLeft, Minus, Plus } from 'lucide-react';
+import { useEffect, useState } from 'react';
+
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
-import { ProductCard } from '@/components/archive';
-import { useGsapFadeInChildren } from '@/hooks/useGsapFadeIn';
 import DOMPurify from 'isomorphic-dompurify';
+import { ChevronLeft, Minus, Plus } from 'lucide-react';
+
+import { cn } from '@/lib/utils';
 import { ROUTES } from '@/utils/routes';
-import { useState, useEffect } from 'react';
+import { stripOuterTags } from '@/utils/util';
+import { ProductCard } from '@/components/archive';
 import useCartStore from '@/hooks/zustand/useCartStore';
 import { formatCurrency } from '@/utils/formatCurrency';
-import { ImageGalleryModal } from './ImageGalleryModal';
+import { useGsapFadeInChildren } from '@/hooks/useGsapFadeIn';
+
 import { SizeGuideModal } from './SizeGuideModal';
-import { stripOuterTags } from '@/utils/util';
-import { cn } from '@/lib/utils';
+import { ImageGalleryModal } from './ImageGalleryModal';
 
 function ProductOptions({
   product,

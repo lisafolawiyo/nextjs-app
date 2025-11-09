@@ -484,7 +484,9 @@
   color: $codgray;
   padding: 0.5rem 1rem;
   background-color: transparent;
-  transition: background-color 0.2s, color 0.2s;
+  transition:
+    background-color 0.2s,
+    color 0.2s;
 }
 
 .add-cart-btn:hover {

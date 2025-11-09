@@ -1,10 +1,11 @@
 'use client';
 
-import { useState, useRef, useEffect, useTransition } from 'react';
-import { ChevronDown, ChevronUp, X } from 'lucide-react';
+import { useEffect, useRef, useState, useTransition } from 'react';
+
 import { gsap } from 'gsap';
-import { useQueryState, parseAsString } from 'nuqs';
-import { useSearchParams, useRouter } from 'next/navigation';
+import { parseAsString, useQueryState } from 'nuqs';
+import { ChevronDown, ChevronUp, X } from 'lucide-react';
+import { useRouter, useSearchParams } from 'next/navigation';
 
 interface FilterState {
   collection: string[];

@@ -1,8 +1,9 @@
 'use client';
 
-import { Productimage } from '@/types/product';
 import React from 'react';
 import { useState } from 'react';
+
+import { Productimage } from '@/types/product';
 
 const ProductImagesTwo = ({ items }: { items: Productimage[] }) => {
   const [index, setIndex] = useState(0);

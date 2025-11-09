@@ -1,11 +1,14 @@
 'use client';
 
-import Link from 'next/link';
-import { Product } from '@/utils/models';
-import Pagination from './Pagination';
-import { stripOuterTags } from '@/utils/util';
-import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
+
+import Link from 'next/link';
+import { usePathname, useSearchParams } from 'next/navigation';
+
+import { Product } from '@/utils/models';
+import { stripOuterTags } from '@/utils/util';
+
+import Pagination from './Pagination';
 
 const ProductList = ({
   products,

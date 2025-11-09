@@ -1,10 +1,11 @@
 'use client';
 
-import { useFadeIn } from '@/hooks/useFadeIn';
-import { formatCurrency } from '@/utils/formatCurrency';
-import { stripOuterTags } from '@/utils/util';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+
+import { useFadeIn } from '@/hooks/useFadeIn';
+import { stripOuterTags } from '@/utils/util';
+import { formatCurrency } from '@/utils/formatCurrency';
 
 export interface Product {
   id: number;

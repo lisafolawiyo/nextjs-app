@@ -1,6 +1,7 @@
-import { Cancel } from '@/components/Icons';
-import { Minus, Plus, X } from 'lucide-react';
 import Image from 'next/image';
+import { Minus, Plus, X } from 'lucide-react';
+
+import { Cancel } from '@/components/Icons';
 import { formatCurrency } from '@/utils/formatCurrency';
 
 interface OrderItemProps {

@@ -1,11 +1,13 @@
 'use client';
 
 import React from 'react';
-import Image from 'next/image';
+
 import Link from 'next/link';
+import Image from 'next/image';
+
+import { ROUTES } from '@/utils/routes';
 import { ProductCard } from '@/components/archive';
 import { useGsapFadeInChildren } from '@/hooks/useGsapFadeIn';
-import { ROUTES } from '@/utils/routes';
 
 export function AboutPage({ products }: { products: UnknownObject }) {
   const contentRef = useGsapFadeInChildren({ delay: 0.2, stagger: 0.2 });

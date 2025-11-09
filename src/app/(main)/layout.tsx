@@ -1,16 +1,18 @@
-import type { Metadata } from 'next';
-import '../styles/globals.scss';
-import '../styles/shop.scss';
-import '../styles/single_product.scss';
-import '../styles/checkout.scss';
-import '../styles/confirmation.scss';
-import '../styles/page.scss';
-import '../styles/editorials.scss';
-import NavbarTwo from '@/components/NavbarTwo';
 // Only needed if you want to prevent auto-injecting CSS
-import { config } from '@fortawesome/fontawesome-svg-core';
+import type { Metadata } from 'next';
 import '@fortawesome/fontawesome-svg-core/styles.css';
+import { config } from '@fortawesome/fontawesome-svg-core';
+
 import FooterTwo from '@/components/FooterTwo';
+import NavbarTwo from '@/components/NavbarTwo';
+
+import '../styles/page.scss';
+import '../styles/shop.scss';
+import '../styles/globals.scss';
+import '../styles/checkout.scss';
+import '../styles/editorials.scss';
+import '../styles/confirmation.scss';
+import '../styles/single_product.scss';
 
 config.autoAddCss = false;
 

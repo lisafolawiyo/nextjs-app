@@ -1,12 +1,14 @@
 'use client';
 
-import Add from '@/components/Add';
-import DOMPurify from 'isomorphic-dompurify';
-import ProductImagesTwo from '@/components/ProductImagesTwo';
-import SizeGuideButton from '@/components/SizeGuideButton';
-import { stripOuterTags } from '@/utils/util';
-import { ProductType } from '@/types/product';
 import { Suspense } from 'react';
+
+import DOMPurify from 'isomorphic-dompurify';
+
+import Add from '@/components/Add';
+import { ProductType } from '@/types/product';
+import { stripOuterTags } from '@/utils/util';
+import SizeGuideButton from '@/components/SizeGuideButton';
+import ProductImagesTwo from '@/components/ProductImagesTwo';
 
 const SingleProduct = ({ product }: { product: ProductType }) => {
   return (

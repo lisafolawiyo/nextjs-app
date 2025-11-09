@@ -1,8 +1,10 @@
-import { getProducts } from '@/actions/woocommerce/products';
-import ProductList from '@/components/ProductList';
-import Skeleton from '@/components/Skeleton';
-import { Metadata } from 'next';
 import { Suspense } from 'react';
+
+import { Metadata } from 'next';
+
+import Skeleton from '@/components/Skeleton';
+import ProductList from '@/components/ProductList';
+import { getProducts } from '@/actions/woocommerce/products';
 
 export const metadata: Metadata = {
   title: 'Lisa Folawiyo Online Store | Shop Luxury Fashion',

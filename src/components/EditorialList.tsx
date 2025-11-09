@@ -1,7 +1,8 @@
 'use client';
+import React from 'react';
+
 import { Post } from '@/types/post';
 import { stripOuterTags } from '@/utils/util';
-import React from 'react';
 
 const EditorialList = ({ posts }: { posts: Post[] }) => {
   const mostRecentPost = posts[0];

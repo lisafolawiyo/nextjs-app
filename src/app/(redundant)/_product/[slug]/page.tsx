@@ -1,16 +1,18 @@
-import { notFound } from 'next/navigation';
 import { Suspense } from 'react';
+
+import { Metadata } from 'next';
+import { notFound } from 'next/navigation';
+
+import Skeleton from '@/components/Skeleton';
+import { ProductVariation } from '@/types/product';
+import SingleProduct from '@/components/SingleProduct';
+import RelatedProducts from '@/components/RelatedProducts';
+import VariableProduct from '@/components/VariableProduct';
 import {
   getProductVariations,
   getRelatedProducts,
   getSingleProductData,
 } from '@/actions/woocommerce/products';
-import RelatedProducts from '@/components/RelatedProducts';
-import Skeleton from '@/components/Skeleton';
-import { Metadata } from 'next';
-import VariableProduct from '@/components/VariableProduct';
-import SingleProduct from '@/components/SingleProduct';
-import { ProductVariation } from '@/types/product';
 
 export const metadata: Metadata = {
   title: 'Lisa Folawiyo Online Store | Shop Luxury Fashion',

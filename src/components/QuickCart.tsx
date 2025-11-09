@@ -2,9 +2,12 @@
 
 import React from 'react';
 import { useState } from 'react';
+
 import Image from 'next/image';
-import CartModal from './CartModal';
+
 import useCartStore from '@/hooks/zustand/useCartStore';
+
+import CartModal from './CartModal';
 
 function QuickCart() {
   const { items: cartItems } = useCartStore((state) => state);

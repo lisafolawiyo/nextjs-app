@@ -1,8 +1,11 @@
 import React from 'react';
-import './styles/home.scss';
+
 import Image from 'next/image';
-import HomeLinks from '@/components/HomeLinks';
 import { Metadata } from 'next';
+
+import HomeLinks from '@/components/HomeLinks';
+
+import './styles/home.scss';
 
 export const metadata: Metadata = {
   title: 'Lisa Folawiyo | Luxury African Fashion with Hand Embellishment',

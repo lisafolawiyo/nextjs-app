@@ -1,9 +1,11 @@
 'use client';
 import React, { useEffect, useState } from 'react';
+
 import { useRouter } from 'next/navigation';
-import useCartStore from '@/hooks/zustand/useCartStore';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
+
+import useCartStore from '@/hooks/zustand/useCartStore';
 import { getTempState } from '@/components/archive/cart/Checkout';
 
 function PayFailed() {

@@ -1,10 +1,12 @@
 'use client';
 
 import React from 'react';
+
 import Link from 'next/link';
+
+import { ROUTES } from '@/utils/routes';
 import { ProductCard } from '@/components/archive';
 import { useGsapFadeIn } from '@/hooks/useGsapFadeIn';
-import { ROUTES } from '@/utils/routes';
 
 export function SampleProducts({ products }: { products: UnknownObject }) {
   const sectionRef = useGsapFadeIn({ delay: 0.2, y: 30 });

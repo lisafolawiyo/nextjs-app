@@ -1,8 +1,10 @@
 'use server';
 
 import axios, { AxiosError } from 'axios';
-import { generateOAuthSignature } from './woocommerce';
+
 import { OrderData } from '@/types/checkout';
+
+import { generateOAuthSignature } from './woocommerce';
 
 export type Errors = {
   firstname?: string;

@@ -1,10 +1,11 @@
 'use client';
 
 import React from 'react';
-import useCartStore from '@/hooks/zustand/useCartStore';
+
 import { OrderItem } from '@/components/archive';
-import { useGsapFadeInChildren } from '@/hooks/useGsapFadeIn';
+import useCartStore from '@/hooks/zustand/useCartStore';
 import { formatCurrency } from '@/utils/formatCurrency';
+import { useGsapFadeInChildren } from '@/hooks/useGsapFadeIn';
 
 interface OrderListProps {
   shippingFee?: number;

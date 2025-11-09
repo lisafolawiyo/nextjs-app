@@ -1,8 +1,10 @@
 'use client';
 
 import React from 'react';
-import { Product } from '@/utils/models';
+
 import Link from 'next/link';
+
+import { Product } from '@/utils/models';
 
 const RelatedProducts = ({
   related_products,

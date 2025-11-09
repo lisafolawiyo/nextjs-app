@@ -1,18 +1,20 @@
 'use client';
 
-import { ChevronLeft } from 'lucide-react';
 import React, { useState } from 'react';
-import { useRouter } from 'next/navigation';
 
-import {
-  OrderList,
-  CHECKOUT_SCHEMA_TYPE,
-  CheckoutForm,
-} from '@/components/archive';
-import { useGsapFadeInChildren } from '@/hooks/useGsapFadeIn';
-import useCartStore from '@/hooks/zustand/useCartStore';
 import dynamic from 'next/dynamic';
 import toast from 'react-hot-toast';
+import { ChevronLeft } from 'lucide-react';
+import { useRouter } from 'next/navigation';
+
+import useCartStore from '@/hooks/zustand/useCartStore';
+import { createOrder } from '@/actions/woocommerce/orders';
+import { useGsapFadeInChildren } from '@/hooks/useGsapFadeIn';
+import {
+  CHECKOUT_SCHEMA_TYPE,
+  CheckoutForm,
+  OrderList,
+} from '@/components/archive';
 import {
   OrderData,
   PaysStackConfig,
@@ -20,7 +22,6 @@ import {
   PaystackSuccessResponse,
   ShippingRate,
 } from '@/types/checkout';
-import { createOrder } from '@/actions/woocommerce/orders';
 
 const PaystackWrapper = dynamic(() => import('@/components/PaystackWrapper'), {
   ssr: false,

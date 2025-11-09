@@ -1,4 +1,4 @@
-import { Header, Footer, LenisScroll } from '@/components/archive';
+import { Footer, Header, LenisScroll } from '@/components/archive';
 
 export default function RootLayout({
   children,

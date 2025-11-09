@@ -1,14 +1,16 @@
-import { ProductDetails } from '@/components/archive';
 import React from 'react';
+
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+
+import { stripOuterTags } from '@/utils/util';
+import { ProductVariation } from '@/types/product';
+import { ProductDetails } from '@/components/archive';
 import {
   getProductVariations,
   getRelatedProducts,
   getSingleProductData,
 } from '@/actions/woocommerce/products';
-import { Metadata } from 'next';
-import { ProductVariation } from '@/types/product';
-import { stripOuterTags } from '@/utils/util';
 
 export async function generateMetadata({
   params,

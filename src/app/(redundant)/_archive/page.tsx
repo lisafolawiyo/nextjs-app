@@ -1,7 +1,9 @@
 import React from 'react';
+
 import { Metadata } from 'next';
-import EditorialList from '@/components/EditorialList';
+
 import { getPosts } from '@/actions/wordpress/posts';
+import EditorialList from '@/components/EditorialList';
 
 export const metadata: Metadata = {
   title: 'Lisa Folawiyo Editorials | Fashion Stories & Inspiration',

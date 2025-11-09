@@ -1,5 +1,6 @@
-import PayFailed from '@/components/PayFailed';
 import { Metadata } from 'next';
+
+import PayFailed from '@/components/PayFailed';
 
 export const metadata: Metadata = {
   robots: {

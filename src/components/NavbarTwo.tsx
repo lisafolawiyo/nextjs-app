@@ -1,11 +1,14 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
-import '../app/styles/navbar.scss';
-import Image from 'next/image';
-import CartModal from './CartModal';
-import useCartStore from '@/hooks/zustand/useCartStore';
+
 import Link from 'next/link';
+import Image from 'next/image';
+
+import useCartStore from '@/hooks/zustand/useCartStore';
+
+import '../app/styles/navbar.scss';
+import CartModal from './CartModal';
 
 function NavbarTwo() {
   const [isOpen, setIsOpen] = useState(false);

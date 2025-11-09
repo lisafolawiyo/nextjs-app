@@ -1,7 +1,20 @@
 'use client';
 
-import { getShippingRates } from '@/actions/checkout';
+import { useState } from 'react';
+
+import { z } from 'zod';
+import { useForm } from 'react-hook-form';
+import 'react-phone-number-input/style.css';
+import PhoneInput from 'react-phone-number-input';
+import en from 'react-phone-number-input/locale/en';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { PhoneNumberUtil } from 'google-libphonenumber';
+
+import { ROUTES } from '@/utils/routes';
+import { Input } from '@/components/ui/input';
+import { Countries } from '@/lib/country_data';
 import { Button } from '@/components/ui/button';
+import { getShippingRates } from '@/actions/checkout';
 import {
   Form,
   FormControl,
@@ -9,7 +22,6 @@ import {
   FormItem,
   FormMessage,
 } from '@/components/ui/form';
-import { Input } from '@/components/ui/input';
 import {
   Select,
   SelectContent,
@@ -19,16 +31,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { Countries } from '@/lib/country_data';
-import { ROUTES } from '@/utils/routes';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { PhoneNumberUtil } from 'google-libphonenumber';
-import { useState } from 'react';
-import { useForm } from 'react-hook-form';
-import PhoneInput from 'react-phone-number-input';
-import en from 'react-phone-number-input/locale/en';
-import 'react-phone-number-input/style.css';
-import { z } from 'zod';
 
 const phoneUtil = PhoneNumberUtil.getInstance();
 

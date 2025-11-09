@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { AboutPage } from '@/components/archive';
 import { getProducts } from '@/actions/woocommerce/products';
 

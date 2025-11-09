@@ -1,14 +1,21 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { createOrder } from '@/actions/woocommerce/orders';
-import useCartStore from '@/hooks/zustand/useCartStore';
 import React, { useEffect, useState } from 'react';
+
 import { z } from 'zod';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { SubmitHandler, useForm, Controller } from 'react-hook-form';
-import toast from 'react-hot-toast';
 import dynamic from 'next/dynamic';
+import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { Controller, SubmitHandler, useForm } from 'react-hook-form';
+
+import { Input } from '@/components/ui/input';
+import { Countries } from '@/lib/country_data';
+import { Checkbox } from '@/components/ui/checkbox';
+import { getShippingRates } from '@/actions/checkout';
+import useCartStore from '@/hooks/zustand/useCartStore';
+import { createOrder } from '@/actions/woocommerce/orders';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import {
   OrderData,
   PaysStackConfig,
@@ -16,8 +23,6 @@ import {
   PaystackSuccessResponse,
   ShippingRate,
 } from '@/types/checkout';
-import { Input } from '@/components/ui/input';
-import { Checkbox } from '@/components/ui/checkbox';
 import {
   Select,
   SelectContent,
@@ -27,9 +32,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { getShippingRates } from '@/actions/checkout';
-import { Countries } from '@/lib/country_data';
+
 // import { AxiosError } from 'axios';
 
 const PaystackWrapper = dynamic(() => import('@/components/PaystackWrapper'), {

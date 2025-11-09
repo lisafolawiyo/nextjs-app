@@ -1,9 +1,10 @@
 'use client';
 
-import { useRef, useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
 import { gsap } from 'gsap';
-import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { Timeline, VideoPlayer } from '@/components/archive';
 

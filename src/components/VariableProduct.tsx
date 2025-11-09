@@ -1,11 +1,13 @@
 'use client';
 
-import CustomizeProducts from '@/components/CustomizeProducts';
-import DOMPurify from 'isomorphic-dompurify';
-import ProductImagesTwo from '@/components/ProductImagesTwo';
-import SizeGuideButton from '@/components/SizeGuideButton';
-import { ProductType, ProductVariation } from '@/types/product';
 import { Suspense, useState } from 'react';
+
+import DOMPurify from 'isomorphic-dompurify';
+
+import SizeGuideButton from '@/components/SizeGuideButton';
+import ProductImagesTwo from '@/components/ProductImagesTwo';
+import CustomizeProducts from '@/components/CustomizeProducts';
+import { ProductType, ProductVariation } from '@/types/product';
 
 const VariableProduct = ({
   product,

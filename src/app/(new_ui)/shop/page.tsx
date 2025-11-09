@@ -1,12 +1,14 @@
 import React from 'react';
+
+import type { SearchParams } from 'nuqs/server';
+import { createSearchParamsCache, parseAsString } from 'nuqs/server';
+
 import { ArchiveSection } from '@/components/archive/archive-section/ArchiveSection';
 import {
-  getProducts,
   getProductCategories,
   getProductTags,
+  getProducts,
 } from '@/actions/woocommerce/products';
-import { createSearchParamsCache, parseAsString } from 'nuqs/server';
-import type { SearchParams } from 'nuqs/server';
 
 const searchParamsCache = createSearchParamsCache({
   page: parseAsString,
@@ -24,9 +26,8 @@ export default async function SearchShop({
 }) {
   const per_page = 12;
 
-  const { page, search, category, tag } = await searchParamsCache.parse(
-    searchParams,
-  );
+  const { page, search, category, tag } =
+    await searchParamsCache.parse(searchParams);
 
   const product_data = await getProducts(
     search ?? '',

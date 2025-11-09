@@ -1,5 +1,6 @@
-import CheckoutForm from '@/components/CheckoutForm';
 import { Metadata } from 'next';
+
+import CheckoutForm from '@/components/CheckoutForm';
 
 export const metadata: Metadata = {
   robots: {

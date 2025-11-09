@@ -1,7 +1,8 @@
 'use client';
 
-import { usePathname, useSearchParams } from 'next/navigation';
 import { useEffect } from 'react';
+
+import { usePathname, useSearchParams } from 'next/navigation';
 
 const Product = () => {
   const pathname = usePathname();

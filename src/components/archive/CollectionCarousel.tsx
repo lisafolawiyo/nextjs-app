@@ -1,10 +1,11 @@
 'use client';
 
-import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useRef, useState } from 'react';
 
-import { Product, ProductCard } from '@/components/archive';
+import { ArrowLeft, ArrowRight } from 'lucide-react';
+
 import { useGsapFadeIn } from '@/hooks/useGsapFadeIn';
+import { Product, ProductCard } from '@/components/archive';
 import { getProducts } from '@/actions/woocommerce/products';
 
 interface Category {

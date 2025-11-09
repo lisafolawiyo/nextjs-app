@@ -1,10 +1,12 @@
 import React, { Suspense } from 'react';
+
 import { Metadata } from 'next';
-import Editorial from '@/components/Editorial';
-import { getPostsByCategories, getSinglePost } from '@/actions/wordpress/posts';
-import Skeleton from '@/components/Skeleton';
-import RelatedPosts from '@/components/RelatedPosts';
 import { notFound } from 'next/navigation';
+
+import Skeleton from '@/components/Skeleton';
+import Editorial from '@/components/Editorial';
+import RelatedPosts from '@/components/RelatedPosts';
+import { getPostsByCategories, getSinglePost } from '@/actions/wordpress/posts';
 
 export const metadata: Metadata = {
   title: 'Lisa Folawiyo Editorials | Fashion Stories & Inspiration',

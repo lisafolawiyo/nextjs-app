@@ -1,4 +1,5 @@
 import React from 'react';
+
 import '../app/styles/footer.scss';
 import MailchimpForm from './MailchimpForm';
 

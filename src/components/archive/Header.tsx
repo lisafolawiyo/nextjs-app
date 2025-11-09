@@ -1,11 +1,12 @@
 'use client';
 
-import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
-import { MobileMenu } from '@/components/archive';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
 import { ROUTES } from '@/utils/routes';
+import { MobileMenu } from '@/components/archive';
 import useCartStore from '@/hooks/zustand/useCartStore';
 
 export function Header() {

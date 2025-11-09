@@ -1,8 +1,9 @@
 'use client';
 
-import { ChevronLeft } from 'lucide-react';
 import { useEffect, useRef, useState } from 'react';
+
 import gsap from 'gsap';
+import { ChevronLeft } from 'lucide-react';
 
 interface SizeGuideModalProps {
   isOpen: boolean;

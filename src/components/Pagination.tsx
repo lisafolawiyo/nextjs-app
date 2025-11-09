@@ -1,8 +1,9 @@
 'use client';
 
-import { useRouter } from 'next/navigation';
-import { useQueryState, parseAsString } from 'nuqs';
 import { useTransition } from 'react';
+
+import { useRouter } from 'next/navigation';
+import { parseAsString, useQueryState } from 'nuqs';
 
 interface PaginationProps {
   currentPage: number;

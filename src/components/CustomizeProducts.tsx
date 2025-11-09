@@ -1,9 +1,11 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import Add from './Add';
+import React, { useEffect, useState } from 'react';
+
 import { stripOuterTags } from '@/utils/util';
 import { ProductType, ProductVariation } from '@/types/product';
+
+import Add from './Add';
 
 // type Attribute = {
 //   id: number;

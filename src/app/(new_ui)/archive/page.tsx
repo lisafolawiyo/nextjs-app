@@ -1,7 +1,7 @@
-import { Hero, CollectionCarousel, SampleProducts } from '@/components/archive';
+import { CollectionCarousel, Hero, SampleProducts } from '@/components/archive';
 import {
-  getProducts,
   getProductCategories,
+  getProducts,
 } from '@/actions/woocommerce/products';
 
 export default async function page() {

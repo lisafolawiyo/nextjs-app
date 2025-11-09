@@ -1,12 +1,12 @@
 import Link from 'next/link';
 
+import { ROUTES } from '@/utils/routes';
 import {
   ArrowRight,
   Instagram,
   InstagramBlack,
   Youtube,
 } from '@/components/Icons';
-import { ROUTES } from '@/utils/routes';
 
 export function Footer() {
   const footerLinks = [

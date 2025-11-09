@@ -1,8 +1,10 @@
 'use client';
 import React from 'react';
-import useCartStore from '@/hooks/zustand/useCartStore';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
+import useCartStore from '@/hooks/zustand/useCartStore';
 
 interface CartModalProps {
   setIsCartOpen: React.Dispatch<React.SetStateAction<boolean>>;

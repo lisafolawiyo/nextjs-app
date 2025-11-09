@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useRef, useState } from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+
 import { faXmark } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 function SizeGuideButton() {
   const [isOpen, setIsOpen] = useState(false);

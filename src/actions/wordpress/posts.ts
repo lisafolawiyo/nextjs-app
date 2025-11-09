@@ -1,4 +1,5 @@
 import axios from 'axios';
+
 import { generateOAuthSignature } from '../woocommerce/woocommerce';
 
 const API_URL = process.env.PROJECT_URL + 'wp-json/wp/v2';

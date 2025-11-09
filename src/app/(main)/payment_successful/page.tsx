@@ -1,6 +1,8 @@
-import PaySuccess from '@/components/PaySuccess';
 import React from 'react';
+
 import { Metadata } from 'next';
+
+import PaySuccess from '@/components/PaySuccess';
 
 export const metadata: Metadata = {
   robots: {

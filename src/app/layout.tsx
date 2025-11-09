@@ -1,9 +1,11 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import './styles/globals.scss';
-import { GoogleAnalytics } from '@next/third-parties/google';
 import { NuqsAdapter } from 'nuqs/adapters/next/app';
+import { GoogleAnalytics } from '@next/third-parties/google';
+
 import ToasterProvider from '@/components/toaster-provider';
+
+import './styles/globals.scss';
 
 const centuryGothic = localFont({
   src: [

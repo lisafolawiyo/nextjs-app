@@ -1,6 +1,4 @@
 'use client';
-import { gsap } from 'gsap';
-import { X } from 'lucide-react';
 import {
   useCallback,
   useEffect,
@@ -9,10 +7,13 @@ import {
   useState,
 } from 'react';
 
+import { gsap } from 'gsap';
+import { X } from 'lucide-react';
+
+import { cn } from '@/lib/utils';
+import { ROUTES } from '@/utils/routes';
 import { ArrowRight } from '@/components/Icons';
 import useCartStore from '@/hooks/zustand/useCartStore';
-import { ROUTES } from '@/utils/routes';
-import { cn } from '@/lib/utils';
 
 const useMenuAnimation = (isOpen: boolean) => {
   const menuRef = useRef<HTMLDivElement>(null);

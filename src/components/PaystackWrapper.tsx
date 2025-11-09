@@ -1,8 +1,10 @@
 'use client';
 
-import { PaystackError, PaystackSuccessResponse } from '@/types/checkout';
 import { useEffect, useRef } from 'react';
+
 import { usePaystackPayment } from 'react-paystack';
+
+import { PaystackError, PaystackSuccessResponse } from '@/types/checkout';
 
 type PaystackProps = {
   config: {

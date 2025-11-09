@@ -7,3 +7,11 @@ type ProductOption = {
   name: string;
   value: string;
 };
+
+type ShippingRate = {
+  id: string;
+  title: string;
+  desc: string;
+  delivery_time: string;
+  fee: number;
+};

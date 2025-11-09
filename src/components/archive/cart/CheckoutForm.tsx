@@ -32,14 +32,6 @@ import { z } from 'zod';
 
 const phoneUtil = PhoneNumberUtil.getInstance();
 
-type ShippingRate = {
-  id: string;
-  title: string;
-  desc: string;
-  delivery_time: string;
-  fee: number;
-};
-
 export const CHECKOUT_SCHEMA = z.object({
   firstname: z.string().min(1, 'First name is required'),
   lastname: z.string().min(1, 'Last name is required'),
@@ -67,22 +59,16 @@ export type CHECKOUT_SCHEMA_TYPE = z.infer<typeof CHECKOUT_SCHEMA>;
 
 interface CheckoutFormProps {
   onSubmit: (data: CHECKOUT_SCHEMA_TYPE) => void;
-  onShippingChange?: (fee: number) => void;
+  selectedShippingRate: UnknownObject;
+  setSelectedShippingRate: (fee: UnknownObject) => void;
 }
 
 export function CheckoutForm({
   onSubmit,
-  onShippingChange,
+  selectedShippingRate,
+  setSelectedShippingRate,
 }: CheckoutFormProps) {
   const [shippingRates, setShippingRates] = useState<ShippingRate[]>([]);
-  const [selectedShippingRate, setSelectedShippingRate] =
-    useState<ShippingRate>({
-      id: '',
-      title: '',
-      desc: '',
-      delivery_time: '',
-      fee: 0,
-    });
 
   const form = useForm<CHECKOUT_SCHEMA_TYPE>({
     resolver: zodResolver(CHECKOUT_SCHEMA),
@@ -108,9 +94,6 @@ export function CheckoutForm({
         delivery_time: '',
         fee: 0,
       });
-      if (onShippingChange) {
-        onShippingChange(0);
-      }
       const rates = await getShippingRates(country);
       setShippingRates(rates);
     } catch (error) {
@@ -123,9 +106,6 @@ export function CheckoutForm({
     const rate = shippingRates.find((rate) => rate.id === id);
     if (rate) {
       setSelectedShippingRate(rate);
-      if (onShippingChange) {
-        onShippingChange(rate.fee);
-      }
     }
   };
 
@@ -182,7 +162,7 @@ export function CheckoutForm({
                             {...rest}
                             value={value}
                             onChange={(e) => onChange(e.target.value)}
-                            className="mr-2 h-full max-w-[100px] cursor-pointer rounded-none border-0 border-none border-[#212529] bg-transparent pr-3 text-[13px] focus:outline-none"
+                            className="mr-2 h-full max-w-[120px] cursor-pointer truncate rounded-none border-0 border-none border-[#212529] bg-transparent pr-3 text-[13px] focus:outline-none"
                           >
                             {options.map(
                               (option: { value: string; label: string }) => (

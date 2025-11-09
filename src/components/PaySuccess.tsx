@@ -4,7 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { useRouter } from 'next/navigation';
 import useCartStore from '@/hooks/zustand/useCartStore';
 import { CartItem } from '@/types/checkout';
-import { getTempState } from '@/components/CheckoutForm';
+import { getTempState } from '@/components/archive/cart/Checkout';
 
 function PaySuccess() {
   const {

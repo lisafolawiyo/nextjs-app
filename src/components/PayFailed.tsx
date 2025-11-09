@@ -4,7 +4,7 @@ import { useRouter } from 'next/navigation';
 import useCartStore from '@/hooks/zustand/useCartStore';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTriangleExclamation } from '@fortawesome/free-solid-svg-icons';
-import { getTempState } from './CheckoutForm';
+import { getTempState } from '@/components/archive/cart/Checkout';
 
 function PayFailed() {
   const { cartTotal } = useCartStore((state) => state);

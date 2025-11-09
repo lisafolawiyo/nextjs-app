@@ -39,8 +39,7 @@ export function OrderList({ shippingFee = 0 }: OrderListProps) {
   }
 
   const subtotal = cartTotal();
-  const shipping = shippingFee;
-  const total = subtotal + shipping;
+  const total = subtotal + shippingFee;
 
   return (
     <div className="md:px-3 lg:border-[1px] lg:border-[#212529] lg:py-10 2xl:px-10">
@@ -67,7 +66,7 @@ export function OrderList({ shippingFee = 0 }: OrderListProps) {
           <div className="flex items-center justify-between text-[#212529]">
             <span className="text-[16px] lg:text-[18px]">Shipping</span>
             <span className="text-[16px] font-medium lg:text-[18px]">
-              {formatCurrency(shipping)}
+              {formatCurrency(shippingFee)}
             </span>
           </div>
           <div className="flex items-center justify-between border-t border-[#212529] pt-4 text-[#212529]">

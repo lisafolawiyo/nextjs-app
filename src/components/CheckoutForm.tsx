@@ -192,10 +192,11 @@ export default function CheckoutForm() {
       publicKey,
     });
   };
+
   const onSuccess = (ref: PaystackSuccessResponse) => {
     toast.success('Payment successful');
     setPaystackConfig(null);
-    // TODO: Call WooCommerce order API here
+
     if (orderData !== null) {
       const updatedOrderData: OrderData = {
         ...orderData,
@@ -209,7 +210,7 @@ export default function CheckoutForm() {
         ],
       };
       createOrder(updatedOrderData);
-      setTempState(updatedOrderData); // Save in memory
+      setTempState(updatedOrderData);
       router.push('/payment_successful');
     }
   };
@@ -220,7 +221,6 @@ export default function CheckoutForm() {
   };
 
   const onError = (error: PaystackError) => {
-    // const err = error as AxiosError;
     console.error('Payment failed to initialize:', error);
     toast.error('Payment failed');
     if (orderData !== null) {

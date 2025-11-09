@@ -9,19 +9,13 @@ import useCartStore from '@/hooks/zustand/useCartStore';
 import { getTempState } from '@/components/archive/cart/Checkout';
 
 function PaySuccess() {
-  const {
-    items: cartItems,
-    cartTotal,
-    clearCart,
-  } = useCartStore((state) => state);
-  const [totalCart, setTotalCart] = useState<number | null>(null);
+  const { items: cartItems, clearCart } = useCartStore((state) => state);
   const [lineItems, setLineItems] = useState<CartItem[]>([]);
+
   const order = getTempState();
   const router = useRouter();
 
   useEffect(() => {
-    const value = cartTotal(); // safe to call on client
-    setTotalCart(value);
     setLineItems(cartItems);
     // clear cart in store
     clearCart();
@@ -42,6 +36,11 @@ function PaySuccess() {
 
   const reference = order.meta_data.find(
     (item: { key: string }) => item.key === 'reference',
+  );
+
+  const total = lineItems.reduce(
+    (total, item) => total + item.price * item.quantity,
+    0,
   );
 
   return (
@@ -114,16 +113,16 @@ function PaySuccess() {
         <div className="total-items">
           <div className="total-item">
             <h3>Subtotal</h3>
-            {totalCart !== null && <h3>${totalCart}</h3>}
+            {total !== null && <h3>${total}</h3>}
           </div>
           <div className="total-item">
             <h3>Shipping</h3>
-            <h3>{order.shipping_lines[0].total}</h3>
+            <h3>${order.shipping_lines[0].total}</h3>
           </div>
           <div className="total-item total">
             <h3>Total</h3>
-            {totalCart !== null && (
-              <h3>${Number(order.shipping_lines[0].total) + totalCart}</h3>
+            {total !== null && (
+              <h3>${Number(order.shipping_lines[0].total) + total}</h3>
             )}
           </div>
         </div>

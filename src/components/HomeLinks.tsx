@@ -10,7 +10,7 @@ export default function HomeLinks() {
       </a>
       <a href="/archive">
         <div className="list-items item2">
-          <h3>Inside LF</h3>
+          <h3>Archive</h3>
         </div>
       </a>
       <a href="/contact">

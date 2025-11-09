@@ -55,7 +55,7 @@ export function Header() {
     >
       <div className="mx- max-sm:px-2">
         <div className="mx-auto flex items-center justify-between py-3 sm:px-4 md:px-10">
-          <Link href={ROUTES.LISA_ARCHIVE_HOME} aria-label="Home">
+          <Link href={ROUTES.ARCHIVE} aria-label="Home">
             <h1
               className={`text-2xl font-light md:text-[40px] ${
                 shouldBeDark ? 'text-black' : 'text-white'
@@ -67,7 +67,7 @@ export function Header() {
 
           <nav className="hidden items-center gap-8 text-[24px] lg:flex">
             <Link
-              href={ROUTES.LISA_ARCHIVE_SEARCH}
+              href={ROUTES.SHOP}
               className={`text-[24px] font-light transition-opacity hover:underline hover:opacity-70 ${
                 shouldBeDark
                   ? 'text-black hover:text-gray-700'
@@ -77,7 +77,7 @@ export function Header() {
               search the archive
             </Link>
             <Link
-              href={ROUTES.LISA_ARCHIVE_ABOUT}
+              href={ROUTES.ABOUT}
               className={`text-[24px] font-light transition-opacity hover:underline hover:opacity-70 ${
                 shouldBeDark
                   ? 'text-black hover:text-gray-700'
@@ -87,7 +87,7 @@ export function Header() {
               about
             </Link>
             <Link
-              href={ROUTES.LISA_ARCHIVE_CART}
+              href={ROUTES.CHECKOUT}
               className={`flex items-center justify-center text-[24px] font-light transition-opacity hover:underline hover:opacity-70 ${
                 shouldBeDark
                   ? 'text-black hover:text-gray-700'

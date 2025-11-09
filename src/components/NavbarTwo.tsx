@@ -114,7 +114,7 @@ function NavbarTwo() {
                 </li>
                 <li className="nav-top-item">
                   <Link href="/archive" onClick={toggleMenu}>
-                    Inside LF
+                    Archive
                   </Link>
                 </li>
                 <li className="nav-top-item">

@@ -89,11 +89,11 @@ export function MobileMenu({ shouldDark }: { shouldDark?: boolean }) {
   const cartItemCount = items.reduce((total, item) => total + item.quantity, 0);
 
   const primaryLinks = [
-    { name: 'Search the Archive', href: ROUTES.LISA_ARCHIVE_SEARCH },
-    { name: 'About', href: ROUTES.LISA_ARCHIVE_ABOUT },
+    { name: 'Search the Archive', href: ROUTES.SHOP },
+    { name: 'About', href: ROUTES.ABOUT },
     {
       name: `Cart${cartItemCount > 0 ? ` (${cartItemCount})` : ''}`,
-      href: ROUTES.LISA_ARCHIVE_CART,
+      href: ROUTES.CHECKOUT,
     },
   ];
 

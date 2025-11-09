@@ -100,7 +100,7 @@ export function AboutPage({ products }: { products: UnknownObject }) {
           ))}
         </div>
         <div className="mt-8 flex w-full items-center justify-center py-8 sm:mt-10 sm:py-10">
-          <Link href={ROUTES.LISA_ARCHIVE_SEARCH}>
+          <Link href={ROUTES.SHOP}>
             <button className="whitespace-nowrap border border-black px-4 py-2 text-xs transition-all duration-300 hover:bg-black hover:text-white sm:px-6 sm:text-sm md:w-[219px] md:text-base">
               DISCOVER MORE
             </button>

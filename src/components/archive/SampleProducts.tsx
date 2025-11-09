@@ -29,7 +29,7 @@ export function SampleProducts({ products }: { products: UnknownObject }) {
         ))}
       </div>
       <div className="mt-10 flex w-full items-center justify-center py-10">
-        <Link href={ROUTES.LISA_ARCHIVE_SEARCH}>
+        <Link href={ROUTES.SHOP}>
           <button className="whitespace-nowrap border border-black px-6 py-2 text-sm  transition-all duration-300 hover:bg-black hover:text-white md:w-[219px] md:text-base">
             DISCOVER MORE
           </button>

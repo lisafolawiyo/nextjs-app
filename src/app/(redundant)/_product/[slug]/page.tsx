@@ -52,7 +52,6 @@ const SinglePage = async ({
     type: product_data.type,
     status: product_data.status,
     description: product_data.description,
-    short_description: product_data.short_description,
     sku: product_data.sku,
     price: product_data.price,
     regular_price: product_data.regular_price,

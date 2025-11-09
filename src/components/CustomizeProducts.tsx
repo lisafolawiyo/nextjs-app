@@ -103,7 +103,7 @@ const CustomizeProducts = ({
       <Add
         product_id={product.id}
         name={product.name}
-        desc={stripOuterTags(product.short_description)}
+        desc={stripOuterTags(product.description)}
         price={price}
         stock_status={product.stock_status}
         image_src={product.images[0].src}

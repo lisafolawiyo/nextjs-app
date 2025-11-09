@@ -12,7 +12,6 @@ export interface Product {
   featured: boolean;
   catalog_visibility: string;
   description: string;
-  short_description: string;
   sku: string;
   price: string;
   regular_price: string;

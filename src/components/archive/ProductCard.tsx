@@ -124,7 +124,7 @@ export const ProductCard = ({
               {product.name}
             </p>
             <p className="text-sm font-bold text-[#000000] transition-colors duration-500 group-hover:text-white md:text-[20px]">
-              {stripOuterTags(product.short_description)}
+              {stripOuterTags(product.description)}
             </p>
             <p className="text-sm text-gray-500 transition-colors duration-500 group-hover:text-white md:text-base">
               {product.categories[0]?.name}

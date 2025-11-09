@@ -25,22 +25,19 @@ export async function generateMetadata({
     return {};
   }
   return {
-    title: product.name,
+    title: `${product.name?.toUpperCase()} | LISA FOLAWIYO STUDIO `,
     description: stripOuterTags(product.short_description),
     openGraph: {
-      title: product?.title,
+      title: product?.name?.toUpperCase(),
       description: stripOuterTags(product.short_description),
-      images: [
-        {
-          url: product.images?.[0]?.src,
-          width: 1200,
-          height: 630,
-          alt: product?.title,
-        },
-      ],
-      // url: siteConfig.url,
+      images: product.images.map((image) => ({
+        url: image.src,
+        width: 1200,
+        height: 630,
+        alt: product?.name?.toUpperCase(),
+      })),
+      url: `${process.env.NEXT_PUBLIC_WEBSITE_BASE_URL}products/${product?.slug}`,
       // siteName: siteConfig.name,
-      // publishedTime: new Date(post?.date).toISOString();
     },
   };
 }

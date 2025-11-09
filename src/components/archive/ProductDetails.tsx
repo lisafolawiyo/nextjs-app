@@ -25,7 +25,7 @@ function ProductOptions({
   product: UnknownObject;
   productVariations: UnknownObject[];
 }) {
-  const stockNumber = 4;
+  const stockNumber = Infinity;
 
   const [selectedOptions, setSelectedOptions] = useState<UnknownObject[]>([]);
 
@@ -80,7 +80,7 @@ function ProductOptions({
     addToCart({
       id: product?.id,
       name: product?.name,
-      desc: stripOuterTags(product?.short_description || ''),
+      desc: stripOuterTags(product?.description || ''),
       price: product?.attributes?.length
         ? Number(price)
         : Number(product?.price),

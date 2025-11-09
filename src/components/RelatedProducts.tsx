@@ -57,7 +57,7 @@ const RelatedProducts = ({
             <div className="shop-product-detail-wrap">
               <h3 className="look">{product.name}</h3>
               <p className="shop-product-name">
-                {stripOuterTags(product.short_description)}
+                {stripOuterTags(product.description)}
               </p>
               <h3 className="collection-name">{product.categories[0].name}</h3>
               <p className="shop-product-price">${product.price}</p>

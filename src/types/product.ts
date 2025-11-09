@@ -16,7 +16,6 @@ export type ProductType = {
   type: string;
   status: string;
   description: string;
-  short_description: string;
   sku: string;
   price: string;
   regular_price: string;

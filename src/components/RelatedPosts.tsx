@@ -1,10 +1,7 @@
 'use client';
-// import { stripOuterTags } from '@/utils/util';
 import React from 'react';
 
 import { Post } from '@/types/post';
-
-// import DOMPurify from "isomorphic-dompurify";
 
 const RelatedPosts = ({ relatedPosts }: { relatedPosts: Post[] }) => {
   const otherPostsWithFormattedDates = relatedPosts.map((post) => ({

@@ -27,7 +27,7 @@ export default function PaystackWrapper({
 }: PaystackProps) {
   const initializePayment = usePaystackPayment(config);
 
-  const hasInitialized = useRef(false); // 🔒 Guard against double init
+  const hasInitialized = useRef(false);
 
   useEffect(() => {
     if (!hasInitialized.current) {
@@ -38,7 +38,6 @@ export default function PaystackWrapper({
       }
       hasInitialized.current = true;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return null;

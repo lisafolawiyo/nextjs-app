@@ -15,8 +15,8 @@ const RelatedProducts = ({
 
   const stripOuterTags = (str: string) => {
     return str
-      .replace(/<[^>]*>/g, '') // remove all tags
-      .replace(/\n/g, '') // remove newline characters
+      .replace(/<[^>]*>/g, '')
+      .replace(/\n/g, '')
       .trim();
   };
 
@@ -40,7 +40,6 @@ const RelatedProducts = ({
               />
               {product.images[1] && (
                 <div
-                  // src={product.images[1].src || "/product.png"}
                   className="item-image-bottom"
                   style={{
                     backgroundImage: `url('${
@@ -50,10 +49,6 @@ const RelatedProducts = ({
                 />
               )}
             </div>
-            {/* <div className="flex justify-between items-baseline">
-            <span className="font-thin text-xs text-gray-500 uppercase">{product.name}</span>
-            <span className="text-sm">${product.price}</span>
-          </div> */}
             <div className="shop-product-detail-wrap">
               <h3 className="look">{product.name}</h3>
               <p className="shop-product-name">

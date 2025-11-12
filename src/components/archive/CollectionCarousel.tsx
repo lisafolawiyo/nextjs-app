@@ -101,6 +101,7 @@ export const CollectionCarousel = ({
 
   return (
     <section
+      id="retrospective"
       ref={sectionRef as React.RefObject<HTMLElement>}
       className="my-10 md:py-16"
     >
@@ -143,7 +144,7 @@ export const CollectionCarousel = ({
 
           <div
             ref={scrollContainerRef}
-            className="scrollbar-hide flex overflow-x-auto max-md:mx-4"
+            className="hide-scrollbar flex overflow-x-auto max-md:mx-4"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {isLoading ? (

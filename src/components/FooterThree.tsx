@@ -95,52 +95,12 @@ function FooterThree() {
 
           <div>
             <h3 className="text-xs font-semibold tracking-[1.5px] mb-5">
-              YEARS
-            </h3>
-            <ul className="flex flex-col gap-3">
-              <li>
-                <Link
-                  href="/collections/ss25"
-                  className="text-sm font-light text-white/80 hover:text-white transition-colors inline-block"
-                >
-                  SS25
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/collections/ss24"
-                  className="text-sm font-light text-white/80 hover:text-white transition-colors inline-block"
-                >
-                  SS24
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/collections/ss23"
-                  className="text-sm font-light text-white/80 hover:text-white transition-colors inline-block"
-                >
-                  SS23
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="/collections/ss22"
-                  className="text-sm font-light text-white/80 hover:text-white transition-colors inline-block"
-                >
-                  SS22
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          <div>
-            <h3 className="text-xs font-semibold tracking-[1.5px] mb-5">
               SHOP
             </h3>
             <ul className="flex flex-col gap-3">
               <li>
                 <Link
-                  href="/shop/archive-edit"
+                  href="/shop?tag=archive-edit"
                   className="text-sm font-light text-white/80 hover:text-white transition-colors inline-block"
                 >
                   The Archive Edit
@@ -148,7 +108,7 @@ function FooterThree() {
               </li>
               <li>
                 <Link
-                  href="/shop/retrospective"
+                  href="/archive#retrospective"
                   className="text-sm font-light text-white/80 hover:text-white transition-colors inline-block"
                 >
                   The Retrospective
@@ -156,7 +116,7 @@ function FooterThree() {
               </li>
               <li>
                 <Link
-                  href="/shop/accessories"
+                  href="/shop?category=accessories"
                   className="text-sm font-light text-white/80 hover:text-white transition-colors inline-block"
                 >
                   Accessories
@@ -211,9 +171,6 @@ function FooterThree() {
               LISAFOLAWIYO.COM
             </Link>
             <div className="flex items-center gap-8">
-              <span className="text-xs tracking-wider text-white/60">
-                &copy;{currentYear}
-              </span>
               <div className="flex items-center gap-3">
                 <a
                   href="https://www.instagram.com/lisafolawiyo_studio"
@@ -234,8 +191,14 @@ function FooterThree() {
               </div>
               <button
                 onClick={scrollToTop}
-                className="bg-transparent border-none text-white text-[11px] font-semibold tracking-[1.5px] cursor-pointer flex items-center gap-2 hover:opacity-70 transition-opacity"
+                className="bg-transparent space-x-2 border-none text-white text-[11px] font-semibold tracking-[1.5px] cursor-pointer flex items-center gap-2 hover:opacity-70 transition-opacity"
               >
+                <span>
+                  {' '}
+                  <span className="text-xs tracking-wider text-white/60">
+                    &copy;{currentYear}
+                  </span>
+                </span>
                 BACK TO TOP <span className="text-base">↑</span>
               </button>
             </div>

@@ -4,6 +4,7 @@ import { useState } from 'react';
 
 import Image from 'next/image';
 
+import { ChevronDown } from '@/components/Icons';
 import { timelineEvents } from '@/data/timelineData';
 
 export function TimelineSectionNew() {
@@ -27,23 +28,11 @@ export function TimelineSectionNew() {
           {/* Selected Year Display */}
           <div className="mb-8 flex items-center gap-4 border-b border-[#212529] pb-6">
             <h2 className="text-6xl font-light md:text-7xl">{selectedYear}</h2>
-            <svg
-              className="h-8 w-8 text-[#212529]"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.5}
-                d="M19 9l-7 7-7-7"
-              />
-            </svg>
+            <ChevronDown className="h-8 w-8 text-[#212529]" />
           </div>
 
           {/* Scrollable Year List */}
-          <div className="scrollbar-hide max-h-[400px] space-y-6 overflow-y-auto pr-4 lg:max-h-[600px]">
+          <div className="hide-scrollbar max-h-[400px] space-y-6 overflow-y-auto pr-4 lg:max-h-[600px]">
             {years.map((year) => (
               <button
                 key={year}

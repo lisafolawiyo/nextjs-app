@@ -59,9 +59,6 @@ function NavbarTwo() {
           }`}
         ></div>
 
-        {/* <div className="nav-search-icon-wrap" onclick="openSearch()">
-            <i className="fa-solid fa-magnifying-glass nav-search-icon"></i>
-        </div> */}
         <div className="nav-cart-icon-wrap">
           <div className="relative">
             <div
@@ -79,7 +76,6 @@ function NavbarTwo() {
               </div>
             </div>
           </div>
-          {/* <QuickCart /> */}
         </div>
         {isCartOpen && <CartModal setIsCartOpen={setIsCartOpen} />}
 
@@ -91,13 +87,6 @@ function NavbarTwo() {
             ${isOpen ? 'translate-x--0' : 'translate-x--101'}`}
         >
           <div className="nav-inner-wrapper">
-            {/* <div className="nav-sidebar-top">
-                <a href="#">
-                    <FontAwesomeIcon icon={faUser} className="nav-account-icon" />
-                    <span>Open an account</span>
-                </a>
-            </div> */}
-
             <div className="nav-sidebar-main-menu">
               <ul className="nav-top-items">
                 <li className="nav-top-item">
@@ -239,26 +228,6 @@ function NavbarTwo() {
           </div>
         </div>
       </section>
-      {/* <section className="search-section" id="search-section-id">
-        <div className="search-close-wrap" onClick="closeSearch()">
-          <i className="fa-solid fa-xmark search-close-icon"></i>
-        </div>
-        <div className="search-inner-wrapper">
-          <h1>What are you looking for?</h1>
-          <form action="/search-result.html">
-            <div className="search-form-wrapper">
-              <input
-                type="search"
-                placeholder="Type your search"
-                name="search"
-              />
-              <button className="search-btn" type="submit">
-                <i className="fa-solid fa-magnifying-glass search-btn-icon"></i>
-              </button>
-            </div>
-          </form>
-        </div>
-      </section> */}
     </nav>
   );
 }

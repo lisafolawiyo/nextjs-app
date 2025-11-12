@@ -15,16 +15,14 @@ function PayFailed() {
   const router = useRouter();
 
   useEffect(() => {
-    const value = cartTotal(); // safe to call on client
+    const value = cartTotal();
     setTotalCart(value);
-    // clear cart in store
     if (!order) {
-      // Redirect to /shop if no order data found
       router.replace('/shop');
     }
   }, [order, router]);
 
-  if (!order) return null; // Prevent rendering before redirect
+  if (!order) return null;
 
   const today = new Date();
   const formatted_date = today.toLocaleDateString('en-US', {

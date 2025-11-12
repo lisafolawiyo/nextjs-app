@@ -35,6 +35,7 @@ export default async function SearchShop({
     tag ?? '',
     parseInt(page ?? '1', 10),
     per_page,
+    '2025-11-04T00:00:00',
   );
   const products = product_data.products;
   const totalPages = product_data.total_pages;

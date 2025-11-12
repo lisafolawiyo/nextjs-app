@@ -25,7 +25,7 @@ export async function generateMetadata({
     return {};
   }
   return {
-    title: `${product.name?.toUpperCase()} | LISA FOLAWIYO STUDIO `,
+    title: `${product.name?.toUpperCase()} | LISA FOLAWIYO STUDIO`,
     description: stripOuterTags(product.short_description),
     openGraph: {
       title: product?.name?.toUpperCase(),

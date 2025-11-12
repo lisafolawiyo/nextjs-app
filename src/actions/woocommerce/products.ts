@@ -15,27 +15,34 @@ export const getProducts = async (
   tag: string,
   page = 1,
   per_page = 10,
+  after?: string, // ISO8601 compliant date - filter products created after this date
+  before?: string, // ISO8601 compliant date - filter products created before this date
 ) => {
   try {
     const url = `${API_URL}/products`;
-    const oauthParams = generateOAuthSignature(url, 'GET', {
+    const params: Record<string, string | number> = {
       search: search,
       category: category,
       tag: tag,
       page: page,
       per_page: per_page,
       status: 'publish',
-    });
+    };
+
+    // Add date filters if provided
+    if (after) {
+      params.after = after;
+    }
+    if (before) {
+      params.before = before;
+    }
+
+    const oauthParams = generateOAuthSignature(url, 'GET', params);
 
     const response = await api.get('/products', {
       params: {
         ...oauthParams,
-        search: search,
-        category: category,
-        tag: tag,
-        page: page,
-        per_page: per_page,
-        status: 'publish',
+        ...params,
       },
     });
     return {

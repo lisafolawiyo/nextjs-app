@@ -2,7 +2,7 @@
 
 import { Suspense } from 'react';
 
-import DOMPurify from 'isomorphic-dompurify';
+import DOMPurify from 'dompurify';
 
 import Add from '@/components/Add';
 import { ProductType } from '@/types/product';

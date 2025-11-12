@@ -2,7 +2,7 @@
 
 import { Suspense, useState } from 'react';
 
-import DOMPurify from 'isomorphic-dompurify';
+import DOMPurify from 'dompurify';
 
 import SizeGuideButton from '@/components/SizeGuideButton';
 import ProductImagesTwo from '@/components/ProductImagesTwo';

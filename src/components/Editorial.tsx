@@ -2,9 +2,8 @@
 
 import React from 'react';
 
+import DOMPurify from 'dompurify';
 import parse from 'html-react-parser';
-// use the isomorphic version of DOMPurify
-import DOMPurify from 'isomorphic-dompurify';
 
 import { Post } from '@/types/post';
 import { stripOuterTags } from '@/utils/util';

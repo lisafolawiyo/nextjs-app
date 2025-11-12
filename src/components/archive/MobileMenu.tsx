@@ -90,7 +90,7 @@ export function MobileMenu({ shouldDark }: { shouldDark?: boolean }) {
 
   const primaryLinks = [
     { name: 'Shop', href: ROUTES.SHOP },
-    { name: 'Search the Archive', href: ROUTES.SHOP },
+    { name: 'Search the Archive', href: ROUTES.ARCHIVE_EDIT },
     { name: 'About', href: ROUTES.ABOUT },
     {
       name: 'Cart',

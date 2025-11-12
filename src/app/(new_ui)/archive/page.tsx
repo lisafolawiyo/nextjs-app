@@ -33,7 +33,7 @@ export default async function page() {
   );
   const products = product_data.products;
 
-  const categories_data = await getProductCategories();
+  const categories_data = await getProductCategories(1, 100);
   const categories = categories_data.categories;
 
   return (

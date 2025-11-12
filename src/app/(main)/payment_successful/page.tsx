@@ -1,15 +1,10 @@
-import React from 'react';
+'use client';
 
-import { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 
-import PaySuccess from '@/components/PaySuccess';
-
-export const metadata: Metadata = {
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
+const PaySuccess = dynamic(() => import('@/components/PaySuccess'), {
+  ssr: false,
+});
 
 function Successful() {
   return (

@@ -1,5 +1,8 @@
 import { Footer, Header, LenisScroll } from '@/components/archive';
 
+export const dynamic = 'force-dynamic';
+export const revalidate = 0;
+
 export default function RootLayout({
   children,
 }: Readonly<{

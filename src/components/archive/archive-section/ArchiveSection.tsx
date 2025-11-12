@@ -68,7 +68,7 @@ export const ArchiveSection = ({
 
       <div className="mx-auto max-w-7xl">
         <SearchBar searchQuery={searchQuery} onSearchChange={setSearchQuery} />
-        <ArchiveFilter categories={categories} tags={tags} />
+        <ArchiveFilter categories={categories} tags={tags} isShop={isShop} />
       </div>
 
       <div className="mb-10 md:mb-16">

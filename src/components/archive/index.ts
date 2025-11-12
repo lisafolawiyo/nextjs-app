@@ -1,4 +1,3 @@
-// Main components
 export * from './Header';
 export * from './Hero';
 export * from './Footer';
@@ -8,6 +7,7 @@ export * from './ProductDetails';
 export * from './SampleProducts';
 export * from './CollectionCarousel';
 export * from './VideoPlayer';
+export { default as ShoppingExperience } from './ShoppingExperience';
 export * from './LenisScroll';
 export * from './MobileMenu';
 export * from './ImageGalleryModal';

@@ -1,4 +1,5 @@
-import { Footer, Header, LenisScroll } from '@/components/archive';
+import FooterThree from '@/components/FooterThree';
+import { Header, LenisScroll } from '@/components/archive';
 
 export default function RootLayout({
   children,
@@ -10,7 +11,7 @@ export default function RootLayout({
       <div className="flex min-h-screen flex-col">
         <Header />
         {children}
-        <Footer />
+        <FooterThree />
       </div>
     </LenisScroll>
   );

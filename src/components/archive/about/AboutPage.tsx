@@ -69,20 +69,39 @@ export function AboutPage({ products }: { products: UnknownObject }) {
       <div className="flex md:justify-end">
         <div className="mt-6 px-4 text-sm leading-relaxed sm:mt-8 sm:text-base md:w-1/2 md:text-lg lg:text-xl xl:text-[22px]">
           <p className="mb-3 sm:mb-4">
-            We harness the rich heritage of local textiles such as Adire,
-            Ankara, reimagining them through meticulous craftsmanship and
-            refined tailoring. Each piece is a testament to elegantly offering
-            not just clothing but wearable art that transcends borders and
-            celebrates African fashion through a lens of sophistication,
-            individuality, and artistry.
+            We harness the rich heritage of local textiles such as Akwete and
+            Ankara, reimagining them through meticulous hand-beaded
+            embellishments and refined tailoring. Each piece is a testament to
+            originality offering not just clothing, but a distinct and
+            unforgettable experience. At Lisa Folawiyo, we showcase the
+            limitless potential of African fashion through a lens of
+            sophistication, individuality, and artistry.
+          </p>
+          <p className="mb-3 sm:mb-4">
+            Lisa Folawiyo is a Nigerian fashion designer renowned for
+            transforming traditional West African textiles into globally
+            celebrated luxury fashion. Since founding her label in 2005, she has
+            redefined the aesthetic of Ankara fabric by blending it with modern
+            tailoring and intricate hand-beaded embellishments. Her work has
+            garnered international acclaim, with features in publications such
+            as Vogue, Harper&apos;s Bazaar, and The New York Times.
+          </p>
+          <p className="mb-3 sm:mb-4">
+            Her dedication to craftsmanship and cultural heritage has propelled
+            her brand onto the global stage, with showrooms in Lagos and New
+            York, and collections stocked in Selfridges, Matches Fashion, and
+            Moda Operandi.
+          </p>
+          <p className="mb-3 sm:mb-4">
+            Lisa&apos;s designs have adorned celebrities like Lupita
+            Nyong&apos;o and Solange Knowles, and her collections have been
+            showcased in major fashion capitals including Paris, Milan, and New
+            York.
           </p>
           <p>
-            Lisa Folawiyo seamlessly integrates West African textiles into
-            contemporary, globally resonant fashion. Our aesthetic is defined by
-            intricate fabric art blending a with modern tailoring and intricate
-            hand-beaded embellishments. Her work has garnered international
-            acclaim, as showcased at prestigious events including New York
-            Fashion Week.
+            With each piece, Lisa Folawiyo celebrates the richness of African
+            culture, blending heritage with innovation to create timeless
+            fashion narratives.
           </p>
         </div>
       </div>

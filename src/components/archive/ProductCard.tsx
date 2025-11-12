@@ -21,53 +21,23 @@ interface ProductCardProps {
   product: UnknownObject;
   index?: number;
   onImageClick?: () => void;
+  hideAddToCart?: boolean;
 }
 
 export const ProductCard = ({
   product,
   index,
   onImageClick,
+  hideAddToCart = false,
 }: ProductCardProps) => {
   const fadeInProps = useFadeIn(index ?? 0, 0.2);
-  // const addToCart = useCartStore((state) => state.addToCart);
-  // const removeFromCart = useCartStore((state) => state.removeFromCart);
-  // const items = useCartStore((state) => state.items);
   const router = useRouter();
 
-  // const cartItem = items.find(
-  //   (item) =>
-  //     item.id === product.id &&
-  //     item.product_options.some(
-  //       (opt) => opt.name === 'Collection' && opt.value === product.collection,
-  //     ) &&
-  //     item.product_options.some(
-  //       (opt) => opt.name === 'Year' && opt.value === product.year.toString(),
-  //     ),
-  // );
-
-  // const isInCart = !!cartItem;
-
-  // const handleToggleCart = (e: React.MouseEvent) => {
-  //   e.stopPropagation();
-
-  //   if (isInCart && cartItem) {
-  //     removeFromCart(cartItem.cart_id);
-  //   } else {
-  //     addToCart({
-  //       id: product.id,
-  //       name: product.title,
-  //       desc: product.subtitle,
-  //       price: product.price,
-  //       stock_status: 'instock',
-  //       image: product.image,
-  //       product_options: [
-  //         { name: 'Collection', value: product.collection },
-  //         { name: 'Year', value: product.year.toString() },
-  //       ],
-  //       quantity: 1,
-  //     });
-  //   }
-  // };
+  const handleAddToCartClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    // Cart functionality will be implemented later
+    console.log('Add to cart clicked for:', product.name);
+  };
 
   const handleCardClick = () => {
     if (product?.slug) {
@@ -102,19 +72,17 @@ export const ProductCard = ({
           />
         </div>
 
-        <div className="pointer-events-none absolute inset-0 w-full justify-center bg-black/0 transition-all duration-500 group-hover:bg-black/40" />
-        {/* <div className="absolute bottom-4 flex w-full items-center justify-center">
-          <button
-            onClick={handleToggleCart}
-            className={`transform border px-4 py-1.5 text-sm tracking-wider transition-all duration-500 group-hover:translate-y-0 md:min-w-[219px] md:text-base ${
-              isInCart
-                ? 'border-white bg-white text-black hover:bg-transparent hover:text-white'
-                : 'border-white bg-transparent text-white hover:bg-white hover:text-black'
-            }`}
-          >
-            {isInCart ? 'REMOVE FROM CART' : 'ADD TO CART'}
-          </button>
-        </div> */}
+        <div className="pointer-events-none absolute inset-0 z-10 w-full justify-center bg-black/0 transition-all duration-500 group-hover:bg-black/40" />
+        {!hideAddToCart && (
+          <div className="absolute bottom-4 z-20 flex w-full items-center justify-center">
+            <button
+              onClick={handleAddToCartClick}
+              className="pointer-events-auto transform border border-white bg-transparent px-4 py-1.5 text-sm tracking-wider text-white transition-all duration-500 hover:bg-white hover:text-black group-hover:translate-y-0 md:min-w-[219px] md:text-base"
+            >
+              ADD TO CART
+            </button>
+          </div>
+        )}
       </div>
 
       <div className="flex-1 py-4 transition-colors duration-500 max-md:px-2">

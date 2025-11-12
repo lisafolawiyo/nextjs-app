@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 
 import Link from 'next/link';
 
+import { ROUTES } from '@/utils/routes';
+
 import { InstagramBlack, Youtube } from './Icons';
 
 function FooterThree() {
@@ -41,7 +43,7 @@ function FooterThree() {
   return (
     <footer className="w-full bg-black text-white px-8 pt-16 pb-0">
       <div className="max-w-[1500px] mx-auto md:px-10">
-        <div className="grid grid-cols-1 md:grid-cols-[1.5fr_1fr_1fr_1fr] gap-12 md:gap-16 pb-10 border-b border-white/10">
+        <div className="grid grid-cols-1 md:flex md:justify-between gap-12 pb-10 border-b border-white/10">
           <div>
             <h2 className="text-2xl md:text-[28px] font-light mb-8 tracking-wide">
               Signup for our Newsletter
@@ -95,12 +97,17 @@ function FooterThree() {
 
           <div>
             <h3 className="text-xs font-semibold tracking-[1.5px] mb-5">
-              SHOP
+              <Link
+                href={ROUTES.SHOP}
+                className="hover:text-white/80 transition-colors"
+              >
+                SHOP
+              </Link>
             </h3>
             <ul className="flex flex-col gap-3">
               <li>
                 <Link
-                  href="/shop?tag=archive-edit"
+                  href={ROUTES.ARCHIVE_EDIT}
                   className="text-sm font-light text-white/80 hover:text-white transition-colors inline-block"
                 >
                   The Archive Edit
@@ -108,7 +115,7 @@ function FooterThree() {
               </li>
               <li>
                 <Link
-                  href="/archive#retrospective"
+                  href={ROUTES.ARCHIVE_RETROSPECTIVE}
                   className="text-sm font-light text-white/80 hover:text-white transition-colors inline-block"
                 >
                   The Retrospective
@@ -116,10 +123,10 @@ function FooterThree() {
               </li>
               <li>
                 <Link
-                  href="/shop?category=accessories"
+                  href={ROUTES.INSIDE_LF}
                   className="text-sm font-light text-white/80 hover:text-white transition-colors inline-block"
                 >
-                  Accessories
+                  Inside LF
                 </Link>
               </li>
             </ul>
@@ -165,7 +172,7 @@ function FooterThree() {
         <div className="py-6">
           <div className="flex flex-col md:flex-row items-center justify-between gap-5">
             <Link
-              href="/"
+              href={ROUTES.HOME}
               className="text-xs tracking-[1.5px] text-white/60 hover:text-white transition-colors"
             >
               LISAFOLAWIYO.COM

@@ -74,7 +74,7 @@ export const timelineEvents: TimelineEvent[] = [
     links: [
       {
         label: 'Discover More',
-        url: 'https://www.okayafrica.com/tag/jewel-by-lisa',
+        url: 'https://wwd.com/fashion-news/designer-luxury/the-new-guard-8-emerging-talents-8046471/',
       },
     ],
   },
@@ -97,7 +97,12 @@ export const timelineEvents: TimelineEvent[] = [
     description:
       'Expands international stockists including Selfridges UK, whilst maintaining showrooms in Lagos and New York. The brand also hosted trunk shows in partnership with global retailers such as Moda Operandi.',
     image: '/images/2019_image.jpg',
-    exploreMoreUrl: '#',
+    links: [
+      {
+        label: 'Discover More',
+        url: 'https://www.cntraveler.com/story/women-who-travel-podcast-designer-lisa-folawiyos-playful-odes-to-nigerian-fashion',
+      },
+    ],
   },
   {
     year: 2023,

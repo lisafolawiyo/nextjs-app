@@ -134,7 +134,6 @@ function HeroDesktop() {
             <button
               ref={buttonRef}
               onClick={() => {
-                console.log('Button clicked!');
                 setIsPlayerOpen(true);
               }}
               className="group relative flex items-center justify-center border-2 border-white/80 bg-transparent px-8 py-4 text-sm tracking-widest text-white opacity-0 backdrop-blur-sm transition-all duration-500 hover:scale-105 hover:border-white hover:bg-white hover:text-black md:text-base"

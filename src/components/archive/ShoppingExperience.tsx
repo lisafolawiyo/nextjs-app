@@ -2,9 +2,9 @@ import { CallIcon, DeliveryBox, ProfileGuy } from '@/components/Icons';
 
 export default function ShoppingExperience() {
   return (
-    <section className="pb-16 md:pb-32 px-4 bg-white">
+    <section className="py-16 md:py-24 px-4 bg-white">
       <div className=" mx-auto">
-        <h2 className="text-center text-xl md:text-[40px] font-normal mb-16 tracking-wider uppercase">
+        <h2 className="text-center text-lg md:text-[32px] font-normal mb-12 md:mb-16 tracking-wider uppercase">
           THE LISA FOLAWIYO SHOPPING EXPERIENCE
         </h2>
 
@@ -13,10 +13,10 @@ export default function ShoppingExperience() {
             <div className="w-14 h-14 md:size-[65px]  rounded-full border border-black flex items-center justify-center mb-6">
               <DeliveryBox />
             </div>
-            <h3 className="text-base md:text-[32px] font-normal mb-3">
+            <h3 className="text-base md:text-[24px] font-normal mb-3">
               Delivery & Returns
             </h3>
-            <p className="text-sm md:text-[20px] font-light leading-relaxed">
+            <p className="text-sm md:text-[16px] font-light leading-relaxed">
               We offer delivery
               <br />
               and returns on all online orders.
@@ -27,10 +27,10 @@ export default function ShoppingExperience() {
             <div className="w-14 h-14 md:size-[65px]  rounded-full border border-black flex items-center justify-center mb-6">
               <ProfileGuy />
             </div>
-            <h3 className="text-base md:text-[32px]  font-normal mb-3">
+            <h3 className="text-base md:text-[24px]  font-normal mb-3">
               Lisa Folawiyo at your service
             </h3>
-            <p className="text-sm md:text-[20px] font-light leading-relaxed">
+            <p className="text-sm md:text-[16px] font-light leading-relaxed">
               Our customer care experts are ready
               <br />
               to serve you
@@ -41,10 +41,10 @@ export default function ShoppingExperience() {
             <div className="w-14 h-14 md:size-[65px] rounded-full border border-black flex items-center justify-center mb-6">
               <CallIcon />
             </div>
-            <h3 className="text-base md:text-[32px]  font-normal mb-3">
+            <h3 className="text-base md:text-[24px]  font-normal mb-3">
               Contact us
             </h3>
-            <p className="text-sm md:text-[20px] font-light leading-relaxed">
+            <p className="text-sm md:text-[16px] font-light leading-relaxed">
               You can reach us via
               <br />
               info@lisafolawiyo.com

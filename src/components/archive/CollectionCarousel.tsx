@@ -2,10 +2,10 @@
 
 import { useRef, useState } from 'react';
 
+import Image from 'next/image';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 import { useGsapFadeIn } from '@/hooks/useGsapFadeIn';
-import { Product, ProductCard } from '@/components/archive';
 import { getProducts } from '@/actions/woocommerce/products';
 
 interface Category {
@@ -15,25 +15,15 @@ interface Category {
 }
 
 interface CollectionCarouselProps {
-  initialProducts: Product[];
+  initialProducts: UnknownObject[];
   categories: Category[];
 }
 
-const ProductCardSkeleton = () => (
+const ImageSkeleton = () => (
   <div className="w-full flex-shrink-0 md:w-1/2">
-    <div className="w-full animate-pulse md:p-10">
+    <div className="flex h-full w-full flex-col px-4 pt-4 md:px-10 md:pt-10">
       <div className="relative overflow-hidden bg-white">
-        <div className="h-[530px] w-full bg-gray-200" />
-      </div>
-      <div className="py-4 max-md:px-2">
-        <div className="flex items-start justify-between">
-          <div className="flex-1 space-y-2">
-            <div className="h-5 w-3/4 bg-gray-200 md:h-6" />
-            <div className="h-5 w-2/3 bg-gray-200 md:h-6" />
-            <div className="h-4 w-1/2 bg-gray-200" />
-          </div>
-          <div className="h-6 w-20 bg-gray-200 md:h-7" />
-        </div>
+        <div className="h-[530px] w-full animate-pulse bg-gray-200" />
       </div>
     </div>
   </div>
@@ -53,7 +43,7 @@ export const CollectionCarousel = ({
   );
 
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
-  const [products, setProducts] = useState<Product[]>(initialProducts);
+  const [products, setProducts] = useState<UnknownObject[]>(initialProducts);
   const [isLoading, setIsLoading] = useState(false);
 
   const fetchProductsByCategory = async (categoryId: number) => {
@@ -103,14 +93,14 @@ export const CollectionCarousel = ({
     <section
       id="retrospective"
       ref={sectionRef as React.RefObject<HTMLElement>}
-      className="my-10 md:py-16"
+      className="h-screen flex flex-col px-2 py-8 md:px-8 md:py-12"
     >
-      <h3 className="mb-6 px-4 pb-3 text-[40px] font-light uppercase tracking-tight  max-md:mx-4  max-md:border-b max-md:border-[#000000] max-md:leading-[45px] md:mb-10  md:text-[96px]">
+      <h3 className="mb-6 px-4 pb-3 text-[32px] font-light capitalize tracking-tight  max-md:mx-4  max-md:border-b max-md:border-[#000000] max-md:leading-[36px] md:mb-8 md:text-[64px]">
         The Retrospective
       </h3>
-      <div className=" my-6 lg:border lg:border-[#212529]">
-        <div className="grid md:grid-cols-[541px_1fr]">
-          <div className="flex flex-col  justify-between p-4 md:p-8 md:py-20 lg:border-r lg:border-[#212529]">
+      <div className="flex-1 overflow-hidden lg:border lg:border-[#212529]">
+        <div className="grid md:grid-cols-[541px_1fr] h-full">
+          <div className="flex flex-col justify-between p-4 md:p-8 md:py-12 lg:border-r lg:border-[#212529] h-full">
             <h1 className="mb-8 text-[24px] font-light text-[#1a1a1a] md:text-[32px] md:leading-[36px]">
               Explore LISA FOLAWIYO
               <br />
@@ -144,25 +134,41 @@ export const CollectionCarousel = ({
 
           <div
             ref={scrollContainerRef}
-            className="hide-scrollbar flex overflow-x-auto max-md:mx-4"
+            className="hide-scrollbar flex overflow-x-auto max-md:mx-4 h-full"
             style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
           >
             {isLoading ? (
               <>
-                <ProductCardSkeleton />
-                <ProductCardSkeleton />
+                <ImageSkeleton />
+                <ImageSkeleton />
               </>
             ) : products.length > 0 ? (
               products.map((product, index) => (
                 <div
                   key={product.id}
-                  className={`group w-full flex-shrink-0 md:w-1/2  ${
+                  className={`group w-full flex-shrink-0 md:w-1/2 ${
                     index < products.length - 1
                       ? 'xl:border-r xl:border-[#212529]'
                       : ''
                   }`}
                 >
-                  <ProductCard product={product} index={index} />
+                  <div className="flex h-full w-full flex-col  pt-4 md:px-10 md:pt-10">
+                    <div className="relative overflow-hidden bg-white transition-all duration-500 hover:scale-[1] hover:shadow-2xl">
+                      <div className="relative z-10">
+                        <Image
+                          src={
+                            product.images?.[0]?.src ??
+                            '/media/images/placeholder.png'
+                          }
+                          alt={product.name}
+                          width={521}
+                          height={521}
+                          className="h-[580px] w-full object-cover object-top brightness-75 transition-transform duration-700 group-hover:scale-[1.05]"
+                        />
+                      </div>
+                      <div className="pointer-events-none absolute inset-0 z-10 w-full justify-center bg-black/0 transition-all duration-500 group-hover:bg-black/40" />
+                    </div>
+                  </div>
                 </div>
               ))
             ) : (

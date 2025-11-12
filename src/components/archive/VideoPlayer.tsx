@@ -12,7 +12,7 @@ interface VideoPlayerProps {
 export function VideoPlayer({ videoUrl, onClose }: VideoPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(true);
   const [isFullscreen, setIsFullscreen] = useState(false);
-  const [isMuted, setIsMuted] = useState(false);
+  const [isMuted, setIsMuted] = useState(true);
   const videoRef = useRef<HTMLVideoElement>(null);
   const containerRef = useRef<HTMLDivElement>(null);
 
@@ -78,6 +78,10 @@ export function VideoPlayer({ videoUrl, onClose }: VideoPlayerProps) {
         }
         onClick={handlePlayPause}
         onLoadedData={handleVideoLoad}
+        playsInline
+        autoPlay
+        muted={isMuted}
+        controls={false}
       />
 
       {/* Top Controls Bar */}

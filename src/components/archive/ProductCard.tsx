@@ -102,7 +102,7 @@ export const ProductCard = ({
 
       <div className="flex-1 py-4 transition-colors duration-500 max-md:px-2">
         <div className="flex h-full items-start justify-between">
-          <div className="flex-1">
+          <div className="flex-1 space-y-3">
             <p className="text-sm font-bold uppercase text-[#000000] transition-colors duration-500 group-hover:text-gray-300 md:text-[20px]">
               {product.name}
             </p>

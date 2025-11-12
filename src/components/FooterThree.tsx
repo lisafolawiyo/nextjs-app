@@ -4,6 +4,8 @@ import React, { useState } from 'react';
 
 import Link from 'next/link';
 
+import { InstagramBlack, Youtube } from './Icons';
+
 function FooterThree() {
   const [email, setEmail] = useState('');
   const [fname, setFname] = useState('');
@@ -178,8 +180,9 @@ function FooterThree() {
               </li>
               <li>
                 <Link
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/lisafolawiyo_studio"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="text-sm font-light text-white/80 hover:text-white transition-colors inline-block"
                 >
                   Instagram
@@ -187,20 +190,12 @@ function FooterThree() {
               </li>
               <li>
                 <Link
-                  href="https://twitter.com"
+                  href="https://youtube.com/@lisafolawiyostudio"
                   target="_blank"
+                  rel="noopener noreferrer"
                   className="text-sm font-light text-white/80 hover:text-white transition-colors inline-block"
                 >
-                  Twitter
-                </Link>
-              </li>
-              <li>
-                <Link
-                  href="https://facebook.com"
-                  target="_blank"
-                  className="text-sm font-light text-white/80 hover:text-white transition-colors inline-block"
-                >
-                  Facebook
+                  Youtube
                 </Link>
               </li>
             </ul>
@@ -219,6 +214,24 @@ function FooterThree() {
               <span className="text-xs tracking-wider text-white/60">
                 &copy;{currentYear}
               </span>
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://www.instagram.com/lisafolawiyo_studio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-opacity hover:opacity-70"
+                >
+                  <InstagramBlack className="h-10 w-10" />
+                </a>
+                <a
+                  href="https://youtube.com/@lisafolawiyostudio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="transition-opacity hover:opacity-70"
+                >
+                  <Youtube className="h-10 w-10" />
+                </a>
+              </div>
               <button
                 onClick={scrollToTop}
                 className="bg-transparent border-none text-white text-[11px] font-semibold tracking-[1.5px] cursor-pointer flex items-center gap-2 hover:opacity-70 transition-opacity"

@@ -15,27 +15,34 @@ export const getProducts = async (
   tag: string,
   page = 1,
   per_page = 10,
+  after?: string, // ISO8601 compliant date - filter products created after this date
+  before?: string, // ISO8601 compliant date - filter products created before this date
 ) => {
   try {
     const url = `${API_URL}/products`;
-    const oauthParams = generateOAuthSignature(url, 'GET', {
-      search: search,
-      category: category,
-      tag: tag,
-      page: page,
-      per_page: per_page,
+    const params: Record<string, string | number> = {
+      search,
+      category,
+      tag,
+      page,
+      per_page,
       status: 'publish',
-    });
+    };
+
+    // Add date filters if provided
+    if (after) {
+      params.after = after;
+    }
+    if (before) {
+      params.before = before;
+    }
+
+    const oauthParams = generateOAuthSignature(url, 'GET', params);
 
     const response = await api.get('/products', {
       params: {
         ...oauthParams,
-        search: search,
-        category: category,
-        tag: tag,
-        page: page,
-        per_page: per_page,
-        status: 'publish',
+        ...params,
       },
     });
     return {
@@ -81,8 +88,8 @@ export const getRelatedProducts = async (
     const url = `${API_URL}/products?include=${includeParam}`;
     const oauthParams = generateOAuthSignature(url, 'GET', {
       include: includeParam,
-      page: page,
-      per_page: per_page,
+      page,
+      per_page,
       status: 'publish',
     });
 
@@ -90,8 +97,8 @@ export const getRelatedProducts = async (
       params: {
         ...oauthParams,
         include: includeParam,
-        page: page,
-        per_page: per_page,
+        page,
+        per_page,
         status: 'publish',
       },
     });
@@ -145,16 +152,17 @@ export const getProductCategories = async (page = 1, per_page = 100) => {
     const endpoint = '/products/categories';
     const url = `${API_URL}${endpoint}`;
 
-    const oauthParams = generateOAuthSignature(url, 'GET', {
+    const params: UnknownObject = {
       page,
       per_page,
-    });
+    };
+
+    const oauthParams = generateOAuthSignature(url, 'GET', params);
 
     const response = await api.get(endpoint, {
       params: {
         ...oauthParams,
-        page,
-        per_page,
+        ...params,
       },
     });
 

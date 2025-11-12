@@ -1,5 +1,6 @@
 import React from 'react';
 
+import { Metadata } from 'next';
 import type { SearchParams } from 'nuqs/server';
 import { createSearchParamsCache, parseAsString } from 'nuqs/server';
 
@@ -18,6 +19,16 @@ const searchParamsCache = createSearchParamsCache({
 });
 
 export const dynamic = 'force-dynamic';
+
+export const metadata: Metadata = {
+  title: 'The Archive Edit | Lisa Folawiyo Studio',
+  description:
+    'Explore Lisa Folawiyo’s Archive Edit. A collection of hand-embellished Ankara, lace, and silk pieces celebrating 20 years of beadwork, craftsmanship, and modern African luxury. ',
+  keywords:
+    `lisa folawiyo archive edit, lisa folawiyo ss25 archive sale, hand-crafted ankara dress, nigerian luxury fashion, collectible designer pieces, isa folawiyo archive sale, lisa archive sale, lisa folawiyo ss25 collection, lisa folawiyo limited edition dresses, nigerian luxury fashion designer, shop lisa folawiyo online`.split(
+      ',',
+    ),
+};
 
 export default async function SearchShop({
   searchParams,
@@ -48,6 +59,7 @@ export default async function SearchShop({
   return (
     <section className="pt-24 max-md:px-4">
       <ArchiveSection
+        isShop
         products={products}
         totalPages={totalPages}
         page={page ?? '1'}

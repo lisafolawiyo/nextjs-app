@@ -32,13 +32,11 @@ export const useGsapFadeIn = (options: UseGsapFadeInOptions = {}) => {
 
     const element = elementRef.current;
 
-    // Set initial state
     gsap.set(element, {
       opacity: 0,
       y: y,
     });
 
-    // Create ScrollTrigger animation
     const ctx = gsap.context(() => {
       gsap.to(element, {
         opacity: 1,
@@ -84,13 +82,11 @@ export const useGsapFadeInChildren = (options: UseGsapFadeInOptions = {}) => {
     const container = containerRef.current;
     const children = Array.from(container.children);
 
-    // Set initial state for all children
     gsap.set(children, {
       opacity: 0,
       y: y,
     });
 
-    // Create ScrollTrigger animation with stagger
     const ctx = gsap.context(() => {
       gsap.to(children, {
         opacity: 1,

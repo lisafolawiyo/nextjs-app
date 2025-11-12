@@ -33,7 +33,6 @@ const MailchimpForm = () => {
 
   return (
     <div className="mailchimp-form-container">
-      {/* <h2>Subscribe</h2> */}
       <form onSubmit={handleSubmit}>
         <Input
           type="email"

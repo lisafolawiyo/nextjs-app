@@ -17,15 +17,13 @@ function PaySuccess() {
 
   useEffect(() => {
     setLineItems(cartItems);
-    // clear cart in store
     clearCart();
     if (!order) {
-      // Redirect to /shop if no order data found
       router.replace('/shop');
     }
   }, [order, router]);
 
-  if (!order) return null; // Prevent rendering before redirect
+  if (!order) return null;
 
   const today = new Date();
   const formatted_date = today.toLocaleDateString('en-US', {

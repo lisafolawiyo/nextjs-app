@@ -9,10 +9,6 @@ interface TransitionLinkProps extends LinkProps {
   href: string;
 }
 
-// function sleep(ms: number): Promise<void> {
-//   return new Promise((resolve) => setTimeout(resolve, ms));
-// }
-
 export const TransitionLink: React.FC<TransitionLinkProps> = ({
   children,
   href,
@@ -28,10 +24,6 @@ export const TransitionLink: React.FC<TransitionLinkProps> = ({
     const body = document.querySelector('body');
 
     body?.classList.add('page-transition');
-
-    // await sleep(500);
-
-    // await sleep(500);
 
     body?.classList.remove('page-transition');
   };
@@ -63,10 +55,6 @@ export const TransitionProductLink: React.FC<TransitionLinkProps> = ({
     const body = document.querySelector('body');
 
     body?.classList.add('page-transition');
-
-    //   await sleep(500);
-
-    //   await sleep(1500);
 
     body?.classList.remove('page-transition');
   };

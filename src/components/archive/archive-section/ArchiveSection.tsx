@@ -70,7 +70,7 @@ export const ArchiveSection = ({
       </div>
 
       <div className="mb-10 md:mb-16">
-        <h3 className=" pb-3 text-[40px] font-light capitalize tracking-tight  max-md:mx-4  max-md:border-b max-md:border-[#000000]  md:text-[96px]">
+        <h3 className=" pb-3 text-[40px] font-light capitalize tracking-tight  max-md:mx-4  max-md:border-b max-md:border-[#000000]  md:text-[64px]">
           The Archive Edit
         </h3>
         <p className="text-[24px]">

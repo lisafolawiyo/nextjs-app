@@ -58,10 +58,6 @@ const ProductList = ({
                 />
               )}
             </div>
-            {/* <div className="flex justify-between items-baseline">
-            <span className="font-thin text-xs text-gray-500 uppercase">{product.name}</span>
-            <span className="text-sm">${product.price}</span>
-          </div> */}
             <div className="shop-product-detail-wrap">
               <h3 className="look">{product.name}</h3>
               <p className="shop-product-name">

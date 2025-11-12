@@ -75,6 +75,16 @@ export function Header() {
                   : 'text-white mix-blend-difference'
               }`}
             >
+              shop
+            </Link>
+            <Link
+              href={ROUTES.SHOP}
+              className={`text-[24px] font-light transition-opacity hover:underline hover:opacity-70 ${
+                shouldBeDark
+                  ? 'text-black hover:text-gray-700'
+                  : 'text-white mix-blend-difference'
+              }`}
+            >
               search the archive
             </Link>
             <Link

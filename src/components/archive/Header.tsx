@@ -78,7 +78,7 @@ export function Header() {
               shop
             </Link>
             <Link
-              href={ROUTES.SHOP}
+              href={ROUTES.ARCHIVE_EDIT}
               className={`text-[24px] font-light transition-opacity hover:underline hover:opacity-70 ${
                 shouldBeDark
                   ? 'text-black hover:text-gray-700'

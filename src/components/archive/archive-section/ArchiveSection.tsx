@@ -36,7 +36,7 @@ export const ArchiveSection = ({
   page,
   categories,
   tags,
-  // isShop = false,
+  isShop = false,
 }: ArchiveSectionProps) => {
   const router = useRouter();
   const searchParams = useSearchParams();
@@ -72,24 +72,32 @@ export const ArchiveSection = ({
       </div>
 
       <div className="mb-10 md:mb-16">
-        <h3 className=" pb-3 text-[40px] font-light capitalize tracking-tight  max-md:mx-4  max-md:border-b max-md:border-[#000000]  md:text-[64px]">
-          The Archive Edit
-        </h3>
-        <p className="text-[24px]">
-          Step into The Archive Edit — a rare curation of Lisa Folawiyo’s most
-          iconic designs, celebrating two decades of exquisite hand
-          embellishment, intricate beadwork, and masterful craftsmanship.
-        </p>
-        <p className="text-[24px]">
-          Each piece is a labour of love, hand-finished in Lagos by skilled
-          artisans and designed to embody modern African luxury. From richly
-          beaded Ankara dresses to sculptural silk gowns and playful co-ords,
-          every silhouette tells a story of heritage, innovation, and
-          individuality.
-        </p>
-        <p className="text-[24px]">
-          Discover the artistry. Celebrate the legacy.
-        </p>
+        {isShop ? (
+          <h3 className="pb-3 text-[40px] font-light capitalize tracking-tight  max-md:mx-4 max-md:border-b max-md:border-[#000000] md:text-[64px]">
+            Shop
+          </h3>
+        ) : (
+          <>
+            <h3 className="pb-3 text-[40px] font-light capitalize tracking-tight  max-md:mx-4 max-md:border-b max-md:border-[#000000] md:text-[64px]">
+              The Archive Edit
+            </h3>
+            <p className="text-[24px]">
+              Step into The Archive Edit — a rare curation of Lisa Folawiyo’s
+              most iconic designs, celebrating two decades of exquisite hand
+              embellishment, intricate beadwork, and masterful craftsmanship.
+            </p>
+            <p className="text-[24px]">
+              Each piece is a labour of love, hand-finished in Lagos by skilled
+              artisans and designed to embody modern African luxury. From richly
+              beaded Ankara dresses to sculptural silk gowns and playful
+              co-ords, every silhouette tells a story of heritage, innovation,
+              and individuality.
+            </p>
+            <p className="text-[24px]">
+              Discover the artistry. Celebrate the legacy.
+            </p>
+          </>
+        )}
       </div>
 
       {products.length > 0 ? (

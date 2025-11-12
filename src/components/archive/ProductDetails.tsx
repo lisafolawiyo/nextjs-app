@@ -336,6 +336,7 @@ export function ProductDetails({
             <ProductCard
               product={product}
               onImageClick={() => setIsGalleryOpen(true)}
+              hideAddToCart={true}
             />
           </div>
           <ProductDetailsCard

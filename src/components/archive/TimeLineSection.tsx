@@ -4,7 +4,6 @@ import { useState } from 'react';
 
 import Image from 'next/image';
 
-import { Button } from '@/components/ui/button';
 import { ChevronDown } from '@/components/Icons';
 import { timelineEvents } from '@/data/timelineData';
 
@@ -39,22 +38,22 @@ export function Timeline() {
       </h3>
 
       <div className="lg:hidden">
-        <div className="border border-[#212529] pb-6">
-          <Button
+        <div className="border border-[#212529]">
+          <button
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-            className="flex w-full items-center justify-between"
+            className="flex w-full items-center justify-between bg-transparent px-4 py-6 hover:bg-transparent md:px-6"
           >
-            <h2 className="text-5xl font-light md:text-6xl">{selectedYear}</h2>
+            <h2 className="text-4xl font-light md:text-6xl">{selectedYear}</h2>
             <ChevronDown
-              className={`h-8 w-8 flex-shrink-0 text-[#212529] transition-transform duration-300 ${
+              className={`h-6 w-6 flex-shrink-0 text-[#212529] transition-transform duration-300 md:h-8 md:w-8 ${
                 isDropdownOpen ? 'rotate-180' : ''
               }`}
             />
-          </Button>
+          </button>
 
           {isDropdownOpen && (
             <div
-              className="hide-scrollbar mt-6 max-h-[150px] space-y-3 overflow-y-scroll"
+              className="hide-scrollbar max-h-[200px] space-y-2 overflow-y-scroll border-t border-[#e0e0e0] px-4 py-4 md:px-6"
               onWheel={(e) => {
                 e.stopPropagation();
                 const container = e.currentTarget;
@@ -65,7 +64,7 @@ export function Timeline() {
                 <button
                   key={year}
                   onClick={() => handleYearChange(year)}
-                  className={`block w-full border-b border-[#e0e0e0] pb-2 text-left text-base font-light transition-all duration-300 hover:text-[#212529] hover:translate-x-2 ${
+                  className={`block w-full border-b border-[#e0e0e0] pb-3 pt-1 text-left text-lg font-light transition-all duration-300 hover:text-[#212529] hover:translate-x-2 md:text-xl ${
                     selectedYear === year
                       ? 'font-normal text-[#212529]'
                       : 'text-[#999]'

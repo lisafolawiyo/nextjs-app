@@ -12,7 +12,6 @@ import { X } from 'lucide-react';
 
 import { cn } from '@/lib/utils';
 import { ROUTES } from '@/utils/routes';
-import { ArrowRight } from '@/components/Icons';
 import useCartStore from '@/hooks/zustand/useCartStore';
 
 const useMenuAnimation = (isOpen: boolean) => {
@@ -100,14 +99,6 @@ export function MobileMenu({ shouldDark }: { shouldDark?: boolean }) {
     },
   ];
 
-  const secondaryLinks = [
-    { name: 'Shop', href: ROUTES.SHOP },
-    { name: 'Contact us', href: ROUTES.CONTACT_US },
-    { name: 'Refund Policy', href: '/refund-policy' },
-    { name: 'Shipping Info', href: '/shipping-info' },
-    { name: 'FAQ', href: '/faq' },
-  ];
-
   useEffect(() => {
     const handleEscape = (e: KeyboardEvent) => {
       if (e.key === 'Escape' && isOpen) {
@@ -179,7 +170,7 @@ export function MobileMenu({ shouldDark }: { shouldDark?: boolean }) {
 
         <nav
           ref={menuItemsRef}
-          className="flex h-screen w-full flex-col justify-between bg-[#212529] px-6 pt-20"
+          className="flex h-screen w-full flex-col bg-[#212529] px-6 pt-20"
         >
           <ul className="space-y-1 divide-y-[0.2px] divide-[#ffffff49] pb-8">
             {primaryLinks.map((link, index) => (
@@ -195,21 +186,6 @@ export function MobileMenu({ shouldDark }: { shouldDark?: boolean }) {
                       {cartItemCount}
                     </span>
                   )}
-                </a>
-              </li>
-            ))}
-          </ul>
-
-          <ul className="space-y-1">
-            {secondaryLinks.map((link, index) => (
-              <li key={index}>
-                <a
-                  href={link.href}
-                  className="menu-item group mb-3 flex items-center justify-between border-t-[0.5px] border-[#ffffff49] py-3 pb-4 text-slate-300 transition-colors hover:text-white"
-                  onClick={closeMenu}
-                >
-                  <span className="text-2xl">{link.name}</span>
-                  <ArrowRight className="text-2xl text-slate-500 transition-all group-hover:translate-x-1 group-hover:text-white" />
                 </a>
               </li>
             ))}

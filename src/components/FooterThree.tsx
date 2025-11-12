@@ -97,18 +97,21 @@ function FooterThree() {
 
           <div>
             <h3 className="text-xs font-semibold tracking-[1.5px] mb-5">
-              <Link
-                href={ROUTES.SHOP}
-                className="hover:text-white/80 transition-colors"
-              >
-                SHOP
-              </Link>
+              VISIT & EXPLORE
             </h3>
             <ul className="flex flex-col gap-3">
               <li>
                 <Link
+                  href={ROUTES.SHOP}
+                  className="text-sm font-light text-white/80 hover:text-white hover:underline transition-colors inline-block"
+                >
+                  Shop
+                </Link>
+              </li>
+              <li>
+                <Link
                   href={ROUTES.ARCHIVE_EDIT}
-                  className="text-sm font-light text-white/80 hover:text-white transition-colors inline-block"
+                  className="text-sm font-light text-white/80 hover:text-white hover:underline transition-colors inline-block"
                 >
                   The Archive Edit
                 </Link>
@@ -116,7 +119,7 @@ function FooterThree() {
               <li>
                 <Link
                   href={ROUTES.ARCHIVE_RETROSPECTIVE}
-                  className="text-sm font-light text-white/80 hover:text-white transition-colors inline-block"
+                  className="text-sm font-light text-white/80 hover:text-white hover:underline transition-colors inline-block"
                 >
                   The Retrospective
                 </Link>
@@ -124,7 +127,7 @@ function FooterThree() {
               <li>
                 <Link
                   href={ROUTES.INSIDE_LF}
-                  className="text-sm font-light text-white/80 hover:text-white transition-colors inline-block"
+                  className="text-sm font-light text-white/80 hover:text-white hover:underline transition-colors inline-block"
                 >
                   Inside LF
                 </Link>
@@ -134,15 +137,65 @@ function FooterThree() {
 
           <div>
             <h3 className="text-xs font-semibold tracking-[1.5px] mb-5">
-              CONTACT US
+              CUSTOMER CARE
             </h3>
             <ul className="flex flex-col gap-3">
               <li>
+                <Link
+                  href={ROUTES.REFUND_POLICY}
+                  className="text-sm font-light text-white/80 hover:text-white hover:underline transition-colors inline-block"
+                >
+                  Refund Policy
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={ROUTES.SHIPPING_INFO}
+                  className="text-sm font-light text-white/80 hover:text-white hover:underline transition-colors inline-block"
+                >
+                  Shipping Info
+                </Link>
+              </li>
+              <li>
+                <Link
+                  href={ROUTES.FAQ}
+                  className="text-sm font-light text-white/80 hover:text-white hover:underline transition-colors inline-block"
+                >
+                  FAQ
+                </Link>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <h3 className="text-xs font-semibold tracking-[1.5px] mb-5">
+              CONNECT
+            </h3>
+            <ul className="flex flex-col gap-3">
+              <li>
+                <Link
+                  href={ROUTES.CONTACT_US}
+                  className="text-sm font-light text-white/80 hover:text-white hover:underline transition-colors inline-block"
+                >
+                  Contact us
+                </Link>
+              </li>
+              <li>
                 <a
                   href="mailto:info@lisafolawiyo.com"
-                  className="text-sm font-light text-white/80 hover:text-white transition-colors inline-block"
+                  className="text-sm font-light text-white/80 hover:text-white hover:underline transition-colors inline-block"
                 >
                   info@lisafolawiyo.com
+                </a>
+              </li>
+              <li>
+                <a
+                  href="https://wa.me/2348033085416?text=Hello%20Lisa%20Folawiyo%20Studio,%0AI'd%20like%20to%20request%20some%20assistance%20regarding%20your%20pieces%20and%20available%20services."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm font-light text-white/80 hover:text-white hover:underline transition-colors inline-block"
+                >
+                  WhatsApp
                 </a>
               </li>
               <li>
@@ -150,7 +203,7 @@ function FooterThree() {
                   href="https://www.instagram.com/lisafolawiyo_studio"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-light text-white/80 hover:text-white transition-colors inline-block"
+                  className="text-sm font-light text-white/80 hover:text-white hover:underline transition-colors inline-block"
                 >
                   Instagram
                 </Link>
@@ -160,7 +213,7 @@ function FooterThree() {
                   href="https://youtube.com/@lisafolawiyostudio"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-sm font-light text-white/80 hover:text-white transition-colors inline-block"
+                  className="text-sm font-light text-white/80 hover:text-white hover:underline transition-colors inline-block"
                 >
                   Youtube
                 </Link>

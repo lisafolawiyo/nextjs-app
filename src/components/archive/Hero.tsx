@@ -3,7 +3,6 @@
 import { useEffect, useRef, useState } from 'react';
 
 import { gsap } from 'gsap';
-import Image from 'next/image';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 import { Timeline, VideoPlayer } from '@/components/archive';
@@ -14,13 +13,18 @@ function HeroMobile() {
   return (
     <>
       <section className="relative h-screen w-full">
-        <Image
-          src="/gifs/Hero.gif"
-          alt="Hero background"
-          className="h-full w-full object-cover"
-          fill
-          priority
-        />
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="absolute inset-0 h-full w-full object-cover"
+        >
+          <source
+            src="https://res.cloudinary.com/aiyeola/video/upload/v1762877652/lisa-folawiyo/IMG_9282_lgjpyj.mp4"
+            type="video/mp4"
+          />
+        </video>
 
         <div className="absolute inset-0 bg-black/50" />
 
@@ -63,235 +67,95 @@ function HeroMobile() {
 function HeroDesktop() {
   const heroRef = useRef<HTMLDivElement>(null);
   const imageContainerRef = useRef<HTMLDivElement>(null);
-  const textContainerRef = useRef<HTMLDivElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
   const buttonRef = useRef<HTMLButtonElement>(null);
-  const paragraphRef = useRef<HTMLParagraphElement>(null);
-  const nextSectionRef = useRef<HTMLDivElement>(null);
   const [isPlayerOpen, setIsPlayerOpen] = useState(false);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
 
-    if (
-      !heroRef.current ||
-      !imageContainerRef.current ||
-      !textContainerRef.current ||
-      !contentRef.current ||
-      !buttonRef.current ||
-      !paragraphRef.current ||
-      !nextSectionRef.current
-    )
+    if (!heroRef.current || !imageContainerRef.current || !buttonRef.current)
       return;
 
-    const textElements = contentRef.current.querySelectorAll('h2, h3');
-    const originalElements: HTMLElement[] = [];
-    const blackTextWrappers: HTMLElement[] = [];
+    // Animate button on load
+    gsap.fromTo(
+      buttonRef.current,
+      {
+        opacity: 0,
+        y: 30,
+      },
+      {
+        opacity: 1,
+        y: 0,
+        duration: 1.2,
+        delay: 0.5,
+        ease: 'power3.out',
+      },
+    );
 
-    gsap.set([buttonRef.current, paragraphRef.current], {
-      opacity: 1,
-      y: 0,
-    });
-
-    textElements.forEach((element, index) => {
-      const originalElement = element as HTMLElement;
-      originalElements.push(originalElement);
-
-      const wrapper = document.createElement('div');
-      wrapper.className = 'inline-block relative overflow-hidden';
-      wrapper.style.display = 'block';
-
-      const blackText = originalElement.cloneNode(true) as HTMLElement;
-      blackText.style.color = '#212529';
-      blackText.style.position = 'relative';
-      blackText.style.zIndex = '1';
-      blackText.id = `black-text-${index}`;
-      blackTextWrappers.push(blackText);
-
-      const whiteText = originalElement.cloneNode(true) as HTMLElement;
-      whiteText.style.color = 'white';
-      whiteText.style.position = 'absolute';
-      whiteText.style.top = '0';
-      whiteText.style.left = '0';
-      whiteText.style.width = '100%';
-      whiteText.style.height = '100%';
-      whiteText.style.zIndex = '2';
-      whiteText.style.clipPath = 'polygon(0 0, 100% 0, 100% 100%, 0 100%)';
-      whiteText.id = `white-text-${index}`;
-
-      originalElement.parentNode?.insertBefore(wrapper, originalElement);
-      originalElement.remove();
-      wrapper.appendChild(blackText);
-      wrapper.appendChild(whiteText);
-    });
-
+    // Parallax effect on scroll
     ScrollTrigger.create({
       trigger: heroRef.current,
       start: 'top top',
       end: 'bottom top',
-      scrub: true,
-      pin: textContainerRef.current,
-      pinSpacing: false,
+      scrub: 1,
       onUpdate: (self) => {
-        const imageContainer = imageContainerRef.current;
-        const nextSection = nextSectionRef.current;
-
-        if (imageContainer && contentRef.current && nextSection) {
-          const imageRect = imageContainer.getBoundingClientRect();
-          const imageBottom = imageRect.bottom;
-          const viewportHeight = window.innerHeight;
-
-          textElements.forEach((_, index) => {
-            const whiteText = document.getElementById(`white-text-${index}`);
-
-            if (whiteText) {
-              const textRect = whiteText.getBoundingClientRect();
-              const textTop = textRect.top;
-              const textBottom = textRect.bottom;
-              const textHeight = textRect.height;
-
-              const intersectionTop = Math.max(textTop, 0);
-              const intersectionBottom = Math.min(textBottom, imageBottom);
-              const visibleHeight = Math.max(
-                0,
-                intersectionBottom - intersectionTop,
-              );
-
-              const clipPercentage = (visibleHeight / textHeight) * 100;
-              const finalClip = Math.max(0, Math.min(100, clipPercentage));
-
-              whiteText.style.clipPath = `polygon(0 0, 100% 0, 100% ${finalClip}%, 0 ${finalClip}%)`;
-            }
-          });
-
+        if (imageContainerRef.current) {
           gsap.to(imageContainerRef.current, {
-            yPercent: -50 * self.progress,
+            yPercent: -30 * self.progress,
             ease: 'none',
-            overwrite: true,
-            duration: 0.1,
           });
-
-          const fadeStart = viewportHeight * 0.6;
-          const fadeEnd = viewportHeight * 0.1;
-
-          const fadeProgress = gsap.utils.clamp(
-            0,
-            1,
-            gsap.utils.mapRange(fadeEnd, fadeStart, 0, 1, imageBottom),
-          );
-
-          if (buttonRef.current && paragraphRef.current) {
-            buttonRef.current.style.opacity = fadeProgress.toString();
-            paragraphRef.current.style.opacity = fadeProgress.toString();
-
-            if (fadeProgress === 0) {
-              buttonRef.current.style.pointerEvents = 'none';
-              paragraphRef.current.style.pointerEvents = 'none';
-            } else {
-              buttonRef.current.style.pointerEvents = 'auto';
-              paragraphRef.current.style.pointerEvents = 'auto';
-            }
-          }
         }
-      },
-    });
 
-    ScrollTrigger.create({
-      trigger: nextSectionRef.current,
-      start: 'top bottom',
-      end: 'center center',
-      scrub: true,
-      onUpdate: (self) => {
-        const progress = self.progress;
-
-        blackTextWrappers.forEach((blackText) => {
-          gsap.to(blackText, {
-            clipPath: `polygon(0 ${progress * 100}%, 100% ${
-              progress * 100
-            }%, 100% 100%, 0 100%)`,
+        if (buttonRef.current) {
+          gsap.to(buttonRef.current, {
+            opacity: 1 - self.progress * 1.5,
+            y: self.progress * 50,
             ease: 'none',
-            duration: 0.1,
-            overwrite: true,
           });
-        });
-
-        gsap.to(textContainerRef.current, {
-          y: -progress * 100,
-          ease: 'none',
-          duration: 0.1,
-          overwrite: true,
-        });
+        }
       },
     });
 
     return () => {
       ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
-
-      originalElements.forEach((element, index) => {
-        const wrapper = document.getElementById(
-          `black-text-${index}`,
-        )?.parentElement;
-        if (wrapper) {
-          wrapper.parentElement?.insertBefore(element, wrapper);
-          wrapper.remove();
-        }
-      });
     };
   }, []);
 
   return (
     <div>
-      <section ref={heroRef} className="relative" style={{ height: '200vh' }}>
+      <section ref={heroRef} className="relative h-screen">
         <div
           ref={imageContainerRef}
-          className="absolute left-0 top-0 h-screen w-full"
+          className="absolute left-0 top-0 h-full w-full"
         >
-          <Image
-            src="/gifs/Hero.gif"
-            alt="Hero background"
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
             className="h-full w-full object-cover"
-            fill
-            priority
-          />
-          <div className="absolute inset-0 bg-black/50" />
+          >
+            <source
+              src="https://res.cloudinary.com/aiyeola/video/upload/v1762877652/lisa-folawiyo/IMG_9282_lgjpyj.mp4"
+              type="video/mp4"
+            />
+          </video>
+          <div className="absolute inset-0 bg-black/40" />
         </div>
 
-        <div
-          ref={textContainerRef}
-          className="absolute left-0 top-0 flex h-screen w-full items-center justify-center md:mt-16"
-        >
-          <div className="w-full px-8">
-            <div ref={contentRef} className="text-left">
-              <h2 className="mb-4 text-[72px]  font-bold leading-[60px] text-white lg:text-[96px] lg:leading-[82px]">
-                THE LISA FOLAWIYO
-              </h2>
-              <div className="flex flex-col items-start gap-4 md:flex-row lg:gap-16">
-                <h3 className="text-[72px] font-bold leading-[70px] text-white lg:text-[96px] lg:leading-[80px] xl:mt-4">
-                  ARCHIVE
-                </h3>
-                <p
-                  ref={paragraphRef}
-                  className="max-w-4xl pt-3 text-base leading-relaxed text-white/90 lg:text-[20px]"
-                >
-                  From one season to another, this archive captures the
-                  evolution of a movement that changed the face of African
-                  fashion. With print, embellishment, and craftsmanship as her
-                  signature, Lisa Folawiyo propelled African design into the
-                  global conversation leaving an indelible mark on the world of
-                  fashion.
-                </p>
-              </div>
-              {!isPlayerOpen && (
-                <button
-                  onClick={() => setIsPlayerOpen(true)}
-                  ref={buttonRef}
-                  className="mt-34 group flex items-center justify-center gap-3 border border-white/60 px-6 py-3 text-xs tracking-widest text-white transition-all duration-300 hover:bg-white hover:text-black md:w-[219px] md:text-base"
-                >
-                  <span>PLAY VIDEO</span>
-                </button>
-              )}
-            </div>
-          </div>
+        <div className="absolute inset-0 z-10 flex items-end justify-start px-8 pb-32 md:px-16">
+          {!isPlayerOpen && (
+            <button
+              ref={buttonRef}
+              onClick={() => {
+                console.log('Button clicked!');
+                setIsPlayerOpen(true);
+              }}
+              className="group relative flex items-center justify-center border-2 border-white/80 bg-transparent px-8 py-4 text-sm tracking-widest text-white opacity-0 backdrop-blur-sm transition-all duration-500 hover:scale-105 hover:border-white hover:bg-white hover:text-black md:text-base"
+            >
+              <span className="relative z-10">PLAY VIDEO</span>
+            </button>
+          )}
         </div>
 
         {isPlayerOpen && (
@@ -304,14 +168,7 @@ function HeroDesktop() {
         )}
       </section>
 
-      <section
-        ref={nextSectionRef}
-        className="relative z-10 bg-white py-20"
-        style={{
-          transform: 'translateY(0%)',
-          opacity: '1',
-        }}
-      >
+      <section className="relative z-10 bg-white py-20">
         <Timeline />
       </section>
     </div>

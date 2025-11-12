@@ -13,7 +13,7 @@ export function SampleProducts({ products }: { products: UnknownObject }) {
 
   return (
     <>
-      <h3 className="mb-6 px-4 pb-3 text-[40px] font-light uppercase tracking-tight  max-md:mx-4  max-md:border-b max-md:border-[#000000] max-md:leading-[45px] md:mb-10  md:text-[96px]">
+      <h3 className="mb-6 px-4 pb-3 text-[32px] font-light capitailize tracking-tight  max-md:mx-4  max-md:border-b max-md:border-[#000000] max-md:leading-[36px] md:mb-10  md:text-[64px]">
         Shop the edits
       </h3>
       <div

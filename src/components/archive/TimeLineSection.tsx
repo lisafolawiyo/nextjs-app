@@ -32,13 +32,13 @@ export function Timeline() {
   };
 
   return (
-    <section className="mx-auto px-6 py-16 text-[#212529] md:px-8">
-      <h3 className="mb-10 text-[40px] uppercase font-light tracking-tight max-md:leading-[45px] md:text-[45px] 2xl:mb-16 2xl:text-[96px]">
+    <section className="mx-auto h-screen flex flex-col px-6 py-8 text-[#212529] md:px-8 md:py-12">
+      <h3 className="mb-6 text-[32px] uppercase font-light tracking-tight max-md:leading-[36px] md:text-[40px] md:mb-8 2xl:mb-10 2xl:text-[64px]">
         A life in colour; The story so far...
       </h3>
 
-      <div className="lg:hidden">
-        <div className="border border-[#212529]">
+      <div className="lg:hidden flex-1 flex flex-col overflow-hidden border border-[#212529]">
+        <div className="border-b border-[#212529]">
           <button
             onClick={() => setIsDropdownOpen(!isDropdownOpen)}
             className="flex w-full items-center justify-between bg-transparent px-4 py-6 hover:bg-transparent md:px-6"
@@ -79,7 +79,7 @@ export function Timeline() {
 
         {selectedEvent && (
           <div
-            className={`space-y-8 pt-8 transition-all duration-500 ${
+            className={`space-y-6 pt-6 flex-1 flex flex-col overflow-y-auto transition-all duration-500 ${
               isAnimating ? 'translate-x-8 scale-95' : 'translate-x-0 scale-100'
             }`}
           >
@@ -129,7 +129,7 @@ export function Timeline() {
                 src={selectedEvent.image}
                 alt={`${selectedEvent.year} - ${selectedEvent.title}`}
                 fill
-                className={`object-cover transition-transform duration-700 ${
+                className={`object-cover object-top transition-transform duration-700 ${
                   isAnimating ? 'scale-110' : 'scale-100'
                 }`}
                 sizes="100vw"
@@ -139,8 +139,8 @@ export function Timeline() {
         )}
       </div>
 
-      <div className="hidden grid-cols-[400px_1fr_1fr] gap-0 border-t border-[#212529] lg:grid xl:grid-cols-[450px_1fr_1fr]">
-        <div className="flex min-h-[941px] flex-col justify-between border-r border-[#212529] px-10 pb-12 pt-12 xl:px-12">
+      <div className="hidden grid-cols-[400px_1fr_1fr] gap-0 border border-[#212529] lg:grid xl:grid-cols-[450px_1fr_1fr] flex-1 overflow-hidden">
+        <div className="flex h-full flex-col justify-between border-r border-[#212529] px-10 pb-12 pt-12 xl:px-12">
           <div className="flex flex-col items-center">
             <button
               onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -197,7 +197,7 @@ export function Timeline() {
 
         {selectedEvent && (
           <div
-            className={`flex min-h-[941px] flex-col justify-between space-y-8 border-r border-[#212529] px-10 pb-12 pt-12 xl:px-12 transition-all duration-500 ${
+            className={`flex h-full flex-col justify-between space-y-8 border-r border-[#212529] px-10 pb-12 pt-12 xl:px-12 transition-all duration-500 ${
               isAnimating ? 'translate-x-8 scale-95' : 'translate-x-0 scale-100'
             }`}
           >
@@ -245,12 +245,12 @@ export function Timeline() {
         )}
 
         {selectedEvent && (
-          <div className="relative min-h-[941px] w-full overflow-hidden bg-gray-100">
+          <div className="relative h-full w-full overflow-hidden bg-gray-100">
             <Image
               src={selectedEvent.image}
               alt={`${selectedEvent.year} - ${selectedEvent.title}`}
               fill
-              className={`object-cover transition-transform duration-700 ${
+              className={`object-cover object-top transition-transform duration-700 ${
                 isAnimating ? 'scale-110' : 'scale-100'
               }`}
               sizes="33vw"

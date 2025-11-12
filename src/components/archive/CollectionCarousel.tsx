@@ -46,11 +46,30 @@ export const CollectionCarousel = ({
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useGsapFadeIn({ delay: 0.3, y: 30 });
 
-  const filteredCategories = categories.filter(
-    (cat) =>
-      cat.slug.toLowerCase() !== 'uncategorised' &&
-      cat.slug.toLowerCase() !== 'uncategorized',
-  );
+  // Define the exact order and allowed categories
+  const allowedCategoryOrder = [
+    'AW18',
+    'SS12',
+    'SS15',
+    'SS17',
+    'SS20',
+    'SS21',
+    'SS22',
+    'SS23',
+    'SS24',
+    'COLL 1 2023',
+    'COLL 1 2024',
+    'COLL 1 2025',
+  ];
+
+  // Filter and sort categories based on the allowed list and order
+  const filteredCategories = categories
+    .filter((cat) => allowedCategoryOrder.includes(cat.name))
+    .sort((a, b) => {
+      const indexA = allowedCategoryOrder.indexOf(a.name);
+      const indexB = allowedCategoryOrder.indexOf(b.name);
+      return indexA - indexB;
+    });
 
   const [currentCategoryIndex, setCurrentCategoryIndex] = useState(0);
   const [products, setProducts] = useState<Product[]>(initialProducts);

@@ -107,11 +107,38 @@ function FilterItem({ label, count, isActive, onClick }: FilterItemProps) {
 
 export function ArchiveFilter({
   categories,
-  tags,
+  // tags,
+  isShop,
 }: {
   categories: UnknownObject[];
   tags: UnknownObject[];
+  isShop: boolean;
 }) {
+  // Define shop-specific categories
+  const shopCategories = [
+    'AW18',
+    'SS12',
+    'SS15',
+    'SS17',
+    'SS20',
+    'SS21',
+    'SS22',
+    'SS23',
+    'SS24',
+  ];
+
+  // Filter categories based on isShop prop
+  const filteredCategories = isShop
+    ? categories.filter(
+        (cat: UnknownObject) =>
+          !shopCategories.includes(cat.name as string) &&
+          cat.name?.toLowerCase() !== 'uncategorized' &&
+          cat.name?.toLowerCase() !== 'uncategorised',
+      )
+    : categories.filter((cat: UnknownObject) =>
+        shopCategories.includes(cat.name as string),
+      );
+
   const router = useRouter();
   const searchParams = useSearchParams();
   const [, startTransition] = useTransition();
@@ -279,7 +306,7 @@ export function ArchiveFilter({
               isExpanded={expandedSections.collection}
               onToggle={() => toggleSection('collection')}
             >
-              {categories?.map(({ id, name, count }) => (
+              {filteredCategories?.map(({ id, name, count }) => (
                 <FilterItem
                   key={id}
                   label={name}
@@ -294,7 +321,7 @@ export function ArchiveFilter({
               ))}
             </FilterSection>
 
-            <FilterSection
+            {/* <FilterSection
               title="Tags"
               isExpanded={expandedSections.tag}
               onToggle={() => toggleSection('tag')}
@@ -310,7 +337,7 @@ export function ArchiveFilter({
                   }
                 />
               ))}
-            </FilterSection>
+            </FilterSection> */}
           </div>
         </div>
       </div>

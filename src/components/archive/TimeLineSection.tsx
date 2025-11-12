@@ -79,7 +79,7 @@ export function Timeline() {
 
         {selectedEvent && (
           <div
-            className={`space-y-6 pt-6 flex-1 flex flex-col overflow-y-auto transition-all duration-500 ${
+            className={`space-y-6 px-4 pt-6 flex-1 flex flex-col overflow-y-auto transition-all duration-500 ${
               isAnimating ? 'translate-x-8 scale-95' : 'translate-x-0 scale-100'
             }`}
           >

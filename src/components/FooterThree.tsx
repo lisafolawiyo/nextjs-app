@@ -230,7 +230,7 @@ function FooterThree() {
             >
               LISAFOLAWIYO.COM
             </Link>
-            <div className="flex items-center gap-8">
+            <div className="flex flex-col md:flex-row items-center gap-5 md:gap-8">
               <div className="flex items-center gap-3">
                 <a
                   href="https://www.instagram.com/lisafolawiyo_studio"
@@ -251,13 +251,10 @@ function FooterThree() {
               </div>
               <button
                 onClick={scrollToTop}
-                className="bg-transparent space-x-2 border-none text-white text-[11px] font-semibold tracking-[1.5px] cursor-pointer flex items-center gap-2 hover:opacity-70 transition-opacity"
+                className="bg-transparent space-x-2 border-none text-white text-[11px] font-semibold tracking-[1.5px] cursor-pointer flex items-center justify-center gap-2 hover:opacity-70 transition-opacity"
               >
-                <span>
-                  {' '}
-                  <span className="text-xs tracking-wider text-white/60">
-                    &copy;{currentYear}
-                  </span>
+                <span className="text-xs tracking-wider text-white/60">
+                  &copy;{currentYear}
                 </span>
                 BACK TO TOP <span className="text-base">↑</span>
               </button>

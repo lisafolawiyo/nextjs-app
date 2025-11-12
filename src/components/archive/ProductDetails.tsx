@@ -374,7 +374,7 @@ export function ProductDetails({
         ))}
       </div>
       <div className="mt-10 flex w-full items-center justify-center py-10">
-        <Link href={ROUTES.SHOP}>
+        <Link href={ROUTES.ARCHIVE_EDIT}>
           <button className="whitespace-nowrap border border-black px-6 py-2 text-sm  transition-all duration-300 hover:bg-black hover:text-white md:w-[219px] md:text-base">
             DISCOVER MORE
           </button>

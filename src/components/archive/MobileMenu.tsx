@@ -94,17 +94,18 @@ export function MobileMenu({ shouldDark }: { shouldDark?: boolean }) {
     { name: 'Search the Archive', href: ROUTES.SHOP },
     { name: 'About', href: ROUTES.ABOUT },
     {
-      name: `Cart${cartItemCount > 0 ? ` (${cartItemCount})` : ''}`,
+      name: 'Cart',
       href: ROUTES.CHECKOUT,
+      showBadge: true,
     },
   ];
 
   const secondaryLinks = [
-    { name: 'Shop', href: '#' },
-    { name: 'Contact us', href: '#' },
-    { name: 'Refund Policy', href: '#' },
-    { name: 'Shipping Info', href: '#' },
-    { name: 'FAQ', href: '#' },
+    { name: 'Shop', href: ROUTES.SHOP },
+    { name: 'Contact us', href: ROUTES.CONTACT_US },
+    { name: 'Refund Policy', href: '/refund-policy' },
+    { name: 'Shipping Info', href: '/shipping-info' },
+    { name: 'FAQ', href: '/faq' },
   ];
 
   useEffect(() => {
@@ -185,10 +186,15 @@ export function MobileMenu({ shouldDark }: { shouldDark?: boolean }) {
               <li key={index}>
                 <a
                   href={link.href}
-                  className="menu-item block py-3 text-2xl lowercase text-slate-300 transition-colors hover:text-white"
+                  className="menu-item flex items-center gap-3 py-3 text-2xl lowercase text-slate-300 transition-colors hover:text-white"
                   onClick={closeMenu}
                 >
-                  {link.name}
+                  <span>{link.name}</span>
+                  {link.showBadge && cartItemCount > 0 && (
+                    <span className="flex h-6 w-6 items-center justify-center rounded-full bg-red-500 text-xs font-medium text-white">
+                      {cartItemCount}
+                    </span>
+                  )}
                 </a>
               </li>
             ))}

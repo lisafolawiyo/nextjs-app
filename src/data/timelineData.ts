@@ -16,7 +16,7 @@ export const timelineEvents: TimelineEvent[] = [
     title: "Brand founded as 'Jewel by Lisa'",
     description:
       'Lisa Folawiyo launches her label in Lagos, pioneering intricately hand-embellished Ankara as ready-to-wear.',
-    image: '/images/2008_image.jpg',
+    image: '/images/2005_image.png',
     links: [
       {
         label: 'Discover More',

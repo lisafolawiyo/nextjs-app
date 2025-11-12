@@ -20,7 +20,7 @@ export const timelineEvents: TimelineEvent[] = [
     links: [
       {
         label: 'Discover More',
-        url: '#',
+        url: 'https://youtube.com/watch?si=BjI1qHyD82YPudNf&v=2jwilRPrf4I&feature=youtu.be',
       },
     ],
   },
@@ -33,7 +33,7 @@ export const timelineEvents: TimelineEvent[] = [
     links: [
       {
         label: 'Discover More',
-        url: '#',
+        url: 'https://www.bellanaija.com/2009/09/afro-chic-in-the-city-jewel-by-lisa-springsummer-2010-arise-promise/',
       },
     ],
   },
@@ -46,7 +46,7 @@ export const timelineEvents: TimelineEvent[] = [
     links: [
       {
         label: 'Discover More',
-        url: '#',
+        url: 'https://www.bellanaija.com/2011/06/young-cool-affordable-luxe-jewel-by-lisa-launches-diffusion-line-the-j-label/',
       },
     ],
   },
@@ -59,10 +59,11 @@ export const timelineEvents: TimelineEvent[] = [
     links: [
       {
         label: 'Discover More',
-        url: '#',
+        url: 'https://www.vogue.it/talents/concorsi-e-altro/2012/09/jewel-by-lisa',
       },
     ],
-    exploreMoreUrl: '#',
+    exploreMoreUrl:
+      'https://www.bellanaija.com/2012/12/bn-style-bytes-jewel-by-lisa-debuts-lipstick-nail-polish-in-collaboration-with-loreal-italy-exclusive-look-at-the-springsummer-2013-lookbook/',
   },
   {
     year: 2013,
@@ -73,7 +74,7 @@ export const timelineEvents: TimelineEvent[] = [
     links: [
       {
         label: 'Discover More',
-        url: '#',
+        url: 'https://www.okayafrica.com/tag/jewel-by-lisa',
       },
     ],
   },
@@ -86,7 +87,7 @@ export const timelineEvents: TimelineEvent[] = [
     links: [
       {
         label: 'Discover More',
-        url: '#',
+        url: 'https://www.businessoffashion.com/people/lisa-folawiyo/',
       },
     ],
   },
@@ -107,7 +108,7 @@ export const timelineEvents: TimelineEvent[] = [
     links: [
       {
         label: 'Discover More',
-        url: '#',
+        url: 'https://us.fashionnetwork.com/news/Farfetch-s-there-was-one-in-womenswear-collab-with-lisa-folawiyo,1524216.html',
       },
     ],
   },
@@ -120,7 +121,7 @@ export const timelineEvents: TimelineEvent[] = [
     links: [
       {
         label: 'Discover More',
-        url: '#',
+        url: 'https://marieclaire.ng/high-fashion-meets-athletic-energy-lisa-folawiyos-collection-1-2025/',
       },
     ],
   },
@@ -133,7 +134,7 @@ export const timelineEvents: TimelineEvent[] = [
     links: [
       {
         label: 'Discover More',
-        url: '#',
+        url: 'https://www.instagram.com/p/DIy24IxqHom/',
       },
     ],
   },

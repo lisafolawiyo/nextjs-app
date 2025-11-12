@@ -107,7 +107,7 @@ export function Header() {
             >
               <span>cart</span>
               {cartItemCount > 0 && (
-                <span className="absolute -right-3 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-red-500 text-xs font-medium text-white">
+                <span className="absolute -right-6 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-red-500 text-xs font-medium text-white">
                   {cartItemCount}
                 </span>
               )}

@@ -74,7 +74,7 @@ export function VideoPlayer({ videoUrl, onClose }: VideoPlayerProps) {
         className="h-full w-full object-cover"
         src={
           videoUrl ||
-          'https://commondatastorage.googleapis.com/gtv-videos-bucket/sample/BigBuckBunny.mp4'
+          'https://res.cloudinary.com/aiyeola/video/upload/v1762877652/lisa-folawiyo/IMG_9282_lgjpyj.mp4'
         }
         onClick={handlePlayPause}
         onLoadedData={handleVideoLoad}

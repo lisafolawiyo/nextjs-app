@@ -13,14 +13,17 @@ export function SampleProducts({ products }: { products: UnknownObject }) {
 
   return (
     <>
+      <h3 className="mb-6 px-4 pb-3 text-[40px] font-light uppercase tracking-tight  max-md:mx-4  max-md:border-b max-md:border-[#000000] max-md:leading-[45px] md:mb-10  md:text-[96px]">
+        Shop the edits
+      </h3>
       <div
         ref={sectionRef as React.RefObject<HTMLDivElement>}
-        className="xl:border-t-1 xl:*:border-b-1 xl:*:border-[#212529] lg:*:border-r-1 [&>:first-child:border-l-1 grid grid-cols-1  gap-0 max-md:gap-4 max-md:px-4 lg:grid-cols-3 xl:gap-0 xl:border-l-[1px] xl:border-black"
+        className="xl:border-t-1 xl:*:border-b-1 xl:*:border-[#212529] lg:*:border-r-1 [&>:first-child:border-l-1 grid grid-cols-1 gap-0 max-md:gap-4 max-md:px-4 lg:grid-cols-3 xl:gap-0 xl:border-l-[1px] xl:border-black"
       >
         {products.map((product: UnknownObject, index: number) => (
           <div
             key={product.id}
-            className={`group  ${
+            className={`group flex ${
               index < products.length - 1
                 ? 'xl:border-r xl:border-[#212529]'
                 : ''

@@ -86,7 +86,7 @@ export const ProductCard = ({
     <div
       {...fadeInProps}
       onClick={onImageClick ? undefined : handleCardClick}
-      className="w-full cursor-pointer  transition-colors duration-500 group-hover:bg-black/90 md:p-10 "
+      className="flex h-full w-full cursor-pointer flex-col transition-colors duration-500 group-hover:bg-black/90 md:p-10"
     >
       <div className="relative cursor-pointer overflow-hidden bg-white transition-all duration-500 hover:scale-[1] hover:shadow-2xl">
         <div
@@ -117,9 +117,9 @@ export const ProductCard = ({
         </div> */}
       </div>
 
-      <div className="py-4 transition-colors duration-500 max-md:px-2">
-        <div className="flex items-start justify-between">
-          <div>
+      <div className="flex-1 py-4 transition-colors duration-500 max-md:px-2">
+        <div className="flex h-full items-start justify-between">
+          <div className="flex-1">
             <p className="text-sm font-bold uppercase text-[#000000] transition-colors duration-500 group-hover:text-gray-300 md:text-[20px]">
               {product.name}
             </p>

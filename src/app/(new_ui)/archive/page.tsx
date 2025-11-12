@@ -1,8 +1,13 @@
-import { CollectionCarousel, Hero, SampleProducts } from '@/components/archive';
 import {
   getProductCategories,
   getProducts,
 } from '@/actions/woocommerce/products';
+import {
+  CollectionCarousel,
+  Hero,
+  SampleProducts,
+  ShoppingExperience,
+} from '@/components/archive';
 
 export default async function page() {
   const product_data = await getProducts('', '', '', 1, 6);
@@ -16,6 +21,7 @@ export default async function page() {
       <Hero />
       <SampleProducts products={products} />
       <CollectionCarousel initialProducts={products} categories={categories} />
+      <ShoppingExperience />
     </>
   );
 }

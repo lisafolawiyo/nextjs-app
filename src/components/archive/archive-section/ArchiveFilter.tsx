@@ -7,6 +7,8 @@ import { parseAsString, useQueryState } from 'nuqs';
 import { ChevronDown, ChevronUp, X } from 'lucide-react';
 import { useRouter, useSearchParams } from 'next/navigation';
 
+import { FilterIcon } from '@/components/Icons';
+
 interface FilterState {
   collection: string[];
   year: string[];
@@ -238,8 +240,10 @@ export function ArchiveFilter({
         onClick={() => setShowFilters(!showFilters)}
         className="inline-flex items-center gap-2 border border-[#212529] px-6 py-2 text-sm tracking-wider text-[#212529] transition-colors hover:border-[#212529]/60"
       >
-        FILTER
-        {showFilters ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
+        <FilterIcon className="size-5" />
+        <span>FILTER</span>
+
+        {/* {showFilters ? <ChevronUp size={16} /> : <ChevronDown size={16} />} */}
       </button>
 
       {allActiveFilters.length > 0 && (

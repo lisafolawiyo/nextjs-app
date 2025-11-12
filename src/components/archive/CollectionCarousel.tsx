@@ -105,7 +105,7 @@ export const CollectionCarousel = ({
       className="my-10 md:py-16"
     >
       <h3 className="mb-6 px-4 pb-3 text-[40px] font-light uppercase tracking-tight  max-md:mx-4  max-md:border-b max-md:border-[#000000] max-md:leading-[45px] md:mb-10  md:text-[96px]">
-        Collections
+        The Retrospective
       </h3>
       <div className=" my-6 lg:border lg:border-[#212529]">
         <div className="grid md:grid-cols-[541px_1fr]">

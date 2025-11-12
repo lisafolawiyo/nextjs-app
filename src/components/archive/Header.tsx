@@ -62,7 +62,7 @@ export function Header() {
                 shouldBeDark ? 'text-black' : 'text-white'
               }`}
             >
-              LISA FOLAWIYO/ARCHIVE
+              LISA FOLAWIYO{isArchivePage ? '/ARCHIVE' : ''}
             </h1>
           </Link>
 
@@ -89,7 +89,7 @@ export function Header() {
             </Link>
             <Link
               href={ROUTES.CHECKOUT}
-              className={`flex items-center justify-center text-[24px] font-light transition-opacity hover:underline hover:opacity-70 ${
+              className={`relative flex items-center justify-center text-[24px] font-light transition-opacity hover:underline hover:opacity-70 ${
                 shouldBeDark
                   ? 'text-black hover:text-gray-700'
                   : 'text-white mix-blend-difference'
@@ -97,12 +97,8 @@ export function Header() {
             >
               <span>cart</span>
               {cartItemCount > 0 && (
-                <span
-                  className={`ml-1 text-sm ${
-                    shouldBeDark ? 'text-black' : 'text-white'
-                  }`}
-                >
-                  ({cartItemCount})
+                <span className="absolute -right-3 -top-2 flex h-6 w-6 items-center justify-center rounded-full bg-red-500 text-xs font-medium text-white">
+                  {cartItemCount}
                 </span>
               )}
             </Link>

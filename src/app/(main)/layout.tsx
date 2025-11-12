@@ -3,8 +3,8 @@ import type { Metadata } from 'next';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 import { config } from '@fortawesome/fontawesome-svg-core';
 
-import FooterTwo from '@/components/FooterTwo';
 import NavbarTwo from '@/components/NavbarTwo';
+import FooterThree from '@/components/FooterThree';
 
 import '../styles/page.scss';
 import '../styles/shop.scss';
@@ -31,7 +31,7 @@ export default function MainLayout({
     <>
       <NavbarTwo />
       <div className="w-full bg-white">{children}</div>
-      <FooterTwo />
+      <FooterThree />
     </>
   );
 }

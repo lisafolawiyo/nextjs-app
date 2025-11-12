@@ -296,7 +296,10 @@ function HeroDesktop() {
 
         {isPlayerOpen && (
           <div className="absolute inset-0 top-0 z-[300] flex items-center justify-center bg-black/90 p-4">
-            <VideoPlayer onClose={() => setIsPlayerOpen(false)} />
+            <VideoPlayer
+              videoUrl="https://res.cloudinary.com/aiyeola/video/upload/v1762877652/lisa-folawiyo/IMG_9282_lgjpyj.mp4"
+              onClose={() => setIsPlayerOpen(false)}
+            />
           </div>
         )}
       </section>

@@ -69,11 +69,22 @@ export const ArchiveSection = ({
         <ArchiveFilter categories={categories} tags={tags} />
       </div>
 
+      <div className="mb-10 md:mb-16">
+        <h3 className=" pb-3 text-[40px] font-light capitalize tracking-tight  max-md:mx-4  max-md:border-b max-md:border-[#000000]  md:text-[96px]">
+          The Archive Edit
+        </h3>
+        <p className="text-[24px]">
+          Explore Lisa Folawiyo’s Archive Edit. A collection of hand-embellished
+          Ankara, lace, and silk pieces celebrating 20 years of beadwork,
+          craftsmanship, and modern African luxury.
+        </p>
+      </div>
+
       {products.length > 0 ? (
         <>
-          <div className="sm:border-t-1 sm:*:border-b-1 sm:*:border-[#212529] sm:*:border-r-1 [&>:first-child:border-l-1 mx-auto grid  grid-cols-1 border-black sm:border-l-[1px] lg:grid-cols-3">
+          <div className="sm:border-t-1 sm:*:border-b-1 sm:*:border-[#212529] sm:*:border-r-1 [&>:first-child:border-l-1 mx-auto grid grid-cols-1 border-black sm:border-l-[1px] lg:grid-cols-3">
             {products.map((product, index) => (
-              <div key={product?.id} className="group">
+              <div key={product?.id} className="group flex">
                 <ProductCard product={product} index={index} />
               </div>
             ))}

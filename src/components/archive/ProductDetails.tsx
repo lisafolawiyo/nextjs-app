@@ -3,8 +3,8 @@
 import { useEffect, useState } from 'react';
 
 import Link from 'next/link';
+import DOMPurify from 'dompurify';
 import { useRouter } from 'next/navigation';
-import DOMPurify from 'isomorphic-dompurify';
 import { ChevronLeft, Minus, Plus } from 'lucide-react';
 
 import { cn } from '@/lib/utils';

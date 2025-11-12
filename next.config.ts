@@ -20,6 +20,19 @@ const nextConfig: NextConfig = {
   sassOptions: {
     additionalData: `$var: red;`,
   },
+  experimental: {
+    optimizePackageImports: ['react-paystack'],
+  },
+  webpack: (config, { isServer }) => {
+    if (isServer) {
+      // Mark react-paystack as external for server-side rendering
+      config.externals = config.externals || [];
+      if (Array.isArray(config.externals)) {
+        config.externals.push('react-paystack');
+      }
+    }
+    return config;
+  },
 };
 
 export default nextConfig;

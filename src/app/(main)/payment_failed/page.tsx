@@ -1,13 +1,10 @@
-import { Metadata } from 'next';
+'use client';
 
-import PayFailed from '@/components/PayFailed';
+import dynamic from 'next/dynamic';
 
-export const metadata: Metadata = {
-  robots: {
-    index: false,
-    follow: false,
-  },
-};
+const PayFailed = dynamic(() => import('@/components/PayFailed'), {
+  ssr: false,
+});
 
 function PaymentFailed() {
   return (

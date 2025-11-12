@@ -5,7 +5,6 @@ export const ROUTES = {
   ARCHIVE_RETROSPECTIVE: '/archive#retrospective',
   CHECKOUT: '/checkout',
   SHOP: '/shop',
-  ARCHIVE_EDIT: '/archive-edit',
   ABOUT: '/about',
   CONTACT_US: '/contact',
   REFUND_POLICY: '/refund',

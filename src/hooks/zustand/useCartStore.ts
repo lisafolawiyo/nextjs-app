@@ -17,6 +17,7 @@ interface CartItem {
   image: string;
   product_options: ProductOptions[];
   quantity: number;
+  collection?: string;
 }
 
 interface CartState {
@@ -75,6 +76,7 @@ const useCartStore = create<CartState>()(
                 stock_status: product.stock_status,
                 image: product.image,
                 product_options: product.product_options,
+                collection: product.collection,
               },
             ],
           });

@@ -89,6 +89,7 @@ function ProductOptions({
       image: product?.images?.[0]?.src,
       product_options: selectedOptions as ProductOption[],
       quantity,
+      collection: product.categories?.[0]?.name,
     });
 
     setQuantity(1);

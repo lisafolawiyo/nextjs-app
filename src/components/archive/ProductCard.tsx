@@ -5,6 +5,7 @@ import { useRouter } from 'next/navigation';
 
 import { useFadeIn } from '@/hooks/useFadeIn';
 import { stripOuterTags } from '@/utils/util';
+import useCartStore from '@/hooks/zustand/useCartStore';
 import { formatCurrency } from '@/utils/formatCurrency';
 
 export interface Product {
@@ -33,10 +34,24 @@ export const ProductCard = ({
   const fadeInProps = useFadeIn(index ?? 0, 0.2);
   const router = useRouter();
 
+  const addToCart = useCartStore((state) => state.addToCart);
+
   const handleAddToCartClick = (e: React.MouseEvent) => {
     e.stopPropagation();
-    // Cart functionality will be implemented later
-    console.log('Add to cart clicked for:', product.name);
+    addToCart({
+      id: product?.id,
+      name: product?.name,
+      desc: stripOuterTags(product?.description || ''),
+      price: Number(product?.price),
+      stock_status: product?.stock_status,
+      image: product?.images?.[0]?.src,
+      product_options: product?.attributes?.map((attibute) => ({
+        name: attibute.name,
+        value: attibute?.options?.[0],
+      })) as ProductOption[],
+      quantity: 1,
+      collection: product.categories?.[0]?.name,
+    });
   };
 
   const handleCardClick = () => {
@@ -95,7 +110,8 @@ export const ProductCard = ({
               {stripOuterTags(product.short_description)}
             </p>
             <p className="text-sm text-gray-500 transition-colors duration-500 group-hover:text-white md:text-base">
-              COLLECTION YEAR: {product.categories[0]?.name}
+              {!hideAddToCart && 'COLLECTION YEAR:'}{' '}
+              {product.categories[0]?.name}
             </p>
           </div>
           <p className="text-base text-gray-900 transition-colors duration-500 group-hover:text-white md:text-[24px]">

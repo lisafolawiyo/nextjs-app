@@ -14,6 +14,7 @@ interface OrderItemProps {
     image: string;
     product_options: { name: string; value: string }[];
     quantity: number;
+    collection?: string;
   };
   onUpdateQuantity: (cart_id: string, type: 'increment' | 'decrement') => void;
   onRemove: (cart_id: string) => void;
@@ -61,6 +62,10 @@ export function OrderItem({
                     {option?.name}: {option?.value}
                   </p>
                 ))}
+
+                {item?.collection && (
+                  <p className="capitalize">COLLECTION: {item?.collection}</p>
+                )}
               </div>
 
               <p className=" text-[20px] text-gray-500 transition-colors duration-500 group-hover:text-white lg:hidden ">

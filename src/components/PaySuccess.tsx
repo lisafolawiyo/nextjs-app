@@ -84,7 +84,7 @@ function PaySuccess() {
                 <div className="detail-wrap">
                   <div className="left">
                     <h3 className="name">{item.name}</h3>
-                    <h2 className="desc">{item.desc}</h2>
+                    {/* <h2 className="desc">{item.desc}</h2> */}
                     <div className="options">
                       {item.product_options.length > 0 &&
                         item.product_options.map((option) => (

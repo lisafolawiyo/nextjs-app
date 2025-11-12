@@ -28,35 +28,21 @@ function HeroMobile() {
 
         <div className="absolute inset-0 bg-black/50" />
 
-        <div className="absolute inset-0 flex items-center justify-center px-6">
-          <div className="w-full text-left">
-            <h2 className="mb-2 text-[48px] font-bold leading-[48px] text-white sm:text-[60px] sm:leading-[60px]">
-              THE LISA FOLAWIYO
-            </h2>
-            <div className="flex flex-col items-start gap-4 lg:flex-row">
-              <h3 className="mb-6 text-[48px] font-bold leading-[48px] text-white sm:text-[60px] sm:leading-[60px]">
-                ARCHIVE
-              </h3>
-              <p className="mb-8 max-w-2xl text-sm leading-relaxed text-white/90 sm:text-base">
-                From one season to another, this archive captures the evolution
-                of a movement that changed the face of African fashion. With
-                print, embellishment, and craftsmanship as her signature, Lisa
-                Folawiyo propelled African design into the global conversation
-                leaving an indelible mark on the world of fashion.
-              </p>
-            </div>
-            <button
-              onClick={() => setIsPlayerOpen(true)}
-              className="group flex items-center justify-center gap-3 border border-white/60 px-6 py-3 text-xs tracking-widest text-white transition-all duration-300 hover:bg-white hover:text-black sm:text-sm"
-            >
-              <span>PLAY VIDEO</span>
-            </button>
-          </div>
+        <div className="absolute inset-0 flex items-end justify-center px-6 pb-32">
+          <button
+            onClick={() => setIsPlayerOpen(true)}
+            className="group flex items-center justify-center gap-3 border border-white/60 px-6 py-3 text-xs tracking-widest text-white transition-all duration-300 hover:bg-white hover:text-black sm:text-sm"
+          >
+            <span>PLAY VIDEO</span>
+          </button>
         </div>
 
         {isPlayerOpen && (
           <div className="absolute inset-0 top-0 z-[300] flex items-center justify-center bg-black/90 p-4">
-            <VideoPlayer onClose={() => setIsPlayerOpen(false)} />
+            <VideoPlayer
+              videoUrl="https://res.cloudinary.com/aiyeola/video/upload/v1762877652/lisa-folawiyo/IMG_9282_lgjpyj.mp4"
+              onClose={() => setIsPlayerOpen(false)}
+            />
           </div>
         )}
       </section>

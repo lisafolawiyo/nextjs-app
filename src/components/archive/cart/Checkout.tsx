@@ -145,7 +145,7 @@ export function Checkout() {
       };
       createOrder(updatedOrderData);
       setTempState(updatedOrderData);
-      router.push('/payment_successful');
+      router.push('/payment-successful');
     }
   };
 
@@ -159,7 +159,7 @@ export function Checkout() {
     toast.error('Payment failed');
     if (orderData !== null) {
       setTempState(orderData);
-      router.push('/payment_failed');
+      router.push('/payment-failed');
     }
   };
 

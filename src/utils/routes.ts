@@ -8,7 +8,7 @@ export const ROUTES = {
   ABOUT: '/about',
   CONTACT_US: '/contact',
   REFUND_POLICY: '/refund',
-  SHIPPING_INFO: '/shipping_info',
+  SHIPPING_INFO: '/shipping-info',
   FAQ: '/faq',
   INSIDE_LF: '/inside-lf',
 };

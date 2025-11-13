@@ -214,7 +214,7 @@ export default function CheckoutForm() {
       };
       createOrder(updatedOrderData);
       setTempState(updatedOrderData);
-      router.push('/payment_successful');
+      router.push('/payment-successful');
     }
   };
 
@@ -228,7 +228,7 @@ export default function CheckoutForm() {
     toast.error('Payment failed');
     if (orderData !== null) {
       setTempState(orderData);
-      router.push('/payment_failed');
+      router.push('/payment-failed');
     }
   };
 

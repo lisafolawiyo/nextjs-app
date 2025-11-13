@@ -1,7 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 import localFont from 'next/font/local';
-import "./styles/globals.scss";
+import { NuqsAdapter } from 'nuqs/adapters/next/app';
 import { GoogleAnalytics } from '@next/third-parties/google';
+
+import ToasterProvider from '@/components/toaster-provider';
+
+import './styles/globals.scss';
 
 const centuryGothic = localFont({
   src: [
@@ -28,11 +32,12 @@ const centuryGothic = localFont({
   ],
   variable: '--font-century-gothic',
   display: 'swap',
-})
+});
 
 export const metadata: Metadata = {
-  title: "Lisa Folawiyo | Luxury African Fashion with Hand Embellishment",
-  description: "Discover Lisa Folawiyo's luxury African fashion, where hand embellishment meets contemporary elegance. Shop our latest collections today.",
+  title: 'Lisa Folawiyo | Luxury African Fashion with Hand Embellishment',
+  description:
+    "Discover Lisa Folawiyo's luxury African fashion, where hand embellishment meets contemporary elegance. Shop our latest collections today.",
 };
 
 export default function RootLayout({
@@ -42,10 +47,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${centuryGothic.variable}  antialiased`}>
-            {children}
+      <body className={`${centuryGothic.className} antialiased`}>
+        <NuqsAdapter>{children}</NuqsAdapter>
+        <ToasterProvider />
+        <GoogleAnalytics gaId="G-M03YSEG0D9" />
       </body>
-      <GoogleAnalytics gaId="G-M03YSEG0D9" />
     </html>
   );
 }

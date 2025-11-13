@@ -33,6 +33,7 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+
 # vercel
 .vercel
 
@@ -40,6 +41,12 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 
-node_modules
 .next
 *.log
+
+.idea
+
+sitemap*.xml
+.swc
+
+yarn.lock

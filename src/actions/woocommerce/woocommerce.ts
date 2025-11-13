@@ -14,7 +14,7 @@ type OAuthParams = {
 export const generateOAuthSignature = (
   url: string,
   method: 'GET' | 'POST' = 'GET',
-  params: Record<string, string | number> = {}
+  params: Record<string, string | number> = {},
 ): OAuthParams => {
   const nonce = Math.random().toString(36).substring(2);
   const timestamp = Math.floor(Date.now() / 1000);
@@ -31,13 +31,22 @@ export const generateOAuthSignature = (
 
   const paramString = Object.keys(allParams)
     .sort()
-    .map((key) => `${encodeURIComponent(key)}=${encodeURIComponent(allParams[key] as string)}`)
+    .map(
+      (key) =>
+        `${encodeURIComponent(key)}=${encodeURIComponent(
+          allParams[key] as string,
+        )}`,
+    )
     .join('&');
 
   const baseUrl = url.split('?')[0];
-  const baseString = `${method.toUpperCase()}&${encodeURIComponent(baseUrl)}&${encodeURIComponent(paramString)}`;
+  const baseString = `${method.toUpperCase()}&${encodeURIComponent(
+    baseUrl,
+  )}&${encodeURIComponent(paramString)}`;
 
-  const signingKey = `${encodeURIComponent(String(process.env.WC_CONSUMER_SECRET))}&`;
+  const signingKey = `${encodeURIComponent(
+    String(process.env.WC_CONSUMER_SECRET),
+  )}&`;
 
   const signature = crypto
     .createHmac('sha1', signingKey)

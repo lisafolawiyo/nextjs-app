@@ -1,11 +1,12 @@
 'use client';
 
 import React from 'react';
+
+import DOMPurify from 'dompurify';
+import parse from 'html-react-parser';
+
 import { Post } from '@/types/post';
 import { stripOuterTags } from '@/utils/util';
-import parse from 'html-react-parser';
-// use the isomorphic version of DOMPurify
-import DOMPurify from 'isomorphic-dompurify';
 
 const Editorial = ({ post }: { post: Post }) => {
   // sanitize the rendered HTML
@@ -24,9 +25,7 @@ const Editorial = ({ post }: { post: Post }) => {
           <p>{formattedDate}</p>
           <h1>{stripOuterTags(post.title.rendered)}</h1>
         </div>
-        <div className="single-post-content">
-          {parse(sanitizedHtml)}
-        </div>
+        <div className="single-post-content">{parse(sanitizedHtml)}</div>
       </div>
     </section>
   );

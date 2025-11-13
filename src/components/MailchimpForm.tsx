@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+
 import { Input } from './ui/input';
 
 const MailchimpForm = () => {
@@ -32,7 +33,6 @@ const MailchimpForm = () => {
 
   return (
     <div className="mailchimp-form-container">
-      {/* <h2>Subscribe</h2> */}
       <form onSubmit={handleSubmit}>
         <Input
           type="email"
@@ -43,15 +43,21 @@ const MailchimpForm = () => {
         />
         <Input
           type="text"
-          placeholder="First Name"
+          placeholder="Name"
           required
           value={fname}
           onChange={(e) => setFname(e.target.value)}
         />
-        <button className="mailchimp-btn" type="submit">Subscribe</button>
+        <button className="mailchimp-btn" type="submit">
+          Subscribe
+        </button>
       </form>
-      {status === 'success' && <p className="mailchimp-success">Thank you for subscribing!</p>}
-      {status === 'error' && <p className="mailchimp-error">Something went wrong. Try again.</p>}
+      {status === 'success' && (
+        <p className="mailchimp-success">Thank you for subscribing!</p>
+      )}
+      {status === 'error' && (
+        <p className="mailchimp-error">Something went wrong. Try again.</p>
+      )}
     </div>
   );
 };

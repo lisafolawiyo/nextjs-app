@@ -1,18 +1,18 @@
 export type ProductOptions = {
-    name: string;
-    value: string;
+  name: string;
+  value: string;
 };
 export type CartItem = {
-    cart_id: string
-    id: number
-    name: string
-    desc: string
-    price: number
-    stock_status: string
-    image: string
-    product_options: ProductOptions[],
-    quantity: number
-}
+  cart_id: string;
+  id: number;
+  name: string;
+  desc: string;
+  price: number;
+  stock_status: string;
+  image: string;
+  product_options: ProductOptions[];
+  quantity: number;
+};
 
 export type ShippingRate = {
   id: string;
@@ -92,4 +92,4 @@ export type PaysStackConfig = {
   amount: number;
   currency: string;
   publicKey: string;
-}
+};

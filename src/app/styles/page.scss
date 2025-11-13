@@ -2,166 +2,166 @@
 @use './variables' as *;
 
 .page-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .page-inner-div {
     width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    .page-inner-div {
-        width: 100%;
-        max-width: 1600px;
-        @include u.breakpoint(md) {
-            width: 90%;
-        }
-        @include u.breakpoint(lg) {
-            width: 80%;
-        }
+    max-width: 1600px;
+    @include u.breakpoint(md) {
+      width: 90%;
     }
+    @include u.breakpoint(lg) {
+      width: 80%;
+    }
+  }
 }
 
 .page-section {
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    padding: 80px 15px 50px 15px;
-    
-    .page-section-inner {
-        width: 100%;
-        .page-title-wrap {
-            margin-bottom: 20px;
-            h1 {
-                font-family: var(--font-century-gothic), sans-serif;
-                font-weight: 600;
-                font-size: 21px;
-                color: $codgray;
-                text-transform: capitalize;
-            }
-        }
-        .page-section-body {
-            h1, h2, h3, h4 {
-                font-family: var(--font-century-gothic), sans-serif;
-                font-weight: 600;
-                line-height: 1.5;
-                color: $codgray;
-                margin-bottom: 20px;
-                margin-top: 0px;
-            }
-            .li-inner {
-                width: 100%;
-                padding-left: 20px;
-                padding-top: 20px;
-                p {
-                    font-family: var(--font-century-gothic), sans-serif;
-                    font-weight: 400;
-                    font-size: 15px;
-                    color: #1a1a1a90;
-                }
-            }
-            li {
-                font-family: var(--font-century-gothic), sans-serif;
-                font-weight: 400;
-                line-height: 1.5;
-                color: $codgray;
-                margin-bottom: 20px;
-                margin-top: 0px;
-            }
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  padding: 80px 15px 50px 15px;
 
-            p {
-                font-family: var(--font-century-gothic), sans-serif;
-                font-weight: 400;
-                font-size: 16px;
-                line-height: 1.5;
-                color: $codgray;
-                margin-bottom: 20px;
-                margin-top: 0px;
-            }
-            .acc-container {
-                width: 100%;
-            }
-        }
+  .page-section-inner {
+    width: 100%;
+    .page-title-wrap {
+      margin-bottom: 20px;
+      h1 {
+        font-family: var(--font-century-gothic), sans-serif;
+        font-weight: 600;
+        font-size: 21px;
+        color: $codgray;
+        text-transform: capitalize;
+      }
     }
+    .page-section-body {
+      h1,
+      h2,
+      h3,
+      h4 {
+        font-family: var(--font-century-gothic), sans-serif;
+        font-weight: 600;
+        line-height: 1.5;
+        color: $codgray;
+        margin-bottom: 20px;
+        margin-top: 0px;
+      }
+      .li-inner {
+        width: 100%;
+        padding-left: 20px;
+        padding-top: 20px;
+        p {
+          font-family: var(--font-century-gothic), sans-serif;
+          font-weight: 400;
+          font-size: 15px;
+          color: #1a1a1a90;
+        }
+      }
+      li {
+        font-family: var(--font-century-gothic), sans-serif;
+        font-weight: 400;
+        line-height: 1.5;
+        color: $codgray;
+        margin-bottom: 20px;
+        margin-top: 0px;
+      }
+
+      p {
+        font-family: var(--font-century-gothic), sans-serif;
+        font-weight: 400;
+        font-size: 16px;
+        line-height: 1.5;
+        color: $codgray;
+        margin-bottom: 20px;
+        margin-top: 0px;
+      }
+      .acc-container {
+        width: 100%;
+      }
+    }
+  }
 }
 
 /*  HERE TO HELP SECTION */
 .here-to-help-section {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  background-color: $white;
+  padding: 70px 15px 100px 15px;
+  border-top: 1px solid #00000020;
+
+  .here-to-help-inner {
     width: 100%;
     display: flex;
-    justify-content: center;
-    background-color: $white;
-    padding: 70px 15px 100px 15px;
-    border-top: 1px solid #00000020;
+    flex-direction: column;
 
-    .here-to-help-inner {
+    @include u.breakpoint(md) {
+      width: 80%;
+    }
+
+    h2 {
+      font-family: var(--font-century-gothic), sans-serif;
+      text-transform: uppercase;
+      font-size: 15px;
+      font-weight: 600;
+      color: $codgray;
+      margin-bottom: 0px;
+      margin-top: 0px;
+      text-align: center;
+    }
+
+    .inner-detail {
+      width: 100%;
+      margin-top: 30px;
+
+      .inner-detail-item {
         width: 100%;
         display: flex;
         flex-direction: column;
+        align-items: center;
+
+        margin-bottom: 30px;
 
         @include u.breakpoint(md) {
-            width: 80%;
+          flex-direction: row;
+          justify-content: center;
         }
 
+        .row-left {
+          margin-right: 0px;
 
-        h2 {
-            font-family: var(--font-century-gothic), sans-serif;
-            text-transform: uppercase;
-            font-size: 15px;
-            font-weight: 600;
-            color: $codgray;
+          @include u.breakpoint(md) {
+            margin-right: 30px;
+          }
+        }
+        .inner-detail-item-row {
+          // width: calc( (100%/2) - 20px );
+
+          width: 100%;
+          text-align: center;
+          margin-bottom: 10px;
+
+          @include u.breakpoint(md) {
+            width: max-content;
             margin-bottom: 0px;
-            margin-top: 0px;
+          }
+
+          span {
             text-align: center;
-        }
+            font-family: var(--font-century-gothic), sans-serif;
+            font-size: 15px;
+            font-weight: 400;
+            color: $codgray;
 
-        .inner-detail {
-            width: 100%;
-            margin-top: 30px;
-            
-            .inner-detail-item {
-                width: 100%;
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                
-
-                margin-bottom: 30px;
-
-                @include u.breakpoint(md) {
-                    flex-direction: row;
-                    justify-content: center;
-                }
-
-                .row-left {
-                    margin-right: 0px;
-          
-                    @include u.breakpoint(md) {
-                        margin-right: 30px;
-                    }
-                }
-                .inner-detail-item-row {
-                    // width: calc( (100%/2) - 20px );
-                    
-                    width: 100%;
-                    text-align: center;
-                    margin-bottom: 10px;
-
-    
-                    @include u.breakpoint(md) {
-                        width: max-content;
-                        margin-bottom: 0px;
-                    }
-
-                    span {
-                        text-align: center;
-                        font-family: var(--font-century-gothic), sans-serif;
-                        font-size: 15px;
-                        font-weight: 400;
-                        color: $codgray;
-
-                        @include u.breakpoint(md) {
-                            text-align: left;
-                        }
-                    }
-                }
+            @include u.breakpoint(md) {
+              text-align: left;
             }
+          }
         }
+      }
     }
+  }
 }

@@ -1,15 +1,11 @@
-"use client";
+'use client';
 
-import React, { useState, useEffect } from "react";
-import Add from "./Add";
-import { stripOuterTags } from "@/utils/util";
-import { ProductType, ProductVariation } from "@/types/product";
+import React, { useEffect, useState } from 'react';
 
+import { stripOuterTags } from '@/utils/util';
+import { ProductType, ProductVariation } from '@/types/product';
 
-type ProductOption = {
-  name: string;
-  value: string;
-};
+import Add from './Add';
 
 // type Attribute = {
 //   id: number;
@@ -37,8 +33,8 @@ const CustomizeProducts = ({
   // Set default selections on first load
   useEffect(() => {
     const defaultSelections = product.attributes
-      .filter(attr => attr.options.length > 0)
-      .map(attr => ({
+      .filter((attr) => attr.options.length > 0)
+      .map((attr) => ({
         name: attr.name,
         value: attr.options[0],
       }));
@@ -56,7 +52,7 @@ const CustomizeProducts = ({
         const selected = selectedOptions.find(
           (opt) =>
             opt.name.toLowerCase() === attr.name.toLowerCase() &&
-            opt.value.toLowerCase() === attr.option.toLowerCase()
+            opt.value.toLowerCase() === attr.option.toLowerCase(),
         );
         return !!selected;
       });
@@ -70,24 +66,22 @@ const CustomizeProducts = ({
   const handleVariations = (productOption: ProductOption) => {
     setSelectedOptions((prevOptions) => {
       const filtered = prevOptions.filter(
-        (option) => option.name !== productOption.name
+        (option) => option.name !== productOption.name,
       );
       return [...filtered, productOption];
     });
   };
-
 
   return (
     <div className="flex flex-col gap-6">
       {product.attributes.map((attribute) => (
         <div className="flex flex-col gap-4" key={attribute.slug}>
           <h4 className="font-medium">Choose a {attribute.name}</h4>
-          <ul className="flex items-center gap-3 flex-wrap">
+          <ul className="flex flex-wrap items-center gap-3">
             {attribute.options.map((option) => {
               const isOptionSelected = selectedOptions.some(
                 (selected) =>
-                  selected.name === attribute.name &&
-                  selected.value === option
+                  selected.name === attribute.name && selected.value === option,
               );
 
               return (
@@ -96,8 +90,8 @@ const CustomizeProducts = ({
                   onClick={() =>
                     handleVariations({ name: attribute.name, value: option })
                   }
-                  className={`transition duration-200 ring-1 ring-gray-600 text-gray-600 rounded-md py-1 px-4 text-sm cursor-pointer 
-                    ${isOptionSelected ? "bg-pink-300" : "hover:bg-pink-100"}`}
+                  className={`cursor-pointer rounded-md px-4 py-1 text-sm text-gray-600 ring-1 ring-gray-600 transition duration-200 
+                    ${isOptionSelected ? 'bg-pink-300' : 'hover:bg-pink-100'}`}
                 >
                   {option}
                 </li>
@@ -109,7 +103,7 @@ const CustomizeProducts = ({
       <Add
         product_id={product.id}
         name={product.name}
-        desc={stripOuterTags(product.short_description)}
+        desc={stripOuterTags(product.description)}
         price={price}
         stock_status={product.stock_status}
         image_src={product.images[0].src}

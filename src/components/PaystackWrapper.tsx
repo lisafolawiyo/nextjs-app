@@ -1,8 +1,10 @@
-"use client";
+'use client';
 
-import { PaystackError, PaystackSuccessResponse } from "@/types/checkout";
-import { useEffect, useRef } from "react";
-import { usePaystackPayment } from "react-paystack";
+import { useEffect, useRef } from 'react';
+
+import { usePaystackPayment } from 'react-paystack';
+
+import { PaystackError, PaystackSuccessResponse } from '@/types/checkout';
 
 type PaystackProps = {
   config: {
@@ -14,7 +16,7 @@ type PaystackProps = {
   };
   onSuccess: (ref: PaystackSuccessResponse) => void;
   onClose: () => void;
-  onError: (error: PaystackError) => void
+  onError: (error: PaystackError) => void;
 };
 
 export default function PaystackWrapper({
@@ -25,18 +27,17 @@ export default function PaystackWrapper({
 }: PaystackProps) {
   const initializePayment = usePaystackPayment(config);
 
-  const hasInitialized = useRef(false); // 🔒 Guard against double init
+  const hasInitialized = useRef(false);
 
   useEffect(() => {
     if (!hasInitialized.current) {
       try {
         initializePayment({ onSuccess, onClose });
       } catch (error) {
-       onError(error as PaystackError);
+        onError(error as PaystackError);
       }
       hasInitialized.current = true;
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return null;

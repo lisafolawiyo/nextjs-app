@@ -13,15 +13,14 @@ export type Post = {
   status: string;
   excerpt: {
     rendered: string;
-  }
+  };
   author: number;
   categories: number[];
   featured_media: number;
-    _embedded?: {
+  _embedded?: {
     'wp:featuredmedia'?: Array<{
       source_url: string;
       alt_text?: string;
-    }>
+    }>;
   };
-
-}
+};

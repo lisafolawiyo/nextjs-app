@@ -101,20 +101,20 @@ export const ProductCard = ({
       </div>
 
       <div className="flex-1 py-4 transition-colors duration-500 max-md:px-2">
-        <div className="flex h-full items-start justify-between">
-          <div className="flex-1 space-y-3">
-            <p className="text-sm font-bold uppercase text-[#000000] transition-colors duration-500 group-hover:text-gray-300 md:text-[20px]">
+        <div className="flex h-full items-start justify-between gap-10">
+          <div className="space-y-3 md:max-w-[200px] lg:max-w-none">
+            <p className="text-sm font-bold uppercase text-[#000000] transition-colors duration-500 group-hover:text-gray-300 md:text-base lg:text-[20px]">
               {product.name}
             </p>
-            <p className="text-sm text-[#000000] transition-colors duration-500 group-hover:text-white md:text-base">
+            <p className="text-sm text-[#000000] transition-colors duration-500 group-hover:text-white md:text-sm lg:text-base">
               {stripOuterTags(product.short_description)}
             </p>
-            <p className="text-sm text-gray-500 transition-colors duration-500 group-hover:text-white md:text-base">
+            <p className="text-sm text-gray-500 transition-colors duration-500 group-hover:text-white md:text-sm lg:text-base">
               {!hideAddToCart && 'COLLECTION YEAR:'}{' '}
               {product.categories[0]?.name}
             </p>
           </div>
-          <p className="text-base text-gray-900 transition-colors duration-500 group-hover:text-white md:text-[24px]">
+          <p className="shrink-0 text-base text-gray-900 transition-colors duration-500 group-hover:text-white md:text-lg lg:text-[24px]">
             {formatCurrency(product.price)}
           </p>
         </div>

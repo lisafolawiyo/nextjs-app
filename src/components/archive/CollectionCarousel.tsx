@@ -242,15 +242,24 @@ export const CollectionCarousel = (
     }
   };
 
+  const isUserScrollingRef = useRef(false);
+
   const handleUserInteraction = () => {
+    isUserScrollingRef.current = true;
     stopAutoScroll();
   };
 
   const handleTouchEnd = () => {
     // Resume auto-scroll after a delay when user stops touching
     setTimeout(() => {
+      isUserScrollingRef.current = false;
       startAutoScroll();
     }, 2000);
+  };
+
+  const handleMouseLeave = () => {
+    isUserScrollingRef.current = false;
+    startAutoScroll();
   };
 
   // Start auto-scroll on mount and when products change
@@ -307,10 +316,9 @@ export const CollectionCarousel = (
           <div
             ref={scrollContainerRef}
             onMouseEnter={stopAutoScroll}
-            onMouseLeave={startAutoScroll}
+            onMouseLeave={handleMouseLeave}
             onTouchStart={handleUserInteraction}
             onTouchEnd={handleTouchEnd}
-            onScroll={handleUserInteraction}
             className="flex overflow-x-auto max-md:mx-4 h-full scroll-smooth"
             style={{ msOverflowStyle: 'none', scrollBehavior: 'smooth' }}
           >

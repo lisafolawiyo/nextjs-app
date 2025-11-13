@@ -88,14 +88,14 @@ export function VideoPlayer({ videoUrl, onClose }: VideoPlayerProps) {
       <div className="absolute left-0 right-0 top-0 z-10 flex items-start justify-between p-4">
         <button
           onClick={handleFullscreen}
-          className="border border-white bg-transparent px-4 py-2 text-sm font-medium text-white transition-all duration-200 hover:bg-white hover:text-black"
+          className="border border-white bg-black px-4 py-2 text-sm font-medium text-white transition-all duration-200 hover:bg-black hover:text-white"
         >
           {isFullscreen ? 'MINIMIZE' : 'FULLSCREEN'}
         </button>
 
         <button
           onClick={handleClose}
-          className="border border-white bg-transparent px-4 py-2 text-sm font-medium text-white transition-all duration-200 hover:bg-white hover:text-black"
+          className="border border-white bg-black px-4 py-2 text-sm font-medium text-white transition-all duration-200 hover:bg-black"
         >
           CLOSE
         </button>

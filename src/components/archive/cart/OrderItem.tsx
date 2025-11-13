@@ -79,7 +79,7 @@ export function OrderItem({
               </button>
             </div>
 
-            <div className="mt-2 flex items-center justify-between">
+            <div className="mt-2 flex items-center gap-10 justify-between">
               <div className="flex items-center rounded ">
                 <button
                   onClick={() => onUpdateQuantity(item.cart_id, 'decrement')}

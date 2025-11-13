@@ -71,7 +71,7 @@ export function VideoPlayer({ videoUrl, onClose }: VideoPlayerProps) {
     >
       <video
         ref={videoRef}
-        className="h-full w-full object-cover"
+        className="h-full w-full object-contain"
         src={
           videoUrl ||
           'https://res.cloudinary.com/aiyeola/video/upload/v1762877652/lisa-folawiyo/IMG_9282_lgjpyj.mp4'

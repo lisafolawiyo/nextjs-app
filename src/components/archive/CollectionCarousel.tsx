@@ -58,7 +58,6 @@ const images = {
     'https://res.cloudinary.com/aiyeola/image/upload/v1763013027/lisa-folawiyo/FALL%202015/47bdd453-9f74-49f4-839a-3f5d835ca38c_cw1n2z.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763013027/lisa-folawiyo/FALL%202015/70e74191-edb6-4d01-9837-4cff3259fd65_tpgil2.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763013028/lisa-folawiyo/FALL%202015/1e3dffbc-ef03-4ce2-95be-96e709348ca6_e7spth.jpg',
-    'https://res.cloudinary.com/aiyeola/image/upload/v1763013028/lisa-folawiyo/FALL%202015/38bac5cd-ab20-48cd-ad52-2abcfa4079e5_onox8h.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763036237/lisa-folawiyo/FALL%202015/2014-SpringSummer_1_xpklsn.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763036243/lisa-folawiyo/FALL%202015/b1067417-95ab-432e-ac1b-21335dfbd7e7_lzbqan.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763036243/lisa-folawiyo/FALL%202015/d74d7d0c-85ee-469d-aa8b-a9b3ccb161e9_po3mtm.jpg',
@@ -125,8 +124,6 @@ const images = {
     'https://res.cloudinary.com/aiyeola/image/upload/v1763019970/lisa-folawiyo/SS22/Copy_of_YJ7A1375-Edit_uz91ws.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763019970/lisa-folawiyo/SS22/Copy_of_YJ7A1567-Edit_bwam8l.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763019974/lisa-folawiyo/SS22/Copy_of_YJ7A1378-Edit_jxacu0.jpg',
-    'https://res.cloudinary.com/aiyeola/image/upload/v1763019970/lisa-folawiyo/SS22/Copy_of_YJ7A1567-Edit_bwam8l.jpg',
-    'https://res.cloudinary.com/aiyeola/image/upload/v1763019974/lisa-folawiyo/SS22/Copy_of_YJ7A1378-Edit_jxacu0.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763020015/lisa-folawiyo/SS22/Copy_of_YJ7A1563-Edit_ojnac2.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763037971/lisa-folawiyo/SS22/Copy_of_YJ7A1404-Edit_cklmft.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763037973/lisa-folawiyo/SS22/Copy_of_YJ7A1451-Edit_tfvvm8.jpg',
@@ -169,11 +166,9 @@ const images = {
     'https://res.cloudinary.com/aiyeola/image/upload/v1763038965/lisa-folawiyo/SS24/Image_27_lzbekg.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763038967/lisa-folawiyo/SS24/Image_29_kznavb.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763038973/lisa-folawiyo/SS24/Image_35_ndd30v.jpg',
-    'https://res.cloudinary.com/aiyeola/image/upload/v1763038973/lisa-folawiyo/SS24/Image_35_ndd30v.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763038982/lisa-folawiyo/SS24/Image_21_celfdx.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763038984/lisa-folawiyo/SS24/Image_31_txlvc9.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763038986/lisa-folawiyo/SS24/Image_18_ct30x9.jpg',
-    'https://res.cloudinary.com/aiyeola/image/upload/v1763039010/lisa-folawiyo/SS24/Image_24_jhr9jf.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763039010/lisa-folawiyo/SS24/Image_24_jhr9jf.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763039012/lisa-folawiyo/SS24/Image_22_p84e2q.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763039028/lisa-folawiyo/SS24/Image_34_g1qx0c.jpg',
@@ -313,7 +308,7 @@ export const CollectionCarousel = (
 
     // Force autoplay to start
     const timer = setTimeout(() => {
-      autoplayPlugin.play();
+      autoplayPlugin?.play();
     }, 100);
 
     return () => clearTimeout(timer);
@@ -323,8 +318,8 @@ export const CollectionCarousel = (
   useEffect(() => {
     if (!emblaApi) return;
 
-    autoplayPlugin.reset();
-    autoplayPlugin.play();
+    autoplayPlugin?.reset();
+    autoplayPlugin?.play();
   }, [JSON.stringify(products), emblaApi, autoplayPlugin]);
 
   // const [scrollProgress, setScrollProgress] = useState(0);

@@ -212,9 +212,9 @@ export const CollectionCarousel = (
     <section
       id="retrospective"
       ref={sectionRef as React.RefObject<HTMLElement>}
-      className="h-screen flex flex-col px-2 py-8 md:px-8 md:py-12"
+      className="h-screen flex flex-col py-8 md:px-8 md:py-12"
     >
-      <h3 className="mb-6 px-4 pb-3 text-[32px] font-light capitalize tracking-tight  max-md:mx-4  max-md:border-b max-md:border-[#000000] max-md:leading-[36px] md:mb-8 md:text-[64px]">
+      <h3 className="mb-6 md:px-4 pb-3 text-[32px] font-light capitalize tracking-tight  max-md:mx-4  max-md:border-b max-md:border-[#000000] max-md:leading-[36px] md:mb-8 md:text-[64px]">
         The Retrospective
       </h3>
       <div className="flex-1 overflow-hidden lg:border lg:border-[#212529]">

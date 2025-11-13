@@ -41,7 +41,7 @@ function FooterThree() {
   };
 
   return (
-    <footer className="w-full bg-black text-white px-8 pt-16 pb-0">
+    <footer className="w-full bg-black text-white px-4 md:px-8 pt-16 pb-0">
       <div className="max-w-[1500px] mx-auto md:px-10">
         <div className="grid grid-cols-1 md:flex md:justify-between gap-12 pb-10 border-b border-white/10">
           <div>

@@ -32,7 +32,7 @@ export function Timeline() {
   };
 
   return (
-    <section className="mx-auto flex flex-col px-6 py-8 text-[#212529] md:px-8 md:py-12 lg:h-screen">
+    <section className="mx-auto flex flex-col px-4 py-8 text-[#212529] md:px-8 md:py-12 lg:h-screen">
       <h3 className="mb-6 text-[32px] uppercase font-light tracking-tight max-md:leading-[36px] md:text-[40px] md:mb-8 2xl:mb-10 2xl:text-[64px]">
         A life in colour; The story so far...
       </h3>

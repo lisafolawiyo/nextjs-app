@@ -158,10 +158,8 @@ export function CheckoutForm({
                           value,
                           onChange,
                           options,
-                          ...rest
                         }) => (
                           <select
-                            {...rest}
                             value={value}
                             onChange={(e) => onChange(e.target.value)}
                             className="mr-2 h-full max-w-[120px] cursor-pointer truncate rounded-none border-0 border-none border-[#212529] bg-transparent pr-3 text-[13px] focus:outline-none"

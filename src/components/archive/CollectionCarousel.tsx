@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
 import Image from 'next/image';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
@@ -121,6 +121,7 @@ export const CollectionCarousel = (
 ) => {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useGsapFadeIn({ delay: 0.3, y: 30 });
+  const autoplayIntervalRef = useRef<NodeJS.Timeout | null>(null);
 
   // Define the exact order and allowed categories
   // const allowedCategoryOrder = [
@@ -206,7 +207,59 @@ export const CollectionCarousel = (
 
     setCurrentCategoryIndex(newIndex);
     fetchProductsByCategory(categories[newIndex]);
+    stopAutoScroll();
   };
+
+  const autoScrollImages = () => {
+    if (!scrollContainerRef.current) return;
+
+    const container = scrollContainerRef.current;
+    const scrollWidth = container.scrollWidth;
+    const clientWidth = container.clientWidth;
+    const maxScroll = scrollWidth - clientWidth;
+
+    // Smooth continuous scroll with faster speed
+    const currentScroll = container.scrollLeft;
+    const nextScroll = currentScroll + 2; // Increased from 1 to 2 for faster scroll
+
+    if (nextScroll >= maxScroll) {
+      // Loop back to start smoothly
+      container.scrollTo({ left: 0, behavior: 'smooth' });
+    } else {
+      container.scrollLeft = nextScroll;
+    }
+  };
+
+  const startAutoScroll = () => {
+    stopAutoScroll();
+    autoplayIntervalRef.current = setInterval(autoScrollImages, 20); // Reduced from 30ms to 20ms for faster scroll
+  };
+
+  const stopAutoScroll = () => {
+    if (autoplayIntervalRef.current) {
+      clearInterval(autoplayIntervalRef.current);
+      autoplayIntervalRef.current = null;
+    }
+  };
+
+  const handleUserInteraction = () => {
+    stopAutoScroll();
+  };
+
+  const handleTouchEnd = () => {
+    // Resume auto-scroll after a delay when user stops touching
+    setTimeout(() => {
+      startAutoScroll();
+    }, 2000);
+  };
+
+  // Start auto-scroll on mount and when products change
+  useEffect(() => {
+    if (products.length > 0) {
+      startAutoScroll();
+    }
+    return () => stopAutoScroll();
+  }, [products]);
 
   return (
     <section
@@ -253,8 +306,13 @@ export const CollectionCarousel = (
 
           <div
             ref={scrollContainerRef}
-            className="flex overflow-x-auto max-md:mx-4 h-full"
-            style={{ msOverflowStyle: 'none' }}
+            onMouseEnter={stopAutoScroll}
+            onMouseLeave={startAutoScroll}
+            onTouchStart={handleUserInteraction}
+            onTouchEnd={handleTouchEnd}
+            onScroll={handleUserInteraction}
+            className="flex overflow-x-auto max-md:mx-4 h-full scroll-smooth"
+            style={{ msOverflowStyle: 'none', scrollBehavior: 'smooth' }}
           >
             {isLoading ? (
               <>

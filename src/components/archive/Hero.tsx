@@ -18,7 +18,7 @@ function HeroMobile() {
           loop
           muted
           playsInline
-          className="absolute inset-0 h-full w-full object-cover"
+          className="absolute inset-0 h-full w-full object-contain"
         >
           <source
             src="https://res.cloudinary.com/aiyeola/video/upload/v1763020920/lisa-folawiyo/IMG_9505_twy9bt.mp4"
@@ -119,7 +119,7 @@ function HeroDesktop() {
             loop
             muted
             playsInline
-            className="h-full w-full object-cover"
+            className="h-full w-full object-contain"
           >
             <source
               src="https://res.cloudinary.com/aiyeola/video/upload/v1763021322/lisa-folawiyo/IMG_9504_xmxmmt.mp4"

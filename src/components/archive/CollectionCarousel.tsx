@@ -6,6 +6,7 @@ import Image from 'next/image';
 import Autoplay from 'embla-carousel-autoplay';
 import useEmblaCarousel from 'embla-carousel-react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
+import { WheelGesturesPlugin } from 'embla-carousel-wheel-gestures';
 
 import { useGsapFadeIn } from '@/hooks/useGsapFadeIn';
 
@@ -147,16 +148,12 @@ const images = {
     'https://res.cloudinary.com/aiyeola/image/upload/v1763020506/lisa-folawiyo/SS23/IMG_3980_hmqfos.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763020517/lisa-folawiyo/SS23/IMG_2604_kuokp3.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763020517/lisa-folawiyo/SS23/IMGL8292_sapba9.jpg',
-    'https://res.cloudinary.com/aiyeola/image/upload/v1763020517/lisa-folawiyo/SS23/IMGL8292_sapba9.jpg',
-    'https://res.cloudinary.com/aiyeola/image/upload/v1763020517/lisa-folawiyo/SS23/IMG_2604_kuokp3.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763038309/lisa-folawiyo/SS23/1D0A0074_copy_vhgh6u.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763038313/lisa-folawiyo/SS23/1D0A0012_copy_1_xtip1j.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763038313/lisa-folawiyo/SS23/4b9a5165_crwdgw.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763038315/lisa-folawiyo/SS23/1D0A0388_poa8lq.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763038315/lisa-folawiyo/SS23/1D0A0015_kjmzkf.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763038318/lisa-folawiyo/SS23/1D0A0330_fv9otf.jpg',
-    'https://res.cloudinary.com/aiyeola/image/upload/v1763038321/lisa-folawiyo/SS23/1D0A0320_1_wp7hig.jpg',
-    'https://res.cloudinary.com/aiyeola/image/upload/v1763038322/lisa-folawiyo/SS23/1D0A0349_fszria.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763038329/lisa-folawiyo/SS23/1D0A0275_1_xhknev.jpg',
     'https://res.cloudinary.com/aiyeola/image/upload/v1763038331/lisa-folawiyo/SS23/IMGL8245_mvhjjc.jpg',
   ],
@@ -222,8 +219,8 @@ export const CollectionCarousel = (
   );
 
   const [emblaRef, emblaApi] = useEmblaCarousel(
-    { loop: true, align: 'start', duration: 40 },
-    [autoplayPlugin],
+    { loop: true, align: 'start', duration: 40, dragFree: true },
+    [autoplayPlugin, WheelGesturesPlugin()],
   );
 
   // Define the exact order and allowed categories
@@ -317,7 +314,7 @@ export const CollectionCarousel = (
     // Force autoplay to start
     const timer = setTimeout(() => {
       autoplayPlugin.play();
-    }, 200);
+    }, 100);
 
     return () => clearTimeout(timer);
   }, [emblaApi, autoplayPlugin]);
@@ -328,16 +325,16 @@ export const CollectionCarousel = (
 
     autoplayPlugin.reset();
     autoplayPlugin.play();
-  }, [products, emblaApi, autoplayPlugin]);
+  }, [JSON.stringify(products), emblaApi, autoplayPlugin]);
 
-  const [scrollProgress, setScrollProgress] = useState(0);
+  // const [scrollProgress, setScrollProgress] = useState(0);
 
   useEffect(() => {
     if (!emblaApi) return;
 
     const onScroll = () => {
-      const progress = Math.max(0, Math.min(1, emblaApi.scrollProgress()));
-      setScrollProgress(progress * 100);
+      // const progress = Math.max(0, Math.min(1, emblaApi.scrollProgress()));
+      // setScrollProgress(progress * 100);
     };
 
     emblaApi.on('scroll', onScroll);
@@ -394,6 +391,7 @@ export const CollectionCarousel = (
           <div
             className="embla max-md:mx-4 h-full flex flex-col"
             ref={emblaRef}
+            key={JSON.stringify(products)}
           >
             <div className="embla__container flex flex-1">
               {isLoading ? (
@@ -441,7 +439,7 @@ export const CollectionCarousel = (
             </div>
 
             {/* Scrollbar */}
-            <div className="embla__scrollbar mt-4 mb-4 mx-4 md:mx-10">
+            {/* <div className="embla__scrollbar mt-4 mb-4 mx-4 md:mx-10">
               <div className="embla__scrollbar__track h-2 bg-gray-200 rounded-full overflow-hidden">
                 <div
                   className="embla__scrollbar__thumb h-full bg-gray-800 rounded-full transition-all duration-200"
@@ -451,7 +449,7 @@ export const CollectionCarousel = (
                   }}
                 />
               </div>
-            </div>
+            </div> */}
           </div>
         </div>
       </div>

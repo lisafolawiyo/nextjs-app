@@ -253,8 +253,8 @@ export const CollectionCarousel = (
 
           <div
             ref={scrollContainerRef}
-            className="hide-scrollbar flex overflow-x-auto max-md:mx-4 h-full"
-            style={{ scrollbarWidth: 'none', msOverflowStyle: 'none' }}
+            className="flex overflow-x-auto max-md:mx-4 h-full"
+            style={{ msOverflowStyle: 'none' }}
           >
             {isLoading ? (
               <>

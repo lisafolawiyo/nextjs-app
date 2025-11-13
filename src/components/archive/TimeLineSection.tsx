@@ -32,7 +32,7 @@ export function Timeline() {
   };
 
   return (
-    <section className="mx-auto h-screen flex flex-col px-6 py-8 text-[#212529] md:px-8 md:py-12">
+    <section className="mx-auto flex flex-col px-6 py-8 text-[#212529] md:px-8 md:py-12 lg:h-screen">
       <h3 className="mb-6 text-[32px] uppercase font-light tracking-tight max-md:leading-[36px] md:text-[40px] md:mb-8 2xl:mb-10 2xl:text-[64px]">
         A life in colour; The story so far...
       </h3>
@@ -79,61 +79,63 @@ export function Timeline() {
 
         {selectedEvent && (
           <div
-            className={`space-y-6 px-4 pt-6 flex-1 flex flex-col overflow-y-auto transition-all duration-500 ${
+            className={`flex-1 flex flex-col overflow-y-auto transition-all duration-500 ${
               isAnimating ? 'translate-x-8 scale-95' : 'translate-x-0 scale-100'
             }`}
           >
-            <h4 className="text-2xl font-normal leading-relaxed text-[#212529]">
-              {selectedEvent.title}
-            </h4>
+            <div className="space-y-6 px-4 pt-6 pb-6">
+              <h4 className="text-2xl font-normal leading-relaxed text-[#212529]">
+                {selectedEvent.title}
+              </h4>
 
-            <p className="text-base leading-relaxed text-[#212529]">
-              {selectedEvent.description}
-            </p>
+              <p className="text-base leading-relaxed text-[#212529]">
+                {selectedEvent.description}
+              </p>
 
-            <div className="space-y-3">
-              {selectedEvent.links && selectedEvent.links.length > 0 && (
-                <>
-                  {selectedEvent.links.map((link, index) => (
-                    <a
-                      key={index}
-                      href={link.url}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block"
-                    >
-                      <button className="w-full border border-[#212529] px-8 py-3 text-sm font-normal uppercase tracking-wide text-[#212529] transition-all duration-300 hover:bg-[#212529] hover:text-white">
-                        {link.label}
-                      </button>
-                    </a>
-                  ))}
-                </>
-              )}
+              <div className="space-y-3">
+                {selectedEvent.links && selectedEvent.links.length > 0 && (
+                  <>
+                    {selectedEvent.links.map((link, index) => (
+                      <a
+                        key={index}
+                        href={link.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="block"
+                      >
+                        <button className="w-full border border-[#212529] px-8 py-3 text-sm font-normal uppercase tracking-wide text-[#212529] transition-all duration-300 hover:bg-[#212529] hover:text-white">
+                          {link.label}
+                        </button>
+                      </a>
+                    ))}
+                  </>
+                )}
 
-              {selectedEvent.exploreMoreUrl && (
-                <a
-                  href={selectedEvent.exploreMoreUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="block"
-                >
-                  <button className="w-full border border-[#212529] px-8 py-3 text-sm font-normal uppercase tracking-wide text-[#212529] transition-all duration-300 hover:bg-[#212529] hover:text-white">
-                    Explore More
-                  </button>
-                </a>
-              )}
-            </div>
+                {selectedEvent.exploreMoreUrl && (
+                  <a
+                    href={selectedEvent.exploreMoreUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="block"
+                  >
+                    <button className="w-full border border-[#212529] px-8 py-3 text-sm font-normal uppercase tracking-wide text-[#212529] transition-all duration-300 hover:bg-[#212529] hover:text-white">
+                      Explore More
+                    </button>
+                  </a>
+                )}
+              </div>
 
-            <div className="relative aspect-[3/4] w-full overflow-hidden bg-gray-100">
-              <Image
-                src={selectedEvent.image}
-                alt={`${selectedEvent.year} - ${selectedEvent.title}`}
-                fill
-                className={`object-cover object-top transition-transform duration-700 ${
-                  isAnimating ? 'scale-110' : 'scale-100'
-                }`}
-                sizes="100vw"
-              />
+              <div className="relative aspect-[3/4] w-full overflow-hidden bg-gray-100">
+                <Image
+                  src={selectedEvent.image}
+                  alt={`${selectedEvent.year} - ${selectedEvent.title}`}
+                  fill
+                  className={`object-cover object-top transition-transform duration-700 ${
+                    isAnimating ? 'scale-110' : 'scale-100'
+                  }`}
+                  sizes="100vw"
+                />
+              </div>
             </div>
           </div>
         )}

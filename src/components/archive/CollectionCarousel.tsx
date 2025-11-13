@@ -1,8 +1,10 @@
 'use client';
 
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 
 import Image from 'next/image';
+import Autoplay from 'embla-carousel-autoplay';
+import useEmblaCarousel from 'embla-carousel-react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 
 import { useGsapFadeIn } from '@/hooks/useGsapFadeIn';
@@ -119,9 +121,22 @@ export const CollectionCarousel = (
     // categories,
   }: CollectionCarouselProps,
 ) => {
-  const scrollContainerRef = useRef<HTMLDivElement>(null);
   const sectionRef = useGsapFadeIn({ delay: 0.3, y: 30 });
-  const autoplayIntervalRef = useRef<NodeJS.Timeout | null>(null);
+
+  const autoplayPlugin = useMemo(
+    () =>
+      Autoplay({
+        delay: 4000,
+        stopOnMouseEnter: true,
+        stopOnInteraction: false,
+      }),
+    [],
+  );
+
+  const [emblaRef, emblaApi] = useEmblaCarousel(
+    { loop: true, align: 'start', duration: 40 },
+    [autoplayPlugin],
+  );
 
   // Define the exact order and allowed categories
   // const allowedCategoryOrder = [
@@ -178,9 +193,8 @@ export const CollectionCarousel = (
       // );
       setProducts(images[category]);
 
-      // Reset scroll position
-      if (scrollContainerRef.current) {
-        scrollContainerRef.current.scrollTo({ left: 0, behavior: 'smooth' });
+      if (emblaApi) {
+        emblaApi.scrollTo(0, false);
       }
     } catch (error) {
       console.error('Failed to fetch products for category:', error);
@@ -207,68 +221,44 @@ export const CollectionCarousel = (
 
     setCurrentCategoryIndex(newIndex);
     fetchProductsByCategory(categories[newIndex]);
-    stopAutoScroll();
   };
 
-  const autoScrollImages = () => {
-    if (!scrollContainerRef.current) return;
-
-    const container = scrollContainerRef.current;
-    const scrollWidth = container.scrollWidth;
-    const clientWidth = container.clientWidth;
-    const maxScroll = scrollWidth - clientWidth;
-
-    // Smooth continuous scroll with faster speed
-    const currentScroll = container.scrollLeft;
-    const nextScroll = currentScroll + 2; // Increased from 1 to 2 for faster scroll
-
-    if (nextScroll >= maxScroll) {
-      // Loop back to start smoothly
-      container.scrollTo({ left: 0, behavior: 'smooth' });
-    } else {
-      container.scrollLeft = nextScroll;
-    }
-  };
-
-  const startAutoScroll = () => {
-    stopAutoScroll();
-    autoplayIntervalRef.current = setInterval(autoScrollImages, 20); // Reduced from 30ms to 20ms for faster scroll
-  };
-
-  const stopAutoScroll = () => {
-    if (autoplayIntervalRef.current) {
-      clearInterval(autoplayIntervalRef.current);
-      autoplayIntervalRef.current = null;
-    }
-  };
-
-  const isUserScrollingRef = useRef(false);
-
-  const handleUserInteraction = () => {
-    isUserScrollingRef.current = true;
-    stopAutoScroll();
-  };
-
-  const handleTouchEnd = () => {
-    // Resume auto-scroll after a delay when user stops touching
-    setTimeout(() => {
-      isUserScrollingRef.current = false;
-      startAutoScroll();
-    }, 2000);
-  };
-
-  const handleMouseLeave = () => {
-    isUserScrollingRef.current = false;
-    startAutoScroll();
-  };
-
-  // Start auto-scroll on mount and when products change
   useEffect(() => {
-    if (products.length > 0) {
-      startAutoScroll();
-    }
-    return () => stopAutoScroll();
-  }, [products]);
+    if (!emblaApi) return;
+
+    // Force autoplay to start
+    const timer = setTimeout(() => {
+      autoplayPlugin.play();
+    }, 200);
+
+    return () => clearTimeout(timer);
+  }, [emblaApi, autoplayPlugin]);
+
+  // Reset autoplay when products change
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    autoplayPlugin.reset();
+    autoplayPlugin.play();
+  }, [products, emblaApi, autoplayPlugin]);
+
+  const [scrollProgress, setScrollProgress] = useState(0);
+
+  useEffect(() => {
+    if (!emblaApi) return;
+
+    const onScroll = () => {
+      const progress = Math.max(0, Math.min(1, emblaApi.scrollProgress()));
+      setScrollProgress(progress * 100);
+    };
+
+    emblaApi.on('scroll', onScroll);
+    onScroll();
+
+    return () => {
+      emblaApi.off('scroll', onScroll);
+    };
+  }, [emblaApi]);
 
   return (
     <section
@@ -314,56 +304,66 @@ export const CollectionCarousel = (
           </div>
 
           <div
-            ref={scrollContainerRef}
-            onMouseEnter={stopAutoScroll}
-            onMouseLeave={handleMouseLeave}
-            onTouchStart={handleUserInteraction}
-            onTouchEnd={handleTouchEnd}
-            className="flex overflow-x-auto max-md:mx-4 h-full scroll-smooth"
-            style={{ msOverflowStyle: 'none', scrollBehavior: 'smooth' }}
+            className="embla max-md:mx-4 h-full flex flex-col"
+            ref={emblaRef}
           >
-            {isLoading ? (
-              <>
-                <ImageSkeleton />
-                <ImageSkeleton />
-              </>
-            ) : products.length > 0 ? (
-              products.map((product, index) => (
-                <div
-                  key={product}
-                  className={`group w-full flex-shrink-0 md:w-1/2 ${
-                    index < products.length - 1
-                      ? 'xl:border-r xl:border-[#212529]'
-                      : ''
-                  }`}
-                >
-                  <div className="flex h-full w-full flex-col  pt-4 md:px-10 md:pt-10">
-                    <div className="relative overflow-hidden bg-white transition-all duration-500 hover:scale-[1] hover:shadow-2xl">
-                      <div className="relative z-10">
-                        <Image
-                          src={product ?? '/media/images/placeholder.png'}
-                          alt={product}
-                          width={521}
-                          height={521}
-                          className="h-[580px] w-full object-cover object-top brightness-75 transition-transform duration-700 group-hover:scale-[1.05]"
-                        />
+            <div className="embla__container flex flex-1">
+              {isLoading ? (
+                <>
+                  <ImageSkeleton />
+                  <ImageSkeleton />
+                </>
+              ) : products.length > 0 ? (
+                products.map((product, index) => (
+                  <div
+                    key={product}
+                    className={`embla__slide group w-full flex-shrink-0 md:w-1/2 ${
+                      index < products.length - 1
+                        ? 'xl:border-r xl:border-[#212529]'
+                        : ''
+                    }`}
+                  >
+                    <div className="flex h-full w-full flex-col  pt-4 md:px-10 md:pt-10">
+                      <div className="relative overflow-hidden bg-white transition-all duration-500 hover:scale-[1] hover:shadow-2xl">
+                        <div className="relative z-10">
+                          <Image
+                            src={product ?? '/media/images/placeholder.png'}
+                            alt={product}
+                            width={521}
+                            height={521}
+                            className="h-[580px] w-full object-cover object-top brightness-75 transition-transform duration-700 group-hover:scale-[1.05]"
+                          />
+                        </div>
+                        <div className="pointer-events-none absolute inset-0 z-10 w-full justify-center bg-black/0 transition-all duration-500 group-hover:bg-black/40" />
                       </div>
-                      <div className="pointer-events-none absolute inset-0 z-10 w-full justify-center bg-black/0 transition-all duration-500 group-hover:bg-black/40" />
                     </div>
                   </div>
+                ))
+              ) : (
+                <div className="embla__slide flex w-full flex-col items-center justify-center p-12 md:p-20">
+                  <p className="mb-2 text-xl font-light text-[#1a1a1a] md:text-2xl">
+                    No Products Available
+                  </p>
+                  <p className="text-center text-sm text-gray-500 md:text-base">
+                    This collection is currently empty. Check back soon for new
+                    arrivals.
+                  </p>
                 </div>
-              ))
-            ) : (
-              <div className="flex w-full flex-col items-center justify-center p-12 md:p-20">
-                <p className="mb-2 text-xl font-light text-[#1a1a1a] md:text-2xl">
-                  No Products Available
-                </p>
-                <p className="text-center text-sm text-gray-500 md:text-base">
-                  This collection is currently empty. Check back soon for new
-                  arrivals.
-                </p>
+              )}
+            </div>
+
+            {/* Scrollbar */}
+            <div className="embla__scrollbar mt-4 mb-4 mx-4 md:mx-10">
+              <div className="embla__scrollbar__track h-2 bg-gray-200 rounded-full overflow-hidden">
+                <div
+                  className="embla__scrollbar__thumb h-full bg-gray-800 rounded-full transition-all duration-200"
+                  style={{
+                    width: `${(100 / products.length) * 2}%`,
+                    transform: `translateX(${scrollProgress}%)`,
+                  }}
+                />
               </div>
-            )}
+            </div>
           </div>
         </div>
       </div>

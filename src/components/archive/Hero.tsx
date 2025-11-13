@@ -9,22 +9,32 @@ import { Timeline, VideoPlayer } from '@/components/archive';
 
 function HeroMobile() {
   const [isPlayerOpen, setIsPlayerOpen] = useState(false);
+  const [videoSrc, setVideoSrc] = useState('');
+
+  useEffect(() => {
+    // Check if screen is sm (640px) or larger
+    const isDesktop = window.innerWidth >= 640;
+    setVideoSrc(
+      isDesktop
+        ? 'https://res.cloudinary.com/aiyeola/video/upload/v1763021322/lisa-folawiyo/IMG_9504_xmxmmt.mp4'
+        : 'https://res.cloudinary.com/aiyeola/video/upload/v1763020920/lisa-folawiyo/IMG_9505_twy9bt.mp4',
+    );
+  }, []);
 
   return (
     <>
       <section className="relative h-screen w-full">
-        <video
-          autoPlay
-          loop
-          muted
-          playsInline
-          className="absolute inset-0 h-full w-full object-contain"
-        >
-          <source
-            src="https://res.cloudinary.com/aiyeola/video/upload/v1763020920/lisa-folawiyo/IMG_9505_twy9bt.mp4"
-            type="video/mp4"
-          />
-        </video>
+        {videoSrc && (
+          <video
+            autoPlay
+            loop
+            muted
+            playsInline
+            className="absolute inset-0 h-full w-full object-contain"
+          >
+            <source src={videoSrc} type="video/mp4" />
+          </video>
+        )}
 
         <div className="absolute inset-0 bg-black/50" />
 
@@ -40,7 +50,7 @@ function HeroMobile() {
         {isPlayerOpen && (
           <div className="absolute inset-0 top-0 z-[300] flex items-center justify-center bg-black/90 p-4">
             <VideoPlayer
-              videoUrl="https://res.cloudinary.com/aiyeola/video/upload/v1763020920/lisa-folawiyo/IMG_9505_twy9bt.mp4"
+              videoUrl={videoSrc}
               onClose={() => setIsPlayerOpen(false)}
             />
           </div>

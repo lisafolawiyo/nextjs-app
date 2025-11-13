@@ -87,7 +87,7 @@ export const getRelatedProducts = async (
   try {
     const includeParam = include.join(','); // Convert array to comma-separated string
     const excludeParam = exclude.join(','); // Convert array to comma-separated string
-    const url = `${API_URL}/products?include=${includeParam}&exclude=${excludeParam}`;
+    const url = `${API_URL}/products`;
     const oauthParams = generateOAuthSignature(url, 'GET', {
       include: includeParam,
       exclude: excludeParam,

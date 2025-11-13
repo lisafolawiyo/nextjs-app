@@ -54,6 +54,7 @@ export default async function page({
     product_data.upsell_ids,
     1,
     9,
+    [product_data.id],
   );
 
   let productVariations: ProductVariation[] = [];

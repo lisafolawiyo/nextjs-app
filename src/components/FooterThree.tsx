@@ -69,7 +69,7 @@ function FooterThree() {
               <div>
                 <input
                   type="text"
-                  placeholder="First Name"
+                  placeholder="Name"
                   required
                   value={fname}
                   onChange={(e) => setFname(e.target.value)}

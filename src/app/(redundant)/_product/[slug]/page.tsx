@@ -31,6 +31,7 @@ const SinglePage = async ({
     product_data.upsell_ids,
     1,
     10,
+    [product_data.id],
   );
   let productVariations: ProductVariation[] = [];
   if (!product_data) {

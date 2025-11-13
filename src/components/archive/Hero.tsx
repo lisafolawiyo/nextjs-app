@@ -163,7 +163,7 @@ function HeroDesktop() {
 export function Hero() {
   return (
     <>
-      <div className="block 2xl:hidden">
+      <div className="block lg:hidden">
         <HeroMobile />
 
         <section className="relative z-10 bg-white py-12">
@@ -171,7 +171,7 @@ export function Hero() {
         </section>
       </div>
 
-      <div className="hidden 2xl:block">
+      <div className="hidden lg:block">
         <HeroDesktop />
       </div>
     </>
